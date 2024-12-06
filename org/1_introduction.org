@@ -16,7 +16,7 @@
   3) What is debugging?
   4) Formal vs. natural languages
   5) The first program
-  6) Google cloud shell
+  6) Online programming platforms
   7) Making and fixing mistakes
   8) Writing your first program
   9) Compiling your first program
@@ -43,40 +43,24 @@
 
 - What's the "science" in computer science refer to?
 
-- The most important computer science skill is problem-solving[fn:1].
-
+- The most important CS
+  
 * What is a programming language?
 
 
-
 * What is a program?
-
 
 * What is debugging?
 
 * The first program
 
-
-* Google cloud shell
-
+* Online programming platforms
 
 * Making and fixing mistakes
 
-
 * Writing your first program
-
 
 * Compiling your first program
 
-
 * Running your first program
 
-* Footnotes
-
-[fn:1]What distinguishes a skill from, say, a talent, or an ability? A
-skill can be picked up from zero and improved with practice. A talent
-is (supposedly) inborn and can form a foundation for skill
-development. Ability is the capacity or power to perform a particular
-task, a skill, or an activity. Raw talent without skill means that you
-can do very little. Lots of skill without talent just means that you
-may have to work harder than someone with talent.

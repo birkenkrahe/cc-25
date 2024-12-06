@@ -4,27 +4,186 @@
 #+STARTUP: overview hideblocks indent
 #+OPTIONS: toc:nil num:nil ^:nil
 #+PROPERTY: header-args:R :session *R* :results output :exports both :noweb yes#+PROPERTY: header-args:python :session *Python* :results output :exports both :noweb yes#+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes#+PROPERTY: header-args:C++ :main yes :includes <iostream> :results output :exports both :noweb yes
+* General Course Information
+
+- Meeting Times: Monday/Wednesday/Friday, 9:00-9:50 AM
+- Meeting place: Lyon Building Room 104 (computer lab)
+- Professor: Marcus Birkenkrahe (aka "Dr. B")
+- Office: Derby Science Building 210
+- Phone: (870) 307-7254 (office) / (501) 422-4725 (private)
+- Office hours: By appointment only- [[https://tinyurl.com/sp25-booking][tinyurl.com/sp25-booking]]
+- Textbooks:
+  1) *Think C* by (Free online PDF, 2019) - weeks 1-12;
+     [[https://tinyurl.com/thinkC-book][tinyurl.com/thinkC-book]]
+  2) *The Rook's Guide to C++* (Free online PDF, 2013) - weeks 13-15;
+     [[https://tinyurl.com/rooksguide-cpp][tinyurl.com/rooksguide-cpp]]
+
+* Standard and course policies
+
+*Standard Lyon College Policies* are incorporated into this syllabus
+and can be found at: [[http://www.lyon.edu/standard-course-policies][lyon.edu/standard-course-policies]].
+
+The *Assignments and Honor Code* and the *Attendance Policy* are
+incorporated into this syllabus also and can be found at:
+[[https://tinyurl.com/LyonPolicy][tinyurl.com/LyonPolicy]].
+
+In addition to these rules, please read and observe my guide to Using
+AI to code (2024): [[https://tinyurl.com/Using-AI-to-code][tinyurl.com/Using-AI-to-code]].
+
+* Objectives
+
+This course introduces you to programming using C. We cover C++ as an
+extension. C is a system programming language of pure power: it
+enables you to converse with the computer at a level unknown to users
+other high level languages many of which come from C. You also learn
+about: compilers, working on the command line, text editors Emacs,
+using C for Internet of Things (IoT) devices, cybersecurity, using
+pseudocode and process modeling. You get a foundation in critical
+thinking in concert with two of the three currently most popular
+languages (cp. TIOBE, 2023): the next three languages are Java, C# and
+JavaScript, which you can learn in a fortnight after this
+course). You’ll learn some great tools: we use the “hacker’s editor”
+Emacs, the world’s foremost software engineering platform, GitHub, and
+BPMN for process modeling and pseudo code generation. For those
+interested in computer and data science, this course is a bridge to
+CSC 240 Data structures in C++ and CSC 265 Algorithms (with Python).
+
+* Student Learning Outcomes
+
+Students who complete CSC 100.01 "Introduction to programming in C++",
+will be able to:
+
+- Master basic sequential programming skills (conditional
+  statements, loops, functions, input/output, use of data types)
+- Explain the basic components of a procedural programming language
+- Apply the basics of programming to solve a variety of quantitative
+  problems
+- Master computing infrastructure (compiler, editor, shell)
+- Research and present a project as a team
+- Know how to effectively present assignment results
+- Be ready for "Data stuctures with C++" (CSC 240)
+- Get ready for "Algorithms" (CSC 265)
+- Improve their data literacy skills
+
+* Course requirements / prerequisites
+
+- MTH 110 College algebra or permission from the instructor
+- No prior programming or computing knowledge required
+- Experience with computers is useful but not critical
+- Curiosity is essential, and willingness to try new things!
+- To get the most out of this course you must code, code, code!
+
+* Grading system
+
+You should be able to see your current grade at any time using the
+Canvas gradebook for the course.
+
+| WHEN       | DESCRIPTION             | IMPACT |
+|------------+-------------------------+--------|
+| Weekly     | Programming assignments |    40% |
+| Weekly     | Multiple choice tests   |    25% |
+| Week 14-16 | Final project           |    15% |
+| TBD        | Final exam (optional)   |    20% |
+
+Notes:
+- *To pass:* 60% of all available points.
+- *Tests:* weekly online quizzes based on the assigned reading.
+- *Final exam:* random selection of the known test questions. *Note:* You
+  only have to write the final exam if you want to improve your grade
+  at the end of the course. If the final exam result is below your
+  final grade average up to this point, it will be ignored.
+- There will be numerous (optional) bonus assignments to improve your
+  midterm and final grades.
+  
+* Grading table
+
+This table is used to convert completion rates into letter grades. for
+the midterm results, letter grades still carry signs, while for the
+term results, only straight letters are given (by rounding up). This
+table is also used in Canvas to compute your grades. Transitions
+between letter grades are rounded (e.g. 89.5% to 90%).
+
+|------------------+------------------|
+| Percentage       | LETTER GRADE*    |
+|------------------+------------------|
+| 100% to 89.5%    | A (very good)    |
+|------------------+------------------|
+| < 89.5% to 79.5% | B (good)         |
+|------------------+------------------|
+| < 79.5% to 69.5% | C (satisfactory) |
+|------------------+------------------|
+| < 69.5% to 59.5% | D (passed)       |
+|------------------+------------------|
+| < 59.5% to 0%    | F (FAILED)       |
+|------------------+------------------|
+
+* Schedule and session content
+
+For *important dates*, see the 2024-2025 Academic Calendar at:
+[[https://catalog.lyon.edu/202425-academic-calendar][catalog.lyon.edu/202425-academic-calendar]].
+
+*Workload:* approx. 4-5 hours per week.
+1. Class time = 16 * 3 * 50/60 = 40 hours
+2. Tests (home) = 15 * .5 = 7.5 hours
+3. Programming assignments: 15 * 1 = 15 hrs
+4. Reading assignments (not graded): 15 * 2 = 30 hrs
+
+Total approx. 95 hours (of which 55 hours = class time)
+
+Let's compute the workload outside of class as the total number of
+hours spent outside of class divided by the number of weeks in term:
+#+begin_src C :main yes :includes <stdio.h>
+  int weeks = 16;
+  int classes = 3;
+  int assignments = 14;
+  int tests = 15;
+  float session_minutes = 50.f/60.f;
+  float total_hrs, class_time, workload;
+
+  class_time = weeks * classes * session_minutes;
+  printf("Class time: %g\n",class_time);
+
+  
+
+
+#+end_src
+
+#+RESULTS:
+: Class time: 40
+
+
 * Course Overview
 
-- *Textbooks*:
-  - *Think C* (Free PDF) - weeks 1-12
-  - *The Rook's Guide to C++* (Free PDF) - weeks 13-15
+** *Textbooks*:
+- *Think C* (Free PDF) - weeks 1-12
+- *The Rook's Guide to C++* (Free PDF) - weeks 13-15
 
-- *Grading*:
-  - Final Exam: 25% (optional)
-  - Project: 25%
-  - Programming Assignments: 25%
-  - Tests: 25%
+** *Grading*:
 
-- *Class Schedule*: Three 50-minute meetings per week, MWF 9-9:50 AM
+- Weekly programming Assignments: 40%
+- Weekly tests: 25%
+- Final project: 15%
+- Final exam: 20% (optional)
 
-- *Course Goal*: Teach fundamental programming concepts in C and
-  introduce basic C++ concepts in the final weeks. Emphasis is on
-  writing, debugging, and discussing code during class.
+** *Class Schedule* and Location
+
+- Three 50-minute meetings per week, MWF 9-9:50 AM.
+
+- We meet in the Lyon building computer lab room 104
+
+- All sessions will be recorded via Zoom
+
+** Course Goals
+
+Teach fundamental programming concepts in C and introduce basic C++
+concepts in the final weeks. Emphasis is on writing, debugging, and
+discussing code during class.
+
+** 
 
 * Weeks 1-12: Programming in C
 
-** Week 1: Introduction to Programming 
+** Week 1: Introduction to Programming
 
 - *Topics*:
   1) What is programming?
@@ -32,7 +191,7 @@
   3) What is debugging?
   4) Formal vs. natural languages
   5) The first program
-  6) Google cloud shell
+  6) Online coding platform
   7) Making and fixing mistakes
   8) Writing your first program
   9) Compiling your first program
@@ -52,10 +211,16 @@
   your first name. Store your name as a string variable and print it.
 
 ** Week 2: Variables and Basic Input/Output
-- *Topics*: Declaring variables, printing to the screen, basic user input.
+
+- *Topics*: Declaring variables, printing to the screen, basic user
+  input.
+
 - *Reading*: Chapter 2 (Think C*)
+
 - *Assignment*: Write a program to greet the user by name.
-- *Bonus Assignment*: Write a program to calculate the user's age in days.
+
+- *Bonus Assignment*: Write a program to calculate the user's age in
+  days.
 
 ** Week 3: Simple Arithmetic
 - *Topics*: Basic arithmetic operations, constants, and precedence.
@@ -137,4 +302,3 @@
 
 * Week 16: Project Presentations
 - *Activity*: Students present their projects to the class.
-
