@@ -1,0 +1,140 @@
+#+TITLE:Syllabus - Introduction to programming in C++
+#+AUTHOR:Marcus Birkenkrahe
+#+SUBTITLE:Syllabus - CSC 100 - Lyon College - Spring 2025
+#+STARTUP: overview hideblocks indent
+#+OPTIONS: toc:nil num:nil ^:nil
+#+PROPERTY: header-args:R :session *R* :results output :exports both :noweb yes#+PROPERTY: header-args:python :session *Python* :results output :exports both :noweb yes#+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes#+PROPERTY: header-args:C++ :main yes :includes <iostream> :results output :exports both :noweb yes
+* Course Overview
+
+- *Textbooks*:
+  - *Think C* (Free PDF) - weeks 1-12
+  - *The Rook's Guide to C++* (Free PDF) - weeks 13-15
+
+- *Grading*:
+  - Final Exam: 25% (optional)
+  - Project: 25%
+  - Programming Assignments: 25%
+  - Tests: 25%
+
+- *Class Schedule*: Three 50-minute meetings per week, MWF 9-9:50 AM
+
+- *Course Goal*: Teach fundamental programming concepts in C and
+  introduce basic C++ concepts in the final weeks. Emphasis is on
+  writing, debugging, and discussing code during class.
+
+* Weeks 1-12: Programming in C
+
+** Week 1: Introduction to Programming 
+
+- *Topics*:
+  1) What is programming?
+  2) What is a program?
+  3) What is debugging?
+  4) Formal vs. natural languages
+  5) The first program
+  6) Google cloud shell
+  7) Making and fixing mistakes
+  8) Writing your first program
+  9) Compiling your first program
+  10) Running your first program
+
+- *Reading*: Chapter 1 (*Think C*)
+
+- *Assignment*: Do this on your personal computer (not at school)
+
+  1) Install Google Cloud Shell as an app in Google Chrome.
+
+  2) Create a "Hello, World!" program =hello.c=.
+
+  3) Compile and run the program using =gcc=.
+
+- *Bonus Assignment*: Modify "Hello, World!", and replace "World" by
+  your first name. Store your name as a string variable and print it.
+
+** Week 2: Variables and Basic Input/Output
+- *Topics*: Declaring variables, printing to the screen, basic user input.
+- *Reading*: Chapter 2 (Think C*)
+- *Assignment*: Write a program to greet the user by name.
+- *Bonus Assignment*: Write a program to calculate the user's age in days.
+
+** Week 3: Simple Arithmetic
+- *Topics*: Basic arithmetic operations, constants, and precedence.
+- *Reading*: Chapter 3 (Think C*)
+- *Assignment*: Write a program to calculate the sum, difference, product, and quotient of two numbers.
+- *Bonus Assignment*: Write a program to find the average of three numbers.
+
+** Week 4: Decision-Making (If-Else)
+- *Topics*: Conditional statements for decision-making.
+- *Reading*: Chapter 4 (Think C*)
+- *Assignment*: Write a program to check if a number is positive, negative, or zero.
+- *Bonus Assignment*: Determine if a year entered by the user is a leap year.
+
+** Week 5: Loops (Basics)
+- *Topics*: Using `for` and `while` loops for repetition.
+- *Reading*: Chapter 5 (Think C*)
+- *Assignment*: Write a program to print numbers from 1 to 10.
+- *Bonus Assignment*: Create a multiplication table for a user-provided number.
+
+** Week 6: Functions (Basics)
+- *Topics*: Writing and calling functions, return values.
+- *Reading*: Chapter 6 (Think C*)
+- *Assignment*: Write a function to calculate the square of a number.
+- *Bonus Assignment*: Create a function to check if a number is prime.
+
+** Week 7: Arrays (Basics)
+- *Topics*: Declaring and using arrays, array indexing.
+- *Reading*: Chapter 7 (Think C*)
+- *Assignment*: Write a program to store and print 5 numbers entered by the user.
+- *Bonus Assignment*: Find the sum of all even numbers in an array.
+
+** Week 8: Strings (Basics)
+- *Topics*: Declaring strings, basic string operations.
+- *Reading*: Chapter 8 (Think C*)
+- *Assignment*: Reverse a user-provided string.
+- *Bonus Assignment*: Check if a user-provided string is a palindrome.
+
+** Week 9: Structs (Basics)
+- *Topics*: Declaring and using structs to group data.
+- *Reading*: Chapter 9 (Think C*)
+- *Assignment*: Write a program to manage student information (name, age, and grade).
+- *Bonus Assignment*: Create a struct to manage a collection of books with fields for title, author, and price.
+
+** Week 10: Advanced Topics (Pointers)
+- *Topics*: Introduction to pointers, pointer arithmetic.
+- *Assignment*: Use pointers to swap two variables.
+- *Bonus Assignment*: Demonstrate pointer usage to modify array elements.
+
+** Week 11: Advanced Topics (Combining Arrays and Structs)
+- *Topics*: Using arrays of structs.
+- *Assignment*: Write a program to manage a list of students with names and scores.
+- *Bonus Assignment*: Sort the students by score.
+
+** Week 12: Advanced Topics (Nested Structs)
+- *Topics*: Structs within structs.
+- *Assignment*: Create a program to store and display detailed student information (name, grades, and contact info).
+- *Bonus Assignment*: Extend the program to calculate average grades for each student.
+
+
+* Weeks 13-15: Programming in C++
+** Week 13: Introduction to C++
+- *Topics*: Differences between C and C++, basic syntax in C++.
+- *Reading*: The Rook's Guide to C++* - Chapter on "Input and Output".
+- *Assignment*: Write a simple program in C++ to display "Hello, World!" using `iostream`.
+- *Bonus Assignment*: Rewrite an earlier C assignment using `std::cout` and `std::cin`.
+
+** Week 14: Object-Oriented Programming Basics
+- *Topics*: Introduction to classes and objects, defining simple classes.
+- *Reading*: The Rook's Guide to C++* - Chapter on "Classes".
+- *Assignment*: Create a class for a student with fields for name, age, and grade, and methods to display the information.
+- *Bonus Assignment*: Extend the class to calculate and display the average of multiple grades.
+
+** Week 15: Advanced C++ Features
+- *Topics*: Constructors, destructors, and basic operator overloading.
+- *Reading*: The Rook's Guide to C++* - Chapter on "Constructors and Overloading".
+- *Assignment*: Create a class with a constructor to initialize data and a destructor to clean up.
+- *Bonus Assignment*: Implement a class with overloaded operators for arithmetic (e.g., adding two objects).
+
+
+* Week 16: Project Presentations
+- *Activity*: Students present their projects to the class.
+

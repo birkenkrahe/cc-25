@@ -1,0 +1,82 @@
+#+TITLE:Introduction to Programming 
+#+AUTHOR:Marcus Birkenkrahe
+#+SUBTITLE:CSC 100 - Lyon College - Spring 2025
+#+STARTUP: overview hideblocks indent
+#+OPTIONS: toc:nil num:nil ^:nil
+#+PROPERTY: header-args:R :session *R* :results output :exports both :noweb yes
+#+PROPERTY: header-args:python :session *Python* :results output :exports both :noweb yes
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes
+#+PROPERTY: header-args:C++ :main yes :includes <iostream> :results output :exports both :noweb yes
+
+* Week 1: Introduction to Programming 
+
+- *Topics*:
+  1) What is programming?
+  2) What is a program?
+  3) What is debugging?
+  4) Formal vs. natural languages
+  5) The first program
+  6) Google cloud shell
+  7) Making and fixing mistakes
+  8) Writing your first program
+  9) Compiling your first program
+  10) Running your first program
+
+- *Reading*: Chapter 1 (*Think C*)
+
+- *Programming assignment*:
+
+  Do this on your personal computer (not at school):
+
+  1) Install Google Cloud Shell as an app in Google Chrome.
+
+  2) Create a "Hello, World!" program =hello.c=.
+
+  3) Compile and run the program using =gcc=.
+
+- *Bonus Assignment*: Modify "Hello, World!", and replace "World" by
+  your first name. Store your name as a string variable and print it.
+
+* What is programming?
+
+- Do computer scientists think differently from other people?
+
+- What's the "science" in computer science refer to?
+
+- The most important computer science skill is problem-solving[fn:1].
+
+* What is a programming language?
+
+
+
+* What is a program?
+
+
+* What is debugging?
+
+* The first program
+
+
+* Google cloud shell
+
+
+* Making and fixing mistakes
+
+
+* Writing your first program
+
+
+* Compiling your first program
+
+
+* Running your first program
+
+* Footnotes
+
+[fn:1]What distinguishes a skill from, say, a talent, or an ability? A
+skill can be picked up from zero and improved with practice. A talent
+is (supposedly) inborn and can form a foundation for skill
+development. Ability is the capacity or power to perform a particular
+task, a skill, or an activity. Raw talent without skill means that you
+can do very little. Lots of skill without talent just means that you
+may have to work harder than someone with talent.
