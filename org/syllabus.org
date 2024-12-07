@@ -94,7 +94,7 @@ Notes:
   final grade average up to this point, it will be ignored.
 - There will be numerous (optional) bonus assignments to improve your
   midterm and final grades.
-  
+
 * Grading table
 
 This table is used to convert completion rates into letter grades. for
@@ -122,68 +122,19 @@ between letter grades are rounded (e.g. 89.5% to 90%).
 For *important dates*, see the 2024-2025 Academic Calendar at:
 [[https://catalog.lyon.edu/202425-academic-calendar][catalog.lyon.edu/202425-academic-calendar]].
 
-*Workload:* approx. 4-5 hours per week.
-1. Class time = 16 * 3 * 50/60 = 40 hours
-2. Tests (home) = 15 * .5 = 7.5 hours
-3. Programming assignments: 15 * 1 = 15 hrs
-4. Reading assignments (not graded): 15 * 2 = 30 hrs
+*Workload* (estimated):
+- Time in class: 48 hrs.
+- Time outside of class: 57 hrs.
+- Time for tests [1/2 hr/test]: 7 hrs.
+- Time for coding assignments [1 hr/pgm]: 14 hrs.
+- Time for reading assignments [2 hrs/chapter]: 28 hrs.
+- Time for project: 8 hrs.
+- Total number of hrs in term: 105.
+- Weekly workload (outside of class): 6.5625 (3.5625)
 
-Total approx. 95 hours (of which 55 hours = class time)
+** Weeks 1-12: Programming in C
 
-Let's compute the workload outside of class as the total number of
-hours spent outside of class divided by the number of weeks in term:
-#+begin_src C :main yes :includes <stdio.h>
-  int weeks = 16;
-  int classes = 3;
-  int assignments = 14;
-  int tests = 15;
-  float session_minutes = 50.f/60.f;
-  float total_hrs, class_time, workload;
-
-  class_time = weeks * classes * session_minutes;
-  printf("Class time: %g\n",class_time);
-
-  
-
-
-#+end_src
-
-#+RESULTS:
-: Class time: 40
-
-
-* Course Overview
-
-** *Textbooks*:
-- *Think C* (Free PDF) - weeks 1-12
-- *The Rook's Guide to C++* (Free PDF) - weeks 13-15
-
-** *Grading*:
-
-- Weekly programming Assignments: 40%
-- Weekly tests: 25%
-- Final project: 15%
-- Final exam: 20% (optional)
-
-** *Class Schedule* and Location
-
-- Three 50-minute meetings per week, MWF 9-9:50 AM.
-
-- We meet in the Lyon building computer lab room 104
-
-- All sessions will be recorded via Zoom
-
-** Course Goals
-
-Teach fundamental programming concepts in C and introduce basic C++
-concepts in the final weeks. Emphasis is on writing, debugging, and
-discussing code during class.
-
-** 
-
-* Weeks 1-12: Programming in C
-
-** Week 1: Introduction to Programming
+*** Week 1: Introduction to Programming
 
 - *Topics*:
   1) What is programming?
@@ -210,7 +161,7 @@ discussing code during class.
 - *Bonus Assignment*: Modify "Hello, World!", and replace "World" by
   your first name. Store your name as a string variable and print it.
 
-** Week 2: Variables and Basic Input/Output
+*** Week 2: Variables and Basic Input/Output
 
 - *Topics*: Declaring variables, printing to the screen, basic user
   input.
@@ -222,83 +173,83 @@ discussing code during class.
 - *Bonus Assignment*: Write a program to calculate the user's age in
   days.
 
-** Week 3: Simple Arithmetic
+*** Week 3: Simple Arithmetic
 - *Topics*: Basic arithmetic operations, constants, and precedence.
 - *Reading*: Chapter 3 (Think C*)
 - *Assignment*: Write a program to calculate the sum, difference, product, and quotient of two numbers.
 - *Bonus Assignment*: Write a program to find the average of three numbers.
 
-** Week 4: Decision-Making (If-Else)
+*** Week 4: Decision-Making (If-Else)
 - *Topics*: Conditional statements for decision-making.
 - *Reading*: Chapter 4 (Think C*)
 - *Assignment*: Write a program to check if a number is positive, negative, or zero.
 - *Bonus Assignment*: Determine if a year entered by the user is a leap year.
 
-** Week 5: Loops (Basics)
+*** Week 5: Loops (Basics)
 - *Topics*: Using `for` and `while` loops for repetition.
 - *Reading*: Chapter 5 (Think C*)
 - *Assignment*: Write a program to print numbers from 1 to 10.
 - *Bonus Assignment*: Create a multiplication table for a user-provided number.
 
-** Week 6: Functions (Basics)
+*** Week 6: Functions (Basics)
 - *Topics*: Writing and calling functions, return values.
 - *Reading*: Chapter 6 (Think C*)
 - *Assignment*: Write a function to calculate the square of a number.
 - *Bonus Assignment*: Create a function to check if a number is prime.
 
-** Week 7: Arrays (Basics)
+*** Week 7: Arrays (Basics)
 - *Topics*: Declaring and using arrays, array indexing.
 - *Reading*: Chapter 7 (Think C*)
 - *Assignment*: Write a program to store and print 5 numbers entered by the user.
 - *Bonus Assignment*: Find the sum of all even numbers in an array.
 
-** Week 8: Strings (Basics)
+*** Week 8: Strings (Basics)
 - *Topics*: Declaring strings, basic string operations.
 - *Reading*: Chapter 8 (Think C*)
 - *Assignment*: Reverse a user-provided string.
 - *Bonus Assignment*: Check if a user-provided string is a palindrome.
 
-** Week 9: Structs (Basics)
+*** Week 9: Structs (Basics)
 - *Topics*: Declaring and using structs to group data.
 - *Reading*: Chapter 9 (Think C*)
 - *Assignment*: Write a program to manage student information (name, age, and grade).
 - *Bonus Assignment*: Create a struct to manage a collection of books with fields for title, author, and price.
 
-** Week 10: Advanced Topics (Pointers)
+*** Week 10: Advanced Topics (Pointers)
 - *Topics*: Introduction to pointers, pointer arithmetic.
 - *Assignment*: Use pointers to swap two variables.
 - *Bonus Assignment*: Demonstrate pointer usage to modify array elements.
 
-** Week 11: Advanced Topics (Combining Arrays and Structs)
+*** Week 11: Advanced Topics (Combining Arrays and Structs)
 - *Topics*: Using arrays of structs.
 - *Assignment*: Write a program to manage a list of students with names and scores.
 - *Bonus Assignment*: Sort the students by score.
 
-** Week 12: Advanced Topics (Nested Structs)
+*** Week 12: Advanced Topics (Nested Structs)
 - *Topics*: Structs within structs.
 - *Assignment*: Create a program to store and display detailed student information (name, grades, and contact info).
 - *Bonus Assignment*: Extend the program to calculate average grades for each student.
 
 
-* Weeks 13-15: Programming in C++
-** Week 13: Introduction to C++
+** Weeks 13-15: Programming in C++
+*** Week 13: Introduction to C++
 - *Topics*: Differences between C and C++, basic syntax in C++.
 - *Reading*: The Rook's Guide to C++* - Chapter on "Input and Output".
 - *Assignment*: Write a simple program in C++ to display "Hello, World!" using `iostream`.
 - *Bonus Assignment*: Rewrite an earlier C assignment using `std::cout` and `std::cin`.
 
-** Week 14: Object-Oriented Programming Basics
+*** Week 14: Object-Oriented Programming Basics
 - *Topics*: Introduction to classes and objects, defining simple classes.
 - *Reading*: The Rook's Guide to C++* - Chapter on "Classes".
 - *Assignment*: Create a class for a student with fields for name, age, and grade, and methods to display the information.
 - *Bonus Assignment*: Extend the class to calculate and display the average of multiple grades.
 
-** Week 15: Advanced C++ Features
+*** Week 15: Advanced C++ Features
 - *Topics*: Constructors, destructors, and basic operator overloading.
 - *Reading*: The Rook's Guide to C++* - Chapter on "Constructors and Overloading".
 - *Assignment*: Create a class with a constructor to initialize data and a destructor to clean up.
 - *Bonus Assignment*: Implement a class with overloaded operators for arithmetic (e.g., adding two objects).
 
 
-* Week 16: Project Presentations
+** Week 16: Project Presentations
 - *Activity*: Students present their projects to the class.
