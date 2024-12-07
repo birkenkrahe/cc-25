@@ -14,7 +14,7 @@
 - Office hours: By appointment only- [[https://tinyurl.com/sp25-booking][tinyurl.com/sp25-booking]]
 - Textbooks:
   1) *Think C* by (Free online PDF, 2019) - weeks 1-12;
-     [[https://tinyurl.com/thinkC-book][tinyurl.com/thinkC-book]]
+     [[https://tinyurl.com/think-C-book][tinyurl.com/think-C-book]]
   2) *The Rook's Guide to C++* (Free online PDF, 2013) - weeks 13-15;
      [[https://tinyurl.com/rooksguide-cpp][tinyurl.com/rooksguide-cpp]]
 
@@ -87,12 +87,13 @@ Canvas gradebook for the course.
 
 Notes:
 - *To pass:* 60% of all available points.
-- *Tests:* weekly online quizzes based on the assigned reading.
+- *Tests:* weekly online quizzes based on the assigned reading and on
+  classroom practice.
 - *Final exam:* random selection of the known test questions. *Note:* You
   only have to write the final exam if you want to improve your grade
   at the end of the course. If the final exam result is below your
   final grade average up to this point, it will be ignored.
-- There will be numerous (optional) bonus assignments to improve your
+- There will be numerous (optional) *bonus assignments* to improve your
   midterm and final grades.
 
 * Grading table
@@ -150,23 +151,31 @@ For *important dates*, see the 2024-2025 Academic Calendar at:
 
 - *Reading*: Chapter 1 (*Think C*)
 
-- *Assignment*: Do this on your personal computer (not at school)
+- *Assignment* 1: Do this on your personal computer (not at school)
 
   1) Install Google Cloud Shell as an app in Google Chrome.
-
-  2) Create a "Hello, World!" program =hello.c=.
-
+  2) Create a "Hello, World!" program =hello.c= as seen in class.
   3) Compile and run the program using =gcc=.
 
-- *Bonus Assignment*: Modify "Hello, World!", and replace "World" by
-  your first name. Store your name as a string variable and print it.
+- *Assignment 2*: Modify "Hello, World!" (using the version from the
+  textbook), and add a header and comments to the file =hello.c= that
+  explain every single line. Use multi-line comments for the header,
+  and inline comments for the commetns in the file.
+
+- *Bonus assignment*: Write a program =linus.c= that prints first AAAA, and then
+  BBBB on the next line. Sample output:
+  #+begin_example
+    AAAA
+    BBBB
+  #+end_example
+  
 
 *** Week 2: Variables and Basic Input/Output
 
 - *Topics*: Declaring variables, printing to the screen, basic user
   input.
 
-- *Reading*: Chapter 2 (Think C*)
+- *Reading*: Chapter 2 (Think C)
 
 - *Assignment*: Write a program to greet the user by name.
 
