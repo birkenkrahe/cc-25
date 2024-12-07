@@ -34,7 +34,7 @@
   1. Install Google Cloud Shell on your PC, edit, compile and run
      =hello.c= program.
   2. Write "Hello, world!" program =hello2.c= with detailed comments.
-  3. Be like Linus [Torvalds].
+  3. Be like Linus [Torvalds], write =linus.c=.
 
 * What is programming?
 
