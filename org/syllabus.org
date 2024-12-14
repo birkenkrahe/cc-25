@@ -135,7 +135,7 @@ For *important dates*, see the 2024-2025 Academic Calendar at:
 
 ** Weeks 1-12: Programming in C
 
-*** Week 1: Introduction to Programming
+*** Week 1: The way of the program
 
 - *Topics*:
   1) What is programming?
