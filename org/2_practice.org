@@ -7,7 +7,7 @@
 #+PROPERTY: header-args:python :session *Python* :results output :exports both :noweb yes
 #+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes
 #+PROPERTY: header-args:C++ :main yes :includes <iostream> :results output :exports both :noweb yes
-* PRACTICE C Programming with OneCompiler
+* Getting started with OneCompiler
 ** Objective
 
 The goal of this tutorial is to introduce students to

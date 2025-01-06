@@ -8,8 +8,7 @@
 #+property: :header-args:python :session *Python* :python python3 :results output :exports both
 #+property: :header-args:R      :session *R* :results graphics output file :exports both
 #+property: :header-args:C++    :main yes :includes <iostream> :results output :exports both
-
-* PRACTICE About classroom practice sessions
+* About classroom practice sessions
 
 - These and all of the following =PRACTCE= exercises are for you to
   complete in class. If you're not able, you should complete them at
@@ -45,7 +44,7 @@
 
      - Delete the "hello world" printing line and off you go!
 
-* PRACTICE Everything is a number
+* Everything is a number
 
 - What do you get when you get the format wrong? The results will
   surprise you.
@@ -125,7 +124,7 @@
      #+RESULTS:
      : 0.0
 
-* PRACTICE Print challenge
+* Print challenge
 
 Print =3.14 - 3 = .14= using =printf= and the values =3.14=, =3=, and =.14=
 
