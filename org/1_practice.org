@@ -1,0 +1,53 @@
+#+TITLE:Practice - Course platforms
+#+AUTHOR:Marcus Birkenkrahe, Lyon College
+#+SUBTITLE:CSC 100 - Lyon College - Spring 2025
+#+STARTUP: overview hideblocks indent
+#+OPTIONS: toc:nil num:nil ^:nil
+#+PROPERTY: header-args:R :session *R* :results output :exports both :noweb yes
+#+PROPERTY: header-args:python :session *Python* :results output :exports both :noweb yes
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes
+#+PROPERTY: header-args:C++ :main yes :includes <iostream> :results output :exports both :noweb yes
+* Objective
+
+The goal of this tutorial is to introduce students to navigating the
+different platforms used in the course. All of these are linked on a
+Wiki page in your Canvas dashboard (="Pages"= in the sidebar).
+
+* *Canvas* (learning management system):
+  1) Wiki-page with important links
+  2) Mobile app for your phone
+  3) Calendar for all assignments
+  4) Zoom recordings of all classroom meetings
+  5) Gradebook (up to date)
+  6) Tests
+  7) Announcements
+
+=> *Open the Canvas dashboard for this course and follow along.*
+     
+* *GitHub* repo: [[https://github.com/birkenkrahe/cc-25][github.com/birkenkrahe/cc-25]]
+  1) Lectures, assignments, solutions (Org-mode)
+  2) PDFs for lectures, assignments, solutions
+  3) Images
+
+=> *Open the GitHub dashboard for this course and follow along.*
+     
+* *Google Drive* (automatically tied to your Lyon email):
+  1) Whiteboard screenshots
+  2) Large files for sharing
+  3) Automatically saved Google Colab notebooks - [[https://drive.google.com/drive/folders/1Pe1jRAvMpCPkYo0pwBbrfepOWU08kkEI?usp=sharing][Example]]
+   
+=> *Open the Wiki pages in Canvas for this course and follow along.*
+  
+* *Google Chat Space* (you should be a member already):
+  1) Motivational stuff
+  2) Videos, books, articles
+  3) Discussion with threads (use them!) - [[https://chat.google.com/room/AAAAIk8SqZE/uvO9-6ZgQdQ/uvO9-6ZgQdQ?cls=10][Example]]
+
+=> *Open the Google Chat Space for this course and follow along.*
+     
+* *OneCompiler* (register with Lyon email to keep your stuff)
+  1) Assignments (download from there, upload to Canvas)
+  2) Code along (during lectures and practice sessions)
+  3) Code on your own (for example during open-book tests)
+
+=> *We will practice this together in the next session.*

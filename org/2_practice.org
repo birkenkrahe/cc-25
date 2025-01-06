@@ -1,0 +1,124 @@
+#+TITLE:Practice - Introduction to Programming 
+#+AUTHOR:Marcus Birkenkrahe
+#+SUBTITLE:CSC 100 - Lyon College - Spring 2025
+#+STARTUP: overview hideblocks indent
+#+OPTIONS: toc:nil num:nil ^:nil
+#+PROPERTY: header-args:R :session *R* :results output :exports both :noweb yes
+#+PROPERTY: header-args:python :session *Python* :results output :exports both :noweb yes
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes
+#+PROPERTY: header-args:C++ :main yes :includes <iostream> :results output :exports both :noweb yes
+* PRACTICE C Programming with OneCompiler
+** Objective
+
+The goal of this tutorial is to introduce students to
+writing, compiling, and running simple C programs using
+OneCompiler.com.
+
+This is important so that you can complete your assignments & follow
+along with me in class while coding ("code along") if you wish.
+** Getting Started with OneCompiler
+
+1. Open your web browser and go to https://onecompiler.com/c
+2. Click on "New Program" and select "C" as the programming language.
+3. You will see a default template with a simple C program.
+** Creating a new C file in OneCompiler 
+
+OneCompiler has two organisational levels: 1) code, 2) file, and we'll
+change them both.
+
+1. Delete the existing code to start with your own program.
+2. Click on the pen in the middle of the page to change the name of
+   the code to ="Hello World"= and add a short description:
+   #+begin_quote
+   First program with OneCompiler. CSC 100 class practice: 01/17/2025.
+   #+end_quote
+3. Add the tag =helloworld=. Tags help greatly with search + find.
+4. Check the =Visibility=, change it to =Unlisted (People with the Link)=,
+   and click on =Save=.
+5. Open the main menu (three horizontal lines, upper left side) and
+   choose =My Account=.
+6. Click on =CODES=. You should see the last code you edited. If you use
+   dark mode (button at top of the page), you won't see the tag. In
+   the settings (three dots) you can change the visibility or delete
+   the code.
+7. Click on the name of your code to get back to the editor view.
+8. Hovering over the filename =NewFile1.c=, find the edit pen: In the
+   popup, enter a new file name: =helloworld.c=.
+9. To clean the slate, open the settings (three dots) and choose
+   =Clear Output=. You can also download your file from here.
+10. Open the setting again, and choose =Editor Settings=. In the popup,
+    check =Disable Code Autocomplete/Suggestions=.
+   
+** Basic Structure of a C Program
+
+Every C program has a basic structure:
+
+- Header information (/preprocessor/)
+- =main= program ending with =return 0;=
+- Program body enclosed in ={ }=
+- Comments (optional) followed by =//=
+
+#+begin_src C
+  #include <stdio.h> // preprocessor: include input/output header file
+
+  // main program
+  int main() { // start of main program body
+    puts("Hello, World!"); // print a string and go to the next line
+    return 0; // return from main program if successful
+  } // end of main program body
+#+end_src
+
+Your task:
+1. Type the program (with comments) into the editor.
+2. At the end of each line, press =Enter=.
+3. At the start of a new line, press =TAB= to indent
+4. The file is automatically saved.
+5. Click =RUN= (or =CTRL + ENTER)= and check the =Output= field.
+
+** Downloading and uploading files
+
+1) Add a program header. Adapt the header below to your own program:
+   #+begin_example
+   /*****************************************/
+   /* helloworld.c: Print greeting string   */
+   /* Input: none                           */
+   /* Output: Hello, world!                  */                     
+   /* Author: Marcus Birkenkrahe            */
+   /* Date: 1/4/2025                        */
+   /*****************************************/
+   #+end_example
+
+2) After making sure that the program (still) produces the desired
+   output, =Download= it to your PC using the settings menu (three dots)
+   as =helloworld.c=.
+
+3) Open Canvas and find the =Getting started with OneCompiler=
+   assignment.
+
+4) Upload the =helloworld.c= file.
+ 
+5) Upload the link (URL) to the online file. You find it in the status
+   bar of your browser. Mine is: https://onecompiler.com/c/43546aswu
+
+#+attr_html: :width 600px: 
+#+caption: Final result in OneCompiler.com
+[[../img/2_practice.png]]
+
+** Extensions
+
+- Below the editor, there is extensive Syntax help for C programming,
+  check it out. You can also get to this with the =How to (Wiki)=
+  selection in the settings.
+
+- OneCompiler offers a nice free [[https://onecompiler.com/tutorials/c][C tutorial]] if you want to work
+  ahead. You find it in the top menu (three horizontal lines).
+
+- There are programming [[https://onecompiler.com/challenges][challenges]] (some of which we'll be doing in
+  and outside of class). You have to pick your language.
+
+- There are [[https://onecompiler.com/cheatsheets][cheatsheets]], as a useful reference or a condensed overview
+  of an advanced topic - check out =C++ Programming language=.
+
+- Next time you want to get back straight to the C editor, go to
+  =onecompiler.com/c=.
+
