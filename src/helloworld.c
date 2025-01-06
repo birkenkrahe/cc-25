@@ -2,7 +2,7 @@
 /* helloworld.c: Print greeting string   */
 /* Input: none                           */
 /* Output: Hello, world                  */                     
-/* Author: Marcus Birkenkrahe            */
+/* Author: Marcus Birkenkrahe (GPLv3)    */
 /* Date: 1/4/2025                        */
 /*****************************************/
 
