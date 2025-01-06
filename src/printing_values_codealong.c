@@ -1,6 +1,6 @@
 /*****************************************/
 /* printing_values_codealong.c:          */
-/* Codealong for 2_printing_values.org   */
+/* Codealong for 3_printing_values.org   */
 /* Author: Marcus Birkenkrahe (GPLv3)    */
 /* Date: 1/5/2025                        */
 /*****************************************/
