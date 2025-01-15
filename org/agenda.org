@@ -1,0 +1,138 @@
+#+title: Agenda Notebook
+#+author: Marcus Birkenkrahe
+#+subtitle: CSC 100
+#+SEQ_TODO: TODO NEXT IN_PROGRESS | DONE CANCELLED
+#+startup: overview hideblocks indent entitiespretty
+:PROPERTIES:
+:header-args:C:      :main yes :includes <stdio.h> :results output :exports both
+:header-args:python: :session *Python* :python python3 :results output :exports both
+:header-args:R:      :session *R* :results graphics output file :exports both
+:header-args:C++:    :main yes :includes <iostream> :results output :exports both
+:END:
+
+* Week 1: Orientation & Introduction
+#+attr_html: :width 400px: 
+#+caption: Pufferfish woodcut
+[[../img/pufferfish.png]]
+
+- [ ] Classroom situation (bring your laptop)
+- [ ] Overview - introduction to the course
+- [ ] Orverview - introduction to the course platforms
+- [ ] Introduction to the topic of the course (C++)
+
+** TODO 30 students - 24 available PCs (at best)
+
+- Bring your own laptop to class (best)
+- Work on one PC with someone else (take turns)
+- Work through the material using the recording
+
+** TODO In-class and Home Assignments
+
+- In-class assignments require only access to a browser and the
+  ability to see Zoom at the same time in another window.
+
+- Home assignments include tests and programming assignments: they are
+  open book, online, and have a deadline.
+
+** TODO Review/Test preview:
+
+- The review questions are related to one or more questions on the
+  weekly tests.
+- You should ask yourself if you have an answer and then compare with
+  my answer.
+- It is worth going over these [p]review sections again to test your
+  understanding and your knowledge.
+
+-----
+
+1. What's the difference between interpreted and compiled languages?
+   Examples for such languages?
+   #+begin_quote
+   /Interpreted/ languages (like Python) go straight from /source code/ to
+   result, while /compiled/ languages (like C) require an intermediate
+   step, machine or /object/ code, before they can be run.
+   #+end_quote
+
+2. Who does what with what until a C program can be run?
+   #+begin_quote
+   1) The /user/ write /source code/ in an /editor/.
+   2) The user saves the source code in a =.c= file.
+   3) The /compiler/ translates the =.c= file into object code (=a.out=)
+   4) The /shell/ executes the program.
+   #+end_quote
+  
+3. What is the anatomy (dissection) of this command: =printf("Hello\n");=
+   #+begin_quote
+   1) =printf= is a function defined in the =<stdio.h>= header file.
+   2) The function argument is a string ="..."=.
+   3) The string consists of a /string literal/ (constant) =Hello= and a
+      new line character, =\n=.
+   4) The command is delimited by a =;= character.
+   #+end_quote
+  
+4. Which programming errors do you know, when do they occur, and do
+   you have an example?
+   #+begin_quote
+   1) /Syntax errors/ when the language rules are violated, for example
+      a missing semicolon - program will not compile.
+   2) /Logical errors/ when your algorithm does not work, for example
+      the wrong formula - program will not crash.
+   3) /Run-time errors/ when the program is executed - for example when
+      you divide by zero - program crashes or behaves unexpectedly.
+   4) /Semantic error/ when program compiles and runs but produces
+      incorrect results due to incorrect meaning - for example, using
+      a variable incorrectly.
+
+   *Exercise: write little programs that produce each of these errors.*
+   #+end_quote
+  
+5. Explain these commands: =gcc=, =gdb=, =cat=, =%%writefile=, =nano=, =ls=:
+   #+begin_quote
+   1) =gcc=: GNU C and C++ compiler.
+   2) =gdb=: GNU debugger.
+   3) =cat=: Unix viewing program.
+   4) =%%writefile=: "Magic" Jupyter notebook program to create a file.
+   5) =nano=: GNU line editor.
+   6) =ls=: List files.
+   #+end_quote
+
+6. Explain the structure of a typical C program.
+   #+begin_quote
+   
+   #+end_quote
+
+7. What does a typical "computing infrastructure" include?
+   #+begin_quote
+   1) An Operating system (like Windows or Linux) to do anything.
+   2) Files to save source files (like =hello.c=).
+   3) A Shell (or command-line) like =bash= to pass commands to the OS
+   4) An editor to write, debug and save source code files.
+   5) A network (like the Internet) for cloud applications.
+   #+end_quote
+
+8. How will you be evaluated in this class?
+   #+begin_quote
+   1) 50% for your programming assignments.
+   2) 25% for your tests.
+   3) 25% for your final exam (optional).
+   #+end_quote
+
+9. How can you get help for this class?
+   #+begin_quote
+   1) Ask me during class. Do it! There's no shame in it!
+   2) During office hours (tinyurl.com/sp25-booking).
+   3) Post your question to the Google class chat.
+   4) Check one of the free, online textbooks.
+   5) Use AI and don't forget to credit it.
+   6) Attend all classes and/or work through the recordings.
+   #+end_quote
+
+10. Which platforms are we going to use in this class? 
+    #+begin_quote
+    1) Canvas [announcements/assignments/tests]
+    2) GitHub [course materials]
+    3) Google Drive [whiteboard/large files]
+    4) Google Chat Space [discussion]
+    5) OneCompiler [assignments/code along/practice]
+    #+end_quote
+

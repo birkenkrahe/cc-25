@@ -157,6 +157,7 @@ Render and run code using OneCompiler
 - Unexcused late submissions will be penalized (max. 50%).
 - Optional final exam will be sourced by term test questions.
 - Programming assignments are (usually) home assignments.
+- If you miss a class you can submit in-class assignments late.
 - Tests are online, open book, multiple choice quizzes for home.
 
 * Which platforms are we going to use?
@@ -203,6 +204,8 @@ All platforms are available online in the [Internet] cloud:
   need to install stuff.
 
 * Bonus: Linux + Emacs + Org-mode (for extra credit)
+#+attr_html: :width 600px: 
+[[../img/emacs.png]]
 
 - If you're interested in learning and using Linux and Emacs with
   Org-mode: I will offer a special session on Friday, 17 January at 4
@@ -259,10 +262,11 @@ out at: https://github.com/birkenkrahe/cc-25/
 - The first assignment is to read the first chapter, "The Way of the
   Program" in the free online textbook Think C (copy:
   tinyurl.com/think-c-book) - 8 pages of text + glossary +
-  exercises. You don't have to do the exercises!
+  exercises. You don't have to do the exercises! *BY MONDAY 20-JAN*.
 
-- The first test of 30 (!) multiple choice questions (due next week)
-  will mostly be based on this chapter.
+- This is not a graded assignment but the first test of 30 (!)
+  multiple choice questions will mostly be based on this chapter. We
+  might do the test in class next week.
 
 * Glossary
 
