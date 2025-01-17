@@ -204,8 +204,6 @@ All platforms are available online in the [Internet] cloud:
   need to install stuff.
 
 * Bonus: Linux + Emacs + Org-mode (for extra credit)
-#+attr_html: :width 600px: 
-[[../img/emacs.png]]
 
 - If you're interested in learning and using Linux and Emacs with
   Org-mode: I will offer a special session on Friday, 17 January at 4

@@ -16,25 +16,84 @@
 [[../img/pufferfish.png]]
 
 - [ ] Classroom situation (bring your laptop)
-- [ ] Overview - introduction to the course
-- [ ] Orverview - introduction to the course platforms
-- [ ] Introduction to the topic of the course (C++)
+- [ ] Orientation - introduction to the course
+- [ ] Introduction to the topic of the course
 
-** TODO 30 students - 24 available PCs (at best)
+** DONE 30 students - 24 available PCs (at best)
 
 - Bring your own laptop to class (best)
 - Work on one PC with someone else (take turns)
 - Work through the material using the recording
 
-** TODO In-class and Home Assignments
 
-- In-class assignments require only access to a browser and the
-  ability to see Zoom at the same time in another window.
+** TODO Review (Overview)
 
-- Home assignments include tests and programming assignments: they are
-  open book, online, and have a deadline.
+- When you hear the question, try to think of an answer.
+- When you hear my answer(s), compare yours with mine.
+- Sometimes my answers will contain additional information.
+- Ask if anything is unclear this second time round.
 
-** TODO Review/Test preview:
+
+1. What are the parts of our online programming environment?
+   #+attr_html: :width 300px: 
+   [[../img/onecompiler2.png]]
+
+2. Which online platforms are we going to use (know at least 2):
+   #+begin_quote
+   1) Canvas (learning management system)
+   2) GitHub (lectures)
+   3) Google Drive (whiteboard)
+   4) Google Space (discussion)
+   5) OneCompiler (programming)
+   #+end_quote
+
+3. What is "pseudocode"?
+   #+begin_quote
+   Instructions without syntax rules.
+   #+end_quote
+   Example:
+   #+begin_example
+   Start the program
+   Count to 10
+   Print number
+   End the program
+   #+end_example
+   #+attr_html: :width 400px:
+
+4. What does a typical "computing infrastructure" include?
+   #+begin_quote
+   1) An Operating system (like Windows or Linux) to do anything.
+   2) Files to save source files (like =hello.c=).
+   3) A Shell (or command-line) like =bash= to pass commands to the OS
+   4) An editor to write, debug and save source code files.
+   5) A network (like the Internet) for cloud applications.
+   #+end_quote
+
+5. What sits at the heart of the computer and what does it do?
+   #+begin_quote
+   At the heart of the computer sits the kernel program juggling
+   thousands of system and user processes simultaneously while
+   maintaining the illusion (for you) that it is only there for you.
+   #+end_quote
+
+6. How will you be evaluated in this class?
+   #+begin_quote
+   1) 50% for your programming assignments.
+   2) 25% for your tests.
+   3) 25% for your final exam (optional).
+   #+end_quote
+
+7. How can you get help for this class?
+   #+begin_quote
+   1) Ask me during class. Do it! There's no shame in it!
+   2) During office hours (tinyurl.com/sp25-booking).
+   3) Post your question to the Google class chat.
+   4) Check one of the free, online textbooks.
+   5) Use AI and don't forget to credit it.
+   6) Attend all classes and/or work through the recordings.
+   #+end_quote
+
+** TODO Review/Test preview (Introduction)
 
 - The review questions are related to one or more questions on the
   weekly tests.
@@ -91,9 +150,8 @@
    1) =gcc=: GNU C and C++ compiler.
    2) =gdb=: GNU debugger.
    3) =cat=: Unix viewing program.
-   4) =%%writefile=: "Magic" Jupyter notebook program to create a file.
-   5) =nano=: GNU line editor.
-   6) =ls=: List files.
+   4) =nano=: GNU line editor.
+   5) =ls=: List files.
    #+end_quote
 
 6. Explain the structure of a typical C program.
@@ -101,38 +159,6 @@
    
    #+end_quote
 
-7. What does a typical "computing infrastructure" include?
-   #+begin_quote
-   1) An Operating system (like Windows or Linux) to do anything.
-   2) Files to save source files (like =hello.c=).
-   3) A Shell (or command-line) like =bash= to pass commands to the OS
-   4) An editor to write, debug and save source code files.
-   5) A network (like the Internet) for cloud applications.
-   #+end_quote
+** TODO Assignments
 
-8. How will you be evaluated in this class?
-   #+begin_quote
-   1) 50% for your programming assignments.
-   2) 25% for your tests.
-   3) 25% for your final exam (optional).
-   #+end_quote
-
-9. How can you get help for this class?
-   #+begin_quote
-   1) Ask me during class. Do it! There's no shame in it!
-   2) During office hours (tinyurl.com/sp25-booking).
-   3) Post your question to the Google class chat.
-   4) Check one of the free, online textbooks.
-   5) Use AI and don't forget to credit it.
-   6) Attend all classes and/or work through the recordings.
-   #+end_quote
-
-10. Which platforms are we going to use in this class? 
-    #+begin_quote
-    1) Canvas [announcements/assignments/tests]
-    2) GitHub [course materials]
-    3) Google Drive [whiteboard/large files]
-    4) Google Chat Space [discussion]
-    5) OneCompiler [assignments/code along/practice]
-    #+end_quote
 

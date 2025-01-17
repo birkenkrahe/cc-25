@@ -23,27 +23,27 @@
   8) [ ] Writing your first program
   9) [ ] Compiling your first program
   10) [ ] Running your first program
-      
+
 - *Reading*: Chapter 1 (*Think C*) - The way of the program, pp. 1-10.
-  
+
 - *Practice exercises* (in-class):
-  
+
   1. Logging into a Linux VM on Google Cloud Shell
-     
+
   2. Opening your Jupyter notebook on Google Colaboratory
-     
+
   3. Writing, compiling and executing your first program.
-     
+
   4. Upload a notebook file to Canvas.
-     
+
 - *Programming assignments (home)*:
-  
+
   1. Write "Hello, world!" program =hello2.c= with detailed comments.
-     
+
   2. Install Google Cloud Shell as an app on your PC.
-     
+
   3. (Bonus) Be like Linus [Torvalds].
-     
+
   4. (Bonus) Display =EXIT_SUCCESS= and =EXIT_FAILURE=.
 
 * What is programming? (Philosophy)
@@ -54,7 +54,7 @@
 - What is your motivation to learn a programming language?
 
 - What's shown in the painting and what does it mean?
-  
+
 - What does it take to learn programming?
 
 - What is an abstraction? What is real?
@@ -68,10 +68,12 @@
 
 - In the Biblical Tower of Babel story, which language component is
   the core of God's punishment for the people's blasphemy?
-  
+
 - /Learning a programming language doesn't make you a programmer./
 
-* What is C? What is C++? 
+- /Solving many suitable problems by programming makes you a programmer./
+
+* What is C? What is C++?
 
 - C is a programming language created in the early 1970s.
 
@@ -87,52 +89,57 @@
   "real" or "professional" programming language.
 
 - C/C++ consistently rank among the top programming languages:
-  #+attr_html: :width 700px: 
+  #+attr_html: :width 700px:
   [[../img/redmonk.png]]
 
   /Position of language by # of Stackoverflow tags/GitHub projects./
 
 * Why is C important? Why is C++ important?
+#+attr_html: :width 200px:
+#+Caption: C++ is a superset of C
+[[../img/C_vs_Cpp.png]]
 
 - C dominates real-world applications in every way:
-  1. The Linux kernel (and therefore, Android)
-  2. UNIX operating system (core of MacOS and iOS)
-  3. Windows operating system (core of most PCs)
-  4. Doom (early video game) and Wolfenstein 3D
-  5. Git version control system (as in "GitHub")
-  6. Compilers (Clang, GCC/MinGW for most other languages)
-  7. Interpreted languages like Python, R, 
-  8. Any software that crosses platforms easily (portable)
-  9. Software for the Curiosity Mars rover and most space apps
-  10. Banking, telecommunication, and military software
+  1. The *Linux* kernel (and therefore, *Android*)
+  2. UNIX operating system (core of *MacOS* and *iOS*)
+  3. *Windows* operating system (core of most PCs)
+  4. *Doom* (early video game) and *Wolfenstein 3D*
+  5. *Git* version control system (as in "GitHub")
+  6. *Compilers* (Clang, GCC/MinGW for most other languages)
+  7. Interpreted languages like *Python*, R, Lua, JavaScript)
+  8. Any software that crosses platforms easily (*portable*)
+  9. Software for the Curiosity Mars rover and most *space* apps
+  10. *Banking*, *telecommunication*, and *military* software
 
 - C++ dominates game software and other industrial applications where
-  e.g. graphics are required. It accompanies many of C's
+  e.g. *graphics* are required. It accompanies many of C's
   implementations except for applications very close to the machine,
   i.e. with direct hardware access, low-level memory control, high
   portability and efficiency.
 
 * Why don't we just learn C++?
 
-"Hello world" in C
-#+begin_src C :results output
-  #include <stdio.h>
+- For comparison: "Hello world" program in C and C++
 
-  int main(void) {
-    puts("Hello, world");
-    return 0;
-  }
-#+end_src
+- "Hello world" in C
+  #+begin_src C :results output
+    #include <stdio.h>
 
-"Hello world in C++
-#+begin_src C++ :results output
-  #include <iostream>
+    int main(void) {
+      puts("Hello, world");
+      return 0;
+    }
+  #+end_src
 
-  int main(void) {
-    std::cout << "Hello, world!" << std::endl;
-    return 0;
-  }
-#+end_src
+- "Hello world in C++
+  #+begin_src C++ :results output
+    #include <iostream>
+
+    int main(void) {
+      std::cout << "Hello, world!" << std::endl;
+      return 0;
+    }
+  #+end_src
 
 - Object-orientation is a difficult paradigm for beginners (C++).
 - System programming is pure power (C).
@@ -145,43 +152,43 @@
   natural languages (like English)? And why?
 
   #+begin_quote
-- *Natural Languages* (e.g., English) have far more syntax rules than
-  programming languages. They are ambiguous and context-dependent,
-  requiring complex syntax to clarify meaning, evolve continuously
-  over time (adding more rules), and are rich in variability. They are
-  used (perhaps even "designed") for complex human communication.
+  - *Natural Languages* (e.g., English) have far more syntax rules than
+    programming languages. They are ambiguous and context-dependent,
+    requiring complex syntax to clarify meaning, evolve continuously
+    over time (adding more rules), and are rich in variability. They are
+    used (perhaps even "designed") for complex human communication.
 
-- Programming Languages (e.g., C) are designed to be precise and
-  unambiguous small, well-defined set of syntax rules, they are static
-  and slow-changing, focus on clarity and functionality, and
-  prioritize simplicity over expressiveness to ensure machines "get
-  it".
+  - *Programming Languages* (e.g., C) are designed to be precise and
+    unambiguous small, well-defined set of syntax rules, they are static
+    and slow-changing, focus on clarity and functionality, and
+    prioritize simplicity over expressiveness to ensure machines "get
+    it".
 
-- C for example has only 30 keywords, C++ has got 90, and English
-  has 150 function words (like "articles", "pronouns" etc.) and
-  170,000 words.
+  - C for example has only 30 *keywords*, C++ has got 90, and English
+    has 150 *function words* (like "articles", "pronouns" etc.) alone,
+    and more than 170,000 words (and growing) in its vocabulary.
   #+end_quote
 
 * Interpretation vs. Compilation
 
 - Programming Languages are either interpreted or compiled to generate
   machine code from human-readable source code.
-  
+
 - Interpreted languages go straight from source to result:
   #+attr_html: :width 600px:
   #+caption: Scheffler, ThinkC (2019), p. 2
   [[../img/interpreter.png]]
-  
+
 - Interpreted example (the first execution shows the console)
   #+attr_html: :width 300px:
   #+caption: Python console / interpreter dialog fragment
   [[../img/python.png]]
-  
+
 - Compiled languages require an intermediate "object code" step.
   #+attr_html: :width 600px:
   #+caption: Scheffler, ThinkC (2019), p. 2
   [[../img/compiler.png]]
-  
+
 - Compiled example: The source code file (created with =echo=)) is
   compiled and executed on the shell:
   #+begin_src bash :results output :exports both
@@ -195,11 +202,11 @@
   #+attr_html: :width 300px:
   #+caption: https://youtu.be/_C5AHaS1mOA?si=RL3l0Zftsldt0bPV
   [[../img/interpreter_vs_compiler.png]]
-  
+
 - The actual translation journey in the machine from source to object
   code is more complicated and involves a number of intermediate
   files and programs (open in browser - [[https://tinyurl.com/compiler-driver][tinyurl.com/compiler-driver]]):
-  #+attr_html: :width 600px: 
+  #+attr_html: :width 600px:
   #+caption: Source: Bryant/O'Halloran, Computer Systems (3e) 2015
   [[../img/compiler_driver2.png]]
 
@@ -209,20 +216,20 @@
 
 - The source program =hello.c= is a sequence of bits or memory cells,
   each with a value of 0 or 1, organized in 8-bit chunks called /bytes/.
-  
+
 - Each byte in machine memory has an integer value that corresponds to
   some character. For example, the =#= has the integer value 35.
-  
+
 - Here is the source file as you see it:
   #+begin_src C
     #include <stdio.h>
     int main()
     {
-    printf("Hello, World!\n");
-    return 0;
+      printf("Hello, World!\n");
+      return 0;
     }
   #+end_src
-  
+
 - And here is the source file as the computer sees it:
   #+begin_example
   #   i   n   c    l   u   d   e  SP   <   s   t   d   i   o   .   h   >  \n
@@ -237,7 +244,7 @@
  \n   r   e   t   u   r   n  SP   0   ;  \n    }  \n
  10 114 101 116 117 114 110  32  48  59  10  125  10
   #+end_example
-  
+
 - *Note:* The stand-alone /newline/ character =\n= (10) is different from ="\n"=
   inside a string (92 + 10).
 
@@ -247,44 +254,44 @@
   #+attr_html: :width 600px:
   #+caption: Banana muffin recipe
   [[../img/recipe.jpg]]
-  
+
 - Answer:
   #+begin_quote
   - The recipe is a set of instructions but not for computation by a
     computer, and not hampered by syntax rules (other than English
     grammar). It's a form of algorithm written in pseudocode. It is not
     written in a programming language.
-    
+
   - It has some properties of a good program: A program header with
     title, author and date information, and other meta data (how many
     are served).
-    
+
   - Meta data are equally important for programming but they are not
     standardized unless the program is sent over a computer network
     (then the program header is used like an address on an envelope).
   #+end_quote
-  
+
 - What about this?
   #+attr_html: :width 600px:
   #+caption: "Hello World" in x86 Assembly using Linux system calls
   [[../img/assembly.png]]
-  
+
 - The general template for a program:
-  
+
   1. *Input* (fed to the program from the outside, or =stdin=)
-     
+
   2. *Output* (generated by the program for the outside, or =stdout=)
-     
+
   3. *Statements* (commands other than I/O).
-     
+
   4. Baking recipe example:
-     
+
      - Input = Baking ingredients
      - Output = Banana muffin
      - Statements = Baking instructions
-       
+
   5. "Hello, world!" program:
-     
+
      - Input = Character sequence: ="Hello, world"= (string)
      - Output = Screen message =Hello, world!= (stdin)
      - Statements = e.g. =printf("Hello, world!\n");= (function call)
@@ -309,40 +316,40 @@
   too slow for the CPU. NVM can be a hard disk, or a Solid State Drive
   (SSD) - it doesn't disappear when the power goes off (by way of
   permanent magnetic fields).
-  
+
 b) Main memory (Random Access Memory): fast enough for the
-  CPU. Organized as a "stack" of memory addresses. All programs must
-  be loaded into memory before they can be executed. In C, you can
-  access memory cells directly through the "pointer" data structure.
+CPU. Organized as a "stack" of memory addresses. All programs must
+be loaded into memory before they can be executed. In C, you can
+access memory cells directly through the "pointer" data structure.
 
 * What is debugging?
 
 - Programming is the process of creating programs that run and do what
   you want them to do (print, draw, compute, operate something).
-  
+
 - Debugging is when things don't go well and you get errors (or
   warnings), or unexpected results, or no results.
-  
+
 - Programming with debugging includes these steps:
-  
+
   1) Understand the problem (if there is one).
-     
+
   2) Plan a computational solution (if there is one).
-     
+
   3) Open an editor
-     
+
   4) Enter source code (statements + comments)
-     
+
   5) Save source code to a file
-     
+
   6) Close the editor
-     
+
   7) Compile source code to an executable file (debug syntax)
-     
+
   8) Run the executable file
-     
+
   9) Check the results (debug logic)
-     
+
   10) Perform a post-mortem
 
 * The first program (Demo)
@@ -362,21 +369,21 @@ and you will later do it in an integrated development environment
    3. Know how the machine prints strings (function)
    4. Know how to get the printing function (include header file)
    5. Know how to wrap the solution in a program (header/main)
-      
+
 3) Open Open Google Cloud Shell, & enter =nano= at the prompt.
-   
+
 4) Write the code line by line using your keyboard.
-   
+
 5) Save to a file =hello.c= with =CTRL + X=.
-   
+
 6) Leave =nano=.
-   
+
 7) Compile the source code file with the GCC compiler =gcc=.
-   
+
 8) Run the executable output file at the prompt as =./a.out=.
-   
+
 9) Check the resulting printout.
-   
+
 10) Post-mortem (FAQ) & reflection:
     1. Which of these steps transfer every time you code?
     2. How does =printf= work? How can you find out more about it?
@@ -424,25 +431,25 @@ and you will later do it in an integrated development environment
 * Making and fixing mistakes
 
 - The compiler tries to direct you to the source of the problem.
-  
+
 - Example error output for this innocent looking program:
   #+attr_html: :width 600px:
   #+caption: C program and compiler error message
   [[../img/error.png]]
-  
+
 - Alternatives are the use of a debugging tool (like =gdb=), or an
   online visualizer like =pythontutor.com=.
-  
+
 - Mistakes will occur in three scenarios:
-  
+
   1) When you compile ("compile-time error" usually "syntax error")
-     
+
   2) When you run the program ("run-time error")
-     
+
   3) When you look at the results ("logical error")
-     
+
 - The more time you save preparing, the more you lose debugging.
-  
+
 - *Syntax highlighting* also helps greatly. Compare these two versions
   of the same program:
   #+attr_html: :width 600px:
@@ -452,10 +459,10 @@ and you will later do it in an integrated development environment
   #+attr_html: :width 600px:
   #+caption: Code block without syntax highlighting
   [[../img/fragment2.png]]
-  
+
 - One disadvantage of Google Colab compared to Google Cloud shell is
   the missing syntax highlighting.
-  
+
 - As you get better, you'll want to design your own coding
   environment that supports your ideal workflow.
 
@@ -468,12 +475,14 @@ OneCompiler.com.
 
 This is important so that you can complete your assignments & follow
 along with me in class while coding ("code along") if you wish.
+
 ** Getting Started with OneCompiler
 
 1. Open your web browser and go to https://onecompiler.com/c
 2. Click on "New Program" and select "C" as the programming language.
 3. You will see a default template with a simple C program.
-** Creating a new C file in OneCompiler 
+
+** Creating a new C file in OneCompiler
 
 OneCompiler has two organisational levels: 1) code, 2) file, and we'll
 change them both.
@@ -500,7 +509,7 @@ change them both.
    =Clear Output=. You can also download your file from here.
 10. Open the setting again, and choose =Editor Settings=. In the popup,
     check =Disable Code Autocomplete/Suggestions=.
-   
+
 ** Basic Structure of a C Program
 
 Every C program has a basic structure:
@@ -513,10 +522,10 @@ Every C program has a basic structure:
 #+begin_src C
   #include <stdio.h>
 
-  int main() { 
+  int main() {
     puts("Hello, World!");
     return 0;
-  } 
+  }
 #+end_src
 
 Your task:
@@ -526,7 +535,7 @@ Your task:
 4. The file is automatically saved.
 5. Click =RUN= (or =CTRL + ENTER)= and check the =Output= field.
 
-#+attr_html: :width 600px: 
+#+attr_html: :width 600px:
 #+caption: Final result in OneCompiler.com
 [[../img/2_practice2.png]]
 
@@ -551,13 +560,13 @@ Your task:
 
 1. It is advisable, especially at the start, to err on the side of
    over-commenting. Creating comments will be your first assignment.
-   
+
 2. Things to try when writing the program:
    - What happens if you compile with =printf();= ?
    - What happens if you leave out the =int= before =main=?
    - What happens if you remove the last line, =return 0;= ?
    - What happens if you remove everything but =main() {}=?
-     
+
 3. Things to try when compiling and running the program on a shell
    (you cannot do this in the OneCompiler IDE):
    - Run the program again with the command: =./a.out > hello=
@@ -571,13 +580,13 @@ Your task:
 Explanation:
 #+begin_quote
 - The =printf= command requires a non-empty argument, at least =""=.
-  
+
 - The =main= program will still run in its reduced form. The complete
   form is quite a bit more complicated.
-  
+
 - =gcc [source] -o [target]= creates object code (executable) named
   =target=.
-  
+
 - You can also redirect the output from the executable to a file using
   the /redirection/ shell operator =>=.
 #+end_quote
