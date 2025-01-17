@@ -32,9 +32,9 @@
 
   2. Opening your Jupyter notebook on Google Colaboratory
 
-  3. Writing, compiling and executing your first program.
+  3. Upload a notebook file to Canvas.
 
-  4. Upload a notebook file to Canvas.
+  4. Writing, compiling and executing in OneCompiler.com.
 
 - *Programming assignments (home)*:
 

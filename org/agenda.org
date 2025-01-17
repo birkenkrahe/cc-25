@@ -33,7 +33,6 @@
 - Sometimes my answers will contain additional information.
 - Ask if anything is unclear this second time round.
 
-
 1. What are the parts of our online programming environment?
    #+attr_html: :width 300px: 
    [[../img/onecompiler2.png]]
@@ -85,7 +84,7 @@
 
 7. How can you get help for this class?
    #+begin_quote
-   1) Ask me during class. Do it! There's no shame in it!
+   1) Ask me during class.
    2) During office hours (tinyurl.com/sp25-booking).
    3) Post your question to the Google class chat.
    4) Check one of the free, online textbooks.
