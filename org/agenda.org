@@ -91,10 +91,9 @@
    6) Attend all classes and/or work through the recordings.
    #+end_quote
 
+* Week 2: First program & Cloud compiler
 
-* Week 2: First program & Variables & Types
-
-** TODO Review/Test preview (Introduction)
+** DONE Review/Test preview (Introduction)
 
 - The review questions are related to one or more questions on the
   weekly tests. In this case they come from the chapter you just read.
