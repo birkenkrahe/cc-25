@@ -11,13 +11,13 @@
 :END:
 
 * Week 1: Orientation & Introduction
-#+attr_html: :width 400px: 
+#+attr_html: :width 400px:
 #+caption: Pufferfish woodcut
 [[../img/pufferfish.png]]
 
-- [ ] Classroom situation (bring your laptop)
-- [ ] Orientation - introduction to the course
-- [ ] Introduction to the topic of the course
+- [X] Classroom situation (bring your laptop)
+- [X] Orientation - introduction to the course
+- [X] Introduction to the topic of the course
 
 ** DONE 30 students - 24 available PCs (at best)
 
@@ -25,8 +25,7 @@
 - Work on one PC with someone else (take turns)
 - Work through the material using the recording
 
-
-** TODO Review (Overview)
+** DONE Review (Overview)
 
 - When you hear the question, try to think of an answer.
 - When you hear my answer(s), compare yours with mine.
@@ -34,7 +33,7 @@
 - Ask if anything is unclear this second time round.
 
 1. What are the parts of our online programming environment?
-   #+attr_html: :width 300px: 
+   #+attr_html: :width 300px:
    [[../img/onecompiler2.png]]
 
 2. Which online platforms are we going to use (know at least 2):
@@ -95,42 +94,38 @@
 ** TODO Review/Test preview (Introduction)
 
 - The review questions are related to one or more questions on the
-  weekly tests.
-- You should ask yourself if you have an answer and then compare with
-  my answer.
-- It is worth going over these [p]review sections again to test your
-  understanding and your knowledge.
+  weekly tests. In this case they come from the chapter you just read.
 
 -----
 
 1. What's the difference between interpreted and compiled languages?
    Examples for such languages?
-   #+begin_quote
+   #+begin_comment
    /Interpreted/ languages (like Python) go straight from /source code/ to
    result, while /compiled/ languages (like C) require an intermediate
    step, machine or /object/ code, before they can be run.
-   #+end_quote
+   #+end_comment
 
 2. Who does what with what until a C program can be run?
-   #+begin_quote
+   #+begin_comment
    1) The /user/ write /source code/ in an /editor/.
    2) The user saves the source code in a =.c= file.
    3) The /compiler/ translates the =.c= file into object code (=a.out=)
    4) The /shell/ executes the program.
-   #+end_quote
-  
+   #+end_comment
+
 3. What is the anatomy (dissection) of this command: =printf("Hello\n");=
-   #+begin_quote
+   #+begin_comment
    1) =printf= is a function defined in the =<stdio.h>= header file.
    2) The function argument is a string ="..."=.
    3) The string consists of a /string literal/ (constant) =Hello= and a
       new line character, =\n=.
    4) The command is delimited by a =;= character.
-   #+end_quote
-  
+   #+end_comment
+
 4. Which programming errors do you know, when do they occur, and do
    you have an example?
-   #+begin_quote
+   #+begin_comment
    1) /Syntax errors/ when the language rules are violated, for example
       a missing semicolon - program will not compile.
    2) /Logical errors/ when your algorithm does not work, for example
@@ -142,22 +137,54 @@
       a variable incorrectly.
 
    *Exercise: write little programs that produce each of these errors.*
-   #+end_quote
-  
-5. Explain these commands: =gcc=, =gdb=, =cat=, =%%writefile=, =nano=, =ls=:
-   #+begin_quote
-   1) =gcc=: GNU C and C++ compiler.
-   2) =gdb=: GNU debugger.
-   3) =cat=: Unix viewing program.
-   4) =nano=: GNU line editor.
-   5) =ls=: List files.
-   #+end_quote
+   #+end_comment
 
-6. Explain the structure of a typical C program.
-   #+begin_quote
-   
-   #+end_quote
+5. Explain the structure of a typical C program.
+   #+begin_src C
+     // preprocessing: include header files for input/output
+     #include <stdio.h>
 
-** TODO Assignments
+     // main program: 
+     int main(void)
+     {             
+       // action
+       puts("Hello");
+       // confirm success
+       return 0;
+     }
+#+end_src
+
+6. What is "parsing"?
+   #+begin_comment
+   Analyzing the structure of a program - e.g. finding =main= to mark
+   the beginning of the program, or =printf= to begin printing.
+   #+end_comment
+
+7. Does C code have to be indented like this to work?
+   #+begin_src C
+     int main()
+     {
+       float pi = 3.14;
+       printf("%.2f",pi);
+     }
+   #+end_src
+
+8. Do you always have to have a =main= program?
+   #+begin_comment
+   Yes.
+   #+end_comment
+
+9. What's debugging?
+   #+begin_center
+   Finding and fixing programming mistakes. Helpful: using a debugging
+   program like =gdb= ("GNU Debugger") that allows you to step through
+   the code to print intermediate results.
+   #+end_center
+
+10. Which program translates human-readable source code into
+    machine-executable object code?
+    #+begin_center
+    =gcc= - the GNU C Compiler.
+    #+end_center
 
 

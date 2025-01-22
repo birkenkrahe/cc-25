@@ -151,7 +151,7 @@
 - Which has more syntax rules, programming languages (like C), or
   natural languages (like English)? And why?
 
-  #+begin_quote
+  #+begin_comment
   - *Natural Languages* (e.g., English) have far more syntax rules than
     programming languages. They are ambiguous and context-dependent,
     requiring complex syntax to clarify meaning, evolve continuously
@@ -167,7 +167,7 @@
   - C for example has only 30 *keywords*, C++ has got 90, and English
     has 150 *function words* (like "articles", "pronouns" etc.) alone,
     and more than 170,000 words (and growing) in its vocabulary.
-  #+end_quote
+  #+end_comment
 
 * Interpretation vs. Compilation
 
@@ -256,7 +256,7 @@
   [[../img/recipe.jpg]]
 
 - Answer:
-  #+begin_quote
+  #+begin_comment
   - The recipe is a set of instructions but not for computation by a
     computer, and not hampered by syntax rules (other than English
     grammar). It's a form of algorithm written in pseudocode. It is not
@@ -269,7 +269,7 @@
   - Meta data are equally important for programming but they are not
     standardized unless the program is sent over a computer network
     (then the program header is used like an address on an envelope).
-  #+end_quote
+  #+end_comment
 
 - What about this?
   #+attr_html: :width 600px:
@@ -457,7 +457,7 @@ and you will later do it in an integrated development environment
   [[../img/fragment1.png]]
 
   #+attr_html: :width 600px:
-  #+caption: Code block without syntax highlighting
+  #+caption: Code block with syntax highlighting
   [[../img/fragment2.png]]
 
 - One disadvantage of Google Colab compared to Google Cloud shell is
@@ -467,6 +467,7 @@ and you will later do it in an integrated development environment
   environment that supports your ideal workflow.
 
 * PRACTICE C Programming with OneCompiler
+
 ** Objective
 
 The goal of this tutorial is to introduce students to
@@ -488,25 +489,34 @@ OneCompiler has two organisational levels: 1) code, 2) file, and we'll
 change them both.
 
 1. Delete the existing code to start with your own program.
+
 2. Click on the pen in the middle of the page to change the name of
    the code to ="Hello World"= and add a short description:
-   #+begin_quote
+   #+begin_comment
    First program with OneCompiler. CSC 100 class practice: 01/17/2025.
-   #+end_quote
+   #+end_comment
+
 3. Add the tag =helloworld=. Tags help greatly with search + find.
+
 4. Check the =Visibility=, change it to =Unlisted (People with the Link)=,
    and click on =Save=.
+
 5. Open the main menu (three horizontal lines, upper left side) and
    choose =My Account=.
+
 6. Click on =CODES=. You should see the last code you edited. If you use
    dark mode (button at top of the page), you won't see the tag. In
    the settings (three dots) you can change the visibility or delete
    the code.
+
 7. Click on the name of your code to get back to the editor view.
+
 8. Hovering over the filename =NewFile1.c=, find the edit pen: In the
    popup, enter a new file name: =helloworld.c=.
+
 9. To clean the slate, open the settings (three dots) and choose
    =Clear Output=. You can also download your file from here.
+
 10. Open the setting again, and choose =Editor Settings=. In the popup,
     check =Disable Code Autocomplete/Suggestions=.
 
@@ -578,7 +588,7 @@ Your task:
    - List all files starting with =hello=, with: =ls hello*=
 
 Explanation:
-#+begin_quote
+#+begin_comment
 - The =printf= command requires a non-empty argument, at least =""=.
 
 - The =main= program will still run in its reduced form. The complete
@@ -589,7 +599,7 @@ Explanation:
 
 - You can also redirect the output from the executable to a file using
   the /redirection/ shell operator =>=.
-#+end_quote
+#+end_comment
 
 For illustration, here is a complete =main= program: The argument is not
 =void= (missing) but instead contains the number of arguments =argc=, and
