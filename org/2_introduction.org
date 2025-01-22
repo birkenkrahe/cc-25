@@ -131,6 +131,9 @@
     }
   #+end_src
 
+  #+RESULTS:
+  : Hello, world
+
 - "Hello world in C++
   #+begin_src C++ :results output
     #include <iostream>
@@ -140,6 +143,9 @@
       return 0;
     }
   #+end_src
+
+  #+RESULTS:
+  : Hello, world!
 
 - Object-orientation is a difficult paradigm for beginners (C++).
 - System programming is pure power (C).

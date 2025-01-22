@@ -91,6 +91,9 @@
    6) Attend all classes and/or work through the recordings.
    #+end_quote
 
+
+* Week 2: First program & Variables & Types
+
 ** TODO Review/Test preview (Introduction)
 
 - The review questions are related to one or more questions on the
@@ -102,7 +105,7 @@
    Examples for such languages?
    #+begin_comment
    /Interpreted/ languages (like Python) go straight from /source code/ to
-   result, while /compiled/ languages (like C) require an intermediate
+   result, while /compiled/ languages (like C++) require an intermediate
    step, machine or /object/ code, before they can be run.
    #+end_comment
 
