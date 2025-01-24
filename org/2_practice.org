@@ -7,7 +7,7 @@
 #+PROPERTY: header-args:python :session *Python* :results output :exports both :noweb yes
 #+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes
 #+PROPERTY: header-args:C++ :main yes :includes <iostream> :results output :exports both :noweb yes
-* Getting started with OneCompiler
+* C Programming with OneCompiler
 ** Objective
 
 The goal of this tutorial is to introduce students to
@@ -16,11 +16,13 @@ OneCompiler.com.
 
 This is important so that you can complete your assignments & follow
 along with me in class while coding ("code along") if you wish.
+
 ** Getting Started with OneCompiler
 
 1. Open your web browser and go to https://onecompiler.com/c
 2. Click on "New Program" and select "C" as the programming language.
 3. You will see a default template with a simple C program.
+
 ** Creating a new C file in OneCompiler 
 
 OneCompiler has two organisational levels: 1) code, 2) file, and we'll

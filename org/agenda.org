@@ -3,15 +3,13 @@
 #+subtitle: CSC 100
 #+SEQ_TODO: TODO NEXT IN_PROGRESS | DONE CANCELLED
 #+startup: overview hideblocks indent entitiespretty
-:PROPERTIES:
-:header-args:C:      :main yes :includes <stdio.h> :results output :exports both
-:header-args:python: :session *Python* :python python3 :results output :exports both
-:header-args:R:      :session *R* :results graphics output file :exports both
-:header-args:C++:    :main yes :includes <iostream> :results output :exports both
-:END:
+#+property: :header-args:C:      :main yes :includes <stdio.h> :results output :exports both
+#+property: :header-args:python: :session *Python* :python python3 :results output :exports both
+#+property: :header-args:R:      :session *R* :results graphics output file :exports both
+#+property: :header-args:C++:    :main yes :includes <iostream> :results output :exports both
 
 * Week 1: Orientation & Introduction
-#+attr_html: :width 400px:
+#+attr_html: :width 300px:
 #+caption: Pufferfish woodcut
 [[../img/pufferfish.png]]
 
@@ -91,9 +89,20 @@
    6) Attend all classes and/or work through the recordings.
    #+end_quote
 
-* Week 2: First program & Cloud compiler
 
-** DONE Review/Test preview (Introduction)
+* Week 2: C Language & First program 
+#+attr_html: :width 300px: 
+#+caption: 1970s Jesus Fish woodcut
+[[../img/jesus_fish.png]]
+
+- [X] Test preview / week review
+- [X] C Programming language
+- [ ] Online programming platforms
+- [ ] Compiling with onecompiler.com
+- [ ] Uploading an in-class assignment
+- [ ] Assignments for next week
+
+** DONE Review/Test preview (Way of the Program)
 
 - The review questions are related to one or more questions on the
   weekly tests. In this case they come from the chapter you just read.
@@ -190,3 +199,67 @@
     #+end_center
 
 
+
+** TODO Review/Test preview: Introduction
+
+1. Which language has more rules and more words - C or English?
+   #+begin_quote
+   C has hundreds of clear rules collected in a few hundred pages of
+   documentation, and only 30 reserved words.
+
+   English has thousands of constantly evolving rules of grammar,
+   spelling, pronunciation, and style, and hundreds of thousands of
+   words.
+   #+end_quote
+
+2. What is =\n= and what does it do?
+   #+begin_quote
+   =\n= is an "escape character" that escapes the =n= using the =\=.
+
+   When the machine sees =\n= it prints a new line.
+   #+end_quote
+
+3. When you type =main= in the editor, what does the machine see?
+   #+begin_example
+   The machine sees a sequence of ASCII characters that correspond to
+   a binary stream (bits):
+
+   m: ASCII code = 109, binary = 01101101
+   a: ASCII code = 97, binary = 01100001
+   i: ASCII code = 105, binary = 01101001
+   n: ASCII code = 110, binary = 01101110
+   #+end_example
+
+   #+begin_src C :results table
+     printf("%c %c %c %c\n",'m','a','i','n');
+     printf("%i %i %i %i\n",'m','a','i','n');
+     printf("%b %b %b %b\n",'m','a','i','n');
+   #+end_src
+
+4. What's the main problem between the computer's brain-chip, memory,
+   and data storage?
+   #+begin_quote
+   Speed. The brain-chip (CPU) is super-fast, the memory (RAM) is
+   fast, and the data storage (hard disk) is painfully slow - but they
+   must still all communicate with one another to do your bidding.
+   #+end_quote
+
+5. What does "tokenizing" mean?
+   #+begin_quote
+   "Tokenizing" means breaking down a sequence of text into smaller
+   units called "tokens". In programming, these are the smallest
+   elements of the source code that have meaning, such as keywords
+   (e.g. =main=, =printf=), operators (=+=, ===), and punctuation =(;, {)=.
+   #+end_quote
+
+** TODO Assignments of the week
+
+1. Complete a simple extension of the "hello world" program: Comment
+   every line of the program and upload the URL to Canvas (Monday)
+   
+2. Read the second chapter (Variables and Types): 8 pages (you'll be
+   tested on the content in test 2 at the end of the week - Friday).
+
+3. There are two bonus assignments, which you can tackle at any point
+   between now and May 9 (last day of class). One is simple, the other
+   one is not so simple.
