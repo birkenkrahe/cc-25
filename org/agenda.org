@@ -95,10 +95,10 @@
 
 - [X] Test preview / week review
 - [X] C Programming language
-- [ ] Online programming platforms
-- [ ] Compiling with onecompiler.com
-- [ ] Uploading an in-class assignment
-- [ ] Assignments for next week
+- [X] Online programming platforms
+- [X] Compiling with onecompiler.com
+- [X] Uploading an in-class assignment
+- [X] Assignments for next week
 
 ** DONE Review/Test preview (Way of the Program)
 
@@ -196,6 +196,21 @@
     =gcc= - the GNU C Compiler.
     #+end_center
 
+** DONE Assignments of the week
+
+1. Complete a simple extension of the "hello world" program: Comment
+   every line of the program and upload the URL to Canvas (Monday)
+   
+2. Read the second chapter (Variables and Types): 8 pages (you'll be
+   tested on the content in test 2 at the end of the week - Friday).
+
+3. There are two bonus assignments, which you can tackle at any point
+   between now and May 9 (last day of class). One is simple, the other
+   one is not so simple.
+
+** NEXT Printing formatted values (in-class practice)
+
+* Week 3: Printing formatted values & Variables
 
 ** TODO Review/Test preview: Introduction
 
@@ -249,18 +264,5 @@
    (e.g. =main=, =printf=), operators (=+=, ===), and punctuation =(;, {)=.
    #+end_quote
 
-** TODO Assignments of the week
-
-1. Complete a simple extension of the "hello world" program: Comment
-   every line of the program and upload the URL to Canvas (Monday)
-   
-2. Read the second chapter (Variables and Types): 8 pages (you'll be
-   tested on the content in test 2 at the end of the week - Friday).
-
-3. There are two bonus assignments, which you can tackle at any point
-   between now and May 9 (last day of class). One is simple, the other
-   one is not so simple.
-** NEXT Printing formatted values (in-class practice)
-* Week 3: Printing formatted values & Variables
 
 ** TODO Practice: Printing values (with upload)

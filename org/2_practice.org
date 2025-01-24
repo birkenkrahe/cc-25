@@ -61,13 +61,13 @@ Every C program has a basic structure:
 - Comments (optional) followed by =//=
 
 #+begin_src C
-  #include <stdio.h> // preprocessor: include input/output header file
+  #include <stdio.h> 
 
-  // main program
-  int main() { // start of main program body
-    puts("Hello, World!"); // print a string and go to the next line
-    return 0; // return from main program if successful
-  } // end of main program body
+
+  int main() { 
+    puts("Hello, World!");
+    return 0;
+  } 
 #+end_src
 
 Your task:
