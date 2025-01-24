@@ -7,7 +7,6 @@
 #+property: :header-args:python: :session *Python* :python python3 :results output :exports both
 #+property: :header-args:R:      :session *R* :results graphics output file :exports both
 #+property: :header-args:C++:    :main yes :includes <iostream> :results output :exports both
-
 * Week 1: Orientation & Introduction
 #+attr_html: :width 300px:
 #+caption: Pufferfish woodcut
@@ -88,7 +87,6 @@
    5) Use AI and don't forget to credit it.
    6) Attend all classes and/or work through the recordings.
    #+end_quote
-
 
 * Week 2: C Language & First program 
 #+attr_html: :width 300px: 
@@ -199,7 +197,6 @@
     #+end_center
 
 
-
 ** TODO Review/Test preview: Introduction
 
 1. Which language has more rules and more words - C or English?
@@ -263,3 +260,7 @@
 3. There are two bonus assignments, which you can tackle at any point
    between now and May 9 (last day of class). One is simple, the other
    one is not so simple.
+** NEXT Printing formatted values (in-class practice)
+* Week 3: Printing formatted values & Variables
+
+** TODO Practice: Printing values (with upload)
