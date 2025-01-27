@@ -208,13 +208,58 @@
    between now and May 9 (last day of class). One is simple, the other
    one is not so simple.
 
-** NEXT Printing formatted values (in-class practice)
-
 * Week 3: Printing formatted values & Variables
+#+attr_html: :width 600px: 
+[[../img/fishermen.jpg]]
+
+- [ ] Results: Test 1 & missing in action
+- [ ] P/review: Introduction
+- [ ] Practice: Printing formatted values in C
+- [ ] Lecture: Variables & Types
+
+** TODO Test 1 results and MIA
+
+#+attr_html: :width 450px: 
+[[../img/t1_hist.png]]
+
+- Four students missed the deadline!? (->  Max 50%)
+
+- Good, almost excellent average! (89.44%)
+
+- Code to draw the diagram shown (6 lines in R):
+  #+begin_example R
+  ## Variables
+  t1 <- c(15,18,18,24,25,26,rep(27,3),rep(28,4),rep(29,5),rep(30,6))
+  t1_normal <- t1/30 * 100
+  t1_mean = mean(t1_normal)
+  t1_mean_fmt <- as.numeric(format(t1_mean,digits=4)) 
+  ## Plot
+  hist(t1_normal,
+       main="CSC 100: Test 1 (N=24)",
+       xlab="Percentage",
+       ylab="Number of participants",
+       col="mistyrose")
+  abline(v=mean(t1_mean),lwd=3,col="red")
+  ## Legend
+  legend("top",
+         legend=paste("Average:",t1_mean_fmt,"%"),
+         lty=1,lwd=3,
+         col="red")
+  #+end_example
 
 ** TODO Review/Test preview: Introduction
 
-1. Which language has more rules and more words - C or English?
+1. What are the current assignments? How can you find out?
+   #+attr_html: :width 700px: 
+   [[../img/calendar.png]]
+
+   - The next assignment is test 2 (Friday, 31 January, 9 am).
+
+   - The test is based on chapter 2 of the handout (Think C).
+
+   - The next programming assignment is also due on Friday.
+
+2. Which language has more rules and more words - C or English?
    #+begin_quote
    C has hundreds of clear rules collected in a few hundred pages of
    documentation, and only 30 reserved words.
@@ -224,14 +269,14 @@
    words.
    #+end_quote
 
-2. What is =\n= and what does it do?
+3. What is =\n= called, and what does it do?
    #+begin_quote
    =\n= is an "escape character" that escapes the =n= using the =\=.
 
    When the machine sees =\n= it prints a new line.
    #+end_quote
 
-3. When you type =main= in the editor, what does the machine see?
+4. When you type =main= in the editor, what does the machine see?
    #+begin_example
    The machine sees a sequence of ASCII characters that correspond to
    a binary stream (bits):
@@ -248,15 +293,17 @@
      printf("%b %b %b %b\n",'m','a','i','n');
    #+end_src
 
-4. What's the main problem between the computer's brain-chip, memory,
-   and data storage?
-   #+begin_quote
-   Speed. The brain-chip (CPU) is super-fast, the memory (RAM) is
-   fast, and the data storage (hard disk) is painfully slow - but they
-   must still all communicate with one another to do your bidding.
-   #+end_quote
+5. What are the three main elements of computer architecture?
+   #+attr_html: :width 500px: 
+   #+Caption: Central Processing Unit, Random Access Memory, Non Volatile Memory
+   [[../img/computer_architecture.png]]
 
-5. What does "tokenizing" mean?
+6. What's the main problem of computer architecture?
+   #+Caption: The CPU is super-fast, the RAM is fast, and the NVM is very slow
+   #+attr_html: :width 500px: 
+   [[../img/computer_architecture2.png]]
+
+7. What does "tokenizing" mean?
    #+begin_quote
    "Tokenizing" means breaking down a sequence of text into smaller
    units called "tokens". In programming, these are the smallest
@@ -264,5 +311,44 @@
    (e.g. =main=, =printf=), operators (=+=, ===), and punctuation =(;, {)=.
    #+end_quote
 
+8. What's an IDE?
+   #+begin_quote
+   IDE = Integrated Development Environment - an application that
+   integrates the editor, the compiler, and the shell so that you can
+   write, compile and execute programs without leaving the app.
 
-** TODO Practice: Printing values (with upload)
+   Example: Emacs + Org-mode, or Onecompiler.com.
+   #+end_quote
+
+9. What is pseudocode?
+   #+begin_quote
+   Code in prose that encodes only the program logic and the program
+   flow, but that does not comply with the syntax rules of any
+   programming languages. A flowchart is pseudocode with graphics.
+   #+end_quote
+
+10. What is "Syntax highlighting"?
+    #+begin_quote
+    Syntax highlighting shows programming language syntax elements in
+    different colors and/or fonts. Very helpful for writing/debugging
+    code.
+    #+end_quote
+
+11. What should your source code include?
+    #+begin_quote
+    A program header with program name, input, output, author, date
+    and license information.
+    #+end_quote
+
+12. What happens  if you  assign a  string value  like "Hello"  to an
+    integer variable?
+    #+begin_src C :tangle ../src/test.c
+      int x;
+      x = "Hello";
+    #+end_src
+    #+begin_quote
+    - You can try this best in pythontutor (unless you have Emacs). 
+    - I will show you both pythontutor and the manual way.
+    #+end_quote
+
+** NEXT Printing formatted values (in-class practice with upload)

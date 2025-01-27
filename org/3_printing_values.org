@@ -9,7 +9,6 @@
 #+property: :header-args:python :session *Python* :python python3 :results output :exports both
 #+property: :header-args:R      :session *R* :results graphics output file :exports both
 #+property: :header-args:C++    :main yes :includes <iostream> :results output :exports both
-
 * What are you going to learn?
 
 The secret of the success of the machine is the separation of *value*
@@ -21,7 +20,7 @@ the advantages of C is that there are very few keywords. To handle
 numbers with its limited memory, the computer needs to know what kind
 or *type* of numbers they are (for example, large or small, whole or
 decimal). Printing numbers of a certain type requires us to specify
-their *format*.\\
+their *format*.
 
 *Topics*:
 1) [ ] Printing  (=printf= and =puts=)
@@ -42,9 +41,14 @@ their *format*.\\
 
 - *Programming assignments (home)*:
 
-  /For home assignments, you can choose your own method./
+  Create a program that prints an integer, a floating-point number and
+  a character using =printf=.
 
-  1. 
+  You can submit the =OneCompiler= link to your solution file, or
+  alternatively upload an Org-mode file with the solution, or upload a
+  C file.
+
+  My sample solutions will be available as Org-mode files on GitHub.
 
 * Code along in OneCompiler
 
@@ -68,15 +72,26 @@ To code along in OneCompiler:
 
 9) Equip your code along files with comments liberally!
 
-10) You can find the complete code along file here:
-    [[https://tinyurl.com/2ab5sjle][tinyurl.com/2ab5sjle]]
+10) You can find the completed code along file here:
+    [[https://tinyurl.com/2ab5sjle][tinyurl.com/2ab5sjle]] or [[https://onecompiler.com/c/4357nb852][onecompiler.com/c/4357nb852]]
 
 Each code along session will fill about one screen:
-#+attr_html: :width 400px:
+#+attr_html: :width 600px:
 [[../img/variables_codealong.png]]
 
-* Program structure
-#+attr_latex: :width 400px
+* Code along with Emacs
+
+- You can also code along with Emacs using an Org-mode file.
+
+- Use the =test.org= file that we used during the installation.
+
+- Create a new C code block with =<s TAB= and run code directly.
+
+- It looks like this:
+
+
+* Program structure (solution to the home assignment)
+#+attr_latex: :width 700px
 #+caption: main function structure (Collingbourne, 2017)
 [[../img/3_structure.png]]
 
@@ -298,12 +313,12 @@ Each code along session will fill about one screen:
        #+begin_example
        practice, variable, csc100
        #+end_example
-       Make sure the visibility is =Public (visible to everyone)= so
-       that you can post the link to Canvas if requested.
+       Make sure the visibility is *not private* so that you can post
+       the link to Canvas if requested.
 
      - In the =editor settings=, check =Disable Code Autocomplete/Suggestions=
 
-     - Delete the "hello world" printing line and off you go!
+     - Delete the "hello world" template =printf= line and off you go!
 
 * PRACTICE Everything is a number
 
@@ -393,10 +408,6 @@ Print =3.14 - 3 = .14= using =printf= and the values =3.14=, =3=, and =.14=
   printf("%f - %i = %f\n", 3.14, 3, .14);
   printf("%.2f - %i = %.2f\n", 3.14, 3, .14);
 #+end_src
-
-#+RESULTS:
-: 3.140000 - 3 = 0.140000
-: 3.14 - 3 = 0.14
 
 * Glossary: Printing Values
 | Term       | Definition                                                                                                  |
