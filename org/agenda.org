@@ -212,12 +212,12 @@
 #+attr_html: :width 600px: 
 [[../img/fishermen.jpg]]
 
-- [ ] Results: Test 1 & missing in action
-- [ ] P/review: Introduction
+- [X] Results: Test 1 & missing in action
+- [X] P/review: Introduction
 - [ ] Practice: Printing formatted values in C
 - [ ] Lecture: Variables & Types
 
-** TODO Test 1 results and MIA
+** DONE Test 1 results and MIA
 
 #+attr_html: :width 450px: 
 [[../img/t1_hist.png]]
@@ -247,7 +247,7 @@
          col="red")
   #+end_example
 
-** TODO Review/Test preview: Introduction
+** DONE Review/Test preview: Introduction
 
 1. What are the current assignments? How can you find out?
    #+attr_html: :width 700px: 
@@ -351,4 +351,80 @@
     - I will show you both pythontutor and the manual way.
     #+end_quote
 
+
+** TODO Review - printing with =%s=
+
+1. What is ="%s %s"= ?
+   #+begin_quote
+   Two format specifiers waiting for two string values, for example
+   ="Hello"= and ="World"=.
+   #+end_quote
+
+2. What's the difference between =%s%s\n= and =%s %s \n= ?
+   #+begin_quote
+   =%s%s\n= prints two strings without a space followed by a new line.
+
+   =%s %s \n= prints two strings with a space between them followed by a
+   space followed by a new line.
+   #+end_quote
+
+3. How many ways are there to print two words on two lines?
+
+   #+begin_quote
+   Many. You saw at least three.
+   #+end_quote
+   
+   #+begin_src C :results output
+     // print with `puts` (newline included)
+     puts("Hello,");
+     puts("world!\n");
+     // Print two strings, one call, newline in the format part
+     printf("%s\n%s", "Hello,", "world!");
+     // Print one string per call
+     printf("\n\n%s", "Hello");
+     printf("\n%s", "world");
+     // Print one string, newline in the value part
+     printf("\n\n%s", "Hello\nworld!");
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   Hello,
+   world!
+
+   Hello,
+   world!
+
+   Hello
+   world
+
+   Hello
+   world!
+   #+end_example
+
+4. You want to print five numbers. How many format specifiers do you
+   need?
+   #+begin_quote
+   Five - one for each number.
+   #+end_quote
+   #+begin_src C
+     // Example
+     printf("%i %i %i %i %i\n", 0, 1, 2, 3, 4);
+   #+end_src
+
+   #+RESULTS:
+   : 0 1 2 3 4
+
+5. How many arguments does =printf= accept?
+   #+begin_quote
+   As many as it takes. The general form is
+   
+   printf( [format string], [arguments] );
+   #+end_quote
+
+
 ** NEXT Printing formatted values (in-class practice with upload)
+
+#+attr_html: :width 700px: 
+[[../img/whiteboard.png]]
+
