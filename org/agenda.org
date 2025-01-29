@@ -351,7 +351,6 @@
     - I will show you both pythontutor and the manual way.
     #+end_quote
 
-
 ** TODO Review - printing with =%s=
 
 1. What is ="%s %s"= ?
@@ -422,9 +421,10 @@
    printf( [format string], [arguments] );
    #+end_quote
 
-
 ** NEXT Printing formatted values (in-class practice with upload)
 
 #+attr_html: :width 700px: 
+#+caption: Tokenized printf command
 [[../img/whiteboard.png]]
+
 
