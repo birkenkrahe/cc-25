@@ -68,72 +68,49 @@
      argument causes *undefined behavior*.
 
      #+begin_src C :main yes :includes <stdio.h> :results output :exports both
-       printf("%i\n", 3.14);
-     #+end_src
 
-     #+RESULTS:
-     : -416628760
+     #+end_src
 
   2. *Printing a floating-point number as character*: Prints a garbage
      character (not recognized as an ASCII character).
 
      #+begin_src C :main yes :includes <stdio.h> :results output :exports both
-       printf("%c\n", 3.14);
-     #+end_src
 
-     #+RESULTS:
-     : è
+     #+end_src
 
   3. *Printing an integer as floating-point number*: Undefined behavior
      again. This result could also be another value.
 
      #+begin_src C :results output :exports both
-       printf("%f\n", 3);
-     #+end_src
 
-     #+RESULTS:
-     : 0.0
+     #+end_src
 
   4. *Printing an integer as character*: =3= is interpreted as the
      character with the ASCII code 3.
 
      #+begin_src C :results output :exports both
-       printf("%c\n", 3);
-     #+end_src
 
-     #+RESULTS:
-     : 
+     #+end_src
 
   5. *Printing a character as an integer*: Results in printing the ASCII
      code of the character.
 
      #+begin_src C :results output :exports both
-       printf("%i\n", '3');
-     #+end_src
 
-     #+RESULTS:
-     : 51
+     #+end_src
 
   6. *Printing a character as a floating-point number*: Undefined
      behavior.
 
      #+begin_src C :results output :exports both
-       printf("%f\n", '3');
-     #+end_src
 
-     #+RESULTS:
-     : 0.0
+     #+end_src
 
 * Print challenge
 
 Print =3.14 - 3 = .14= using =printf= and the values =3.14=, =3=, and =.14=
 
 #+begin_src C :results output :exports both
-  printf("%f - %i = %f\n", 3.14, 3, .14);
-  printf("%.2f - %i = %.2f\n", 3.14, 3, .14);
-#+end_src
 
-#+RESULTS:
-: 3.140000 - 3 = 0.140000
-: 3.14 - 3 = 0.14
+#+end_src
 
