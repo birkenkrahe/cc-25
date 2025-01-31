@@ -3,10 +3,10 @@
 #+subtitle: CSC 100
 #+SEQ_TODO: TODO NEXT IN_PROGRESS | DONE CANCELLED
 #+startup: overview hideblocks indent entitiespretty
-#+property: :header-args:C:      :main yes :includes <stdio.h> :results output :exports both
-#+property: :header-args:python: :session *Python* :python python3 :results output :exports both
-#+property: :header-args:R:      :session *R* :results graphics output file :exports both
-#+property: :header-args:C++:    :main yes :includes <iostream> :results output :exports both
+#+property: :header-args:C      :main yes :includes <stdio.h> :results output :exports both
+#+property: :header-args:python :session *Python* :python python3 :results output :exports both
+#+property: :header-args:R      :session *R* :results graphics output file :exports both
+#+property: :header-args:C++    :main yes :includes <iostream> :results output :exports both
 * Week 1: Orientation & Introduction
 #+attr_html: :width 300px:
 #+caption: Pufferfish woodcut
@@ -351,7 +351,7 @@
     - I will show you both pythontutor and the manual way.
     #+end_quote
 
-** TODO Review - printing with =%s=
+** DONE Review - printing with =%s=
 
 1. What is ="%s %s"= ?
    #+begin_quote
@@ -373,7 +373,7 @@
    Many. You saw at least three.
    #+end_quote
    
-   #+begin_src C :results output
+   #+begin_src C :results output :includes <stdio.h>
      // print with `puts` (newline included)
      puts("Hello,");
      puts("world!\n");
@@ -407,7 +407,7 @@
    Five - one for each number.
    #+end_quote
    #+begin_src C
-     // Example
+     // Print five integer values 
      printf("%i %i %i %i %i\n", 0, 1, 2, 3, 4);
    #+end_src
 
@@ -416,15 +416,163 @@
 
 5. How many arguments does =printf= accept?
    #+begin_quote
-   As many as it takes. The general form is
-   
+   As many as it takes & as much memory as there is available.
+   The general form is:
    printf( [format string], [arguments] );
    #+end_quote
 
-** NEXT Printing formatted values (in-class practice with upload)
+** DONE Printing formatted values (in-class practice with upload)
 
 #+attr_html: :width 700px: 
 #+caption: Tokenized printf command
 [[../img/whiteboard.png]]
+
+** TODO Test 1 deadline is this Friday (11:59 pm)!
+
+- First results look promising!
+- Take your merry time with the test!
+- When asked about code, try it out!
+
+** TODO Assignment review: Hello world program with comments
+
+- *Puzzled:* Many of you did not follow the instructions!? (AVG=8.76)
+
+- *Note*: Instructions are everything, creativity means nothing.
+
+- *Always ask* if you're unsure or confused. I'm here to help!
+
+- *Review questions*:
+  
+  1) What does the program header contain?
+     #+begin_quote
+     Program name, purpose, input, output, author, pledge, date
+     #+end_quote
+  2) What does the function header contain?
+     #+begin_quote
+     Function name, return type, parameters (function arguments)
+     #+end_quote
+  3) What would the function header for this function look like?
+   #+begin_example C
+     void hello(char name) {
+       printf("Hello, Mr. %c!", name);
+     }
+   #+end_example
+
+   #+begin_src C :results output
+     // hello: print a greeting and a character
+     // returns: nothing (void)
+     // parameters: character `name`
+     void hello(char name) {
+       printf("Hello, Mr. %c!", name);
+     }
+     int main(){
+       hello('X');
+       return 0;
+     } 
+   #+end_src
+
+   #+RESULTS:
+   : Hello, Mr. X!
+  4) What exactly happens in =printf("Hello, world.\n");=
+     #+begin_example C
+     // function `printf` is called
+     // string "Hello, world." is printed
+     // escape character `\n` moves cursor to next line
+     // statement is closed with the delimiter `;`
+     #+end_example
+  5) Where should one put meta data like headers and comments?
+     #+begin_quote
+     - All meta data are placed ahead of what they're accompanying
+     - Headers are placed immediately before functions
+     - Comments =//= or =/* */= are placed immediately before or next to
+       what they' commenting upon.
+     #+end_quote
+     
+     #+begin_src C
+       // hello: Print greeting
+       // Returns: nothing (void)
+       // Parameters: none (void)
+       void hello(void) {
+         puts("Hello.");
+       }
+
+       /* 
+        *   main program 
+        */
+       int main(void) 
+       {  
+
+         hello(); // call function
+
+         return 0;
+       }
+     #+end_src
+
+     #+RESULTS:
+     : Hello.
+
+** TODO Review (last lecture)
+
+1. What's wrong with this code?
+   #+begin_src C
+     printf(%s\n, "Hello");
+   #+end_src
+   #+begin_quote
+   The format string =%s\n= is not formatted as a string.
+
+   Syntax error. Correct: =printf("%s\n", "Hello");=
+   #+end_quote
+
+2. What's wrong with this code?
+   #+begin_src C
+     puts("I am %i years old", 22);
+   #+end_src
+   #+begin_quote
+   The =puts= function only prints a string + a new line.
+
+   Logic error. Correct: =puts("I am 22 years old");=
+   #+end_quote
+
+3. What's wrong with this code?
+   #+begin_src C :tangle main.c :includes <stdio.h>
+     void main()
+     {
+       puts("");
+     }
+   #+end_src
+
+   #+begin_quote
+   The =main= functon must =return= an =int=, not =void=.
+   
+   Run-time error. Correct: =int main() { puts(""); return 0;}=
+   #+end_quote
+
+4. What's wrong with this code?
+   #+begin_src C
+     printf("I have %c\n", "character.");
+   #+end_src
+
+   #+begin_quote
+   A string argument is provided but a character argument is expected.
+
+   Type mismatch error. Correct: =printf("I have %s\n", "character.");=
+   #+end_quote
+
+5. What's wrong with this code?
+   #+begin_src C  :tangle main2.c :includes <stdio.h>
+     printf("%i + %i = %i \n", 224);
+   #+end_src
+
+   #+RESULTS:
+   : 224 + -289681864 = -1979732544
+
+   #+begin_quote
+   One integer argument is provided but three are expected.
+
+   Run-time error. Correct: =printf("%i + %i = %i \n", 2, 2, 4);
+   #+end_quote
+
+** TODO Lecture & code along: Variables & Assignments
+
 
 
