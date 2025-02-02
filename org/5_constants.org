@@ -1,0 +1,601 @@
+#+TITLE:C FUNDAMENTALS - CONSTANTS
+#+AUTHOR:Marcus Birkenkrahe
+#+SUBTITLE:CSC100 Introduction to programming in C/C++ Spring 2025
+#+STARTUP: overview hideblocks indent inlineimages
+#+SEQ_TODO: PRACTICE TODO NEXT | DONE
+#+OPTIONS: toc:1 ^:nil
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> :exports both :results output
+* README
+
+- [ ] Constants with macros or types (=#define=, =const=)
+- [ ] Library definitions (=#include=)
+- [ ] Reading input from the keyboard
+
+- This script summarizes and adds to the treatment by King (2008),
+  chapter 2, C Fundamentals - see also [[https://docs.google.com/presentation/d/14qvh00aVb_R09_hrQY0EDEK_JLAkgZ0S/edit?usp=sharing&ouid=102963037093118135110&rtpof=true&sd=true][slides (GDrive)]].
+
+* Constants
+
+- Constants are values that do not change (ever?)
+- In C, you can define them with: macros, libraries, or as ~const~ type
+- They have different degrees of permanency
+
+* Macro definition with ~#define~
+
+- If you don't want a value to change, you can define a
+  ~constant~. There are different ways of doing that.
+
+- The code below shows a declarative constant definition for the
+  pre-processor that blindly substitutes the value everywhere in the
+  program. This is also called a *macro definition*.
+  #+begin_src C
+    #define PI 3.141593
+    printf("PI is %f\n",PI);
+  #+end_src
+
+  #+RESULTS:
+  : PI is 3.141593
+
+- Can you see what mistake I made in the next code block?[fn:1]
+  #+begin_src C :results silent
+    #define PI = 3.141593
+    printf("PI is %f\n", PI);
+  #+end_src
+
+- Can you see what went wrong in the next code block? If you don't
+  see it at once, check the compiler error output!
+  #+begin_src C :results silent
+    #define PI 3.141593;
+    printf("PI is %f\n", PI);
+  #+end_src
+
+- It's easy to make mistakes with user-defined constants. For one
+  thing, "constants" declared with ~#define~ can be redefined (so they
+  aren't really constant at all).
+
+- The next program demonstrates how a constant declared with ~#define~
+  can be redefined later with a second ~#define~ declaration.
+  #+begin_src C :exports both :results output :tangle ../src/wert.c
+    #define WERT 1.0
+    printf("Constant is %.2f\n", WERT);
+
+    #define WERT 2.0
+    printf("Constant is %.2f\n", WERT);
+  #+end_src
+
+  #+RESULTS:
+  : Constant is 1.00
+  : Constant is 2.00
+
+- However, ~gcc~ is warning us about it (only on the command-line):
+  #+begin_example
+    wert.c: In function ‘main’:
+  wert.c:12: warning: "WERT" redefined
+     12 | #define WERT 2.0
+        |
+  wert.c:9: note: this is the location of the previous definition
+      9 | #define WERT 1.0
+        |
+  #+end_example
+
+* Library definitions with ~#include~
+
+- Since mathematical constants are so important in scientific
+  computing, there is a library that contains them, ~math.h~.
+
+- Below, it is included at the start to give us the value of Pi as the
+  constant ~M_PI~ with much greater precision than before:
+  #+begin_src C :main no
+    #include <stdio.h>
+    #include <math.h>    // math functions and definitions
+    int main(void) {
+      printf("PI is %f\n", M_PI);
+      printf("PI is %.16f\n", M_PI);
+      return 0;
+    }
+  #+end_src
+
+- Do you remember what happens if your precision ~p~ is greater than the
+  precision delivered by the computer?[fn:2]
+
+- You can redefine the value of any constant using ~#define~:
+  #+begin_src C
+    #include <stdio.h>
+    #include <math.h>
+    #define apple_pie M_PI   // from now on, M_PI is called `pie`
+    int main(void) {
+      printf("PI is %f\n", apple_pie);
+      printf("PI is %.16f\n", apple_pie);
+      return 0;
+    }
+  #+end_src
+
+  #+RESULTS:
+  : PI is 3.141593
+  : PI is 3.1415926535897931
+
+- Inside Emacs with Org-mode, you can include the math header file
+  ~math.h~ as a code block header argument (then you don't have to
+  include it explicitly in your code block):
+  #+begin_src C :includes <stdio.h> <math.h>
+    printf("PI is %f\n",M_PI);
+    printf("PI is %.16f\n",M_PI);
+  #+end_src
+
+- In Linux, ~math.h~ and the other header files sit in
+  ~/usr/include/~. The screenshot shows the math constant section of
+  ~math.h~.
+  #+attr_latex: :width 500px
+  #+caption: Mathematical constants in /usr/include/math.h
+  [[../img/5_math.png]]
+
+- Where is ~math.h~ in Windows[fn:3]? Where in MacOS? Find the
+  file, open and look at it in Emacs (the file is read-only).
+
+- In online IDEs like ~onecompiler.com~, you can typically not look at
+  header files unless you have access to the command line or the file
+  hierarchy - it does work in Google Colaboratory.
+  #+attr_html: :width 600px:
+  [[../img/math_h.png]]
+
+- In the file, look for =M_PI=. You also find the definition of the
+  Euler number e there[fn:4].
+
+- Use it in a ~#define~ statement to define ~e~ and print ~e~ with 16-digit
+  precision, with 15 decimal places:
+  #+begin_src C
+    #include <math.h>
+    #define e M_E
+    printf("%.16f\n", e);
+  #+end_src
+
+  #+RESULTS:
+  : 2.718281828459045
+
+- It may be that you can do better than that on your computer (mine
+  begins to make numbers up after that even though the constant is
+  defined to a higher accuracy)[fn:5].
+
+* Type definition with ~const~
+
+- Modern C has the ~const~ identifier to protect constants. In the code,
+  ~double~ is a higher precision floating point number type.
+
+  #+begin_src C
+    const double TAXRATE_CONST = 0.175f;
+    double revenue = 200.0f;
+    double tax;
+
+    tax = revenue * TAXRATE_CONST;
+
+    printf("Tax on revenue %.2f is %.2f", revenue, tax);
+  #+end_src
+
+- What happens if you try to redefine the constant ~TAXRATE_CONST~ after
+  the type declaration?
+
+- Modify the previous code block by adding ~TAXRATE_CONST = 0.2f~ before
+  the ~tax~ is computed, and run it:
+
+  #+begin_src C :results silent
+    const double TAXRATE_CONST = 0.175f;
+    double revenue = 200.0f;
+    double tax;
+
+    TAXRATE_CONST = 0.2f;
+    tax = revenue * TAXRATE_CONST;
+
+    printf("Tax on revenue %.2f is %.2f", revenue, tax);
+  #+end_src
+
+* PRACTICE Constants
+
+1) Create a =NEW= C program and call it =constants.c=.
+
+2) Define the Arkansas sales tax rate (6.5%) as =SALES_TAX_AR= using
+   the =#define= macro.
+
+3) Define the Euler number as =EULER= using =M_E= from =math.h= using
+   =#define=.
+
+4) Define the speed of light as =SPEED_OF_LIGHT= using =const=.
+
+5) Print all three definitions to get the following output using the
+   constants you just defined.
+   #+begin_example
+   The Euler number is: e = 2.7182818285
+   The Arkansas sales tax is: 6.5%
+   The speed of light is: c = 299792458 m/s
+   #+end_example
+
+   /Tip: the =%= character is reserved for format specification. To
+   escape it, use =%%= in =printf=./
+
+*Program template:*
+#+begin_example C
+  // include header files
+  ...
+  // define constants
+  ...
+  /* main program */
+  int main(void)
+  {
+    // print constants
+    ...
+    return 0;
+  }
+#+end_example
+
+Upload your result to Canvas (=In-class practice 4: Constants=)!
+
+** Solution
+
+Onecompiler: https://onecompiler.com/c/437ukkdbb
+
+#+begin_src C :main no :includes
+  /******************************************************
+   ,* constants.c: print constant values.
+   ,* Input: None
+   ,* Output: Euler number, AR sales tax, speed of light
+   ,* Author: Marcus Birkenkrahe
+   ,* Date: 02/01/2025
+   ,******************************************************/
+  #include <stdio.h>
+  #include <math.h>
+
+  // constant definitions
+  #define SALES_TAX_AR 6.5
+  #define EULER M_E
+  const int c = 299792458;
+
+  int main()
+  {
+    // print constants
+    printf("The Euler number is: e = %.10f\n", EULER);
+    printf("The Arkansas sales tax is: %.1f%%\n", SALES_TAX_AR);
+    printf("The speed of light is: c = %i m/s\n", c);
+
+    return 0;
+  }
+#+end_src
+
+#+RESULTS:
+: The Euler number is: e = 2.7182818285
+: The Arkansas sales tax is: 6.5%
+: The speed of light is: c = 299792458 m/s
+
+* Reading input
+
+- Before you can print output with ~printf~, you need to tell the
+  computer, which format it should prepare for.
+
+- Just like ~printf~, the input function ~scanf~ needs to know what
+  format the input data will come in, otherwise it will print
+  nonsense (or rather, memory fragments from God knows where).
+
+- The following statement reads an ~int~ value and stores it in the
+  variable ~i~.
+  #+begin_src C :tangle ../src/iscan.c
+    int num;
+    puts("Enter an integer!");
+    scanf("%i", &num);  // note the strange symbol `&`
+    printf("You entered %i\n", num);
+  #+end_src
+
+- Test suite:
+  #+begin_src bash :results output :exports both
+    gcc ../src/iscan.c -o iscan
+    echo 100 | ./iscan
+  #+end_src
+
+  #+RESULTS:
+  : Enter an integer!
+  : You entered 100
+
+- To input a floating-point (~float~) variable, you need to specify
+  the format with ~%f~ *both* in the ~scanf~ *and* in the ~printf~
+  statement. We'll learn more about format specifiers soon.
+
+* PRACTICE Reading input
+
+1) Copy the code in your =main= template:
+
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(void)
+     {
+       int num;
+       puts("Enter an integer!");
+       scanf("%i", &num);
+       printf("You entered %i\n", num);
+       return 0;
+     }
+   #+end_src
+
+2) Run it with an integer input:
+   #+attr_html: :width 600px:
+   [[../img/reading_input.png]]
+
+3) Modify the program so that it reads a floating-point value instead
+   of an integer. You must make changes on three lines!
+
+4) Test the program with the input (=STDIN=): 3.141593
+
+** Solution
+
+#+begin_src C :tangle ../src/fscan.c
+  #include <stdio.h>
+
+  int main(void)
+  {
+    float num;
+    puts("Enter a floating-point number!");
+    scanf("%f", &num);
+    printf("You entered %f\n", num);
+    return 0;
+  }
+#+end_src
+
+Test suite:
+#+begin_src bash :results output :exports both
+  gcc ../src/fscan.c -o fscan
+  echo 3.141593 | ./fscan
+#+end_src
+
+#+RESULTS:
+: Enter a floating-point number!
+: You entered 3.141593
+
+OneCompiler.com:
+#+attr_html: :width 600px:
+[[../img/float_input.png]]
+
+* Naming conventions
+
+- Use upper case letters for CONSTANTS
+  #+begin_src C :results silent
+    const double TAXRATE;
+  #+end_src
+
+- Use lower case letters for variables
+  #+begin_src C :results silent
+    int tax;
+  #+end_src
+
+- Use lower case letters for function names
+  #+begin_example C
+    hello();
+  #+end_example
+
+- If names consist of more than one word, separate with ~_~ or
+  insert capital letters:
+  #+begin_example C
+    hello_world();
+    helloWorld();  // this is C++ style "camelCase"
+  #+end_example
+
+- Name according to function! In the next code block, both functions
+  are identical from the point of view of the compiler, but one can be
+  understood, the other one cannot.
+  #+begin_src C :results silent
+    const int SERVICE_CHARGE;
+    int v;
+
+    // myfunc: [no idea what this does]
+    // Returns: t (int)
+    // Params: z (int)
+    int myfunc(int z) {
+      int t;
+      t = z + v;
+      return t;
+    }
+
+    // calculate_grand_total
+    // Returns: grand_total (int)
+    // Params: subtotal (int)
+    int calculate_grand_total(int subtotal) {
+      int grand_total;
+      grand_total = subtotal + SERVICE_CHARGE;
+      return grand_total;
+    }
+  #+end_src
+
+* Naming rules
+
+- What about rules? The compiler will tell you if one of your names
+  is a mistake! However, why waste the time, and the rules are
+  interesting, too, at least syntactically, to a nerd.
+
+- Names are sensitive towards spelling and capitalization:
+  ~helloWorld~ is different from ~HELLOWORLD~ or
+  ~Helloworld~. Confusingly, you could use all three in the same
+  program, and the compiler would distinguish them.
+
+- Names cannot begin with a number, and they may not contain
+  dashes/minus signs. These are all illegal:
+  #+begin_example C
+    10times  get-net-char
+  #+end_example
+  These are good:
+  #+begin_example C
+    times10    get_next_char
+  #+end_example
+
+- There is no limit to the length of an identifier, so this name,
+  presumably by a German programmer, is okay:
+  #+begin_example C
+  Voreingenommenheit_bedeutet_bias_auf_Deutsch  // Crazy German
+  #+end_example
+
+- The keywords in the table have special significance to the
+  compiler and cannot be used as identifiers:
+  #+name: tab:keywords
+  | auto       | enum    | restrict | unsigned | break  | extern   |
+  | return     | void    | case     | float    | short  | volatile |
+  | char       | for     | signed   | while    | const  | goto     |
+  | sizeof     | _Bool   | continue | if       | static | _Complex |
+  | _Imaginary | default | union    | struct   | do     | int      |
+  | switch     | double  | long     | typedef  | else   | register |
+
+- Your turn: name some illegal identifiers and see what the compiler
+  says!
+  #+begin_src C :results silent
+    int void = 1;
+    float float = 3.14;
+  #+end_src
+
+- If Windows complains about the app, close the screen dialog to see the debugger:
+  #+attr_latex: :width 400px
+  #+caption: Windows screen dialog
+  [[../img/5_windows.png]]
+  #+attr_latex: :width 400px
+  #+caption: Org-babel error output buffer
+  [[../img/5_debug.png]]
+
+* PRACTICE Naming identifiers
+
+1) Create a =NEW= file.
+
+2) Copy the code from [[https://tinyurl.com/cpp-naming-practice][tinyurl.com/cpp-naming-practice]] into the =main=
+   program:
+
+   #+begin_src C :results silent
+     // integer constant for the speed of light
+     const int ... = 299792458;
+
+     // floating-point constant for pi
+     #define ... 3.141593f
+
+     // integer variable for volume computations
+     int ...
+
+     // character variable for last names
+     char ...
+
+     // function that adds two integers i and j
+     int ... (int i,int j) {
+       return i + j;
+     }
+
+     // variable whose name contains "my", "next", and "birthday"
+     int ...
+   #+end_src
+
+3) Complete the code according to the naming rules so that it
+   compiles:
+
+   - Upper case letters for constants
+   - Lower case letters for variables and function names
+   - Separate names with underscore or insert capital letters
+   - Name according to function
+
+Solution in OneCompiler: [[https://onecompiler.com/c/437uq28e8][onecompiler.com/c/437uq28e8]]
+
+#+begin_src C
+// integer constant for the speed of light
+  const int c = 299792458;
+
+  // floating-point constant for pi
+  #define PI 3.141593f
+
+  // integer variable for volume computations
+  int volume;
+
+  // character variable for last names
+  char last_name;
+
+  // function that adds two integers i and j
+  int add_integers(int i,int j) {
+    return i + j;
+  }
+
+  // variable whose name contains "my", "next", and "birthday"
+  int my_next_birthday;
+#+end_src
+
+* Glossary
+
+| TERM               | EXPLANATION                                                           |
+|--------------------+-----------------------------------------------------------------------|
+| Constant           | Value that does not change during program execution.                  |
+| Macro definition   | Defining constants using =#define= (text substitution).                 |
+| =#define=            | Preprocessor directive to define constants (can be redefined later).  |
+| Library constants  | Constants provided by standard libraries such as =math.h= (e.g., =M_PI=). |
+| =const=              | Keyword in C that defines constants with enforced immutability.       |
+| =math.h=             | A C standard library header that includes math constants/functions.   |
+| =M_PI=               | Predefined constant for π in =math.h= with high precision.              |
+| Redefinition       | Attempting to assign a new value to a constant (not with =const=)       |
+| =scanf=              | Function used to take user input, requiring format specifiers.        |
+| Naming conventions | Best practices for naming variables, constants, and functions.        |
+| Identifier         | A name assigned to variables, constants, or functions in a program.   |
+| =printf=             | Function used to print formatted output to the console.               |
+| =scanf=              | Function used to read formatted input from the user.                  |
+
+* Summary
+
+- Constants in C are values that do not change during program
+  execution.
+- They can be defined using =#define= (macro definition), library
+  constants from =math.h=, or the =const= keyword.
+- =#define= replaces occurrences of a constant name with a literal
+  value but does not provide type safety and can be redefined.
+- Library constants like =M_PI= from =math.h= offer high precision and
+  are predefined in standard headers.
+- The =const= keyword ensures immutability and provides type safety.
+- Naming best practices:
+  - Use **uppercase** for constants.
+  - Use **lowercase** for variables and function names.
+  - Separate words with underscores (=_=) or use camelCase.
+- Identifiers **cannot start with a number** or contain special
+  characters.
+- Reserved keywords like =int=, =void=, and =return= **cannot be used
+  as variable names**.
+- Constants are essential for input/output operations using =printf=
+  and =scanf=, which require format specifiers.
+- Using constants improves **code clarity**, prevents accidental value
+  modifications, and enhances **program stability**.
+
+* References
+
+- Collingbourne (2019). The Little Book of C (Rev. 1.2). Dark Neon.
+
+- King (2008). C Programming. Norton. [[http://knking.com/books/c2/index.html][URL: knking.com]].
+
+* Footnotes
+
+[fn:1]Answer: Instead of "~3.141593~", the expression "~= 3.141593~" is
+substituted for ~PI~ everywhere - the program will not compile.
+
+[fn:2]If the formatting precision that you ask for is greater than
+the precision of the stored constant, the computer will simply make
+digits up (which is not good).
+
+[fn:3]If you installed the MinGW compiler (GCC for Windows), look for
+it in the MinGW directory - there's an ~/include~ subdirectory that
+contains many header/library files ~.h~. If you have Cygwin, you'll find
+it in ~c:/Cygwin/usr/include/~. If you have MSYS2, look in
+~C:\msys64\usr\include~.
+
+[fn:4] Want to know more about this peculiar number ~e~ that occurs in
+beautiful formulas like "Euler's identity" ($e^{i\pi} + 1 = 0$? See
+[[https://youtu.be/m2MIpDrF7Es?si=P6Jffc_ImUo7RKQE][3Blue1Brown]] (2017). I added it to our [[https://www.youtube.com/playlist?list=PLwgb17bzeNyg7P7LCIpKxBun95Eb_PK4O][class YouTube channel]].
+
+[fn:5]This is due to inherent limitations of floating-point
+representation (IEEE 754 standard): double precision numbes use 64
+bits of storage, with 52 bits for the fraction (mantissa), 11 bits for
+the exponent, and 1 bit for the sign - this allows for 15 to 17 bits
+of precision.
+
+[fn:6]The ~<..>~ brackets indicate that the file in between the
+brackets can be found in the system ~PATH~. If a local file is included,
+use double apostrophes ~".."~.
+
+[fn:7]Python e.g. is white-space sensitive: the indentation level is
+significant, it denotes code blocks, and needs to be consistent. The
+same goes for Org-mode markdown and code blocks.
+
+[fn:8]The tokenization is an important sub-process of natural language
+processing, a data science discipline that is responsible for language
+assistants like Siri, robotic calls, auto-coding and machine
+translation (like Google translate), and bots like ChatGPT.

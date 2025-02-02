@@ -16,13 +16,13 @@
 - [X] Orientation - introduction to the course
 - [X] Introduction to the topic of the course
 
-** DONE 30 students - 24 available PCs (at best)
+** 30 students - 24 available PCs (at best)
 
 - Bring your own laptop to class (best)
 - Work on one PC with someone else (take turns)
 - Work through the material using the recording
 
-** DONE Review (Overview)
+** Review (Overview)
 
 - When you hear the question, try to think of an answer.
 - When you hear my answer(s), compare yours with mine.
@@ -88,8 +88,8 @@
    6) Attend all classes and/or work through the recordings.
    #+end_quote
 
-* Week 2: C Language & First program 
-#+attr_html: :width 300px: 
+* Week 2: C Language & First program
+#+attr_html: :width 300px:
 #+caption: 1970s Jesus Fish woodcut
 [[../img/jesus_fish.png]]
 
@@ -100,7 +100,7 @@
 - [X] Uploading an in-class assignment
 - [X] Assignments for next week
 
-** DONE Review/Test preview (Way of the Program)
+** Review/Test preview (Way of the Program)
 
 - The review questions are related to one or more questions on the
   weekly tests. In this case they come from the chapter you just read.
@@ -128,7 +128,7 @@
    1) =printf= is a function defined in the =<stdio.h>= header file.
    2) The function argument is a string ="..."=.
    3) The string consists of a /string literal/ (constant) =Hello= and a
-      new line character, =\n=.
+   new line character, =\n=.
    4) The command is delimited by a =;= character.
    #+end_comment
 
@@ -136,14 +136,14 @@
    you have an example?
    #+begin_comment
    1) /Syntax errors/ when the language rules are violated, for example
-      a missing semicolon - program will not compile.
+   a missing semicolon - program will not compile.
    2) /Logical errors/ when your algorithm does not work, for example
-      the wrong formula - program will not crash.
+   the wrong formula - program will not crash.
    3) /Run-time errors/ when the program is executed - for example when
-      you divide by zero - program crashes or behaves unexpectedly.
+   you divide by zero - program crashes or behaves unexpectedly.
    4) /Semantic error/ when program compiles and runs but produces
-      incorrect results due to incorrect meaning - for example, using
-      a variable incorrectly.
+   incorrect results due to incorrect meaning - for example, using
+   a variable incorrectly.
 
    *Exercise: write little programs that produce each of these errors.*
    #+end_comment
@@ -153,15 +153,15 @@
      // preprocessing: include header files for input/output
      #include <stdio.h>
 
-     // main program: 
+     // main program:
      int main(void)
-     {             
+     {
        // action
        puts("Hello");
        // confirm success
        return 0;
      }
-#+end_src
+   #+end_src
 
 6. What is "parsing"?
    #+begin_comment
@@ -196,11 +196,11 @@
     =gcc= - the GNU C Compiler.
     #+end_center
 
-** DONE Assignments of the week
+** Assignments of the week
 
 1. Complete a simple extension of the "hello world" program: Comment
    every line of the program and upload the URL to Canvas (Monday)
-   
+
 2. Read the second chapter (Variables and Types): 8 pages (you'll be
    tested on the content in test 2 at the end of the week - Friday).
 
@@ -209,17 +209,17 @@
    one is not so simple.
 
 * Week 3: Printing formatted values & Variables
-#+attr_html: :width 600px: 
+#+attr_html: :width 600px:
 [[../img/fishermen.jpg]]
 
 - [X] Results: Test 1 & missing in action
 - [X] P/review: Introduction
-- [ ] Practice: Printing formatted values in C
-- [ ] Lecture: Variables & Types
+- [X] Practice: Printing formatted values in C
+- [X] Lecture: Variables & Types
 
-** DONE Test 1 results and MIA
+** Test 1 results and MIA
 
-#+attr_html: :width 450px: 
+#+attr_html: :width 450px:
 [[../img/t1_hist.png]]
 
 - Four students missed the deadline!? (->  Max 50%)
@@ -232,7 +232,7 @@
   t1 <- c(15,18,18,24,25,26,rep(27,3),rep(28,4),rep(29,5),rep(30,6))
   t1_normal <- t1/30 * 100
   t1_mean = mean(t1_normal)
-  t1_mean_fmt <- as.numeric(format(t1_mean,digits=4)) 
+  t1_mean_fmt <- as.numeric(format(t1_mean,digits=4))
   ## Plot
   hist(t1_normal,
        main="CSC 100: Test 1 (N=24)",
@@ -247,10 +247,10 @@
          col="red")
   #+end_example
 
-** DONE Review/Test preview: Introduction
+** Review/Test preview: Introduction
 
 1. What are the current assignments? How can you find out?
-   #+attr_html: :width 700px: 
+   #+attr_html: :width 700px:
    [[../img/calendar.png]]
 
    - The next assignment is test 2 (Friday, 31 January, 9 am).
@@ -294,13 +294,13 @@
    #+end_src
 
 5. What are the three main elements of computer architecture?
-   #+attr_html: :width 500px: 
+   #+attr_html: :width 500px:
    #+Caption: Central Processing Unit, Random Access Memory, Non Volatile Memory
    [[../img/computer_architecture.png]]
 
 6. What's the main problem of computer architecture?
    #+Caption: The CPU is super-fast, the RAM is fast, and the NVM is very slow
-   #+attr_html: :width 500px: 
+   #+attr_html: :width 500px:
    [[../img/computer_architecture2.png]]
 
 7. What does "tokenizing" mean?
@@ -347,11 +347,11 @@
       x = "Hello";
     #+end_src
     #+begin_quote
-    - You can try this best in pythontutor (unless you have Emacs). 
+    - You can try this best in pythontutor (unless you have Emacs).
     - I will show you both pythontutor and the manual way.
     #+end_quote
 
-** DONE Review - printing with =%s=
+** Review - printing with =%s=
 
 1. What is ="%s %s"= ?
    #+begin_quote
@@ -372,7 +372,7 @@
    #+begin_quote
    Many. You saw at least three.
    #+end_quote
-   
+
    #+begin_src C :results output :includes <stdio.h>
      // print with `puts` (newline included)
      puts("Hello,");
@@ -407,7 +407,7 @@
    Five - one for each number.
    #+end_quote
    #+begin_src C
-     // Print five integer values 
+     // Print five integer values
      printf("%i %i %i %i %i\n", 0, 1, 2, 3, 4);
    #+end_src
 
@@ -421,19 +421,19 @@
    printf( [format string], [arguments] );
    #+end_quote
 
-** DONE Printing formatted values (in-class practice with upload)
+** Printing formatted values (in-class practice with upload)
 
-#+attr_html: :width 700px: 
+#+attr_html: :width 700px:
 #+caption: Tokenized printf command
 [[../img/whiteboard.png]]
 
-** TODO Test 1 deadline is this Friday (11:59 pm)!
+** Test 1 deadline is this Friday (11:59 pm)!
 
 - First results look promising!
 - Take your merry time with the test!
 - When asked about code, try it out!
 
-** TODO Assignment review: Hello world program with comments
+** Assignment review: Hello world program with comments
 
 - *Puzzled:* Many of you did not follow the instructions!? (AVG=8.76)
 
@@ -442,7 +442,7 @@
 - *Always ask* if you're unsure or confused. I'm here to help!
 
 - *Review questions*:
-  
+
   1) What does the program header contain?
      #+begin_quote
      Program name, purpose, input, output, author, pledge, date
@@ -452,27 +452,27 @@
      Function name, return type, parameters (function arguments)
      #+end_quote
   3) What would the function header for this function look like?
-   #+begin_example C
-     void hello(char name) {
-       printf("Hello, Mr. %c!", name);
-     }
-   #+end_example
+     #+begin_example C
+       void hello(char name) {
+         printf("Hello, Mr. %c!", name);
+       }
+     #+end_example
 
-   #+begin_src C :results output
-     // hello: print a greeting and a character
-     // returns: nothing (void)
-     // parameters: character `name`
-     void hello(char name) {
-       printf("Hello, Mr. %c!", name);
-     }
-     int main(){
-       hello('X');
-       return 0;
-     } 
-   #+end_src
+     #+begin_src C :results output
+       // hello: print a greeting and a character
+       // returns: nothing (void)
+       // parameters: character `name`
+       void hello(char name) {
+         printf("Hello, Mr. %c!", name);
+       }
+       int main(){
+         hello('X');
+         return 0;
+       }
+     #+end_src
 
-   #+RESULTS:
-   : Hello, Mr. X!
+     #+RESULTS:
+     : Hello, Mr. X!
   4) What exactly happens in =printf("Hello, world.\n");=
      #+begin_example C
      // function `printf` is called
@@ -487,7 +487,7 @@
      - Comments =//= or =/* */= are placed immediately before or next to
        what they' commenting upon.
      #+end_quote
-     
+
      #+begin_src C
        // hello: Print greeting
        // Returns: nothing (void)
@@ -496,11 +496,11 @@
          puts("Hello.");
        }
 
-       /* 
-        *   main program 
-        */
-       int main(void) 
-       {  
+       /*
+        ,*   main program
+        ,*/
+       int main(void)
+       {
 
          hello(); // call function
 
@@ -508,15 +508,16 @@
        }
      #+end_src
 
-     #+RESULTS:
-     : Hello.
-
-** TODO Review (last lecture)
+** Review (last lecture)
 
 1. What's wrong with this code?
    #+begin_src C
      printf(%s\n, "Hello");
    #+end_src
+
+   #+RESULTS:
+   : Hello
+
    #+begin_quote
    The format string =%s\n= is not formatted as a string.
 
@@ -524,9 +525,17 @@
    #+end_quote
 
 2. What's wrong with this code?
-   #+begin_src C
+   #+begin_src C :results output
      puts("I am %i years old", 22);
+     puts("I am 22 years old");
+     printf("I am %i years old", 22);
    #+end_src
+
+   #+RESULTS:
+   : I am %i years old
+   : I am 22 years old
+   : I am 22 years old
+
    #+begin_quote
    The =puts= function only prints a string + a new line.
 
@@ -541,9 +550,11 @@
      }
    #+end_src
 
+   #+RESULTS:
+
    #+begin_quote
-   The =main= functon must =return= an =int=, not =void=.
-   
+   The =main= function must =return= an =int=, not =void=.
+
    Run-time error. Correct: =int main() { puts(""); return 0;}=
    #+end_quote
 
@@ -551,6 +562,9 @@
    #+begin_src C
      printf("I have %c\n", "character.");
    #+end_src
+
+   #+RESULTS:
+   : I have 
 
    #+begin_quote
    A string argument is provided but a character argument is expected.
@@ -564,15 +578,72 @@
    #+end_src
 
    #+RESULTS:
-   : 224 + -289681864 = -1979732544
+   : 224 + 1768136904 = -1361404480
 
    #+begin_quote
    One integer argument is provided but three are expected.
 
-   Run-time error. Correct: =printf("%i + %i = %i \n", 2, 2, 4);
+   Run-time error. Correct: =printf("%i + %i = %i \n", 2, 2, 4);=
    #+end_quote
 
-** TODO Lecture & code along: Variables & Assignments
+* Week 4: Constants
+#+attr_html: :width 400px:
+[[../img/escher_fish.jpg]]
 
+- [ ] *Programming assignments:* The purpose of "Sample output".
+- [ ] Review of the last lecture
+- [ ] Lecture & practice: Variables & Assignments (continued)
+- [ ] Lecture & practice: Constants & Keyboard input
 
+** Review of the last lecture
 
+1. What's wrong with this code?
+   #+begin_src C
+     height = 10;
+     int height;
+   #+end_src
+   #+begin_quote
+   The variable =height= is used before it is declared.
+   #+end_quote
+
+2. What's wrong with this code?
+   #+begin_src C
+     int main(void) {
+       int height;
+       printf("The height is %d\n", height);
+       return 0;
+     }
+   #+end_src
+   #+begin_quote
+   The variable =height= is uninitialized, so its value is undefined.
+   #+end_quote
+
+3. What's wrong with this code?
+   #+begin_src C
+     8 = height;
+   #+end_src
+   #+begin_quote
+   Literals like =8= cannot be assigned values because they are
+   constants.
+   #+end_quote
+
+4. What's wrong with this multi-variable declaration/definition?
+   #+begin_src C
+     int height = 3, width = 2, volume
+   #+end_src
+   #+begin_quote
+   The statement is missing a semicolon (=;=).
+   #+end_quote
+
+5. What's wrong with this variable reassignment?
+   #+begin_src C
+     int main(void) {
+       int foo;
+       foo = 8;
+       int foo = 18;
+       return 0;
+     }
+   #+end_src
+   #+begin_quote
+   A variable cannot be redeclared within the same scope.
+   #+end_quote

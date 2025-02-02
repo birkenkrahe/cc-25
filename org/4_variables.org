@@ -1,4 +1,4 @@
-#+TITLE: Introduction to Programming - Variables and Types
+#+TITLE: Intro to Programming - Variables and Types
 #+AUTHOR: Marcus Birkenkrahe
 #+SUBTITLE: CSC 100 - Lyon College - Spring 2025
 #+SEQ_TODO: PRACTICE TODO NEXT | DONE
@@ -11,13 +11,12 @@
 * What are you going to learn?
 
 *Topics*:
-1. [ ] Variables (=height=, =width=)
-2. [ ] Types (=int=, =float=, =char=)
-3. [ ] Assignment (===)
+1. [X] Variables (=height=, =width=)
+2. [X] Types (=int=, =float=, =char=)
+3. [X] Assignment (===)
 4. [ ] Keywords (=return=, =void=, =main=)
 5. [ ] Operators (=*=, =+=, =/=, =-=)
-6. [ ] Names
-7. [ ] Precision
+6. [ ] Formatting integers and floats
 
 * In-class and home assignments
 
@@ -119,7 +118,7 @@
 * PRACTICE Variable types and declarations
 
 Write a complete program that declares two floating-point variables,
-=fahrenheit= and =celsius=, and print their values. 
+=fahrenheit= and =celsius=, and print their values.
 
 Example output:
 #+begin_example
@@ -155,7 +154,7 @@ Solution:
   *Answer:* An assignment counts as use of a variable. The type of a
   variable must be declared before you can use it.
   #+end_quote
-
+  
 - The example below would throw another error. What's wrong now?
   #+begin_example C
     height = 8;
@@ -263,7 +262,7 @@ Solution:
 
 - How many tasks does this last little program perform?
   #+begin_quote
-  Answer: 
+  Answer:
   1. Declare four variables (4)
   2. Assign three variables (7)
   3. Compute one variable (8)
@@ -273,33 +272,113 @@ Solution:
 
 * PRACTICE Declare, Assign, Compute and Print
 
-- You can also initiate and declare several variables at once: 
+- You can also initiate and declare several variables at once:
   1) Declare *and* assign = define =height= 8, =length= 12, =width= 10.
   2) Compute the volume *inside* the =printf= function call.
   3) How many tasks does this program perform?
-  
+
   Solution:
   #+begin_src C
-    int height = 8, length = 12, width = 10; // 6 
+    int height = 8, length = 12, width = 10; // 6
     printf("Volume: %i", height * length * width); // + 1
   #+end_src
 
+* PRACTICE In-Class Practice 4: Variable Manipulation and Formatted Output
+** Objective
+
+Practice variable declaration, assignment, arithmetic operations, and
+formatted output in C.
+
+** Instructions
+
+1. Write a C program =
+2. Declare an integer variable named =num= and initialize it to 10.
+3. Declare an integer variable named =doubleNum= that holds twice the
+   value of =num=.
+4. Declare a floating-point variable named =half= that holds half of
+   the value of =num=.
+5. Print the following three lines using a single =printf= statementwith
+   the correct format specifiers:
+   - "The number is: 10"
+   - "Double the number is: 20"
+   - "Half the number is: 5.000000"
+6. Ensure your program includes the proper header files and returns 0
+   from the =main= function.
+
+** Sample Output
+#+begin_example
+The number is: 10
+Double the number is: 20
+Half the number is: 5.000000
+#+end_example
+
+** Program template:
+#+begin_src C :main no :results output
+  #include <stdio.h>
+
+  /* main program */
+  int main(void)
+  {
+    // declare and define variables
+
+    // print results
+
+    return 0;
+  }
+#+end_src
+
+Submit your result to Canvas! (=In-class practice 4: Variables=)
+
+** Sample solution:
+
+Link: https://onecompiler.com/c/437ujapsy
+
+#+begin_src C :main no :results output :tangle ../src/variables.c
+  /******************************************************
+   * variables.c: Declare, define and print variables
+   * Input: None                                        
+   * Output: two integers and one floating-point variable
+   * Author: Marcus Birkenkrahe
+   * Date: 02/01/2025 
+   ******************************************************/
+  #include <stdio.h>
+
+  /* main program */
+  int main(void)
+  {
+    // declare and define variables
+    int num = 10;
+    int doubleNum = 2 * num;
+    float half = 0.5 * num;
+
+    // print results
+    printf("The number is: %i\nDouble the number is: %i\nHalf the number is: %f",
+           num, doubleNum, half);
+
+    return 0;
+  }
+#+end_src
+
+#+RESULTS:
+: The number is: 10
+: Double the number is: 20
+: Half the number is: 5.000000
+
 * Glossary
 
-| TERM                     | EXPLANATION                                                              |
-|--------------------------+--------------------------------------------------------------------------|
-| Variable                 | A memory location that stores data which can change.                     |
-| Data Type                | Specifies the type of data a variable can store (e.g., int, float).      |
-| Assignment               | The process of giving a value to a variable using ===.                     |
-| Keyword                  | Reserved words in C (e.g., return, void, main).                          |
-| Operator                 | Symbols used for calculations (e.g., =+=, =-=, =*=, =/=).                        |
-| Precision                | The accuracy of numerical representations in memory.                     |
-| Memory                   | The system's storage used for computation (RAM, CPU cache, etc.).        |
-| von Neumann Architecture | A model where CPU, RAM, and Disk interact for computing.                 |
-| Literal                  | A fixed value assigned to a variable (e.g., =8= in =height = 8;=).           |
-| Lvalue                   | A memory location that can hold a value (i.e., a variable).              |
-| Floating-Point           | A number that includes a decimal component (e.g., =2.5f=).                 |
-| Format Specifier         | A placeholder used in =printf= to print variables (e.g., =%d= for integers). |
+| TERM             | EXPLANATION                                                    |
+|------------------+----------------------------------------------------------------|
+| Variable         | A memory location that stores data which can change.           |
+| Data Type        | Type of data a variable can store (=int=, =float=, =char=).          |
+| Assignment       | The process of giving a value to a variable using ===.           |
+| Keyword          | Reserved words in C (e.g., return, void, main).                |
+| Operator         | Symbols used for calculations (e.g., =+=, =-=, =*=, =/=).              |
+| Precision        | The accuracy of numerical representations in memory.           |
+| Memory           | System storage used for computation (RAM, CPU cache, etc.)     |
+| Literal          | A fixed value assigned to a variable (e.g., =8= in =height = 8;=). |
+| Lvalue           | A memory location that can hold a value (i.e., a variable).    |
+| Floating-Point   | A number that includes a decimal component (e.g., =2.5f=).       |
+| Format Specifier | A placeholder used in =printf= to print variables (e.g., =%i=)     |
 
 * Summary
 
