@@ -590,9 +590,9 @@
 #+attr_html: :width 400px:
 [[../img/escher_fish.jpg]]
 
-- [ ] *Programming assignments:* The purpose of "Sample output".
-- [ ] Review of the last lecture
-- [ ] Lecture & practice: Variables & Assignments (continued)
+- [X] *Programming assignments:* The purpose of "Sample output".
+- [X] Review of the last lecture
+- [X] Lecture & practice: Variables & Assignments (continued)
 - [ ] Lecture & practice: Constants & Keyboard input
 
 ** Review of the last lecture
@@ -614,6 +614,10 @@
        return 0;
      }
    #+end_src
+
+   #+RESULTS:
+   : The height is 0
+
    #+begin_quote
    The variable =height= is uninitialized, so its value is undefined.
    #+end_quote
@@ -647,3 +651,5 @@
    #+begin_quote
    A variable cannot be redeclared within the same scope.
    #+end_quote
+
+   
