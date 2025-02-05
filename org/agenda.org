@@ -595,7 +595,7 @@
 - [X] Lecture & practice: Variables & Assignments (continued)
 - [ ] Lecture & practice: Constants & Keyboard input
 
-** Review of the last lecture
+** DONE Review of the last lecture
 
 1. What's wrong with this code?
    #+begin_src C
@@ -652,4 +652,142 @@
    A variable cannot be redeclared within the same scope.
    #+end_quote
 
+
    
+
+** TODO Review of the in-class programming practice
+#+attr_html: :width 400px: 
+#+caption: To the AI, nerds are always insanely attractive
+[[../img/coding_couple.png]]
+
+- 50% of you did not get the correct result. That's not a surprise!
+
+- I've written to you with some recommendation:
+  
+  1. *Check* the instructions and try to write the code again in your
+     own time.
+  2. Even if it works, *compare* it with my sample solution.
+  3. *Fix* the errors, try again until you have a working solution that
+     you wrote yourself (= with your own hands).
+  4. Now go back to your original (failed) program and make sure that
+     you *understand* what you did wrong, and what every line means.
+
+If after this you're still in need of tutoring: *come by my office*
+(book at: [[https://tinyurl.com/sp25-booking][tinyurl.com/sp25-booking]])!  We'll sort you out in 30 min!
+
+There's no shame in failing at coding at this stage but you need to
+work at it a little at least to keep your head above water.
+
+It'll do to check out the lectures and the code before/after class and
+spend enough time on the programing assignments & perhaps try a bonus.
+ 
+
+** TODO Review of the last lecture
+
+1. What's wrong with this assignment? Will it compile? Will it run?
+   #+begin_src C
+     float profit = 2150.48;
+   #+end_src
+   #+begin_quote
+   What's wrong?
+   - Yes, it will compile and run.
+   - The floating-point literal =2150.48= is a =double= by default.
+   - While it can still be assigned to a =float=, this may cause
+     implicit *type conversion* issues.
+   - To explicitly indicate a =float=, the =f= suffix should be used.
+   #+end_quote
+
+2. What's wrong with this assignment? Will it compile? Will it run?
+   #+begin_src C
+     int iProfit = 2150.48;
+   #+end_src
+   #+begin_quote
+   What's wrong?
+   - Yes, it will compile and run.
+   - A floating-point number is being assigned to an integer.
+   - The compiler does not warn about this, but it will truncate the
+     decimal portion.
+   - =iProfit= will store =2150=, not =2150.48=, which may lead to
+     unexpected results.
+   #+end_quote
+
+3. How can you show what's wrong with the last assignment?
+   #+begin_src C
+     int iProfit = 2150.48;  // wrong assignment
+     printf("iProfit = %i or is it %f?\n", iProfit, (float)iProfit);
+   #+end_src
+   #+begin_quote
+   - You have to print the memory content.
+   - This shows that the fractional part of =iProfit= is lost forever.
+   #+end_quote
+   
+4. What's wrong with this formatted output? What will it print?
+   #+begin_src C
+     float half = 0.5 * 10;
+     printf("Half the number is: %i\n", half);
+   #+end_src
+   #+begin_quote
+   What's wrong?
+   - The format specifier =%i= is for integers, but =half= is a =float=.
+   - Using =%i= for a floating-point value results in *undefined behavior*.
+   - The correct format specifier should be =%f= instead.
+   #+end_quote
+
+5. What's wrong with this code?
+   #+begin_src C
+     int height = 8, length = 12, width = 10;
+     printf("Volume = %i\n", height + length + width);
+   #+end_src
+   #+begin_quote
+   What's wrong?
+   - The calculation inside =printf= is incorrect.
+   - Instead of multiplying =height=, =length=, and =width=, the code mistakenly adds them.
+   - The correct computation should be =height * length * width=.
+   - Don't be so focused on the language that you forget math & logic!
+   #+end_quote
+
+6. What's wrong with this program? Will it compile? Will it run?
+   #+begin_src C :results output 
+     #include <stdio.h>
+
+     int main(void)
+     {
+       int num = 10;
+       int doubleNum = 2 * num;
+       float half = 0.5 * num;
+
+       printf("The number is: %i\nDouble the number is: %i\nHalf the number is: %f",
+              num, doubleNum, half);
+     }
+   #+end_src
+   #+begin_quote
+   What's wrong?
+   - Yes it will compile (usually) and run.
+   - The =main= function is missing a =return 0;= statement at the end.
+   - While some compilers allow this omission, returning 0 explicitly
+     indicates successful execution.
+   - Best practice is to include =return 0;= at the end of =main=.
+   #+end_quote
+
+7. What's wrong with this code - why won't it compile?
+   #+begin_src C :includes <stdio.h>
+     int num = 10;
+     int doubleNum = 2 * num;
+     float half = 0.5 * num;
+
+     printf("The number is: %i\n
+            Double the number is: %i\nHalf the number is: %f",
+            num, doubleNum, half);
+   #+end_src
+
+   #+RESULTS:
+
+   #+begin_quote
+   What's wrong?
+   - The formatting string is not finished (error message: ="missing
+     terminating character"=) - to extend a string over a new line, you
+     need to terminate it with a ~\~.
+   - The syntax highlighting already reveals that something's not
+     right.
+   #+end_quote
+
