@@ -586,8 +586,9 @@
    Run-time error. Correct: =printf("%i + %i = %i \n", 2, 2, 4);=
    #+end_quote
 
-* Week 4: Constants
+* Week 4: Constants and keyboard input
 #+attr_html: :width 400px:
+#+caption: Graphic art by M.C. Escher
 [[../img/escher_fish.jpg]]
 
 - [X] *Programming assignments:* The purpose of "Sample output".
@@ -595,7 +596,7 @@
 - [X] Lecture & practice: Variables & Assignments (continued)
 - [ ] Lecture & practice: Constants & Keyboard input
 
-** DONE Review of the last lecture
+** DONE Review of the last lecture - Integer types
 
 1. What's wrong with this code?
    #+begin_src C
@@ -652,18 +653,15 @@
    A variable cannot be redeclared within the same scope.
    #+end_quote
 
-
-   
-
-** TODO Review of the in-class programming practice
-#+attr_html: :width 400px: 
+** DONE Review of the in-class programming practice
+#+attr_html: :width 400px:
 #+caption: To the AI, nerds are always insanely attractive
 [[../img/coding_couple.png]]
 
 - 50% of you did not get the correct result. That's not a surprise!
 
 - I've written to you with some recommendation:
-  
+
   1. *Check* the instructions and try to write the code again in your
      own time.
   2. Even if it works, *compare* it with my sample solution.
@@ -671,6 +669,8 @@
      you wrote yourself (= with your own hands).
   4. Now go back to your original (failed) program and make sure that
      you *understand* what you did wrong, and what every line means.
+  5. You could go crazy and read the program again from the bottom
+     line proceeding from right to left.
 
 If after this you're still in need of tutoring: *come by my office*
 (book at: [[https://tinyurl.com/sp25-booking][tinyurl.com/sp25-booking]])!  We'll sort you out in 30 min!
@@ -680,14 +680,28 @@ work at it a little at least to keep your head above water.
 
 It'll do to check out the lectures and the code before/after class and
 spend enough time on the programing assignments & perhaps try a bonus.
- 
 
-** TODO Review of the last lecture
+** DONE Where can I get more practice problems?
+
+1. Make up your own problems by minimally changing the programs that
+   you wrote or that you saw in class.
+2. Use AI: Paste the last program that you successfully wrote yourself
+   into the interface, confess to being a complete noob and beginner &
+   ask for 5 similar problems (without solutions).
+3. Check out the "Challenges" tab in OneCompiler.com
+4. Ask me.
+5. More challenging: Go to leetcode.com and look for beginner problems
+   in C.
+
+** DONE Review of the last lecture - Floating point types
 
 1. What's wrong with this assignment? Will it compile? Will it run?
    #+begin_src C
      float profit = 2150.48;
    #+end_src
+
+   #+RESULTS:
+
    #+begin_quote
    What's wrong?
    - Yes, it will compile and run.
@@ -716,16 +730,24 @@ spend enough time on the programing assignments & perhaps try a bonus.
      int iProfit = 2150.48;  // wrong assignment
      printf("iProfit = %i or is it %f?\n", iProfit, (float)iProfit);
    #+end_src
+
+   #+RESULTS:
+   : iProfit = 2150 or is it 2150.000000?
+
    #+begin_quote
    - You have to print the memory content.
    - This shows that the fractional part of =iProfit= is lost forever.
    #+end_quote
-   
+
 4. What's wrong with this formatted output? What will it print?
    #+begin_src C
-     float half = 0.5 * 10;
+     float half = 0.5 * 10.0;
      printf("Half the number is: %i\n", half);
    #+end_src
+
+   #+RESULTS:
+   : Half the number is: 1074283832
+
    #+begin_quote
    What's wrong?
    - The format specifier =%i= is for integers, but =half= is a =float=.
@@ -738,6 +760,10 @@ spend enough time on the programing assignments & perhaps try a bonus.
      int height = 8, length = 12, width = 10;
      printf("Volume = %i\n", height + length + width);
    #+end_src
+
+   #+RESULTS:
+   : Volume = 30
+
    #+begin_quote
    What's wrong?
    - The calculation inside =printf= is incorrect.
@@ -747,7 +773,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
    #+end_quote
 
 6. What's wrong with this program? Will it compile? Will it run?
-   #+begin_src C :results output 
+   #+begin_src C :results output
      #include <stdio.h>
 
      int main(void)
@@ -770,17 +796,22 @@ spend enough time on the programing assignments & perhaps try a bonus.
    #+end_quote
 
 7. What's wrong with this code - why won't it compile?
-   #+begin_src C :includes <stdio.h>
+   #+begin_src C :includes <stdio.h> :results output
      int num = 10;
      int doubleNum = 2 * num;
      float half = 0.5 * num;
 
-     printf("The number is: %i\n
-            Double the number is: %i\nHalf the number is: %f",
-            num, doubleNum, half);
+     printf("The number is: %i\n\
+     Double the number is: %i\nHalf the number is: %f",
+            num,
+            doubleNum,
+            half);
    #+end_src
 
    #+RESULTS:
+   : The number is: 10
+   : Double the number is: 20
+   : Half the number is: 5.000000
 
    #+begin_quote
    What's wrong?
@@ -791,3 +822,121 @@ spend enough time on the programing assignments & perhaps try a bonus.
      right.
    #+end_quote
 
+** TODO Review of the last lecture
+
+1. What's wrong with this code? Will it compile? Will it run?
+
+   #+begin_src C
+     #define PI 3.141593;
+     printf("Pi is %f\n", PI);
+   #+end_src
+
+   #+begin_quote
+   - It won't compile.
+   - The semicolon (=;=) at the end of =#define PI 3.141593;= is incorrect.
+   - Macro definitions are not *statements*; they are simple *text
+     substitutions*. The semicolon will be included in every
+     replacement, causing a *syntax error* when used in expressions.
+   #+end_quote
+
+2. What's wrong with this code? Will it compile? Will it run?
+
+   #+begin_src C :results output
+     #define VALUE 1.0
+     printf("Constant value is %.1f\n", VALUE);
+     #define VALUE 2.0
+     printf("Constant value is %.1f\n", VALUE);
+   #+end_src
+
+   #+RESULTS:
+   : Constant is 1.0
+   : Constant is 2.0
+
+   #+begin_quote
+   - The code compiles and runs.
+   - The constant =VALUE= is redefined using =#define= without an =#undef=
+     directive.
+   - While this is allowed in C, it generates a compiler warning.
+   - Redefining a macro without =#undef= can lead to unexpected
+     behavior. A proper approach is:
+   #+end_quote
+   #+begin_src C
+     #define VALUE
+     // ...
+     #undef VALUE
+     #define VALUE 2.0
+   #+end_src
+
+3. What's wrong with this code? Will it compile? Will it run?
+
+   #+begin_src C
+     #include <stdio.h>
+     printf("Pi is %f\n", M_PI); // M_PI is the mathematical constant \pi
+   #+end_src
+
+   #+RESULTS:
+
+   #+begin_quote
+   - Program will not compile.
+   - The program is missing the =#include <math.h>= header, which
+     defines =M_PI=.
+   - Without this, the compiler does not recognize =M_PI=, leading to an
+     "undeclared identifier" error.
+   #+end_quote
+
+4. What's wrong with this code? Will it compile? Will it run?
+
+   #+begin_src C
+     #include <stdio.h>
+     #define apple_pie M_PI
+
+     int main(void) {
+       printf("Pi is %f\n", apple_pie);
+       return 0;
+     }
+   #+end_src
+
+   #+begin_quote
+   - It will not compile.
+   - The program is missing =#include <math.h>=, which defines
+     =M_PI=. Since =apple_pie= is defined as =M_PI=, but =M_PI= is not
+     recognized, the program will fail to compile.
+   #+end_quote
+
+5. What's wrong with this code? Will it compile? Will it run?
+   #+begin_src C :main no :includes
+     #include <stdio.h>
+     #include <math.h>
+     #define e M_E
+     printf("%.16f\n", e);
+   #+end_src
+
+   #+begin_quote
+   - It will not compile.
+   - The =printf= statement is outside a function. In C, all executable
+     statements must be inside a function, typically =main()=.
+   #+end_quote
+
+** TODO New programming assignment "Your height in light-years"
+
+- Define physics constants (speed of light, year in seconds).
+
+- Convert height (in meters) into light-years (the distance that
+  photons travel in the course of one year).
+
+- You can use the formula: $$ 1 [m] \equiv \frac{1}{c [m/s] \times y [s]} $$
+  where $c$ is the speed of light, and $y$ is the year in seconds.
+
+- For example, the Eifeltower in Paris is 330 m high. In light-years:
+  #+begin_src C
+    printf("%.2E", 330/(299792458.0 * 31536000.0)); // using the %e format
+  #+end_src
+
+- To avoid having to print 3.49049200000000, the =printf= statement uses
+  scientific or E-notation with the =%e= format specifier.
+
+- *Remember*: You must reproduce the sample output exactly, you must
+  respect the constraints, and you must adequatly comment your code.
+
+- The *bonus* assignment is a reloaded version, which will include
+  accepting keyboard input to compute the height in light-years.
