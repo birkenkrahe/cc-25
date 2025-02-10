@@ -594,9 +594,9 @@
 - [X] *Programming assignments:* The purpose of "Sample output".
 - [X] Review of the last lecture
 - [X] Lecture & practice: Variables & Assignments (continued)
-- [ ] Lecture & practice: Constants & Keyboard input
+- [X] Lecture & practice: Constants & Keyboard input
 
-** DONE Review of the last lecture - Integer types
+** Review of the last lecture - Integer types
 
 1. What's wrong with this code?
    #+begin_src C
@@ -653,7 +653,7 @@
    A variable cannot be redeclared within the same scope.
    #+end_quote
 
-** DONE Review of the in-class programming practice
+** Review of the in-class programming practice
 #+attr_html: :width 400px:
 #+caption: To the AI, nerds are always insanely attractive
 [[../img/coding_couple.png]]
@@ -681,7 +681,7 @@ work at it a little at least to keep your head above water.
 It'll do to check out the lectures and the code before/after class and
 spend enough time on the programing assignments & perhaps try a bonus.
 
-** DONE Where can I get more practice problems?
+** Where can I get more practice problems?
 
 1. Make up your own problems by minimally changing the programs that
    you wrote or that you saw in class.
@@ -693,7 +693,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
 5. More challenging: Go to leetcode.com and look for beginner problems
    in C.
 
-** DONE Review of the last lecture - Floating point types
+** Review of the last lecture - Floating point types
 
 1. What's wrong with this assignment? Will it compile? Will it run?
    #+begin_src C
@@ -822,7 +822,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
      right.
    #+end_quote
 
-** TODO Review of the last lecture
+** Review of the last lecture
 
 1. What's wrong with this code? Will it compile? Will it run?
 
@@ -849,8 +849,8 @@ spend enough time on the programing assignments & perhaps try a bonus.
    #+end_src
 
    #+RESULTS:
-   : Constant is 1.0
-   : Constant is 2.0
+   : Constant value is 1.0
+   : Constant value is 2.0
 
    #+begin_quote
    - The code compiles and runs.
@@ -909,7 +909,13 @@ spend enough time on the programing assignments & perhaps try a bonus.
      #include <math.h>
      #define e M_E
      printf("%.16f\n", e);
+     int main() {
+
+        return 0;
+     }
    #+end_src
+
+   #+RESULTS:
 
    #+begin_quote
    - It will not compile.
@@ -917,7 +923,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
      statements must be inside a function, typically =main()=.
    #+end_quote
 
-** TODO New programming assignment "Your height in light-years"
+** New programming assignment "Your height in light-years"
 
 - Define physics constants (speed of light, year in seconds).
 
@@ -932,11 +938,30 @@ spend enough time on the programing assignments & perhaps try a bonus.
     printf("%.2E", 330/(299792458.0 * 31536000.0)); // using the %e format
   #+end_src
 
-- To avoid having to print 3.49049200000000, the =printf= statement uses
-  scientific or E-notation with the =%e= format specifier.
+  #+RESULTS:
+  : 3.49e-14
+
+- To avoid having to print 1/3.49049200000000, the =printf= statement
+  uses scientific or E-notation with the =%e= format specifier.
 
 - *Remember*: You must reproduce the sample output exactly, you must
   respect the constraints, and you must adequatly comment your code.
 
 - The *bonus* assignment is a reloaded version, which will include
   accepting keyboard input to compute the height in light-years.
+
+* Week 5: Naming, =printf=, and =scanf=
+#+attr_html: :width 500px: 
+#+caption: Paul Cezanne, The Fishermen
+[[../img/cezanne_fishermen_1875.jpeg]]
+
+- [ ] Test 3 still available (50%) - excellent results!
+  #+attr_html: :width 600px: 
+  [[../img/test3.png]]
+
+- [ ] *Lecture/Practice:* Naming conventions and rules
+
+- [ ] *Lecture/Practice*: Printing to =stdout= with =printf=
+
+- [ ] *Lecture/Practice:* Reading from =stdin= with =scanf=
+
