@@ -1,4 +1,4 @@
-#+TITLE:Formatted I/O: printf 
+#+TITLE:Formatted I/O: printf
 #+AUTHOR:Marcus Birkenkrahe
 #+Source: KN King C Programming
 #+SEQ_TODO: PRACTICE TODO NEXT | DONE
@@ -57,7 +57,7 @@ When it is called, ~printf~ must be supplied with:
 #+RESULTS: mpx
 : ....|....|....|
 :      123
-: 123     
+: 123
 :      3.142
 : 3.142
 
@@ -87,7 +87,7 @@ When it is called, ~printf~ must be supplied with:
   : ....|....|
   : 40
   :    40
-  : 40   
+  : 40
   :  0040
 
 * Floating point exponential =%e= or =%E=
@@ -109,7 +109,7 @@ When it is called, ~printf~ must be supplied with:
 #+RESULTS:
 : ....|....|....|
 : 1E+00
-: 1.000E+03      
+: 1.000E+03
 : 1.000000e+15
 :           1e+15
 
@@ -130,37 +130,63 @@ precision p is defined as for ~e~. Trailing zeroes are shown.
 
 * Variable floating point =%g=
 
-  - ~g~ displays a floating point number in either exponential format or
-    fixed decimal format depending on the number's size.
+- ~g~ displays a floating point number in either exponential format or
+  fixed decimal format depending on the number's size.
 
-  - ~p~ is the maximum number of *significant* digits (*not* digits after the
-    decimal point!) to be displayed.
+- ~p~ is the maximum number of *significant* digits (*not* digits after the
+  decimal point!) to be displayed.
 
-  - No trailing zeroes are shown. If there are no decimal digits after
-    the decimal point, no decimal point is shown.
+- No trailing zeroes are shown. If there are no decimal digits after
+  the decimal point, no decimal point is shown.
 
-  - How many lines and numbers are you expecting?
-    #+name: gfactor :results output
-    #+begin_src C :results output
-      printf("%g\n%g\n%g\n", 299792458., 1.45e+03, 8000.);
-    #+end_src
+- How many lines and numbers are you expecting?
+  #+name: gfactor :results output
+  #+begin_src C :results output
+    printf("%g\n%g\n%g\n", 299792458., 1.45e+03, 8000.);
+  #+end_src
 
-    #+RESULTS: gfactor :results output
-    : 2.99792e+08
-    : 1450
-    : 8000
+  #+RESULTS: gfactor :results output
+  : 2.99792e+08
+  : 1450
+  : 8000
 
-  - If you use =%g=, don't mess with the precision or the mantissa.
+- If you use =%g=, don't mess with the precision or the mantissa.
 
-
-* PRACTICE Printing with =printf= 
+* PRACTICE Printing with =printf=
 
 - These exercises aren't going to be as much fun in OneCompiler as in
   Emacs. If you work in Emacs, you can fetch the practice file from
-  here: tinyurl.com/printf-practice-org
+  here: [[https://tinyurl.com/printf-practice-org][tinyurl.com/printf-practice-org]]
 
+- In OneCompiler, create a =NEW= file and add new sections with comments:
+  #+begin_example C
+    #include <stdio.h>
 
-* TODO Conversion specification
+    int main(void)
+    {
+      // 1 Conversion specification
+      printf("....|....|....|\n");
+      ...
+      ...
+      // 2 Integer decimal %d
+      printf("....|....|....|\n");
+      ...
+      ...
+      // 3 Integer decimal precision p
+      printf("....|....|....|\n");
+      ...
+      ...
+      // etc.
+      return 0;
+    }
+  #+end_example
+
+- You can open the exercises here on GitHub:
+  [[https://tinyurl.com/printf-practice][tinyurl.com/printf-practice]]
+
+- Upload your program URL to Canvas (~"In-class practice 6: printf"~)
+
+** Conversion specification
 
 Recreate the output below exactly, using only format specifiers (no
 extra white space). The ruler is already prepared for you.
@@ -176,10 +202,10 @@ extra white space). The ruler is already prepared for you.
 Code:
 #+begin_src C
   printf("....|....|....|\n");
-  
-  #+end_src
 
-* TODO Integer decimal ~d~
+#+end_src
+
+** Integer decimal =%d=
 
 Show that the default for ~d~ is p=1. Print the numbers 1, 1, 100 and
 10000 with the specifiers ~%d~, ~%.1d~, ~%.5d~, ~%.2d~. Print each expression
@@ -190,12 +216,7 @@ on its own line, but use only ONE ~printf~ statement.
   printf("%d\n%.1d",1,1);
 #+end_src
 
-#+RESULTS:
-: ....|....|....|
-: 1
-: 1
-
-* TODO Integer decimal precision ~p~
+** Integer decimal precision ~p~
 
 Print the number 42 on a space of 10 characters with precision 5.
 
@@ -211,7 +232,7 @@ Code:
 
 #+end_src
 
-* TODO Scientific notation ~e~
+** Scientific notation =%e=
 
 - Print 1, 1000.100, and 1,000,000,000,000,000 using ~%e~.
 - Provide for the required number of decimal positions (but not more)
@@ -229,7 +250,7 @@ Code:
 
 #+end_src
 
-* TODO Variable floating point ~g~
+** Variable floating point =%g=
 
 - Use the format specifier ~g~ to display the following numbers: ~200~,
   ~3.142574654~ with ~p=8~, ~2.71~, and ~!5~.
@@ -244,5 +265,3 @@ Code:
   printf("....|....|....|\n");
 
 #+end_src
-
-* TODO Upload the completed file to Canvas now!
