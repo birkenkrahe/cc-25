@@ -155,7 +155,7 @@ precision p is defined as for ~e~. Trailing zeroes are shown.
 * PRACTICE Printing with =printf=
 
 - You can open the exercises here on GitHub and complete them in
-  OneCompiler.com:  [[https://tinyurl.com/printf-practice][tinyurl.com/printf-practice]]
+  OneCompiler.com:  [[https://tinyurl.com/6-printf-practices][tinyurl.com/6-printf-practices]]
 
 - In OneCompiler, create a =NEW= file and add new sections with comments:
   #+begin_example C

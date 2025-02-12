@@ -950,23 +950,24 @@ spend enough time on the programing assignments & perhaps try a bonus.
 - The *bonus* assignment is a reloaded version, which will include
   accepting keyboard input to compute the height in light-years.
 
+
 * Week 5: Naming, =printf=, and =scanf=
 #+attr_html: :width 600px: 
 [[../img/japanese.jpg]]
 
-- [ ] Test 3 still available (50%) - excellent results!
+- [X] Test 3 still available (50%) - excellent results!
   #+attr_html: :width 600px: 
   [[../img/test3.png]]
 
-- [ ] Review: Print constant values - read keyboard input
+- [X] Review: Print constant values - read keyboard input
 
-- [ ] *Lecture/Practice:* Naming conventions and rules
+- [X] *Lecture/Practice:* Naming conventions and rules
 
-- [ ] *Lecture/Practice*: Printing to =stdout= with =printf=
+- [X] *Lecture/Practice*: Printing to =stdout= with =printf=
 
 - [ ] *Lecture/Practice:* Reading from =stdin= with =scanf=
 
-** TODO Review: Print constant values - read keyboard input
+** DONE Review: Print constant values - read keyboard input
 
 *Sample files:*
 
@@ -981,18 +982,27 @@ spend enough time on the programing assignments & perhaps try a bonus.
    printf("6.5%%\n"); // escape `%` with `%`
    #+end_src
 
+   #+RESULTS:
+   : 6.5%
+
 2. How can you print =2.7182818285= as =2.71=?
    #+begin_src C
-   printf("%.2f\n",2.7182818285); // retain two digits only
+     printf("%.2f\n",2.7182818285); // retain two digits only
    #+end_src
+
+   #+RESULTS:
+   : 2.72
 
 3. How can you define a permanent constant?
    #+begin_src C
-     const int perm = 1;
-     int const perm2 = 2;
+     const int perm = 1;  // this is what you saw in class
+     int const perm2 = 2; // you can swap `const` and `int`
 
      printf("%i %i\n",perm,perm2);
    #+end_src
+
+   #+RESULTS:
+   : 1 2
 
 4. What is =stdin=? How can you get it in C++?
    #+begin_quote
@@ -1004,8 +1014,27 @@ spend enough time on the programing assignments & perhaps try a bonus.
 
 5. How would you fetch =100= from the keyboard and store it in =x=?
    #+begin_src C :cmdline < 100
-     int x;
-     scanf("%i",&x);
-     printf("%i\n",x);
+     int x;   // first declare an integer variable
+     scanf("%i",&x);  // get the value from the keyboard
+     printf("%i\n",x); // print what you got
    #+end_src
 
+   #+RESULTS:
+   : 100
+
+
+** TODO Practice with =printf=
+
+- Open [[https://tinyurl.com/6-printf-practices][tinyurl.com/6-printf-practices]] in your browser.
+
+- Using OneCompiler.com (or Emacs) work through the exercises.
+
+- When you're done, upload your file on Canvas.
+
+
+** TODO Practice with =scanf=
+
+* Week 6:
+#+attr_html: :width 400px: 
+#+caption: Francisco de Goya, Still Life with Golden Bream (1808)
+[[../img/goya.jpg]]

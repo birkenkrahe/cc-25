@@ -18,21 +18,18 @@
 
 * TODO Scan integer and floating-point input
 
-1) Use the code block [[pgm:scanf]] below for practice
-
-2) Define two /integer/ variables ~k~, ~l~, and two /floating-point/ variables
+1) Define two /integer/ variables ~k~, ~l~, and two /floating-point/ variables
    ~u~ and ~v~
 
-3) Complete the ~scanf~ /format string/ and enter the variables list to
+2) Complete the ~scanf~ /format string/ and enter the variables list to
    scan these variables
 
-4) Create an input file ~scanf_input~ with the following numbers using
-   the Emacs shell: ~100~, ~-1000~, ~.456~, ~-9.34e2~
+3) Use the folowing input numbers: ~100~, ~-1000~, ~.456~, ~-9.34e2~
 
-5) Replace all `...` in the code block [[pgm:scanf]] to get the output:
+4) Use the template below in OneCompiler to get the output:
    #+name: pgm:scanf_out
    #+begin_example
-   : |  100|-1000|0.456| -934|
+    |  100|-1000|0.456| -934|
    #+end_example
 
    #+name: pgm:scanf
