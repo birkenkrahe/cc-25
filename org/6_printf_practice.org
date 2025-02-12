@@ -1,4 +1,4 @@
-#+TITLE: C FUNDAMENTALS PRACTICE - PRINTF
+#+TITLE: C FUNDAMENTALS PRACTICE - PRINTF - EMACS
 #+AUTHOR: [yourName] (pledged)
 #+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both
 #+STARTUP: hideblocks overview indent
@@ -6,10 +6,7 @@
 
 - This file is a practice file for C input function ~printf~
 
-- Time: approx. 30-45 min.
-
-- When you're done with a section move the cursor on the section
-  heading and type ~S-<right>~ (or SHIFT+<right-arrow>).
+- Time: approx. 30 min.
 
 * TODO Identify yourself
 
