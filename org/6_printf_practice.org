@@ -43,13 +43,8 @@ on its own line, but use only ONE ~printf~ statement.
 
 #+begin_src C :results output
   printf("....|....|....|\n");
-  printf("%d\n%.1d",1,1);
-#+end_src
 
-#+RESULTS:
-: ....|....|....|
-: 1
-: 1
+#+end_src
 
 * TODO Integer decimal precision ~p~
 
@@ -77,7 +72,7 @@ Desired output:
 #+begin_example
     : 1e+00
     : 1.0001e+03
-    : 1e+15
+    : 1E+15
 #+end_example
 
 Code:
@@ -87,17 +82,24 @@ Code:
 
 * TODO Variable floating point ~g~
 
-- Use the format specifier ~g~ to display the following numbers: ~200~,
-  ~3.142574654~ with ~p=8~, ~2.71~, and ~!5~.
+- Use the format specifier ~g~ to display the following numbers: 
+  1) ~200~
+  2) ~3.142574654~ with ~p=8~, 
+  3) ~2.71~
+  4) ~!5~
 
-- Print each on a line of its own, but use only *one* ~printf~
-  statement to do it!
+- Desired output:
+  #+begin_example
+  200
+  3.1425747
+  2.71
+  120
+  #+end_example
 
-- ~!N~ is defined as the factorial of ~N~.
+- ~!N~ is defined as the factorial of ~N~: $N \times (N-1) \times \dots \times 1$.
 
 Code:
 #+begin_src C :results output
-  printf("....|....|....|\n");
 
 #+end_src
 
