@@ -1031,8 +1031,13 @@ spend enough time on the programing assignments & perhaps try a bonus.
 
 - When you're done, upload your file on Canvas.
 
-
 ** TODO Practice with =scanf=
+
+- Open [[https://tinyurl.com/scanf-practice][tinyurl.com/scanf-practice]] in your browser.
+
+- Using OneCompiler.com (or Emacs) work through the exercises.
+
+- When you're done, upload your file on Canvas.
 
 * Week 6:
 #+attr_html: :width 400px: 

@@ -260,7 +260,7 @@ This example has the same spec as our earlier example:
 2) Complete the ~scanf~ /format string/ and enter the variables list to
    scan these variables
 
-3) Use the following input: ~100  ~-1000~  ~.456~  ~-9.34e2~
+3) Use the following input: 100  -1000  .456  -9.34e2
 
 4) Desired output:
    #+name: pgm:scanf_out
