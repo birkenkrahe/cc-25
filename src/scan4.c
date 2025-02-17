@@ -1,10 +1,10 @@
-/******************************************************/
-/* scan3.cc: scan integers separated by backward slash
-/* Input: 5/6• <br> 3/4
-/* Output: "5/6 + 3/4 = 38/24"
-/* Author: [name] (pledged)
-/* Date: 02/15/2025
-/*****************************************************/
+/*********************************************************/
+/* scan4.cc: Add two fractions                           */
+/* Input: Two fractions (sample: 5/6• <br> 3/4)          */
+/* Output: Sum as fraction (sample: "5/6 + 3/4 = 38/24") */
+/* Author: [name] (pledged)                              */
+/* Date: 02/15/2025                                      */
+/*********************************************************/
 #include <stdio.h>
 
 int main() {
