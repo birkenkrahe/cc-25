@@ -1,20 +1,25 @@
-#+TITLE: C FUNDAMENTALS PRACTICE - SCANF - EMACS
-#+AUTHOR: [yourName] (pledged)
+#+TITLE: PRACTICE - SCANF
+#+AUTHOR: Marcus Birkenkrahe (pledged)
 #+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both
 #+STARTUP: hideblocks overview indent
 * README
 
 - This file is a practice file for C input functions ~scanf~.
 
-- Time: approx. 30 min.
+- You will work through and complete the exercises using a shell.
 
-- When you're done with a section move the cursor on the section
-  heading and type ~S-<right>~ (or SHIFT+<right-arrow>).
+- You can use Google Cloud Shell or any other Linux shell
+  (e.g. Windows OS with WSL, or a Linux VM).
 
-* TODO Reading input with =scanf=
+- For Google Cloud Shell, you need to be logged into your Google
+  account & you have 50 hours of free usage per week.
+
+- Time: approx. 30-45 min.
+
+* Reading input with =scanf=
 
 - You can open the exercises here on GitHub whenever you're lost.
-  [[https://tinyurl.com/scanf-practice][tinyurl.com/scanf-practice]]
+  [[https://tinyurl.com/7-scanf-practice][tinyurl.com/7-scanf-practice]]
 
 - We'll do these in class together and you will upload your results to
   Canvas (~"In-class practice 7: scanf"~).
@@ -31,7 +36,7 @@
   + Open the editor and download a file
   + Compress files and upload archive files to Canvas
 
-* TODO Scan integer and floating-point input
+* Scan integer and floating-point input
 
 *Problem*: Write a C program =scan1.c= that accepts two integer and two
 floating-point values from the keyboard and prints them.
@@ -123,8 +128,23 @@ floating-point values from the keyboard and prints them.
 
     #+end_quote
 
-=history= (commands), =ll= (long listing), =clear= (clean up), =*= (globbing).
-* TODO Scanning ordinary characters
+Bonus commands: =history= (of commands), =ll= (long listing), =ls -lt= (long
+listing, time-ordered), =clear= (clean up), =*= (globbing).
+
+* Scanning ordinary characters
+
+*Problem*: Write a C program =scan2.c= that accepts two integers separated
+by a special character from the keyboard. Test the code with different
+inputs to better understand the =scanf= command.
+
+*Sample Input/Output:*
+#+begin_example
+ •5/•96   - this input should succeed
+ •5 /•96  - this input should fail for the second number
+ •.5 /•96 - this input should fail for both numbers
+#+end_example
+
+*Solution:*
 
 1) Copy the previous program =scan1.c= into a new program =scan2.c= so
    that you don't have to rewrite all the code:
@@ -158,9 +178,25 @@ floating-point values from the keyboard and prints them.
    - ~•5/•96~ - this input should succeed
    - ~•5 /•96~ - this input should fail for the second number
    - ~•.5 /•96~ - this input should fail for both numbers
-* TODO Match input patterns exactly
 
-This is useful for the programming exercise "phone numbers":
+* Match input patterns exactly
+
+*Tip:* Useful for the programming assignment "phone number conversion".
+
+*Problem*: Write a C program =scan3.c= that extracts two integer numbers
+from an input file with multiple special characters.
+
+*Sample Input:*
+#+begin_example
+444==++//555
+#+end_example
+
+*Sample Output:*
+#+begin_example
+The numbers were: 444 and 555.
+#+end_example
+
+*Solution:*
 
 1) Copy the previous program =scan2.c= into a new program =scan3.c= so
    that you don't have to rewrite all the code.
@@ -185,7 +221,24 @@ This is useful for the programming exercise "phone numbers":
    #+begin_example sh
    ./scan3 < input3
    #+end_example
-* TODO Add fractions
+
+* Add fractions
+
+*Problem*: Write a C program =scan4.c= that prompts the user to add two
+fractions and then displays the fractions and their sum.
+
+*Sample Input:*
+#+begin_example
+5/6•
+3/4
+#+end_example
+
+*Sample Output:*
+#+begin_example
+5/6 + 3/4 = 38/24
+#+end_example
+
+*Solution:*
 
 1) Use the following command on the command-line shell to copy a
    template program from GitHub that you can then fill in:
@@ -248,7 +301,12 @@ This is useful for the programming exercise "phone numbers":
    modify the program so that there is only *on* ~scanf~ statement. Make
    sure that the modified program yields the same result as before.
 
-* TODO Submit results to Canvas
+* Submit results to Canvas
+
+*Problem*: Compress source code files and input files and submit the
+compressed archive (=.zip=) file to Canvas.
+
+*Solution:*
 
 - At this point, you should have a bunch of =scan= and =input= files,
   including save files (=~=) and executables (object files):
