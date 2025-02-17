@@ -33,6 +33,21 @@
 
 * TODO Scan integer and floating-point input
 
+*Problem*: Write a C program =scan1.c= that accepts two integer and two
+floating-point values from the keyboard and prints them.
+
+*Sample Input:*
+#+begin_example
+100 -1000 .456 -9.34e2
+#+end_example
+
+*Sample Output:*
+#+begin_example
+|  100|-1000|0.456| -934|
+#+end_example
+
+*Solution:*
+
 1) Open a terminal.
 
 2) Create a new file =scan1.c=.
