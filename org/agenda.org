@@ -7,7 +7,7 @@
 #+property: :header-args:python :session *Python* :python python3 :results output :exports both
 #+property: :header-args:R      :session *R* :results graphics output file :exports both
 #+property: :header-args:C++    :main yes :includes <iostream> :results output :exports both
-* Week 1: Orientation & Introduction
+* DONE Week 1: Orientation & Introduction
 #+attr_html: :width 300px:
 #+caption: Pufferfish woodcut
 [[../img/pufferfish.png]]
@@ -88,7 +88,7 @@
    6) Attend all classes and/or work through the recordings.
    #+end_quote
 
-* Week 2: C Language & First program
+* DONE Week 2: C Language & First program
 #+attr_html: :width 300px:
 #+caption: 1970s Jesus Fish woodcut
 [[../img/jesus_fish.png]]
@@ -208,7 +208,7 @@
    between now and May 9 (last day of class). One is simple, the other
    one is not so simple.
 
-* Week 3: Printing formatted values & Variables
+* DONE Week 3: Printing formatted values & Variables
 #+attr_html: :width 600px:
 [[../img/fishermen.jpg]]
 
@@ -586,7 +586,7 @@
    Run-time error. Correct: =printf("%i + %i = %i \n", 2, 2, 4);=
    #+end_quote
 
-* Week 4: Constants and keyboard input
+* DONE Week 4: Constants and keyboard input
 #+attr_html: :width 400px:
 #+caption: Graphic art by M.C. Escher
 [[../img/escher_fish.jpg]]
@@ -911,7 +911,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
      printf("%.16f\n", e);
      int main() {
 
-        return 0;
+       return 0;
      }
    #+end_src
 
@@ -950,13 +950,12 @@ spend enough time on the programing assignments & perhaps try a bonus.
 - The *bonus* assignment is a reloaded version, which will include
   accepting keyboard input to compute the height in light-years.
 
-
-* Week 5: Naming, =printf=, and =scanf=
-#+attr_html: :width 600px: 
+* DONE Week 5: Naming, =printf=, and =scanf=
+#+attr_html: :width 600px:
 [[../img/japanese.jpg]]
 
 - [X] Test 3 still available (50%) - excellent results!
-  #+attr_html: :width 600px: 
+  #+attr_html: :width 600px:
   [[../img/test3.png]]
 
 - [X] Review: Print constant values - read keyboard input
@@ -965,9 +964,13 @@ spend enough time on the programing assignments & perhaps try a bonus.
 
 - [X] *Lecture/Practice*: Printing to =stdout= with =printf=
 
-- [ ] *Lecture/Practice:* Reading from =stdin= with =scanf=
+- [X] *Lecture/Practice:* Reading from =stdin= with =scanf=
 
-** DONE Review: Print constant values - read keyboard input
+- [X] New bonus assignment: "Statistical formula"
+
+- [X] New home assignment: "Phone number conversion".
+
+** Review: Print constant values - read keyboard input
 
 *Sample files:*
 
@@ -979,7 +982,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
 
 1. How can you print =6.5%=?
    #+begin_src C
-   printf("6.5%%\n"); // escape `%` with `%`
+     printf("6.5%%\n"); // escape `%` with `%`
    #+end_src
 
    #+RESULTS:
@@ -1008,7 +1011,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
    #+begin_quote
    =stdin= stands for "standard input" = incoming data, for example from
    a keyboard, or a touchscreen, or a camera.
-   
+
    You can fetch standard input with the =scanf= function.
    #+end_quote
 
@@ -1023,7 +1026,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
    : 100
 
 
-** TODO Practice with =printf=
+** Practice with =printf=
 
 - Open [[https://tinyurl.com/6-printf-practices][tinyurl.com/6-printf-practices]] in your browser.
 
@@ -1033,16 +1036,233 @@ spend enough time on the programing assignments & perhaps try a bonus.
 
 - Solution here: https://onecompiler.com/c/438vbkaby
 
-** TODO Practice with =scanf=
 
-- Open [[https://tinyurl.com/scanf-practice][tinyurl.com/scanf-practice]] in your browser.
+** Assignments
 
-- Using OneCompiler.com (or Emacs) work through the exercises.
+- *Bonus assignment:* Compute the standard deviation for four integers.
+  #+attr_html: :width 250px:
+  [[../img/formula.png]]
 
-- When you're done, upload your file on Canvas.
+  Output in OneCompiler:
+  #+attr_html: :width 400px:
+  [[../img/sd2.png]]
 
+- *Programming assignment:* Phone number conversion.
 
-* Week 6:
-#+attr_html: :width 400px: 
+  Input and output in OneCompiler:
+  #+attr_html: :width 300px:
+  [[../img/phone.png]]
+
+* IN_PROGRESS Week 6: =scanf= practice & Operators
+#+attr_html: :width 400px:
 #+caption: Francisco de Goya, Still Life with Golden Bream (1808)
 [[../img/goya.jpg]]
+
+- [ ] *Tests & Assignments*: Removing 1 point per late day. Easier for
+  me, kinder to you. All close one week after the deadline though.
+
+** DONE *Test 5*: =printf= and =scanf=. Deadline: 21 Feb (closes: 28 Feb)
+
+- 35 questions!
+- Take your time!
+- Use the compiler!
+- Ask me if confused!
+- You can now solve 155 C programming language problems!
+- After only 5 weeks of training!
+- After 15 hours of class and 10 hours of practice!
+- That's 31 problems per week!
+- Or more than 5 problems per work day!
+
+** DONE Checked your programming assignments - who needs tutoring?
+
+- I will grade your submissions closer to the deadline now (but not
+  before the deadline) so that you can submit improved versions for
+  50% of the maximum available points.
+
+- Many of you don't seem to read the instructions, or decide, perhaps
+  in the last minute, before submission, to violate them. You've
+  suffered small point losses for that. Think of me as a machine.
+
+- Example output (to be reproduced exactly):
+  #+begin_example
+  The integer value is: 10.
+  The floating-point value is: 3.14.
+  The character value is: A.
+
+  The values are: 10, 3.14, and A.
+  #+end_example
+
+- These (authentic) output examples *do not* satisfy the requirements:
+  #+begin_example
+  ----------------------------- Exhibit A
+  10
+  3.140000
+  A
+  10 3.140000 A
+
+  ----------------------------- Exhibit B
+
+  2025439560
+
+  3.140000
+
+  51
+  3.140000
+  3.14 - 3 = 0.14
+
+  ----------------------------- Exhibit C
+
+  integer: 41
+  floating-point: 3.14
+  character: A
+
+  ----------------------------- Exhibit D
+
+  main.c:10 10: fatal error: studio.h: no such file or directory
+   10 | #include <studio.h> // Standard input-output
+      |             ^----------------
+  compilation terminated
+  #+end_example
+
+- To bring your point average back up: Submit a few bonus
+  assignments. The points will be counted for midterms/finals.
+
+- I'll make solution videos of past assignments as soon as I
+  can. Arrange office hours with me: [[https://tinyurl.com/sp25-booking][tinyurl.com/sp25-booking]]
+
+** DONE *Videos* on Google Cloud Shell ("Panopto" tab in Canvas):
+
+#+begin_quote
++ How to *log* into cloud shell ([[https://cloud.google.com][cloud.google.com]]).
++ How to *open* the terminal (aka command-line shell).
++ How to *edit* source code with the GNU =nano= editor.
++ How to *save* and *rename* your =.c= source file.
++ How to *compile* your code using the GNU CC compiler =gcc=.
++ How to *rename* your executable (object =.o=) file.n
++ How to *list* (=ls=) and *view* (=cat=) files
++ How to *run* an executable (object) file with a relative path (=./=)
++ How to *exit* the shell (=exit=)
++ How to *open* the cloud editor.
++ How to *download* a source code (=.c=) file for Canvas upload.
+
+*Google Cloud Shell has three limitations:*
+1) You need a Google account to use it.
+2) You need an Internet connection.
+3) You need to stay within 50 hours per week.
+#+end_quote
+
+** DONE *Practice*: Linux commands (=ls=, =cd=, =mkdir=, =rm=, =echo=, =history=
+
+- Log into Google Cloud Shell now and follow my lead.
+
+| COMMAND | MEANING                 | EXAMPLE    |
+|---------+-------------------------+------------|
+| =ls=      | list files              | =ls *.c=     |
+| =mkdir=   | make directory          | =mkdir cc=   |
+| =cd=      | change directory        | =cd cc=      |
+| =rm=      | remove file             | =rm a.out=   |
+| =echo=    | print to screen         | =echo hello= |
+| =history= | show last 1000 commands | =!100=       |
+
+** DONE *Bonus assignment:* Download Google Cloud Shell to your PC.
+
+- Install Google Cloud Shell as a Chrome app on your PC
+- Follow the steps (includes testing with "hello world")
+- For points, submit screenshot of your console/terminal to Canvas
+
+
+** IN_PROGRESS *Practice:* =scanf= exercises in Google Cloud Shell
+
+- Open [[https://tinyurl.com/7-scanf-practice][tinyurl.com/7-scanf-practice]] in your browser.
+
+- Use Google Cloud Shell with me to learn it.
+
+- When you're done, upload your ZIP file on Canvas.
+
+- I recorded a video of the first exercise in Panopto (Canvas):
+  "[[https://lyon.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d9ea9517-36f9-40ac-ae0b-b286017ea35c][Editing, Compiling, Running C files on the Shell]]"
+
+** TODO Review: The command-line shell / GCC compiler / ~nano~ editor
+
+1. How can you create a new file =hello.c=? Will this command work?
+   #+begin_example sh
+     nano hello
+   #+end_example
+
+2. How can you compile =hello.c=? Will this command work?
+   #+begin_example sh
+     GCC hello.c
+   #+end_example
+
+3. How can you run the machine code after the successful compilation?
+   You are in the directory =/home/you=. Which command will work?
+   #+begin_example sh
+     a.out
+     ../a.out
+     /home/you/a.out
+     .a.out
+     ./a.out
+   #+end_example
+
+4. Which command tells you were you are?
+   #+begin_src bash :results output :exports both
+     pwd
+   #+end_src
+
+5. You are in =/home/me/one= and you want to go to =/home/me/two= - how
+   can you get there? Which of the following commands would work?
+   #+begin_example sh
+   cd /home/me/two
+   cd ../two
+   #+end_example
+
+6. You want to see the files in your present working directory
+   (=pwd=). Which command would do that?
+   #+begin_example sh
+     ls 
+     ls ..
+     ls .
+     ls ./
+   #+end_example
+
+7. Which command clears the screen when it's full?
+   #+begin_example
+   clear
+   #+end_example
+
+8. Which command shows you all of your past commands?
+   #+begin_example
+   history
+   #+end_example
+
+9. How can you re-use a past command without having to retype it?
+   #+begin_quote
+   1. Find the command ID number =num= in =history= and enter =!num=
+   2. Scroll back with the =<up-arrow>=
+   #+end_quote
+
+10. Which command shows you all C files in the current directory?
+    #+begin_src bash :results output :exports both
+    ls *.c
+    #+end_src
+
+* Week 7: Operators & Pseudocode & =if= & =else= & =switch=
+
+** TODO *Lecture:* Operators (=++=, =*==, =&&=)
+
+
+** TODO *Practice:* Operators
+
+
+- [ ] *Tests & Assignments*: Removing 1 point per late day. Easier for
+  me, kinder to you. All close one week after the deadline though.
+
+*
+* Week 8: Loops: =for= & =while= & =do=
+* Week 9: Arrays
+* Week 10: Functions
+* Week 11: Program Organization
+* Week 12: Pointers
+* Week 13: Pointers and arrays
+* Week 14: Strings
+* Week 15: Structs
