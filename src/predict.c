@@ -1,3 +1,9 @@
+/****************************************
+* predict.c: Predict arithmetic results *
+* Input: None. Output: integer values   *
+* Author: Marcus Birkenkrahe GPLv3      *
+* Date: 02/22/2025                      *
+****************************************/
 #include <stdio.h>
 
 int main() {
