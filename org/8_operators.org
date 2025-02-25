@@ -58,7 +58,7 @@
   | Increment/decrement | change stepwise       | ~++~, ~+-~    | ~++i~        |
 
 - Note: there is no exponential operator (though there is a power
-  function =pow= in =math.h= [fn:1]
+  function =pow= in =math.h= [fn:1] - you need to use ~*~ instead.
 
 - *Conditional* operators used in C are important for program flow:
   #+caption: Conditional operators in C
@@ -82,7 +82,7 @@
 - The only *unary* operator is ~!~ also known as NOT: It merely inverts
   the Boolean or truth value of its argument.
   #+begin_src C
-    int x = 1;
+    int x = 1;  // defining x
     printf("If x = %d, then: NOT x = %d\n",x, !x);
     printf("If x = !%d, then: x = %d\n",!x, x);
   #+end_src
@@ -107,6 +107,14 @@
     head(mtcars,n=2)
   #+end_src
 
+  #+RESULTS:
+  :               mpg cyl disp  hp drat    wt  qsec vs am gear carb
+  : Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
+  : Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4
+  :               mpg cyl disp  hp drat    wt  qsec vs am gear carb
+  : Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
+  : Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4
+
 - You already met the ~>~ and ~>>~ operators of the ~bash~ shell language
   that redirects standard output to a file:
 
@@ -114,6 +122,17 @@
     > empty  # create empty file called "empty"
     ls -l empty  # shows the result
   #+end_src
+
+  #+RESULTS:
+  : -rw-rw-r-- 1 marcus marcus 0 Feb 24 09:35 empty
+
+  #+begin_src bash :results output
+    echo 100 > input
+    cat input
+  #+end_src
+
+  #+RESULTS:
+  : 100
 
 * PRACTICE Build a simple calculator
 
@@ -133,7 +152,10 @@
   // compute and print results for +, -, *, /, %
 
   #+end_example
-
+- You can also first declare & define two static values (i=125, j=5),
+  test the calculator, and then add the =scanf= statement for keyboard
+  input.
+  
 - Sample input: 125 5
 
 - Sample output:
