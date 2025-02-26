@@ -1,0 +1,489 @@
+#+title: Operators - Practice
+#+AUTHOR: [yourName] (pledged)
+#+startup: overview hideblocks indent
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :comments both
+* READ README
+
+- This file is a practice file for logical and compound operators
+
+- Time: approx. 60 min.
+
+- This section follows chapter 3 in Davenport/Vine (2015) and chapters
+  4 and 5 in King (2008).
+
+* TODO Identify yourself
+
+- Replace the placeholder ~[yourName]~ in the header of this file by
+  your name and save the file (~C-x C-s~).
+
+* TODO Build a simple calculator
+
+- Execute this exercise using the Google Cloud Shell, the ~nano~ editor,
+  and the ~gcc~ compiler. Put your result in a file ~calc.c~
+
+- Write a simple calculator for integer values.
+
+- ~#include <stdio.h>~ and use the following pseudocode inside ~main~:
+  #+begin_example
+  // declare two integer variables a, b
+
+  // ask user for input
+
+  // get two integer values as input (from the keyboard)
+
+  // compute and print results for +, -, *, /, %
+
+  #+end_example
+- You can also first declare & define two static values (i=125, j=5),
+  test the calculator, and then add the =scanf= statement for keyboard
+  input.
+
+- Sample input: 125 5
+
+- Sample output:
+  #+begin_example
+  : Enter two numbers: 125 5
+  : 125 + 5 = 130
+  : 125 - 5 = 120
+  : 125 * 5 = 625
+  : 125 / 5 = 25
+  : 125 % 5 = 0
+  #+end_example
+
+** Solution:
+
+Input:
+#+begin_src bash :results output :exports both
+  echo "125 5" > input
+  cat input
+#+end_src
+
+#+RESULTS:
+: 125 5
+
+#+begin_src C :main no :includes :cmdline <input
+  #include <stdio.h>
+
+  int main() {
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d%d", &a, &b);
+    printf("%d %d\n",a,b);
+
+    printf("%d + %d = %d\n", a, b, a + b);
+    printf("%d - %d = %d\n", a, b, a - b);
+    printf("%d * %d = %d\n", a, b, a * b);
+    printf("%d / %d = %d\n", a, b, a / b);
+    printf("%d %% %d = %d\n", a, b, a % b);
+
+    return 0;
+  }
+#+end_src
+
+* TODO Boolean logic test
+
+- Go to Google Cloud shell (ide.cloud.google.com) and run the
+  following command on the shell (~-O~ is a big-Oh, not a zero):
+  #+begin_example
+  wget -O boolean.c tinyurl.com/predict-boolean
+  #+end_example
+
+- Open the file ~boolean.c~ in the ~nano~ editor.
+
+- Write the answer you expect in the place of the XX characters. Then
+  compile and run the program to see if you were right or wrong.
+
+- Code template:
+  #+begin_example C
+  #include <stdio.h>
+
+  int main() {
+      int x = 1, y = 0, z = 5;
+
+      printf("%d ? %d\n", x && y, XX);  // XX: replace by what you expect
+      printf("%d ? %d\n", x || y, XX);
+      printf("%d ? %d\n", x == y, XX);
+      printf("%d ? %d\n", !x, XX);
+      printf("%d ? %d\n", z > x && y < z, XX);
+
+      return 0;
+  }
+  #+end_example
+
+** Solution:
+#+begin_src C :main no :includes :tangle ../src/boolean_solution.c
+  #include <stdio.h>
+
+  int main() {
+    int x = 1, y = 0, z = 5;
+
+    printf("%d ? %d\n", x && y, 0);  // XX: replace by what you expect
+    printf("%d ? %d\n", x || y, 1);
+    printf("%d ? %d\n", x == y, 0);
+    printf("%d ? %d\n", !x, 0);
+    printf("%d ? %d\n", z > x && y < z, 1);
+
+    return 0;
+  }
+#+end_src
+
+#+RESULTS:
+: 0 ? 0
+: 1 ? 1
+: 0 ? 0
+: 0 ? 0
+: 1 ? 1
+
+* TODO Predict the output
+
+- Go to Google Cloud shell (ide.cloud.google.com) and run the
+  following command on the shell (~-O~ is a big-Oh, not a zero):
+  #+begin_example
+  wget -O predict.c tinyurl.com/predict-output
+  #+end_example
+
+- Open the file ~predict.c~ in the ~nano~ editor.
+
+- Write the answer you expect in the place of the XX characters. Then
+  compile and run the program to see if you were right or wrong.
+
+- Code template:
+  #+begin_example C
+    #include <stdio.h>
+
+    int main() {
+      int a = 5, b = 10, c;
+
+      c = a + b * 2;
+      printf("1. c = %d ? %d\n", c, XX); // replace XX by your guess
+
+      c = (a + b) * 2;
+      printf("2. c = %d ? %d\n", c, XX);
+
+      c = b / a + 3;
+      printf("3. c = %d ? %d\n", c, XX);
+
+      c = ++a + b--;
+      printf("4. a = %d ? %d, b = %d ? %d, c = %d ? %d\n",
+             a, XX, b, XX, c, XX);
+
+      return 0;
+    }
+  #+end_example
+
+** Solution:
+#+begin_src C :main no :includes :tangle ../src/predict_solution.c
+  #include <stdio.h>
+
+  int main() {
+    int a = 5, b = 10, c;
+
+    c = a + b * 2;
+    printf("1. c = %d ? %d\n", c, 25); // replace XX by your guess
+
+    c = (a + b) * 2;
+    printf("2. c = %d ? %d\n", c, 30);
+
+    c = b / a + 3;
+    printf("3. c = %d ? %d\n", c, 5);
+
+    c = ++a + b--;
+    printf("4. a = %d ? %d, b = %d ? %d, c = %d ? %d\n",
+           a, 6, b, 9, c, 16);
+
+    return 0;
+  }
+#+end_src
+* TODO Checking for upper and lower case
+
+1) Create a file =letter.c= that accepts a character as input, and
+   checks if the letter is =b= or not, and prints a corresponding
+   message:
+   #+begin_src C :cmdline < input :tangle letter.c
+     #include <stdio.h>
+
+     int main(void)
+     {
+       char letter;
+       scanf("%c", &letter);
+
+       if (letter == 'b')
+         printf("Input is 'b'.\n");
+       else
+         printf("Input is NOT 'b'.\n");
+
+       return 0;
+     }
+   #+end_src
+
+2) Compile the file, rename the object file to =letter=, and run it with
+   different letters to check if it works.
+   #+begin_example sh
+   gcc letter.c -o letter
+   ./letter
+   #+end_example
+
+3) Copy the file =letter.c= to a file =letter2.c= and open it:
+   #+begin_example sh
+   cp -v letter.c letter2.c
+   #+end_example
+
+4) Change the *condition* from checking only for equality with
+   lower-case =b= to checking for equality with lower- or upper-case:
+   #+begin_src C :cmdline < input :tangle letter2.c
+     #include <stdio.h>
+
+     int main(void)
+     {
+       char letter;
+       scanf("%c", &letter);
+
+       if (letter == 'b' || letter == 'B')
+         printf("Input is 'b' or 'B'.\n");
+       else
+         printf("Input is NOT 'b' or 'B'.\n");
+
+       return 0;
+     }
+   #+end_src
+
+5) Once more, compile =letter2.c=, rename the object file to =letter2=,
+   and run it for different character input values to check it.
+* TODO ASCII code of letters
+
+1) Create a file =ascii.c=
+
+2) Get two letters =c1= and =c2= from the keyboard.
+
+3) Print the letters both as characters, and as ASCII values.
+
+4) Sample input and output:
+   #+begin_example
+   Input: b B
+
+   Output:
+   The ASCII value of b is 98.
+   The ASCII value of B is 66.
+   #+end_example
+
+** *Solution:*
+#+begin_src C :main no :includes :cmdline < input :tangle ascii.c
+  #include <stdio.h>
+
+  int main(void)
+  {
+    char c1, c2;
+    scanf("%c %c", &c1, &c2);
+
+    printf("The ASCII value of %c is %d.\n", c1, c1);
+    printf("The ASCII value of %c is %d.\n", c2, c2);
+    return 0;
+  }
+#+end_src
+
+#+RESULTS:
+: The ASCII value of b is 98.
+: The ASCII value of B is 66.
+
+- Testing:
+#+begin_src bash :results output :exports both
+  gcc ascii.c -o ascii
+  ./ascii < input
+#+end_src
+
+#+RESULTS:
+: The ASCII value of b is 98.
+: The ASCII value of B is 66.
+
+- Input file:
+  #+begin_src bash :results output :exports both
+    echo "b B" > input
+    cat input
+  #+end_src
+
+  #+RESULTS:
+  : b B
+* TODO Checking for a range of values
+
+1) Create a C file =range.c= that defines three integer variables =i=, =m=,
+   and =n=, gets their values from the keyboard, and checks if the input
+   value for =i= is in the interval =[m,n)=.
+
+2) Source code:
+   #+begin_src C :main no :includes :tangle range.c :cmdline < input
+     #include <stdio.h>
+
+     int main(void)
+     {
+       int i, m, n;
+       scanf("%d %d %d", &i, &m, &n);
+
+       if (m <= i && i < n)
+         printf("%d is in the interval [%d,%d).\n", i, m, n);
+       else
+         printf("%d is NOT in the interval [%d,%d).\n", i, m, n);
+
+       return 0;
+     }
+   #+end_src
+
+   #+RESULTS:
+   : 11 is NOT in the interval [0,10).
+
+3) Compile =range.c=, rename the object file =range=, and run it with the
+   sample values: 5, 0, 10 for i, m, n - testing if 5 is in [0,10).
+
+4) Run =range= for different input values:
+
+   | i = -5 | m = 0 | n = 10 |
+   | i = 11 | m = 0 | n = 10 |
+   | i = 0  | m = 0 | n = 10 |
+   | i = 10 | m = 0 | n = 10 |
+
+5) How would you change the condition to check if the input variable =i=
+   is outside of [m,n) ?
+
+** Solution:
+   #+begin_src C :main no :includes :tangle range.c :cmdline < input
+     #include <stdio.h>
+
+     int main(void)
+     {
+       int i, m, n;
+       scanf("%d %d %d", &i, &m, &n);
+
+       if (i < m || n <= i)
+         printf("%d is NOT in the interval [%d,%d).\n", i, m, n);
+       else
+         printf("%d is in the interval [%d,%d).\n", i, m, n);
+
+       return 0;
+     }
+   #+end_src
+
+   #+RESULTS:
+   : 5 is in the interval [0,10).
+
+-----
+Testing:
+#+begin_src bash :results output :exports both
+  echo "5 0 10" > input
+  cat input
+#+end_src
+
+#+RESULTS:
+: 5 0 10
+* TODO Chained expression
+
+In C, the expression =i < j < k= is perfectly legal but it does NOT
+check if =j= is between =i= and =k=, =i= \in =(i,k)=.
+
+The relational operator =<= is evaluated from the left: =i < j= is
+computed. It is either =1= (=TRUE=) or =0= (=FALSE=).
+
+Next, =0 < k= or =1 < k= is checked.
+
+1) Create a file =chain.c= with the following code, compile and run it:
+   #+begin_src C :main no :includes
+     #include <stdio.h>
+
+     int main(void)
+     {
+       int i = 5, j = 1, k = 100;
+
+       if (i < j < k)
+          printf("TRUE: %d < %d < %d\n", i, j, k);
+       else
+          printf("NOT TRUE: %d < %d < %d\n", i, j, k);
+
+       return 0;
+     }
+   #+end_src
+
+   #+RESULTS:
+   : TRUE: 5 < 1 < 100
+
+2) Fix the code so that the output is correct. Then test it for
+   different values of =i=, =j=, =k=.
+
+** Solution:
+#+begin_src C :main no :includes :includes :tangle chain.c :cmdline < input
+     #include <stdio.h>
+
+     int main(void)
+     {
+       int i = 5, j = 1, k = 100;
+
+       if (i < j && j < k)
+          printf("TRUE: %d < %d < %d\n", i, j, k);
+       else
+          printf("NOT TRUE: %d < %d < %d\n", i, j, k);
+
+       return 0;
+     }
+#+end_src
+
+#+RESULTS:
+: NOT TRUE: 5 < 1 < 100
+
+Testing:
+#+begin_src bash :results output :exports both
+  gcc chain.c -o chain
+  ./chain
+#+end_src
+
+#+RESULTS:
+: NOT TRUE: 5 < 1 < 100
+
+With input:
+#+begin_src C :main no :includes :includes :tangle chain.c :cmdline < input
+  #include <stdio.h>
+
+  int main(void)
+  {
+    int i,j,k;
+    scanf("%d %d %d",&i,&j,&k);
+
+    if (i < j && j < k)
+       printf("TRUE: %d < %d < %d\n", i, j, k);
+    else
+       printf("NOT TRUE: %d < %d < %d\n", i, j, k);
+
+    return 0;
+  }
+#+end_src
+
+#+RESULTS:
+: NOT TRUE: 1 < 5 < -100
+
+Input file:
+#+begin_src bash :results output :exports both
+echo "1 5 -100" > input
+cat input
+#+end_src
+
+#+RESULTS:
+: 1 5 -100
+* TODO Upload your practice files as a ZIP archive
+
+- ZIP your seven files on the command line as an archive file
+  ~operators.zip~ and upload it to Canvas.
+
+- On the shell:
+  #+begin_example
+  zip operators.zip calc.c predict.c boolean.c logical.c letter.c range.c chain.c
+  #+end_example
+
+- If you enter ~less operators.zip~ you will see your files in the
+  archive (leave the ~less~ screen by typing =q=:
+  #+attr_html: :width 600px:
+  [[../img/zip.png]]
+
+- If you enter ~file operators.zip~, you should see a message confirming
+  that this is =Zip archive data=.
+  #+begin_example
+  $ file operators.zip
+  operators.zip: Zip archive data, at least v1.0 to extract, compression method=store
+  #+end_example
+
+

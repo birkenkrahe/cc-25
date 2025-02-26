@@ -1,7 +1,7 @@
 #+title: Agenda Notebook
 #+author: Marcus Birkenkrahe
 #+subtitle: CSC 100
-#+SEQ_TODO: TODO NEXT IN_PROGRESS | DONE CANCELLED
+#+SEQ_TODO: TODO NEXT IN-PROGRESS | DONE CANCELLED
 #+startup: overview hideblocks indent entitiespretty
 #+property: :header-args:C      :main yes :includes <stdio.h> :results output :exports both
 #+property: :header-args:python :session *Python* :python python3 :results output :exports both
@@ -1053,15 +1053,12 @@ spend enough time on the programing assignments & perhaps try a bonus.
   #+attr_html: :width 300px:
   [[../img/phone.png]]
 
-* IN_PROGRESS Week 6: =scanf= practice & Operators
+* DONE Week 6: =scanf= practice
 #+attr_html: :width 400px:
 #+caption: Francisco de Goya, Still Life with Golden Bream (1808)
 [[../img/goya.jpg]]
 
-- [ ] *Tests & Assignments*: Removing 1 point per late day. Easier for
-  me, kinder to you. All close one week after the deadline though.
-
-** DONE *Test 5*: =printf= and =scanf=. Deadline: 21 Feb (closes: 28 Feb)
+** *Test 5*: =printf= and =scanf=. Deadline: 21 Feb (closes: 28 Feb)
 
 - 35 questions!
 - Take your time!
@@ -1073,7 +1070,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
 - That's 31 problems per week!
 - Or more than 5 problems per work day!
 
-** DONE Checked your programming assignments - who needs tutoring?
+** Checked your programming assignments - who needs tutoring?
 
 - I will grade your submissions closer to the deadline now (but not
   before the deadline) so that you can submit improved versions for
@@ -1130,7 +1127,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
 - I'll make solution videos of past assignments as soon as I
   can. Arrange office hours with me: [[https://tinyurl.com/sp25-booking][tinyurl.com/sp25-booking]]
 
-** DONE *Videos* on Google Cloud Shell ("Panopto" tab in Canvas):
+** *Videos* on Google Cloud Shell ("Panopto" tab in Canvas):
 
 #+begin_quote
 + How to *log* into cloud shell ([[https://cloud.google.com][cloud.google.com]]).
@@ -1151,7 +1148,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
 3) You need to stay within 50 hours per week.
 #+end_quote
 
-** DONE *Practice*: Linux commands (=ls=, =cd=, =mkdir=, =rm=, =echo=, =history=
+** *Practice*: Linux commands (=ls=, =cd=, =mkdir=, =rm=, =echo=, =history=
 
 - Log into Google Cloud Shell now and follow my lead.
 
@@ -1164,14 +1161,13 @@ spend enough time on the programing assignments & perhaps try a bonus.
 | =echo=    | print to screen         | =echo hello= |
 | =history= | show last 1000 commands | =!100=       |
 
-** DONE *Bonus assignment:* Download Google Cloud Shell to your PC.
+** *Bonus assignment:* Download Google Cloud Shell to your PC.
 
 - Install Google Cloud Shell as a Chrome app on your PC
 - Follow the steps (includes testing with "hello world")
 - For points, submit screenshot of your console/terminal to Canvas
 
-
-** IN_PROGRESS *Practice:* =scanf= exercises in Google Cloud Shell
+** *Practice:* =scanf= exercises in Google Cloud Shell
 
 - Open [[https://tinyurl.com/7-scanf-practice][tinyurl.com/7-scanf-practice]] in your browser.
 
@@ -1182,26 +1178,33 @@ spend enough time on the programing assignments & perhaps try a bonus.
 - I recorded a video of the first exercise in Panopto (Canvas):
   "[[https://lyon.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d9ea9517-36f9-40ac-ae0b-b286017ea35c][Editing, Compiling, Running C files on the Shell]]"
 
-** TODO Review: The command-line shell / GCC compiler / ~nano~ editor
+** Review: The command-line shell / GCC compiler / ~nano~ editor
 
 1. How can you create a new file =hello.c=? Will this command work?
    #+begin_example sh
      nano hello
    #+end_example
+   #+begin_quote
+   No, you need to enter =nano hello.c=
+   #+end_quote
 
 2. How can you compile =hello.c=? Will this command work?
    #+begin_example sh
      GCC hello.c
    #+end_example
+   #+begin_quote
+   No, it will not work because the compiler is =gcc=. You have to enter
+   =gcc hello.c=
+   #+end_quote
 
 3. How can you run the machine code after the successful compilation?
    You are in the directory =/home/you=. Which command will work?
    #+begin_example sh
-     a.out
-     ../a.out
-     /home/you/a.out
-     .a.out
-     ./a.out
+     a.out             # computer cannot find a.out
+     ../a.out          # computer cannot find a.outf one level up
+     /home/you/a.out   # yes! absolute path to a.out is ound
+     .a.out            # no: there is no file `.a.out`
+     ./a.out           # yes! relative path to a.out is found
    #+end_example
 
 4. Which command tells you were you are?
@@ -1209,20 +1212,23 @@ spend enough time on the programing assignments & perhaps try a bonus.
      pwd
    #+end_src
 
+   #+RESULTS:
+   : /home/marcus/GitHub/admin/spring25/csc100/org
+
 5. You are in =/home/me/one= and you want to go to =/home/me/two= - how
    can you get there? Which of the following commands would work?
    #+begin_example sh
-   cd /home/me/two
-   cd ../two
+   cd /home/me/two   # using absolute path
+   cd ../two         # using relative path
    #+end_example
 
 6. You want to see the files in your present working directory
    (=pwd=). Which command would do that?
    #+begin_example sh
-     ls 
-     ls ..
-     ls .
-     ls ./
+     ls       # yes
+     ls ..    # no: looks one level up
+     ls .     # yes
+     ls ./    # yes - same as . but possible to add a file name after it
    #+end_example
 
 7. Which command clears the screen when it's full?
@@ -1243,22 +1249,222 @@ spend enough time on the programing assignments & perhaps try a bonus.
 
 10. Which command shows you all C files in the current directory?
     #+begin_src bash :results output :exports both
-    ls *.c
+      ls *.c   # `*` is called a `glob` or a `wildcard`
+      ls
     #+end_src
 
-* Week 7: Operators & Pseudocode & =if= & =else= & =switch=
+    #+RESULTS:
+    #+begin_example
+    sd.c
+    100
+    1_overview.org
+    1_practice.org
+    1_practice_print.org
+    2_introduction.org
+    2_practice.org
+    2_practice_print.org
+    3_practice.org
+    3_practice_print.org
+    3_printing_values_class.org
+    3_printing_values.org
+    4_variables_class.org
+    4_variables.org
+    4_variables.tex
+    5_constants_class.org
+    5_constants.org
+    6_printf.org
+    6_printf_practice.org
+    6_printf_practice_solution.org
+    6_printf_print.org
+    6_printf_solution.org
+    7_scanf.org
+    7_scanf_practice.org
+    7_scanf_practice_solution.org
+    8_operators.org
+    agenda.org
+    analysis.org
+    assignments.org
+    input2
+    install.org
+    notes.org
+    OneCompiler.org
+    projects.org
+    sd
+    sd.c
+    syllabusCPP.org
+    syllabus.org
+    syllabus_print.org
+    tests.org
+    #+end_example
 
-** TODO *Lecture:* Operators (=++=, =*==, =&&=)
+* IN-PROGRESS Week 7: Operators & Pseudocode & =if= & =else= & =switch=
 
+** DONE Wrong test 5 question
 
-** TODO *Practice:* Operators
+This turned out to be tricky! Everybody who did the test by Friday got
+1 extra point & James got 2 points for discovering the mistake first.
 
+1) *Question:* How can you print *2.7182818285* as *2.71* in C?
+   - [X] `printf("%.2f\n", 2.7182818285);`
+   - [ ] `printf("%.3f\n", 2.7182818285);`
+   - [ ] `printf("%0.2lf\n", 2.7182818285);`
+   - [ ] `printf("%.2lf\n", 2.7182818285);`
 
-- [ ] *Tests & Assignments*: Removing 1 point per late day. Easier for
-  me, kinder to you. All close one week after the deadline though.
+2) Solution: The question was ill-posed because ~printf~ *rounds* unless
+   explictly instructed to *truncate*.
+   #+begin_src C :results output
+     #include <stdio.h>
 
-*
-* Week 8: Loops: =for= & =while= & =do=
+     int main() {
+       double num = 2.7182818285; // `double`: `long` %lf
+       printf("%.2f\n", num);     // precision 2 - rounds
+       printf("%0.2lf\n", num);   // precision 2 - rounds
+       printf("%.2lf\n", num);    // precision 2 - rounds
+       printf("%.3f\n", num);     // precision 3 - rounds
+       printf("%.2f\n", (int) (num * 100)/100.0); // truncated
+       return 0;
+     }
+   #+end_src
+
+   #+RESULTS:
+   : 2.72
+   : 2.72
+   : 2.72
+   : 2.718
+   : 2.71
+
+3) Explanation:
+
+   - Multiplication by 100 shifts the decimal point to the right:
+     #+begin_src C
+       float num = 2.7182818285;
+       printf("Shift %f to the right: %f\n",num, num * 100);
+     #+end_src
+
+     #+RESULTS:
+     : Shift 2.718282 to the right: 271.828186
+
+   - Cast with ~(int)~ removes the decimal part (truncates it):
+     #+begin_src C :results output
+       float num = 2.7182818285;
+       printf("Shift %f to the right: %f\n",num, num * 100);
+       printf("Truncate %f: %d\n",num * 100, (int) (num * 100));
+     #+end_src
+
+     #+RESULTS:
+     : Shift 2.718282 to the right: 271.828186
+     : Truncate 271.828186: 271
+
+   - Division by 100 shifts it back by two places:
+     #+begin_src C :results output
+       float num = 2.7182818285;
+       printf("Shift %f to the right: %f\n",num, num * 100);
+       printf("Truncate %f: %d\n",num * 100, (int) (num * 100));
+       printf("Shift %d back: %.2f\n",(int) (num * 100), (int)(num*100)/100.0);
+     #+end_src
+
+     #+RESULTS:
+     : Shift 2.718282 to the right: 271.828186
+     : Truncate 271.828186: 271
+     : Shift 271 back: 2.71
+  
+** DONE Review programming assignment
+
+- Results:
+  #+attr_html: :width 400px:
+  [[../img/grade2.png]]
+
+  #+attr_html: :width 400px:
+  [[../img/grade3.png]]
+
+- [X] "Your height in light-years" graded and feedback given:
+  1) *Permanent* constants should be defined with ~const~
+  2) *Constants* should be named with UPPER CASE: =SPEED_OF_LIGHT=
+  3) *Variable* & constant names should be meaningful: =height_m_napoleon=
+
+- [X] Everybody should have received my sample solution:
+  [[https://tinyurl.com/light-years-solution][tinyurl.com/light-years-solution]] (modified on Sunday to more clearly
+  separate input/output variables, conversion, and printing.
+
+- [X] There is an easy *bonus assignment:* Get the input in meters from
+  using ~scanf~ - "Bonus: Your height in light-years (reloaded)".
+
+** IN-PROGRESS *Lecture & Practice:* Operators (=++=, =*==, =&&=)
+
+*Three types of operators:*
+1) [X] arithmetic operators like ~*~
+2) [ ] logical and relational operators like ~==~ and ~<~
+3) [ ] compound operators like ~++~ and ~+=~
+
+** TODO Review - arithmetic operators and shell compilation
+
+1. What's wrong with this program?
+   #+begin_src C
+     int i = 2;
+     printf("%d\n", i**2);
+   #+end_src
+
+   #+RESULTS:
+   : 4
+
+2. How do humans vs. machines solve problems?
+   #+begin_quote
+   - Humans: with *heuristics* ("tinkering" / "trial and error")
+   - Machines: with *algorithms* (strict instruction sets)
+   #+end_quote
+
+3. What's a *unary operator*? Can you give an example?
+   #+begin_quote
+   - An operator (a built-in function) with one operand is "unary"
+   - =NOT= (Boolean op.), =++= (compound op.), negation =-= (arithmetic op.)
+   #+end_quote
+
+4. What's the difference between ==== and === ? Can you give an example?
+   #+begin_src C
+     int x = 1;  // assignment operator
+     printf("%d\n", x == x); // equality operator (conditional)
+   #+end_src
+
+5. When asked to "build a simple calculator", how should you proceed?
+   #+begin_quote
+   1) Start simple: one operation, fixed values.
+   2) Variable declaration, computation, print result.
+   3) Complete calculator for all remaining operations.
+   4) Add user interface (keyboard input).
+   #+end_quote
+
+6. You compile a file called =amazing.c=. What's the output file called?
+   #+begin_quote
+   The standard output or *object* file is called =a.out=.
+   #+end_quote
+
+7. How can you run the executable file =a.out= on the command-line if
+   you and the file are both in your home directory?
+   #+begin_quote
+   You have to give the computer the *path* to the file: 
+   1) =./a.out=             // relative path to =a.out=
+   2) =/myHome/a.out=       // absolute path to =a.out=
+   #+end_quote
+
+8. What is the golden rule for the format string of ~scanf~?
+   #+begin_quote
+   The format string of ~scanf~ should be minimal, and contain only the
+   format specifiers required for the input data types, e.g. ="%d%d"=.
+   #+end_quote
+
+9. What is the rule for the arguments of ~scanf~?
+   #+begin_quote
+   Variables need to be declared with the *address-of* operator ~&~.
+   #+end_quote
+
+10. How many operators does C have?
+    #+begin_quote
+    C has 44 operators - arithmetic, relational, logical, bitwise,
+    assignment, increment/decrement, conditional/ternary, comma,
+    pointer, type casting, SizeOf, structure/member.
+    #+end_quote
+
+* Week 8: Operators II & Loops: =for= & =while= & =do=
 * Week 9: Arrays
 * Week 10: Functions
 * Week 11: Program Organization
