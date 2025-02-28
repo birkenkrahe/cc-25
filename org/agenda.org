@@ -1297,7 +1297,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
     tests.org
     #+end_example
 
-* IN-PROGRESS Week 7: Operators & Pseudocode & =if= & =else= & =switch=
+* IN-PROGRESS Week 7: Operators 
 
 ** DONE Wrong test 5 question
 
@@ -1389,24 +1389,21 @@ This turned out to be tricky! Everybody who did the test by Friday got
 - [X] There is an easy *bonus assignment:* Get the input in meters from
   using ~scanf~ - "Bonus: Your height in light-years (reloaded)".
 
-** IN-PROGRESS *Lecture & Practice:* Operators (=++=, =*==, =&&=)
-
-*Three types of operators:*
-1) [X] arithmetic operators like ~*~
-2) [ ] logical and relational operators like ~==~ and ~<~
-3) [ ] compound operators like ~++~ and ~+=~
-
-** TODO Review - arithmetic operators and shell compilation
+** DONE Review - arithmetic operators and shell compilation
 
 1. What's wrong with this program?
    #+begin_src C
      int i = 2;
-     printf("%d\n", i**2);
+     printf("%d\n", i**2); // no such operator!
    #+end_src
 
    #+RESULTS:
    : 4
 
+   #+begin_quote
+   C does not have a power operator =**=.
+   #+end_quote
+   
 2. How do humans vs. machines solve problems?
    #+begin_quote
    - Humans: with *heuristics* ("tinkering" / "trial and error")
@@ -1425,12 +1422,16 @@ This turned out to be tricky! Everybody who did the test by Friday got
      printf("%d\n", x == x); // equality operator (conditional)
    #+end_src
 
+   #+RESULTS:
+   : 1
+
 5. When asked to "build a simple calculator", how should you proceed?
    #+begin_quote
    1) Start simple: one operation, fixed values.
    2) Variable declaration, computation, print result.
    3) Complete calculator for all remaining operations.
    4) Add user interface (keyboard input).
+   5) Compile, run and test it again and again and again...
    #+end_quote
 
 6. You compile a file called =amazing.c=. What's the output file called?
@@ -1449,7 +1450,8 @@ This turned out to be tricky! Everybody who did the test by Friday got
 8. What is the golden rule for the format string of ~scanf~?
    #+begin_quote
    The format string of ~scanf~ should be minimal, and contain only the
-   format specifiers required for the input data types, e.g. ="%d%d"=.
+   format specifiers required for the input data types, e.g. ="%d%d"=
+   requires you to enter two numbers like this: =11= and not =1 1=.
    #+end_quote
 
 9. What is the rule for the arguments of ~scanf~?
@@ -1464,10 +1466,97 @@ This turned out to be tricky! Everybody who did the test by Friday got
     pointer, type casting, SizeOf, structure/member.
     #+end_quote
 
-* Week 8: Operators II & Loops: =for= & =while= & =do=
-* Week 9: Arrays
-* Week 10: Functions
-* Week 11: Program Organization
+** IN-PROGRESS *Lecture & Practice:* Operators (=++=, =*==, =&&=)
+
+*Three types of operators:*
+1) [X] arithmetic operators like ~*~
+2) [ ] logical and relational operators like ~==~ and ~<~
+3) [ ] compound operators like ~++~ and ~+=~
+
+In this session you produce 7 C files which in the end you
+must upload as a ZIP file - if you miss a session, please
+create the file on your own (ask me ask me ask me).
+
+** TODO NOT ~!~ question by Nichole (with a preview)
+
+#+begin_quote
+Does the operator ! convert the value of the operand to a binary value
+and then act to reverse that value?
+#+end_quote
+
+​Yes, very good observation. Reverse = inverse.
+
+#+begin_quote
+If x=5, ! causes the machine to see the five as TRUE and returns the
+ reverse of that, so !x will return FALSE because what the machine
+ sees is NOT TRUE, i.e. !1?
+#+end_quote
+
+In C, all values except =0= are considered =TRUE= by the machine.
+
+#+begin_src C :results output
+  float truth[]={0,1,-100,3.14};
+
+  for (int i=0; i<4;i++) {
+    if(truth[i])
+      printf("%g is TRUE\n",truth[i]);
+    else 
+      printf("%g is FALSE\n",truth[i]);
+   }
+#+end_src
+
+For your example: the =stdbool= header file allows you to define a data
+type =bool= but C still only uses 1 and 0 internally for TRUE and FALSE.
+
+#+begin_src C
+  #include <stdbool.h>
+  bool x = 5;
+  printf("%d %d",x, !x); // 5 is TRUE and !5 = 0 is FALSE
+#+end_src
+
+#+begin_quote
+And if x=0, ! causes the machine to see the zero as FALSE so the
+machine will return TRUE because what it sees is NOT FALSE, i.e. !0?
+#+end_quote
+
+#+begin_src C
+  #include <stdbool.h>
+  bool x = 0;
+  printf("%d %d",x, !x); // 5 is TRUE and !5 = 0 is FALSE
+#+end_src
+
+#+attr_html: :width 400px
+[[../img/NOT.png]]
+
+** TODO Review: AND (~&&~), OR (~||~), NOT (~!~)
+
+(Solution to =boolean.c=)
+
+1. What is: (100 && 1) ?
+   #+begin_src C
+     printf("(100 && 1) is %d\n", 100 && 1);
+   #+end_src
+2. What is (100 || 0) ?
+   #+begin_src C  :results output
+     printf("(100 || 0) is %d\n", 100 || 0);
+   #+end_src
+3. What is (1 == 0) ?
+   #+begin_src C
+     printf("(1 == 0) is %d\n", 1 == 0);
+   #+end_src
+4. What is !(-1) and !!10 ?
+   #+begin_src C :results output
+     printf("!(-1) is %d, !!(10) is %d\n", !(-1), !!10);
+   #+end_src
+5. What is (1 < 0) || (0 < 1) ?
+   #+begin_src C :results output
+     printf("(1 < 0) || (0 < 1) is %d\n", (1 < 0) || (0 < 1));
+   #+end_src
+
+* Week 8: Operators II & Conditionals: =if= & =else= & =else if=
+* Week 9: Loops:  =for= & =while= & =do=
+* Week 10: Arrays
+* Week 11: Functions
 * Week 12: Pointers
 * Week 13: Pointers and arrays
 * Week 14: Strings
