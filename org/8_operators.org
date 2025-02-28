@@ -428,7 +428,10 @@ absolutely everyone get a picture of what it means.
 - In R (vectorized Boolean operations):
   #+begin_src R :session *R* :results output :exports both
     ## set up truth table with values for p and q
-    tt <- data.frame("p"=c(TRUE,TRUE,FALSE,FALSE),"q"=c(TRUE,FALSE,TRUE,FALSE))
+    p <- c(TRUE,TRUE,FALSE,FALSE)
+    q <- c(TRUE,FALSE,TRUE,FALSE)
+
+    tt <- data.frame(p,q)
 
     ## compute (p AND NOT q) OR (NOT p AND q) and add it to the table
     tt["p XOR q"] <- (p & !q) | (!p & q)
@@ -487,25 +490,6 @@ absolutely everyone get a picture of what it means.
   | TRUE  | FALSE | TRUE    |      1 |
   | FALSE | TRUE  | TRUE    |      1 |
   | FALSE | FALSE | FALSE   |      0 |
-
-- In R:
-  #+begin_src R :session *R* :results output :exports both
-    ## set up truth table with values for p and q
-    tt <- data.frame("p"=c(TRUE,TRUE,FALSE,FALSE),"q"=c(TRUE,FALSE,TRUE,FALSE))
-
-    ## compute (p AND NOT q) OR (NOT p AND q) and add it to the table
-    tt["p XOR q"] <- (p & !q) | (!p & q)
-
-    ## print resulting truth table
-    print(tt,row.names=FALSE)
-  #+end_src
-
-  #+RESULTS:
-  :      p     q p XOR q
-  :   TRUE  TRUE   FALSE
-  :   TRUE FALSE    TRUE
-  :  FALSE  TRUE    TRUE
-  :  FALSE FALSE   FALSE
 
 - Algebraic operations are way more elegant and insightful than truth
   tables. Watch "Proving Logical Equivalences without Truth Tables"

@@ -1553,6 +1553,14 @@ machine will return TRUE because what it sees is NOT FALSE, i.e. !0?
      printf("(1 < 0) || (0 < 1) is %d\n", (1 < 0) || (0 < 1));
    #+end_src
 
+
+** TODO Next programming assignments
+
+Three simple assignments:
+- Add and divide floating point numbers
+- Compute Boolean expressions
+- Compute compound operators
+
 * Week 8: Operators II & Conditionals: =if= & =else= & =else if=
 * Week 9: Loops:  =for= & =while= & =do=
 * Week 10: Arrays
