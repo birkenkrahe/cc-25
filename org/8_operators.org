@@ -340,22 +340,29 @@ absolutely everyone get a picture of what it means.
 - Write the answer you expect in the place of the XX characters. Then
   compile and run the program to see if you were right or wrong.
 
-- Code template:
-  #+begin_example C
-  #include <stdio.h>
+- Code template (this will NOT compile!):
+  #+begin_src C :tangle ../src/boolean-template.c
+    #include <stdio.h>
 
-  int main() {
+    int main() {
       int x = 1, y = 0, z = 5;
 
-      printf("%d ? %d\n", x && y, XX);  // XX: replace by what you expect
-      printf("%d ? %d\n", x || y, XX);
-      printf("%d ? %d\n", x == y, XX);
-      printf("%d ? %d\n", !x, XX);
-      printf("%d ? %d\n", z > x && y < z, XX);
+      // Below, replace `?` by what you expect the Boolean expression
+      // result in - for example for the first statement, compute (in
+      // your head) `1 && 0` (which is 1 AND 0 in the truth table, and
+      // replace `?` by what you think the result will be.
+      // EXAMPLE: x && x = 1 && 1 = TRUE = 1
+      // printf("%d == %d\n", x && y, 1);
+
+      printf("%d == %d\n", x && y, ?);
+      printf("%d == %d\n", x || y, ?);
+      printf("%d == %d\n", x == y, ?);
+      printf("%d == %d\n", !x, ?);
+      printf("%d == %d\n", z > x && y < z, ?);
 
       return 0;
-  }
-  #+end_example
+    }
+  #+end_src
 
 ** Solution:
 #+begin_src C :main no :includes :tangle ../src/boolean_solution.c
@@ -364,22 +371,29 @@ absolutely everyone get a picture of what it means.
   int main() {
     int x = 1, y = 0, z = 5;
 
-    printf("%d ? %d\n", x && y, 0);  // XX: replace by what you expect
-    printf("%d ? %d\n", x || y, 1);
-    printf("%d ? %d\n", x == y, 0);
-    printf("%d ? %d\n", !x, 0);
-    printf("%d ? %d\n", z > x && y < z, 1);
+    // Below, replace `?` by what you expect the Boolean expression
+    // result in - for example for the first statement, compute (in
+    // your head) `1 && 0` (which is 1 AND 0 in the truth table, and
+    // replace `?` by what you think the result will be.
+    // EXAMPLE: x && x = 1 && 1 = TRUE = 1
+    // printf("%d == %d\n", x && y, 1);
+
+    printf("%d == %d\n", x && y, 0);
+    printf("%d == %d\n", x || y, 1);
+    printf("%d == %d\n", x == y, 0);
+    printf("%d == %d\n", !x, 0);
+    printf("%d == %d\n", z > x && y < z, 1);
 
     return 0;
   }
 #+end_src
 
 #+RESULTS:
-: 0 ? 0
-: 1 ? 1
-: 0 ? 0
-: 0 ? 0
-: 1 ? 1
+: 0 == 0
+: 1 == 1
+: 0 == 0
+: 0 == 0
+: 1 == 1
 
 * Expanding Boolean algebra
 
@@ -619,18 +633,24 @@ absolutely everyone get a picture of what it means.
     int main() {
       int a = 5, b = 10, c;
 
+  // USING THE VALUES FOR a AND b, COMPUTE c IN YOUR HEAD
+  // THEN ENTER THE VALUE INSTEAD OF THE QUESTION MARK ?
+  // THEN COMPILE AND RUN TO SEE IF YOU GUESSED RIGHT.
+  // EXAMPLE: c = b * a = 10 * 5:
+  // printf("1. c = %d == %d\n", c, 50);
+
       c = a + b * 2;
-      printf("1. c = %d ? %d\n", c, XX); // replace XX by your guess
+      printf("1. c = %d == %d\n", c, ?); // what is c?
 
       c = (a + b) * 2;
-      printf("2. c = %d ? %d\n", c, XX);
+      printf("2. c = %d == %d\n", c, ?);
 
       c = b / a + 3;
-      printf("3. c = %d ? %d\n", c, XX);
+      printf("3. c = %d == %d\n", c, ?);
 
       c = ++a + b--;
-      printf("4. a = %d ? %d, b = %d ? %d, c = %d ? %d\n",
-             a, XX, b, XX, c, XX);
+      printf("4. a = %d == %d, b = %d == %d, c = %d == %d\n",
+             a, ?, b, ?, c, ?);
 
       return 0;
     }
@@ -643,23 +663,34 @@ absolutely everyone get a picture of what it means.
   int main() {
     int a = 5, b = 10, c;
 
+    // USING THE VALUES FOR a AND b, COMPUTE c IN YOUR HEAD
+    // THEN ENTER THE VALUE INSTEAD OF THE QUESTION MARK ?
+    // THEN COMPILE AND RUN TO SEE IF YOU GUESSED RIGHT.
+    // EXAMPLE: c = b * a = 10 * 5:
+    // printf("1. c = %d == %d\n", c, 50);
+
     c = a + b * 2;
-    printf("1. c = %d ? %d\n", c, 25); // replace XX by your guess
+    printf("1. c = %d == %d\n", c, 25); // replace XX by your guess
 
     c = (a + b) * 2;
-    printf("2. c = %d ? %d\n", c, 30);
+    printf("2. c = %d == %d\n", c, 30);
 
     c = b / a + 3;
-    printf("3. c = %d ? %d\n", c, 5);
+    printf("3. c = %d == %d\n", c, 5);
 
     c = ++a + b--;
-    printf("4. a = %d ? %d, b = %d ? %d, c = %d ? %d\n",
+    printf("4. a = %d == %d, b = %d == %d, c = %d == %d\n",
            a, 6, b, 9, c, 16);
 
     return 0;
   }
 #+end_src
 
+#+RESULTS:
+: 1. c = 25 == 25
+: 2. c = 30 == 30
+: 3. c = 5 == 5
+: 4. a = 6 == 6, b = 9 == 9, c = 16 == 16
 * Booleans in C
 
 - C evaluates all non-zero values as ~TRUE~ (~1~), and all zero values as
@@ -789,6 +820,12 @@ absolutely everyone get a picture of what it means.
 
 - Code template:
   #+begin_src C :tangle ../src/logical_template.c
+    /***********************************************
+    * logical.c: Write and predict logical results *
+    * Input: None. Output: integer values          *
+    * Author: Marcus Birkenkrahe GPLv3             *
+    * Date: 02/24/2025                             *
+    ***********************************************/
     #include <stdio.h>
 
     int main(void)
@@ -796,25 +833,31 @@ absolutely everyone get a picture of what it means.
       // variable declarations
       int i, j, k;
 
-      // Check if `(NOT i)` is smaller than j, for i=10 and j=5
-      i = 10, j = 5;
-      printf("%d = %d\n", ..., XX);
+      // TRANSLATE THE SENTENCE IN THE COMMENT INTO A LOGICAL EXPRESSION
+      // AND PUT THE CODE WHERE THE ... ARE. GUESS THE VALUE OF THE
+      // LOGICAL EXPRESSION AND REPLACE THE ? WITH IT.
+      // EXAMPLE: Check if i is smaller than j => `i < j`
+      // FOR i = 10 and j = 5: 10 < 5 is TRUE: ? => 1
 
-      // Check the value of `NOT(NOT (i)) + NOT(j)`, for i=2 and j=1
+      // Check if `(NOT i)` is smaller than j
+      i = 10, j = 5;
+      printf("%d = %d\n", ..., ?);
+
+      // Check the value of `NOT(NOT (i)) + NOT(j)`
       i = 2, j = 1;
-      printf("%d = %d\n", ..., XX);
+      printf("%d = %d\n", ..., ?);
 
       // Check if this is true: `NOT(x + y) = NOT(x) + NOT(y)`
       i = 2, j = 1;
-      printf("%d = %d\n", ..., XX);
+      printf("%d = %d\n", ..., ?);
 
-      // Compute `i AND j OR k`, for i=5, j=0, k=-5
+      // Compute `i AND j OR k`
       i = 5, j = 0, k = -5;
-      printf("%d = %d\n", ..., XX);
+      printf("%d = %d\n", ..., ?);
 
-      // Compute `i smaller than j OR k`, for i=1, j=2, k=3
+      // Compute `i smaller than j OR k`
       i = 1, j = 2, k = 3;
-      printf("%d = %d\n", ..., XX);
+      printf("%d = %d\n", ..., ?);
 
       return 0;
     }
@@ -823,12 +866,24 @@ absolutely everyone get a picture of what it means.
 ** Solution
 
 #+begin_src C :tangle ../src/logical_solution.c
+  /***********************************************
+  * logical.c: Write and predict logical results *
+  * Input: None. Output: integer values          *
+  * Author: Marcus Birkenkrahe GPLv3             *
+  * Date: 02/24/2025                             *
+  ***********************************************/
   #include <stdio.h>
 
   int main(void)
   {
     // variable declarations
     int i, j, k;
+
+    // TRANSLATE THE SENTENCE IN THE COMMENT INTO A LOGICAL EXPRESSION
+    // AND PUT THE CODE WHERE THE ... ARE. GUESS THE VALUE OF THE
+    // LOGICAL EXPRESSION AND REPLACE THE ? WITH IT.
+    // EXAMPLE: Check if i is smaller than j => `i < j`
+    // FOR i = 10 and j = 5: 10 < 5 is TRUE: ? => 1
 
     // Check if `(NOT i)` is smaller than j, for i=10 and j=5
     i = 10, j = 5;
@@ -1012,41 +1067,62 @@ absolutely everyone get a picture of what it means.
 
 * PRACTICE Checking for upper and lower case
 
-1) Create a file =letter.c= that accepts a character as input, and
-   checks if the letter is =b= or not, and prints a corresponding
-   message:
-   #+begin_src C :cmdline < input :tangle letter.c
-     #include <stdio.h>
-
-     int main(void)
-     {
-       char letter;
-       scanf("%c", &letter);
-
-       if (letter == 'b')
-         printf("Input is 'b'.\n");
-       else
-         printf("Input is NOT 'b'.\n");
-
-       return 0;
-     }
+1) Get the file ~letter.c~ from the command-line and open it in ~nano~:
+   #+begin_src bash :results output
+   wget -O letter.c tinyurl.com/letter-template
    #+end_src
 
-2) Compile the file, rename the object file to =letter=, and run it with
+2) ~letter.c~ accepts a character =letter= as input, checks whether the
+   letter is =b= or not, and prints a corresponding message:
+   #+begin_src C :cmdline < input :tangle ../src/letter-template.c
+   /****************************************
+   * letter.c: check character input       *
+   * Input: two character values           *
+   * Output: Input is 'b' or not 'b'       *
+   * Author: Marcus Birkenkrahe GPLv3      *
+   * Date: 02/27/2025                      *
+   ****************************************/
+   #include <stdio.h>
+ 
+   int main(void)
+   {
+   // TODO: declare character variables c1 and c2
+   char letter;
+   // TODO: get two characters c1 and c2 from the keyboard
+   scanf("%c", &letter);
+   // TODO: check whether `letter` is the same as `b`
+   if (letter == 'b')
+   printf("Input is 'b'.\n");
+   else
+   printf("Input is NOT 'b'.\n");
+  
+   return 0;
+   }
+   #+end_src
+
+3) Compile the file, rename the object file to =letter=, and run it with
    different letters to check if it works.
    #+begin_example sh
    gcc letter.c -o letter
    ./letter
    #+end_example
 
-3) Copy the file =letter.c= to a file =letter2.c= and open it:
+4) Copy the file =letter.c= to a file =letter2.c= and open it:
    #+begin_example sh
    cp -v letter.c letter2.c
    #+end_example
 
-4) Change the *condition* from checking only for equality with
+5) Change the *condition* from checking only for equality with
    lower-case =b= to checking for equality with lower- or upper-case:
    #+begin_src C :cmdline < input :tangle letter2.c
+   /****************************************
+   * letter2c: check character input       *
+   * Input: two character values           *
+   * Output: Input is 'b' or 'B'           *
+   * Author: Marcus Birkenkrahe GPLv3      *
+   * Date: 02/27/2025                      *
+   ****************************************/
+
      #include <stdio.h>
 
      int main(void)
@@ -1063,7 +1139,7 @@ absolutely everyone get a picture of what it means.
      }
    #+end_src
 
-5) Once more, compile =letter2.c=, rename the object file to =letter2=,
+6) Once more, compile =letter2.c=, rename the object file to =letter2=,
    and run it for different character input values to check it.
 
 * PRACTICE ASCII code of letters
@@ -1085,6 +1161,13 @@ absolutely everyone get a picture of what it means.
 
 ** *Solution:*
 #+begin_src C :main no :includes :cmdline < input :tangle ascii.c
+  /************************************************
+  * ascii.c: print ASCII value of characters      *
+  * Input: two character values                   *
+  * Output: ASCII value (int) of character (char) *
+  * Author: Marcus Birkenkrahe GPLv3              *
+  * Date: 02/27/2025                              *
+  ************************************************/
   #include <stdio.h>
 
   int main(void)
@@ -1169,13 +1252,22 @@ absolutely everyone get a picture of what it means.
 
 * PRACTICE Checking for a range of values
 
-1) Create a C file =range.c= that defines three integer variables =i=, =m=,
-   and =n=, gets their values from the keyboard, and checks if the input
-   value for =i= is in the interval =[m,n)=.
+1) Get the template for ~range.c~ from the command-line:
+   #+begin_src bash :results output :exports both
+   wget -O range.c tinyurl.com/range-template
+   #+end_src
 
-2) Source code:
+2) Define three integer variables =i=, =m=, and =n=, get their values from
+   the keyboard, and check if the input value for =i= is in the interval
+   =[m,n)=.
+
+2) Complete, compile and run the file:
    #+begin_src C :main no :includes :tangle range.c :cmdline < input
-     #include <stdio.h>
+    // range.c: compute condition with range
+    // input: none. output: Boolean
+    // author: Marcus Birkenkrahe GPLv3
+    // date: 2/27/25
+    #include <stdio.h>
 
      int main(void)
      {
@@ -1208,7 +1300,11 @@ absolutely everyone get a picture of what it means.
    is outside of [m,n) ?
 
 ** Solution:
-   #+begin_src C :main no :includes :tangle range.c :cmdline < input
+#+begin_src C :main no :includes :tangle range.c :cmdline < input
+     // range.c: compute condition with range
+     // input: none. output: Boolean
+     // author: Marcus Birkenkrahe GPLv3
+     // date: 2/27/25
      #include <stdio.h>
 
      int main(void)
@@ -1223,10 +1319,10 @@ absolutely everyone get a picture of what it means.
 
        return 0;
      }
-   #+end_src
+#+end_src
 
-   #+RESULTS:
-   : 5 is in the interval [0,10).
+#+RESULTS:
+: 5 is in the interval [0,10).
 
 -----
 Testing:
@@ -1248,8 +1344,17 @@ computed. It is either =1= (=TRUE=) or =0= (=FALSE=).
 
 Next, =0 < k= or =1 < k= is checked.
 
-1) Create a file =chain.c= with the following code, compile and run it:
+1) Get the template for ~chain.c~ from the command-line:
+   #+begin_src bash :results output :exports both
+   wget -O chain.c tinyurl.com/chain-template
+   #+end_src
+
+2) Complete, compile and run the file:
    #+begin_src C :main no :includes
+     // chain.c: compute condition
+     // input: none. output: Boolean
+     // author: Marcus Birkenkrahe GPLv3
+     // date: 2/27/25
      #include <stdio.h>
 
      int main(void)
@@ -1268,11 +1373,15 @@ Next, =0 < k= or =1 < k= is checked.
    #+RESULTS:
    : TRUE: 5 < 1 < 100
 
-2) Fix the code so that the output is correct. Then test it for
+3) Fix the code so that the output is correct. Then test it for
    different values of =i=, =j=, =k=.
 
 ** Solution:
 #+begin_src C :main no :includes :includes :tangle chain.c :cmdline < input
+     // chain.c: compute condition
+     // input: none. output: Boolean
+     // author: Marcus Birkenkrahe GPLv3
+     // date: 2/27/25
      #include <stdio.h>
 
      int main(void)
