@@ -8,9 +8,15 @@
                                                                      
 int main() {                                                         
   int a = 5, b = 10, c;                                              
-                                                                     
+
+  // USING THE VALUES FOR a AND b, COMPUTE c IN YOUR HEAD
+  // THEN ENTER THE VALUE INSTEAD OF THE QUESTION MARK ?
+  // THEN COMPILE AND RUN TO SEE IF YOU GUESSED RIGHT.
+  // EXAMPLE: c = b * a = 10 * 5:
+  // printf("1. c = %d == %d\n", c, 50); 
+  
   c = a + b * 2;                                                     
-  printf("1. c = %d == %d\n", c, ?); // what is c
+  printf("1. c = %d == %d\n", c, ?); 
                                                                      
   c = (a + b) * 2;                                                   
   printf("2. c = %d == %d\n", c, ?);                                 
