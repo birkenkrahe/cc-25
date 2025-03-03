@@ -1297,9 +1297,12 @@ spend enough time on the programing assignments & perhaps try a bonus.
     tests.org
     #+end_example
 
-* IN-PROGRESS Week 7: Operators 
+* DONE Week 7: Operators 
+#+attr_html: :width 400px :float nil: 
+#+caption: Picasso - Still Life with Fish (1923)
+[[../img/picasso.jpg]]
 
-** DONE Wrong test 5 question
+** Wrong test 5 question
 
 This turned out to be tricky! Everybody who did the test by Friday got
 1 extra point & James got 2 points for discovering the mistake first.
@@ -1367,8 +1370,8 @@ This turned out to be tricky! Everybody who did the test by Friday got
      : Shift 2.718282 to the right: 271.828186
      : Truncate 271.828186: 271
      : Shift 271 back: 2.71
-  
-** DONE Review programming assignment
+  a
+** Review programming assignment
 
 - Results:
   #+attr_html: :width 400px:
@@ -1389,7 +1392,7 @@ This turned out to be tricky! Everybody who did the test by Friday got
 - [X] There is an easy *bonus assignment:* Get the input in meters from
   using ~scanf~ - "Bonus: Your height in light-years (reloaded)".
 
-** DONE Review - arithmetic operators and shell compilation
+** Review - arithmetic operators and shell compilation
 
 1. What's wrong with this program?
    #+begin_src C
@@ -1466,18 +1469,19 @@ This turned out to be tricky! Everybody who did the test by Friday got
     pointer, type casting, SizeOf, structure/member.
     #+end_quote
 
-** IN-PROGRESS *Lecture & Practice:* Operators (=++=, =*==, =&&=)
+
+** *Lecture & Practice:* Operators (=++=, =*==, =&&=)
 
 *Three types of operators:*
 1) [X] arithmetic operators like ~*~
-2) [ ] logical and relational operators like ~==~ and ~<~
+2) [X] logical and relational operators like ~==~ and ~<~
 3) [ ] compound operators like ~++~ and ~+=~
 
 In this session you produce 7 C files which in the end you
 must upload as a ZIP file - if you miss a session, please
 create the file on your own (ask me ask me ask me).
 
-** TODO NOT ~!~ question by Nichole (with a preview)
+** NOT ~!~ question by Nichole (with a preview)
 
 #+begin_quote
 Does the operator ! convert the value of the operand to a binary value
@@ -1494,25 +1498,34 @@ If x=5, ! causes the machine to see the five as TRUE and returns the
 
 In C, all values except =0= are considered =TRUE= by the machine.
 
-#+begin_src C :results output
-  float truth[]={0,1,-100,3.14};
+#+begin_src C :results output :main yes :includes <stdio.h>
+  float truth[]={0,1,-100,3.14};  // Boolean array (collection)
 
-  for (int i=0; i<4;i++) {
-    if(truth[i])
+  for (int i=0; i<4;i++) {  // for loop (iteration)
+    if(truth[i])  // condition statement
       printf("%g is TRUE\n",truth[i]);
     else 
       printf("%g is FALSE\n",truth[i]);
    }
 #+end_src
 
+#+RESULTS:
+: 0 is FALSE
+: 1 is TRUE
+: -100 is TRUE
+: 3.14 is TRUE
+
 For your example: the =stdbool= header file allows you to define a data
 type =bool= but C still only uses 1 and 0 internally for TRUE and FALSE.
 
 #+begin_src C
-  #include <stdbool.h>
+  #include <stdbool.h>  // standard header file
   bool x = 5;
   printf("%d %d",x, !x); // 5 is TRUE and !5 = 0 is FALSE
 #+end_src
+
+#+RESULTS:
+: 1 0
 
 #+begin_quote
 And if x=0, ! causes the machine to see the zero as FALSE so the
@@ -1525,36 +1538,57 @@ machine will return TRUE because what it sees is NOT FALSE, i.e. !0?
   printf("%d %d",x, !x); // 5 is TRUE and !5 = 0 is FALSE
 #+end_src
 
+#+RESULTS:
+: 0 1
+
 #+attr_html: :width 400px
 [[../img/NOT.png]]
 
-** TODO Review: AND (~&&~), OR (~||~), NOT (~!~)
+** Review: AND (~&&~), OR (~||~), NOT (~!~)
 
 (Solution to =boolean.c=)
 
-1. What is: (100 && 1) ?
+1. What is: (100 && 1) ? (Boolean operator AND)
    #+begin_src C
      printf("(100 && 1) is %d\n", 100 && 1);
    #+end_src
-2. What is (100 || 0) ?
+
+   #+RESULTS:
+   : (100 && 1) is 1
+
+2. What is (100 || 0) ? (Boolean operator OR)
    #+begin_src C  :results output
      printf("(100 || 0) is %d\n", 100 || 0);
    #+end_src
-3. What is (1 == 0) ?
+
+   #+RESULTS:
+   : (100 || 0) is 1
+
+3. What is (1 == 0) ? (Logical, not Boolean operator)
    #+begin_src C
-     printf("(1 == 0) is %d\n", 1 == 0);
+     printf("(1 == 0) is %d\n", 1 == 0); // not assignment!
    #+end_src
-4. What is !(-1) and !!10 ?
+
+   #+RESULTS:
+   : (1 == 0) is 0
+
+4. What is !(-1) and !!10 ? 
    #+begin_src C :results output
      printf("!(-1) is %d, !!(10) is %d\n", !(-1), !!10);
    #+end_src
-5. What is (1 < 0) || (0 < 1) ?
+
+   #+RESULTS:
+   : !(-1) is 0, !!(10) is 1
+
+5. What is (1 < 0) || (0 < 1) ? (FALSE OR TRUE)
    #+begin_src C :results output
      printf("(1 < 0) || (0 < 1) is %d\n", (1 < 0) || (0 < 1));
    #+end_src
 
+   #+RESULTS:
+   : (1 < 0) || (0 < 1) is 1
 
-** TODO Next programming assignments
+** Next programming assignments
 
 Three simple assignments:
 - Add and divide floating point numbers
@@ -1562,6 +1596,42 @@ Three simple assignments:
 - Compute compound operators
 
 * Week 8: Operators II & Conditionals: =if= & =else= & =else if=
+#+attr_html: :width 400px :float nil: 
+#+Caption: Jonah and the Whale by Pieter Lastman (1621)
+[[../img/jonah.jpg]]
+
+This week, we'll finish the basics, and we're moving on to bigger and
+better things: conditional statements, iterations, data structures.
+
+** TODO New test - Command-line and Operators
+
+This test covers our Google Cloud Shell exploration and the lecture
+and practice on operators in C.
+
+- 40 questions but lots of repetition (drill test).
+- Take your time with it and use available sources.
+- Hard deadline March 10 (because of midterms 12-Mar).
+
+** TODO Three simple programming assignments
+
+The instructions for these exercises are way longer than the programs
+themselves. They are simple because there's not much you can do by way
+of programming without ~if-else~ statements, ~loops~ and ~arrays~.
+
+- 6 Command-line floating-point calculator.
+- 7 De Morgan's Law Demonstrator.
+- 8 Number Change with Increment/Decrement.
+- Hard deadline March 10 (because of midterms 12-Mar).
+- Submission as URL in OneCompiler (b/c I must grade fast).
+- You'll get sample solutions on March 11.
+
+** TODO This week
+
+- We'll finish the lecture today and do the exercises on Wednesday.
+- If we don't finish all practice exercises, do them on your own.
+- The practice files (& their submission) will not be graded.
+- You'll get sample solutions next week.
+
 * Week 9: Loops:  =for= & =while= & =do=
 * Week 10: Arrays
 * Week 11: Functions
