@@ -121,7 +121,7 @@
      gcc letter.c -o letter && ./letter
    #+end_src
 
-* TODO Range Check (10 min)
+* CANCELLED Range Check (10 min)
 
 1) Download the template:
    #+begin_src bash
@@ -137,7 +137,7 @@
 
 2) Open ~range.c~ in ~nano~.
 
-3) Complete the code to check if ~i~ is in the interval ~[m,n)~:
+3) Complete the code to check if ~i=5~ is in the interval ~[0,10)~:
    #+begin_src C :main no :includes :tangle ../src/range_template.c
      #include <stdio.h>
      int main(void) {
@@ -174,4 +174,6 @@
      file operators.zip
    #+end_src
 
-3) Upload ~operators.zip~ to Canvas.
+3) Download the .zip file using the Google Cloud Shell *editor* to your PC.
+
+5) Upload ~operators.zip~ from your PC to Canvas.
