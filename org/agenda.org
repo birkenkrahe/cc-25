@@ -1625,15 +1625,69 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - Submission as URL in OneCompiler (b/c I must grade fast).
 - You'll get sample solutions on March 11.
 
+
+** TODO Review
+
+1. How can you get a program from the web?
+   #+begin_example C
+   wget -O program.c https://example.com/program-c
+   #+end_example
+
+2. Where is this command executed?
+   #+begin_quote
+   On the command-line - e.g. via Google Cloud Shell (or Linux).
+   #+end_quote
+
+3. How can you check the program was downloaded?
+   #+begin_example C
+   ls -lt program.c
+   #+end_example
+
+4. How can you edit it?
+   #+begin_example C
+   nano program.c
+   #+end_example
+
+5. How can you save the program and exit?
+   #+begin_quote
+   In nano: CTRL + S to save, CTRL + X to exit
+   #+end_quote
+
+6. How can you compile =program.c=, name the executable =pgm= and run it?
+   #+begin_example sh
+   gcc program.c -o pgm && ./pgm
+   #+end_example
+
+7. How can you "Check if =i= OR =j= are both ~TRUE~" translate to C?
+   #+begin_src C
+   i || j
+   #+end_src
+
+8. How can you "Check if the input variable =letter= was entered as X"?
+   #+begin_src C
+   letter == 'X'
+   #+end_src
+
+9. How can you "Check if =i= is in the interval =(0,10]="
+   #+begin_src 
+   0 < i && i <= 10
+   #+end_src
+
+10. How can you archive =p1.c= and =p2.c= and check the archive file?
+    #+begin_example sh
+    zip archive.zip p1.c p2.c && file archive.zip
+    #+end_example
+
+
 ** IN-PROGRESS Operators Practice (Lab)
 
-- In Google Chrome, open [[https://tinyurl.com/operators-practice][tinyurl.com/operators-practice]]
+- In Google Chrome, open [[https://tinyurl.com/operators-practice][tinyurl.com/operators-practice]].
 
-- Follow the instructions
+- Follow the instructions.
 
-- You complete one part then we compare solutions
+- You complete one part then we compare solutions.
 
-- At the end, you upload a ZIP file to Canvas
+- At the end, you upload a ZIP file to Canvas.
 
 * Week 9: Loops:  =for= & =while= & =do=
 * Week 10: Arrays
