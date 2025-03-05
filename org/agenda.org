@@ -1595,7 +1595,7 @@ Three simple assignments:
 - Compute Boolean expressions
 - Compute compound operators
 
-* Week 8: Operators II & Conditionals: =if= & =else= & =else if=
+* Week 8: Operators II & Conditionals: ~if~ & ~else~
 #+attr_html: :width 400px :float nil: 
 #+Caption: Jonah and the Whale by Pieter Lastman (1621)
 [[../img/jonah.jpg]]
@@ -1603,7 +1603,7 @@ Three simple assignments:
 This week, we'll finish the basics, and we're moving on to bigger and
 better things: conditional statements, iterations, data structures.
 
-** TODO New test - Command-line and Operators
+** DONE New test - Command-line and Operators
 
 This test covers our Google Cloud Shell exploration and the lecture
 and practice on operators in C.
@@ -1612,7 +1612,7 @@ and practice on operators in C.
 - Take your time with it and use available sources.
 - Hard deadline March 10 (because of midterms 12-Mar).
 
-** TODO Three simple programming assignments
+** DONE Three simple programming assignments
 
 The instructions for these exercises are way longer than the programs
 themselves. They are simple because there's not much you can do by way
@@ -1625,12 +1625,15 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - Submission as URL in OneCompiler (b/c I must grade fast).
 - You'll get sample solutions on March 11.
 
-** TODO This week
+** IN-PROGRESS Operators Practice (Lab)
 
-- We'll finish the lecture today and do the exercises on Wednesday.
-- If we don't finish all practice exercises, do them on your own.
-- The practice files (& their submission) will not be graded.
-- You'll get sample solutions next week.
+- In Google Chrome, open [[https://tinyurl.com/operators-practice][tinyurl.com/operators-practice]]
+
+- Follow the instructions
+
+- You complete one part then we compare solutions
+
+- At the end, you upload a ZIP file to Canvas
 
 * Week 9: Loops:  =for= & =while= & =do=
 * Week 10: Arrays
