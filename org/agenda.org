@@ -1687,17 +1687,18 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - At the end, you upload a ZIP file to Canvas.
 
-* Week 9: Control Flow: Decisions and Loops
+* Week 9: Control Flow
 #+attr_html: :width 400px :float nil: 
 #+caption: Source: Cover of "Moby Dick" by Herman Melville
 [[../img/mobydick.png]]
 
 - [ ] Beyond the basics: Roadmap to Happy Hunting
-- [ ] Pseudocode 
-- [ ] Process diagrams
-- [ ] Control flow keywords
+- [ ] Pseudocode & Practice & Process diagrams
+- [ ] Control flow keywords (if, else, else if, switch)
+
 - [ ] New programming assignment available
 - [ ] New script available (online only)
+- [ ] All programming assignments are open for late submission
 
 ** Beyond the basics
 
@@ -1723,9 +1724,4 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - Data structures are subject of CSC 240 (Fall'25).
 
-* Week 10: Arrays
-* Week 11: Functions
-* Week 12: Pointers
-* Week 13: Pointers and arrays
-* Week 14: Strings
-* Week 15: Structs
+

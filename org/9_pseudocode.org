@@ -12,7 +12,9 @@
 - This section follows chapter 3 in Davenport/Vine (2015) and
   chapters 4 and 5 in King (2008)
 
-- Practice workbooks, input files and PDF solution files in GitHub
+- Generative AI (Grok 3) was used to simplify some of the exercises.
+
+- Lecture, practice and exercise files available in GitHub
 
 * Overview
 
@@ -32,7 +34,7 @@
 
 * Algorithms vs. heuristic - Pólya's problem solving method
 
-- The heuristic method à la George Pólya in four steps:
+- The heuristic method à la George Pólya (1887-1985) in four steps:
   #+attr_latex: :width 400px
   [[../img/polya.png]]
 
@@ -86,13 +88,17 @@
 - This general method is overkill for little problems - but big
   problems consist of many little problems (and then some).
 
+* Example: Pólya's problem solving method
+
 - Example: Your height in light-years (programming assignment).
+
   #+begin_quote
   1) *Understand:* Separate problem into *constants* (=SPEED_OF_LIGHT=,
      =YEAR_IN_SECONDS=) and *variables* (input: =height= in [m] and in
      [light-years]).
 
-  2) *Plan:* Use formula (distance [m] = c[m/s]* year [s] [ly]).
+  2) *Plan:* Use formula (distance [m] = c[m/s]* year [s] [ly]) to solve
+     the problem exactly (rather than approximately).
 
   3) *Execute*: Compute & use conversion factor on variables heights,
      and print with the correct formatting specifications (need right
@@ -117,8 +123,8 @@
 Let’s look at a small problem from a game:
 
 #+begin_quote
-When a character’s health is 100 or less, drink a health potion. If
-the health is more than 100, go back to fighting.
+"When a character’s health is 100 or less, drink a health potion. If
+the health is more than 100, go back to fighting."
 #+end_quote
 
 We need to write this as *pseudocode*, which is like a pretend code
@@ -128,7 +134,10 @@ that’s easy to read and helps us plan before writing real code.
 
 Here’s a simple way to write this idea in pseudocode:
 
-#+begin_example
+#+begin_example C
+// "When a character’s health is 100 or less, drink a health potion. 
+// If the health is more than 100, go back to fighting."
+
 if health is less than 100
     Drink a health potion
 else
@@ -155,13 +164,27 @@ programming language like C. For example:
 
 - What else might a computer complain about if we tried to run
   this?[fn:3]
+  #+begin_src C
+    int main()
+    {
+      if health is less than 100
+          Drink a health potion
+      else
+          Go back to fighting
+      endif
+      return 0;
+    }
+  #+end_src
 
 * Making the Pseudocode Better
 
 Let’s fix the pseudocode to be a little closer to real code by using
 ~<~ for "less than":
 
-#+begin_example
+#+begin_example C
+// "When a character’s health is 100 or less, drink a health potion. 
+// If the health is more than 100, go back to fighting."
+
 if health < 100
     Drink a health potion
 else
@@ -494,7 +517,8 @@ system and the programming language C largely because Ritchie wanted
 to play a game "Space Travels" (like "[[https://www.nomanssky.com/][No Man's Sky]]", 2016-2025).
 
 [fn:3]Undeclared variable ~health~, missing closure semi-colons after
-the statements, functions ~Drink~ and ~Resume~ not known, and more.
+the statements, functions ~Drink~ and ~Resume~ not known, and more. But
+the compiler will abort after the first significant error already.
 
 [fn:4] 1) Language: words used like ~health~, ~drink~ or ~resume~. 2) Logic:
 [[https://ifttt.com/][IFTTT]] (If This Then That) Else That. 3) Tone: game language 'drink
