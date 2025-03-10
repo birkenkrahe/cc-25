@@ -1,0 +1,81 @@
+#+TITLE:Pseudocode - If-Else Exercise 
+#+AUTHOR:Pseudocode - If-Else Exercise 
+#+SUBTITLE:Pseudocode - If-Else Exercise 
+#+STARTUP: overview hideblocks indent
+#+OPTIONS: toc:nil num:nil ^:nil
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes
+** Description
+
+In a game, a player can choose to equip either a weapon or a shield
+before a battle. If they choose a weapon, their attack power
+increases. If they choose a shield, their defense power
+increases. Write a program that asks the player to choose between
+equipping a weapon or a shield and updates their stats accordingly.
+
+** What to Do
+
+- Copy the starter code into OneCompiler.com/c.
+
+- The pseudocode is written as comments (~//~), similar to the
+  deposit/withdraw example.
+
+- Replace the ~...~ with your own ~if/else~ statements to:
+  + Check if ~choice == 1~ and add 5 to ~attack~ if true, printing
+    "Equipped a weapon! New attack: %d\n".
+  + Use ~else~ to add 3 to ~defense~ if ~choice == 2~, printing "Equipped a
+    shield! New defense: %d\n".
+
+- Run the code and test it:
+  + Try ~choice = 1~ (should show "Equipped a weapon! New attack: 15").
+  + Try ~choice = 2~ (should show "Equipped a shield! New defense: 8").
+
+- Save your work and note any issues you encounter.
+
+** Starter Code
+
+You can open this starter code in OneCompiler:
+https://onecompiler.com/c/43bcdw54t
+
+#+begin_src C
+  #include <stdio.h>
+
+  int main() {
+    // Pseudocode:
+    // If the player chooses a weapon, increase attack power
+    // Else if the player chooses a shield, increase defense power
+
+    // Variables
+    int attack = 10;  // Starting attack power
+    int defense = 5;  // Starting defense power
+    int choice;       // Player's choice (1 for weapon, 2 for shield)
+
+    // Print stats and ask for action
+    printf("Your stats: Attack = %d, Defense = %d\n", attack, defense);
+    printf("Choose an item (1 for weapon, 2 for shield):\n");
+    // Get choice (print confirmation)
+    scanf("%d", &choice);
+    printf("Your choice: %d\n", choice);
+
+    // Add your if/else statements here
+    ...
+
+      // Show final stats
+      printf("Final stats: Attack = %d, Defense = %d\n", attack, defense);
+    return 0;
+  }
+#+end_src
+
+** Expected Output Example
+- Input: `1`
+  #+begin_example
+  Your stats: Attack = 10, Defense = 5
+  Choose an item (1 for weapon, 2 for shield):
+  Your choice: 1
+  Equipped a weapon! New attack: 15
+  Final stats: Attack = 15, Defense = 5
+  #+end_example
+
+** Submission
+
+- Complete the program and upload the URL that shows the sample output
+  to Canvas.

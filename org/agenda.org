@@ -1595,7 +1595,7 @@ Three simple assignments:
 - Compute Boolean expressions
 - Compute compound operators
 
-* Week 8: Operators II & Conditionals: ~if~ & ~else~
+* DONE Week 8: Operators II xs
 #+attr_html: :width 400px :float nil: 
 #+Caption: Jonah and the Whale by Pieter Lastman (1621)
 [[../img/jonah.jpg]]
@@ -1603,7 +1603,7 @@ Three simple assignments:
 This week, we'll finish the basics, and we're moving on to bigger and
 better things: conditional statements, iterations, data structures.
 
-** DONE New test - Command-line and Operators
+** New test - Command-line and Operators
 
 This test covers our Google Cloud Shell exploration and the lecture
 and practice on operators in C.
@@ -1612,7 +1612,7 @@ and practice on operators in C.
 - Take your time with it and use available sources.
 - Hard deadline March 10 (because of midterms 12-Mar).
 
-** DONE Three simple programming assignments
+** Three simple programming assignments
 
 The instructions for these exercises are way longer than the programs
 themselves. They are simple because there's not much you can do by way
@@ -1625,8 +1625,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - Submission as URL in OneCompiler (b/c I must grade fast).
 - You'll get sample solutions on March 11.
 
-
-** TODO Review
+** Review
 
 1. How can you get a program from the web?
    #+begin_example C
@@ -1640,7 +1639,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 3. How can you check the program was downloaded?
    #+begin_example C
-   ls -lt program.c
+   ls -lt program.c  
    #+end_example
 
 4. How can you edit it?
@@ -1655,7 +1654,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 6. How can you compile =program.c=, name the executable =pgm= and run it?
    #+begin_example sh
-   gcc program.c -o pgm && ./pgm
+   gcc program.c -o pgm && ./pgmg
    #+end_example
 
 7. How can you "Check if =i= OR =j= are both ~TRUE~" translate to C?
@@ -1677,9 +1676,8 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
     #+begin_example sh
     zip archive.zip p1.c p2.c && file archive.zip
     #+end_example
-
-
-** IN-PROGRESS Operators Practice (Lab)
+    
+** Operators Practice (Lab)
 
 - In Google Chrome, open [[https://tinyurl.com/operators-practice][tinyurl.com/operators-practice]].
 
@@ -1689,7 +1687,41 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - At the end, you upload a ZIP file to Canvas.
 
-* Week 9: Loops:  =for= & =while= & =do=
+* Week 9: Control Flow: Decisions and Loops
+#+attr_html: :width 400px :float nil: 
+#+caption: Source: Cover of "Moby Dick" by Herman Melville
+[[../img/mobydick.png]]
+
+- [ ] Beyond the basics: Roadmap to Happy Hunting
+- [ ] Pseudocode 
+- [ ] Process diagrams
+- [ ] Control flow keywords
+- [ ] New programming assignment available
+
+** Beyond the basics
+
+- What you've learnt so far: The *basics*
+  1) Values & expressions
+  2) Variables & constants
+  3) Statements
+  4) Operators
+
+- The next step is: *Control* of the program flow
+  1) Decisions (~if~, ~else~, ~else if,~ and ~switch~)
+  2) Loops (~for~, ~while~, and ~do while~)
+  3) Collections (arrays)
+  4) Modules (functions)
+  5) Memory (pointers)
+
+- This leads us to *data structures* like
+  1) Strings
+  2) Structs
+  3) Linked lists
+  4) Trees
+  5) Graphs
+
+- Data structures are subject of CSC 240 (Fall'25).
+
 * Week 10: Arrays
 * Week 11: Functions
 * Week 12: Pointers
