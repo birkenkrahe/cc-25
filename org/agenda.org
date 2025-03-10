@@ -1697,6 +1697,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - [ ] Process diagrams
 - [ ] Control flow keywords
 - [ ] New programming assignment available
+- [ ] New script available (online only)
 
 ** Beyond the basics
 
@@ -1714,7 +1715,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
   5) Memory (pointers)
 
 - This leads us to *data structures* like
-  1) Strings
+  1) Strings 
   2) Structs
   3) Linked lists
   4) Trees

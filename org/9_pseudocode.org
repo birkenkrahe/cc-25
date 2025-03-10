@@ -1,8 +1,8 @@
-#+TITLE: PSEUDOCODE
+#+TITLE: PSEUDOCODE and IF/ELSE
 #+AUTHOR:Marcus Birkenkrahe
-#+SUBTITLE:CSC100 Introduction to programming in C/C++ (Spring 2024)
+#+SUBTITLE:CSC100 Introduction to programming in C/C++ (Spring 2025)
 #+STARTUP: overview hideblocks indent inlineimages
-#+OPTIONS: toc:nil ^:nil num:nil date:nil author:nil
+#+OPTIONS: toc:nil ^:nil num:nil
 #+PROPERTY: header-args:C :main yes :includes <stdio.h> :exports both :results output :noweb yes :tangle yes
 * README
 
@@ -107,7 +107,7 @@
 
 * Games and Early Computing
 #+attr_html: :width 400px :float nil:
-#+caption: Source: nomansky.com
+#+caption: Games helped shape modern computing. Source: nomansky.com
 [[../img/nomansky.jpg]]
 
 - Did you know that games helped shape modern computers?[fn:2]
@@ -282,17 +282,6 @@ Here’s a problem about a game:
 
 ** Solution
 
-Input:
-#+begin_src bash :results output :exports both
-  echo "2" > input # action (1 = deposit, 2 = withdraw)
-  echo "100" >> input # amount of gold
-  cat input
-#+end_src
-
-#+RESULTS:
-: 2
-: 100
-
 Code: [[https://onecompiler.com/c/43bc89w2e][In OneCompiler]]
 #+name: pseudogold
 #+begin_src C :cmdline < input
@@ -363,17 +352,6 @@ Code: [[https://onecompiler.com/c/43bc89w2e][In OneCompiler]]
 
 ** Solution
 
-Input:
-#+begin_src bash :results output :exports both
-  echo "2" > input # action (1 = deposit, 2 = withdraw)
-  echo "200" >> input # amount of gold
-  cat input
-#+end_src
-
-#+RESULTS:
-: 2
-: 200
-
 Code: [[https://onecompiler.com/c/43bcbj34u][In OneCompiler]]
 #+name: pseudogold2
 #+begin_src C :cmdline < input :tangle ../src/pseudogold.c
@@ -424,18 +402,6 @@ Code: [[https://onecompiler.com/c/43bcbj34u][In OneCompiler]]
 
 1) Move the error handling inside of the ~choice == 2~ block.
 2) Now you can save one part of the condition check.
-3) 
-
-Input:
-#+begin_src bash :results output :exports both
-  echo "2" > input # action (1 = deposit, 2 = withdraw)
-  echo "200" >> input # amount of gold
-  cat input
-#+end_src
-
-#+RESULTS:
-: 2
-: 200
 
 Code: [[https://onecompiler.com/c/43bcceg7t][In OneCompiler]]
 #+name: pseudogold3
@@ -483,6 +449,40 @@ Code: [[https://onecompiler.com/c/43bcceg7t][In OneCompiler]]
 
 #+RESULTS: pseudogold3
 
+* Input
+
+Input for [[pseudogold]]
+#+begin_src bash :results output :exports both
+  echo "2" > input # action (1 = deposit, 2 = withdraw)
+  echo "100" >> input # amount of gold
+  cat input
+#+end_src
+
+#+RESULTS:
+: 2
+: 100
+
+Input for [[pseudogold2]]
+#+begin_src bash :results output :exports both
+  echo "2" > input # action (1 = deposit, 2 = withdraw)
+  echo "200" >> input # amount of gold
+  cat input
+#+end_src
+
+#+RESULTS:
+: 2
+: 200
+
+Input for [[pseudogold3]]
+#+begin_src bash :results output :exports both
+  echo "2" > input # action (1 = deposit, 2 = withdraw)
+  echo "200" >> input # amount of gold
+  cat input
+#+end_src
+
+#+RESULTS:
+: 2
+: 200
 
 * Footnotes
 
