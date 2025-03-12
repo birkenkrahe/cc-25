@@ -1727,7 +1727,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 ** IN-PROGRESS Continued: Pseudocode/if-else
 
-- Open the starter code again (clean this time): 
+- Open the starter code again (clean this time):
 
 - Fix the program according to the pseudocode!
 
@@ -1742,7 +1742,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
   enter command-line arguments (rather than static values).
 
 - Many submissions for the "De Morgan's Law Demonstrator" looked
-  correct but did not exactly reproduce the test output. 
+  correct but did not exactly reproduce the test output.
 
 - For the "Number changer with increment/decrement" exercise, the
   following statement is undefined even though it may compile and run!
@@ -1759,6 +1759,61 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - I reduced the grade impact from the programming assignments and
   increased the impact of the tests. Let me know what you think.
+
+
+** TODO Midterm results
+
+- Final grades
+  #+begin_src R :file midterm.png :session *R* :results graphics output file :exports both
+  grades <- c(26.92, 43.1, 45.75, 57.78, 59.77, 60.71, 69.8, 74.05, 76.22, 82.32,
+            84.16, 84.33, 84.55, 85.27, 86.05, 86.87, 88.36, 90.25, 90.44, 90.65,
+            91.3, 91.8, 92.25, 92.78, 93.73, 94.42, 96.46, 97.33, 97.88)
+plot(density(grades), col="red", lwd=2, main="Density Plot of Final Grades")
+abline(v=mean(grades), col="blue", lwd=2, lty=2)
+text(mean(grades), max(density(grades)$y), paste("Mean =", round(mean(grades), 2)), pos=2, col="blue")
+legend("topleft", legend=c("Density", paste("Mean =", round(mean(grades), 2))), col=c("red", "blue"), lty=c(1, 2), lwd=2)
+  #+end_src
+
+  #+RESULTS:
+  [[file:midterm.png]]
+
+- Programming assignments vs. Tests
+  #+begin_src R :file midterm2.png :session *R* :results graphics output file :exports both
+pgrades <- c(22.5, 27.5, 11.25, 37.5, 53.13, 30.63, 66.25, 65, 83.13, 78.13, 86.88, 78.75, 91.88, 80.63, 91.88, 91.88, 90, 93.13, 93.75, 97.5, 90, 89.38, 98.75, 99.38, 98.13, 98.13, 98.75, 96.88)
+tgrades <- c(31.97, 60.92, 85.18, 80.96, 67.37, 95.09, 73.86, 84.39, 68.33, 87.11, 81.05, 90.7, 76.18, 90.57, 79.39, 81.14, 86.49, 86.97, 87.37, 87.11, 93.86, 95.53, 85.96, 87.28, 90.18, 94.56, 95.7, 90.04)
+
+dens_p <- density(pgrades)
+dens_t <- density(tgrades)
+
+x_range <- range(dens_p$x, dens_t$x)
+y_range <- range(dens_p$y, dens_t$y)
+
+plot(dens_p,
+     col="red",
+     lwd=2,
+     xlab="Grades (%)",
+     ylab="Density",
+     main="Density Plot of Programming Assignment vs Test Grades",
+     xlim=x_range,
+     ylim=c(0, max(y_range) * 1.1))
+
+lines(dens_t, col="blue", lwd=2)
+
+abline(v=mean(pgrades), col="red", lty=2, lwd=2)
+abline(v=mean(tgrades), col="blue", lty=2, lwd=2)
+
+legend("topleft",
+       legend=c("Programming Assignments", "Tests",
+                paste("Mean (Prog.) =", round(mean(pgrades), 2)),
+                paste("Mean (Tests) =", round(mean(tgrades), 2))),
+       col=c("red", "blue", "red", "blue"),
+       lty=c(1, 1, 2, 2),
+       lwd=2)
+  #+end_src
+
+  #+RESULTS:
+  [[file:midterm2.png]]
+
 
 ** TODO Review: Pseudocode
 
@@ -1905,14 +1960,3 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
     #+end_quote
 
 
-** TODO Midterm results
-
-#+begin_src R :file midterm.png :session *R* :results graphics output file :exports both
-   grades <- c(25.66,35.89,38.64,51.99,52.11,53.79,57.87,59.03,63.96,
-               70.81,73.62,74.4,75.24,76.6,79.96,80.21,83.71,83.79,83.94,
-               88.6,88.83,89.26,90.23,91.43,91.54,93.07,94.49,95.34,95.48)
-   plot(density(grades),col="red",lwd=2)
-   #+end_src
-
-#+RESULTS:
-[[file:midterm.png]]
