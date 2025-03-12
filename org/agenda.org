@@ -1297,8 +1297,8 @@ spend enough time on the programing assignments & perhaps try a bonus.
     tests.org
     #+end_example
 
-* DONE Week 7: Operators 
-#+attr_html: :width 400px :float nil: 
+* DONE Week 7: Operators
+#+attr_html: :width 400px :float nil:
 #+caption: Picasso - Still Life with Fish (1923)
 [[../img/picasso.jpg]]
 
@@ -1370,7 +1370,7 @@ This turned out to be tricky! Everybody who did the test by Friday got
      : Shift 2.718282 to the right: 271.828186
      : Truncate 271.828186: 271
      : Shift 271 back: 2.71
-  a
+   a
 ** Review programming assignment
 
 - Results:
@@ -1406,7 +1406,7 @@ This turned out to be tricky! Everybody who did the test by Friday got
    #+begin_quote
    C does not have a power operator =**=.
    #+end_quote
-   
+
 2. How do humans vs. machines solve problems?
    #+begin_quote
    - Humans: with *heuristics* ("tinkering" / "trial and error")
@@ -1445,7 +1445,7 @@ This turned out to be tricky! Everybody who did the test by Friday got
 7. How can you run the executable file =a.out= on the command-line if
    you and the file are both in your home directory?
    #+begin_quote
-   You have to give the computer the *path* to the file: 
+   You have to give the computer the *path* to the file:
    1) =./a.out=             // relative path to =a.out=
    2) =/myHome/a.out=       // absolute path to =a.out=
    #+end_quote
@@ -1492,8 +1492,8 @@ and then act to reverse that value?
 
 #+begin_quote
 If x=5, ! causes the machine to see the five as TRUE and returns the
- reverse of that, so !x will return FALSE because what the machine
- sees is NOT TRUE, i.e. !1?
+reverse of that, so !x will return FALSE because what the machine
+sees is NOT TRUE, i.e. !1?
 #+end_quote
 
 In C, all values except =0= are considered =TRUE= by the machine.
@@ -1504,7 +1504,7 @@ In C, all values except =0= are considered =TRUE= by the machine.
   for (int i=0; i<4;i++) {  // for loop (iteration)
     if(truth[i])  // condition statement
       printf("%g is TRUE\n",truth[i]);
-    else 
+    else
       printf("%g is FALSE\n",truth[i]);
    }
 #+end_src
@@ -1572,7 +1572,7 @@ machine will return TRUE because what it sees is NOT FALSE, i.e. !0?
    #+RESULTS:
    : (1 == 0) is 0
 
-4. What is !(-1) and !!10 ? 
+4. What is !(-1) and !!10 ?
    #+begin_src C :results output
      printf("!(-1) is %d, !!(10) is %d\n", !(-1), !!10);
    #+end_src
@@ -1596,7 +1596,7 @@ Three simple assignments:
 - Compute compound operators
 
 * DONE Week 8: Operators II xs
-#+attr_html: :width 400px :float nil: 
+#+attr_html: :width 400px :float nil:
 #+Caption: Jonah and the Whale by Pieter Lastman (1621)
 [[../img/jonah.jpg]]
 
@@ -1639,7 +1639,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 3. How can you check the program was downloaded?
    #+begin_example C
-   ls -lt program.c  
+   ls -lt program.c
    #+end_example
 
 4. How can you edit it?
@@ -1659,16 +1659,16 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 7. How can you "Check if =i= OR =j= are both ~TRUE~" translate to C?
    #+begin_src C
-   i || j
+     i || j
    #+end_src
 
 8. How can you "Check if the input variable =letter= was entered as X"?
    #+begin_src C
-   letter == 'X'
+     letter == 'X'
    #+end_src
 
 9. How can you "Check if =i= is in the interval =(0,10]="
-   #+begin_src 
+   #+begin_src
    0 < i && i <= 10
    #+end_src
 
@@ -1676,7 +1676,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
     #+begin_example sh
     zip archive.zip p1.c p2.c && file archive.zip
     #+end_example
-    
+
 ** Operators Practice (Lab)
 
 - In Google Chrome, open [[https://tinyurl.com/operators-practice][tinyurl.com/operators-practice]].
@@ -1688,17 +1688,17 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - At the end, you upload a ZIP file to Canvas.
 
 * Week 9: Control Flow
-#+attr_html: :width 400px :float nil: 
+#+attr_html: :width 400px :float nil:
 #+caption: Source: Cover of "Moby Dick" by Herman Melville
 [[../img/mobydick.png]]
 
-- [ ] Beyond the basics: Roadmap to Happy Hunting
-- [ ] Pseudocode & Practice & Process diagrams
+- [X] Beyond the basics: Roadmap to Happy Hunting
+- [X] Pseudocode & Practice & Process diagrams
 - [ ] Control flow keywords (if, else, else if, switch)
 
-- [ ] New programming assignment available
-- [ ] New script available (online only)
-- [ ] All programming assignments are open for late submission
+- [X] New programming assignment available
+- [X] New script available (online only)
+- [X] All programming assignments are open for late submission
 
 ** Beyond the basics
 
@@ -1716,7 +1716,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
   5) Memory (pointers)
 
 - This leads us to *data structures* like
-  1) Strings 
+  1) Strings
   2) Structs
   3) Linked lists
   4) Trees
@@ -1725,3 +1725,156 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - Data structures are subject of CSC 240 (Fall'25).
 
 
+** IN-PROGRESS Continued: Pseudocode/if-else
+
+- Open the starter code again (clean this time): 
+
+- Fix the program according to the pseudocode!
+
+- Check that it works with the input "1 100" and "2 100".
+
+- Then we'll move on.
+
+** TODO Review: Pseudocode
+
+1. *What is pseudocode?*
+   #+begin_quote
+   Pseudocode: Outline algorithm/heuristics without worrying about
+   syntax. Write as C comments for insertion into source code.
+   #+end_quote
+
+2. *When should you use pseudocode?*
+   #+begin_quote
+   Always start with pseudocode before writing actual code to design
+   solutions; revert to it when stuck (not due to syntax issues).
+   #+end_quote
+
+3. *What's Pólya’s problem-solving method?*
+   #+begin_quote
+   Pólya’s Heuristic Problem-Solving Method: Understand the problem,
+   devise a plan, carry out the plan, and look back to verify/improve.
+   #+end_quote
+
+4. *Which example did we use for pseudocode?*
+   #+begin_quote
+   Practical Example: Game logic in Pseudocode. Shows how pseudocode
+   mirrors problem descriptions. Use problem language as given.
+   #+end_quote
+
+5. *How do you transition from pseudocode to source code?*
+   #+begin_quote
+   Applying Pseudocode to Code: Fill in the bits first, then add error
+   handling for everything that could possibly go wrong with input.
+   #+end_quote
+
+6. *Translate to pseudocode:*
+   #+begin_quote
+   "In a platform game, if an obstacle is high (above 5 units), the
+   player should duck. If it’s low (5 units or less), the player
+   should jump."
+   #+end_quote
+   #+begin_src C
+     // If obstacle > 5
+     // duck
+     // If obstacle <= 5
+     // jump
+   #+end_src
+
+7. *Translate this pseudocode to source code:*
+   #+begin_src C
+     // If obstacle > 5
+     // duck
+     // If obstacle <= 5
+     // jump
+   #+end_src
+   #+begin_src C
+     int obstacle = 7; // high; try 3 for low
+
+     if (obstacle > 5) // If obstacle > 5
+       puts("Duck!");
+      else              // If obstacle <= 5
+        puts("Jump!");
+
+   #+end_src
+
+   #+RESULTS:
+   : Duck!
+
+8. *Translate to pseudocode:*
+   #+begin_quote
+   "In an adventure game, if the player’s inventory has less than 10
+   items, they can collect a treasure. If the inventory has 10 or more
+   items, they must drop one."
+   #+end_quote
+   #+begin_src C
+     // If inventory.items < 10
+     // collect treasure
+     // If inventory.items >= 10
+     // drop item
+   #+end_src
+
+9. *Translate this pseudocode to source code:*
+   #+begin_src C
+     // If inventory items < 10
+     // collect treasure
+     // print inventory count
+     // If inventory items >= 10
+     // drop item
+     // print inventory count
+   #+end_src
+   #+begin_src C :results output
+     int items = 7; // test: change to 12 items
+
+     if (items <10) { // If inventory items < 10
+       items = items + 1; // collect treasure
+       printf("Treasure collected. Inventory = %d\n", items);
+      } else {       // If inventory items >= 10
+       items = items - 1; // drop item
+       printf("Item dropped. Inventory count: %d\n", items);
+      }
+   #+end_src
+
+   #+RESULTS:
+   : Treasure collected. Inventory = 8
+
+10. What's wrong with this pseudocode?
+    #+begin_quote
+    "In a combat game, if the player’s health is below 50, heal if
+    mana is above 20. Otherwise, attack the enemy."
+    #+end_quote
+    #+begin_src C
+     // if health < 50
+        // if mana > 20
+            // Heal
+        // else
+            // Attack
+     // else
+        // Heal
+    #+end_src
+    Correct version:
+    #+begin_src C
+     // if health < 50 AND mana > 20
+          // Heal
+     // else
+          // Attack
+    #+end_src
+    Explanation:
+    #+begin_quote
+    - Let’s break it down:
+      + *Condition:* ~if health < 50 AND mana > 20~ means both must be true to heal.
+      + *Intent Match:* The problem says "if health is below 50, heal if
+        mana is above 20," implying healing only occurs when *both*
+        conditions are met (low health *and* enough mana). Your
+        pseudocode aligns with this.
+      + *Else Clause:* "Otherwise, attack" covers all other cases (e.g.,
+        ~health >= 50~ or ~mana <= 20~), which matches the problem’s
+        intent to attack when not healing.
+
+    - *Test Cases:*
+      - ~health = 40, mana = 30~: Health < 50 and mana > 20 →
+        Heal. (Correct)
+      - ~health = 40, mana = 10~: Health < 50 but mana <= 20 →
+        Attack. (Correct)
+      - ~health = 60, mana = 30~: Health >= 50 → Attack. (Correct)
+      - ~health = 60, mana = 10~: Health >= 50 → Attack. (Correct)
+    #+end_quote

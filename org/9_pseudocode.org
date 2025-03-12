@@ -95,7 +95,7 @@
   #+begin_quote
   1) *Understand:* Separate problem into *constants* (=SPEED_OF_LIGHT=,
      =YEAR_IN_SECONDS=) and *variables* (input: =height= in [m] and in
-     [light-years]).
+     [light-years]), and =result=.
 
   2) *Plan:* Use formula (distance [m] = c[m/s]* year [s] [ly]) to solve
      the problem exactly (rather than approximately).
@@ -135,13 +135,13 @@ that’s easy to read and helps us plan before writing real code.
 Here’s a simple way to write this idea in pseudocode:
 
 #+begin_example C
-// "When a character’s health is 100 or less, drink a health potion. 
+// "When a character’s health is 100 or less, drink a health potion.
 // If the health is more than 100, go back to fighting."
 
 if health is less than 100
-    Drink a health potion
+   Drink a health potion
 else
-    Go back to fighting
+   Go back to fighting
 endif
 #+end_example
 
@@ -168,13 +168,15 @@ programming language like C. For example:
     int main()
     {
       if health is less than 100
-          Drink a health potion
-      else
+                  Drink a health potion
+        else
           Go back to fighting
-      endif
-      return 0;
+            endif
+            return 0;
     }
   #+end_src
+
+  #+RESULTS:
 
 * Making the Pseudocode Better
 
@@ -182,7 +184,7 @@ Let’s fix the pseudocode to be a little closer to real code by using
 ~<~ for "less than":
 
 #+begin_example C
-// "When a character’s health is 100 or less, drink a health potion. 
+// "When a character’s health is 100 or less, drink a health potion.
 // If the health is more than 100, go back to fighting."
 
 if health < 100
@@ -212,6 +214,7 @@ endif
 - This does the same thing, but we flipped the order:
   - If health is 100 or more, we fight.
   - If health is less than 100, we drink a potion.
+
 - Both ways work, but the first way (~health < 100~) matches the
   problem’s words more closely, which is usually better when you’re
   starting out.
@@ -244,7 +247,7 @@ Using the pseudocode examples above, let’s think about these ideas:
 4. *Anything Else*: Are there other details in the problem we might need
    to think about?
 
-* Practice: Turn a Problem into Pseudocode and Code
+* NEXT Practice: Turn a Problem into Pseudocode and Code
 
 ** Step 1: Understand the Problem
 
@@ -271,8 +274,8 @@ Here’s a problem about a game:
   // If the player chooses to deposit, add gold to the account
   // Else if the player chooses to withdraw, subtract gold from the account
   #+end_example
-
-** Step 3: Write Code
+  
+** NEXT Step 3: Write Code
 
 - The pseudocode contains a decision and an action. This pseudocode is
   closer to the C programming language:
@@ -284,7 +287,7 @@ Here’s a problem about a game:
   #+end_example
 
 - Open this code fragment in your browser as starter code:
-  https://onecompiler.com/c/43bc9bmaa
+  https://onecompiler.com/c/43bj66hz9
 
 - Complete the `...` so that the program runs with two numbers as
   input: 1 or 2 for the =choice=, and an integer for the =amount=.
@@ -303,11 +306,62 @@ Here’s a problem about a game:
   6. Dealing with input overflow (~amount > 100000000~).
   #+end_quote
 
+- Starter code: 
+  #+begin_src C
+    // pseudogold.c: "Allow a player to deposit or withdraw gold from a
+    // game bank account."
+    // Input: choice (1=deposit,2=withdrawal, amount (integer)
+    // Output: Deposited/withdrawn amount, new balance
+
+    #include <stdio.h>
+
+    int main() {
+
+      // variables
+      int gold = 100; // Example: starting gold amount
+      int choice;     // To store the player's choice (1 for deposit, 2 for withdraw)
+      int amount;     // Amount to deposit or withdraw
+
+      // Print balance and ask for action
+      printf("Your gold: %d\n", gold);
+      printf("Choose an action (1 to deposit, 2 to withdraw):\n");
+      // Get action (print confirmation)
+      scanf("%d", &choice);
+      printf("Your choice: %d\n", choice);
+      // Get amount (print confirmation)
+      printf("Enter amount:\n");
+      scanf("%d", &amount);
+      printf("Your amount: %d\n", amount);
+
+      // TODO If (deposit chosen)
+      if (...) {
+        // TODO add gold to the account
+        ...
+          printf("Deposited %d gold. New balance: %d\n", ...);
+      } else {   // Else if (withdrawal chosen)
+        // subtract gold from the account
+        ...
+          printf("Withdrew %d gold. New balance: %d\n", ...);
+      }
+
+      return 0;
+    }
+#+end_src
+
+  #+end_src
+
 ** Solution
 
 Code: [[https://onecompiler.com/c/43bc89w2e][In OneCompiler]]
 #+name: pseudogold
 #+begin_src C :cmdline < input
+  // pseudogold.c: "Allow a player to deposit or withdraw gold from a
+  // game bank account."
+  // Input: choice (1=deposit,2=withdrawal, amount (integer)
+  // Output: Deposited/withdrawn amount, new balance
+  // Author: Marcus Birkenkrahe GNU GPLv3
+  // Date: 03/11/2025
+
   #include <stdio.h>
 
   int main() {
@@ -358,7 +412,7 @@ Code: [[https://onecompiler.com/c/43bc89w2e][In OneCompiler]]
 - Now modify your copy to check if there is enough ~gold~ for a
   withdrawal (~choice == 2~).
 
-- You have to 
+- You have to
   1) find the right place in the program for the check
   2) use an ~if~ statement that tests the error condition
   3) print an error message as an action with ~puts~
@@ -420,7 +474,6 @@ Code: [[https://onecompiler.com/c/43bcbj34u][In OneCompiler]]
   }
 #+end_src
 
-
 ** Solution: Improvement
 
 1) Move the error handling inside of the ~choice == 2~ block.
@@ -471,6 +524,82 @@ Code: [[https://onecompiler.com/c/43bcceg7t][In OneCompiler]]
 #+end_src
 
 #+RESULTS: pseudogold3
+
+* Practice: Buy or sell a sword
+
+*Problem:* "Allow a player to buy a sword from a shop if they have
+enough gold (50 gold or more), or sell a sword if they don’t have
+enough."
+
+1) Write pseudocode (not real code) for this problem in 2-3 lines.
+
+2) Use simple words and an "if-else" structure, like we did with the
+   "health potion" or "gold deposit" examples.
+
+3) Assume the player starts with 40 gold (not enough to buy), and the
+   sword costs 50 gold.
+
+4) Take 5 minutes to write the pseudocode into the onecompiler.com/c
+   starter code:
+
+** Example Solution (Pseudocode)
+
+The pseudocode could look like this:
+#+begin_example
+if gold >= 50
+    Buy a sword
+else
+    Sell a sword
+#+end_example
+
+** Implement the solution
+
+- Complete the starter code according to the pseudocode:
+  #+begin_example C
+  // Start with 40 gold
+  // Set the sword price to 50 gold
+  // If the player has enough gold (>= 50), subtract 50 gold and print "Sword bought".
+  // If not, add 20 gold (selling a sword and print "Sword sold".
+  #+end_example
+
+- The pseudocode has already been copied into the starter code:
+  https://onecompiler.com/c/43bj5b7tx
+
+- Test this with 40 gold, and then change it to 100 gold.
+
+- Notice that there is no input required for this program. 
+
+** Sample solution:
+
+[[https://onecompiler.com/c/43bj58v5n][OneCompiler link]]
+
+#+begin_src C :main no :includes
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  int main(void)
+  {
+    // Problem: "Allow a player to buy a sword from a shop if they have
+    // enough gold (50 gold or more), or sell a sword if they don’t have
+    // enough."
+
+    // Start with 40 gold
+    int gold = 40;
+    // Set the sword price to 50 gold
+    int sword_price = 50;
+    // If the player has enough gold (>= 50), subtract 50 gold and print
+    // "Sword bought".  If not, add 20 gold (selling a sword and print
+    // "Sword sold".
+    if (gold >= 50) {
+      gold = gold - 50;
+      puts("Sword bought");
+    } else {
+      gold = gold - 20;
+      puts("Sword sold");
+    }
+    return EXIT_SUCCESS;
+  }
+#+end_src
 
 * Input
 
