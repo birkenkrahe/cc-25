@@ -1724,6 +1724,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - Data structures are subject of CSC 240 (Fall'25).
 
+
 ** IN-PROGRESS Continued: Pseudocode/if-else
 
 - Open the starter code again (clean this time): 
@@ -1737,22 +1738,11 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 ** TODO Review: Programming assignments
 
-#+begin_src R :file midterm.png :session *R* :results graphics output file :exports both
-   grades <- c(25.66,35.89,38.64,51.99,52.11,53.79,57.87,59.03,63.96,
-               70.81,73.62,74.4,75.24,76.6,79.96,80.21,83.71,83.79,83.94,
-               88.6,88.83,89.26,90.23,91.43,91.54,93.07,94.49,95.34,95.48)
-   plot(density(grades),col="red",lwd=2)
-   #+end_src
-
-#+RESULTS:
-[[file:midterm.png]]
-
 - For the "Command-line floating-point calculator" you actually had to
   enter command-line arguments (rather than static values).
 
 - Many submissions for the "De Morgan's Law Demonstrator" looked
-  correct but did not exactly reproduce the test output. You can
-  resubmit for 50% of the points.
+  correct but did not exactly reproduce the test output. 
 
 - For the "Number changer with increment/decrement" exercise, the
   following statement is undefined even though it may compile and run!
@@ -1764,16 +1754,13 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
   #+end_src
 
-- For this exercise, if you did not get the right output, you can
-  resubmit for 50% of the points.
-
 - If you think that I made a mistake, you can still let me know after
-  this class (by 11 pm).
+  this class (by 11 am today).
 
-- None of the people with low grades have attempted any of the bonus
-  exercises yet. I will put out a few more for you to practice!
+- I reduced the grade impact from the programming assignments and
+  increased the impact of the tests. Let me know what you think.
 
-* TODO Review: Pseudocode
+** TODO Review: Pseudocode
 
 1. *What is pseudocode?*
    #+begin_quote
@@ -1916,3 +1903,16 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
       - ~health = 60, mana = 30~: Health >= 50 → Attack. (Correct)
       - ~health = 60, mana = 10~: Health >= 50 → Attack. (Correct)
     #+end_quote
+
+
+** TODO Midterm results
+
+#+begin_src R :file midterm.png :session *R* :results graphics output file :exports both
+   grades <- c(25.66,35.89,38.64,51.99,52.11,53.79,57.87,59.03,63.96,
+               70.81,73.62,74.4,75.24,76.6,79.96,80.21,83.71,83.79,83.94,
+               88.6,88.83,89.26,90.23,91.43,91.54,93.07,94.49,95.34,95.48)
+   plot(density(grades),col="red",lwd=2)
+   #+end_src
+
+#+RESULTS:
+[[file:midterm.png]]
