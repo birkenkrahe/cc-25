@@ -601,6 +601,9 @@ else
   }
 #+end_src
 
+#+RESULTS:
+: Sword sold
+
 * Input
 
 Input for [[pseudogold]]

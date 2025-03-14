@@ -1,0 +1,272 @@
+#+TITLE: Stacked and Nested If Structures
+#+AUTHOR: Marcus Birkenkrahe
+#+SUBTITLE: CSC 100  - Lyon College - Spring 2025
+#+STARTUP: overview hideblocks indent entitiespretty:
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> <stdlib.h> <stdbool.h> <string.h> :results output :exports both :noweb yes
+* Introduction
+
+- *Objectives*:
+  + Sequential ~if~ structures
+  + Stacked ~if~ structures
+  + Nested ~if~ structures
+
+- *Theme:* Text-based adventure game—dungeon exploration and
+  decision-making.
+
+- *Objective:* Learn sequential, stacked and nested =if= structures for
+  complex decisions in pseudocode and C source code.
+
+* Sequential ~if~ structures
+
+- Sequential ~if~ structures are evaluated independently and
+  sequentially from the top. Multiple conditions can be true, and all
+  matching blocks will execute. The outcome of one does not affect the
+  others.
+
+- Simple sequential ~if~ statements:
+  #+begin_example C
+  if ( i == 1 ) {
+     // do one thing
+  }
+  if ( i == 2) {
+     // do another thing
+  }
+  #+end_example
+
+- An illustration in BPMN:
+  #+name: fig:singleif
+  #+attr_latex: :width 400px
+  #+caption: Single IF statements
+  [[../img/single.png]]
+
+- Example:
+  1) If you have enough gold (> 100), buy a sword.
+  2) If you have too little health (< 100), drink a potion.
+
+  #+begin_example
+    IF gold > 100
+       PRINT "Buying a sword!"
+    END IF
+
+    IF health < 100
+       PRINT "Drinking a potion!"
+    END IF
+  #+end_example
+
+* Stacked ~if~ (ladder) structures
+
+** Explanation
+
+- Stacked ~if~ structures test a sequence of conditions, but only one
+  block executes. Once a condition is true, the rest are skipped.
+
+- Simple stacked ~if~ statements:
+  #+begin_example C
+  if ( i == 1 ) {
+     // do one thing
+  }
+  else if ( i == 2) {
+     // do another thing
+  }
+  #+end_example
+
+- An illustration in BPMN:
+  #+name: fig:singleif
+  #+attr_latex: :width 400px
+  #+caption: Single IF statements
+  [[../img/nested.png]]
+
+** Example
+
+- Game Context: After defeating an enemy, the player’s reward depends
+  on their health.
+
+- Pseudocode:
+  #+BEGIN_example
+  SET health = 60
+  SET enemy_defeated = true
+
+  IF enemy_defeated THEN
+      IF health > 75 THEN
+          PRINT "You’re in top form! You find a golden shield."
+      ELSE IF health > 50 THEN
+          PRINT "You’re scratched but standing. You find a rusty sword."
+      ELSE IF health > 25 THEN
+          PRINT "You’re wounded but alive. You find a healing potion."
+      ELSE
+          PRINT "You collapse but grab a small coin."
+      END IF
+  ELSE
+      PRINT "You flee with nothing."
+  END IF
+  #+END_example
+
+- Source code: Run this in [[https://onecompiler.com/c/43br7x7b4][onecompiler.com/c/43br7x7b4]]
+  #+begin_src C
+    int health = 60; // SET health = 60
+    bool enemy_defeated = 1; // SET enemy_defeated = 1 (true))
+
+    if (enemy_defeated) { // IF enemy_defeated THEN
+      if (health > 75)  // IF health > 75 THEN
+        puts("You’re in top form! You find a golden shield.");
+      else if (health > 50)  // ELSE IF health > 50 THEN
+        puts("You’re scratched but standing. You find a rusty sword.");
+      else if (health > 25) // ELSE IF health > 25 THEN
+        puts("You’re wounded but alive. You find a healing potion.");
+      else
+        puts("You collapse but grab a small coin.");
+     } else {
+      puts("You flee with nothing.");
+     }
+  #+end_src
+
+  #+RESULTS:
+  : You’re scratched but standing. You find a rusty sword.
+
+** Practice: Loot by Difficulty
+
+- *Task:* Write pseudocode for loot based on enemy difficulty
+  (1-10). Use a stacked =if= structure.
+
+- *Starter Code:*
+  #+BEGIN_EXAMPLE
+  SET enemy_difficulty = 6
+  PRINT "You defeat a monster!"
+
+  // Add stacked if structure here
+
+
+  #+END_EXAMPLE
+
+- *Guidance:*
+  - 8-10: "gold coin"
+  - 5-7: "iron ring"
+  - 1-4: "stick"
+
+- *Example Output:* "You defeat a monster! You find an iron ring!"
+
+- *Time:* 10 minutes to write and test.
+
+- *Sample solution:*
+  #+begin_example
+  SET enemy_difficulty = 6
+  PRINT "You defeat a monster!"
+
+  IF enemy_difficulty >=8 AND enemy_difficult <= 10
+     PRINT "You find a gold coin!"
+  ELSE IF enemy_difficulty >= 5
+     PRINT "You find an iron ring!"
+  ELSE IF enemy_difficulty >= 1
+     PRINT "You find a stick!"
+  ELSE
+     PRINT "Something went wrong - nothing found."
+  END IF
+  #+end_example
+
+- *Sample source code:* [[https://onecompiler.com/c/43brbdw4f][onecompiler.com/c/43brbdw4f]]
+  #+begin_src C
+    int enemy_difficulty = 6; // SET enemy_difficulty = 6
+    printf("You defeat a monster! "); // PRINT "You defeat a monster!"
+
+    // IF enemy_difficulty >=8 AND enemy_difficulty <= 10
+    if (enemy_difficulty >= 8) // 8-10: "gold coin"
+      printf("You find a gold coin!");
+     else if (enemy_difficulty >= 5) // 5-7: "iron ring"
+       printf("You find an iron ring!");
+     else if (enemy_difficulty >= 1) // 1-4: "stick"
+       printf("You find a stick!");
+     else
+       puts("Something went wrong - nothing found.");
+  #+end_src
+
+  #+RESULTS:
+  : You defeat a monster! You find an iron ring!
+
+
+* 2. Nested ~if~ Structures
+
+** Explanation
+
+- Nested ~if~ structures place one or more =if= statements inside another
+  =if= statement, creating layered conditions. The inner =if= is only
+  evaluated if the outer condition is true, allowing for decisions
+  that depend on multiple criteria.
+
+** Example
+
+- Game Context: Opening a vault requires a key AND enough strength.
+
+- Example:
+  #+BEGIN_EXAMPLE
+  SET has_key = true
+  SET strength = 40
+
+  IF has_key THEN
+      IF strength >= 50 THEN
+          PRINT "You unlock and open the vault!"
+      ELSE
+          PRINT "You unlock it but can’t open it."
+      END IF
+  ELSE
+      PRINT "You need a key."
+  END IF
+  #+END_EXAMPLE
+
+- Key Point: Inner condition (~strength~) depends on outer condition
+  (~has_key~) being true.
+
+- Source code: [[https://onecompiler.com/c/43brdaaj4][onecompiler.com/c/43brdaaj4]]
+  #+begin_src C
+    int has_key = 1; // SET has_key = true
+    int strength = 40; // SET strength = 40
+
+    if (has_key) {// IF has_key THEN
+      if (strength >= 50) // IF strength >= 50 THEN
+        puts("You unlock and open the vault!");
+      else
+        puts("You unlock it but can’t open it.");
+     } else {
+      puts("You need a key.");
+     }
+  #+end_src
+
+  #+RESULTS:
+  : You unlock and open the vault!
+
+** Practice: Boss Fight (Bonus Assignment)
+
+- *Task:* Write pseudocode for a boss fight. Success requires a sword
+  AND high skill. Use a nested =if= structure. Write C source code and
+  test it.
+
+- *Starter Code:*
+  #+BEGIN_EXAMPLE
+  SET has_sword = true
+  SET skill = 70
+  PRINT "You face the boss!"
+
+  // Add nested if structure here
+  #+END_EXAMPLE
+
+- *Guidance:*
+  - Sword + skill ≥ 80: "You win!"
+  - Else: "You lose."
+
+- *Example Output:* "You face the boss! You lose!"
+
+
+* Conclusion
+
+- *Summary:*
+
+  - *Sequential:* Independent checks that can all execute if true (e.g.,
+    buy a sword AND drink a potion based on gold and health).
+
+  - *Stacked:* Mutually exclusive choices in a sequence (e.g., one
+    reward based on health after a battle).
+
+  - *Nested:* Layered conditions where inner checks depend on outer ones
+    (e.g., needing a key AND strength to open a vault).
+
+- *Next:* Switch control statement, and loops for repeated actions in
+  the game (e.g., fighting multiple enemies).

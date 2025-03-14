@@ -1297,7 +1297,7 @@ spend enough time on the programing assignments & perhaps try a bonus.
     tests.org
     #+end_example
 
-* DONE Week 7: Operators
+* DONE Week 7: Operators I
 #+attr_html: :width 400px :float nil:
 #+caption: Picasso - Still Life with Fish (1923)
 [[../img/picasso.jpg]]
@@ -1595,7 +1595,7 @@ Three simple assignments:
 - Compute Boolean expressions
 - Compute compound operators
 
-* DONE Week 8: Operators II xs
+* DONE Week 8: Operators II
 #+attr_html: :width 400px :float nil:
 #+Caption: Jonah and the Whale by Pieter Lastman (1621)
 [[../img/jonah.jpg]]
@@ -1687,7 +1687,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - At the end, you upload a ZIP file to Canvas.
 
-* Week 9: Control Flow
+* IN-PROGRESS Week 9: Control Flow - ~if~ / ~else~ / ~else if~
 #+attr_html: :width 400px :float nil:
 #+caption: Source: Cover of "Moby Dick" by Herman Melville
 [[../img/mobydick.png]]
@@ -1724,8 +1724,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - Data structures are subject of CSC 240 (Fall'25).
 
-
-** IN-PROGRESS Continued: Pseudocode/if-else
+** Continued: Pseudocode/if-else
 
 - Open the starter code again (clean this time):
 
@@ -1735,8 +1734,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - Then we'll move on.
 
-
-** TODO Review: Programming assignments
+** Review: Programming assignments
 
 - For the "Command-line floating-point calculator" you actually had to
   enter command-line arguments (rather than static values).
@@ -1747,21 +1745,23 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - For the "Number changer with increment/decrement" exercise, the
   following statement is undefined even though it may compile and run!
   #+begin_src C
-   int number = -5;
+    int number = -5;
 
-    number == ++number;
+    number == ++number;   // undefined state! Not correct!
     printf("%d\n",number);
 
   #+end_src
 
+  #+RESULTS:
+  : -4
+
 - If you think that I made a mistake, you can still let me know after
   this class (by 11 am today).
 
-- I reduced the grade impact from the programming assignments and
-  increased the impact of the tests. Let me know what you think.
+- I reduced the grade impact from the programming assignments (40%)
+  and increased the impact of the tests (35%). Final exam still 25%.
 
-
-** TODO Midterm results
+** Midterm results
 
 - Final grades
   #+begin_src R :file midterm.png :session *R* :results graphics output file :exports both
@@ -1814,8 +1814,7 @@ legend("topleft",
   #+RESULTS:
   [[file:midterm2.png]]
 
-
-** TODO Review: Pseudocode
+** Review: Pseudocode
 
 1. *What is pseudocode?*
    #+begin_quote
@@ -1855,19 +1854,19 @@ legend("topleft",
    #+end_quote
    #+begin_src C
      // If obstacle > 5
-     // duck
+       // duck
      // If obstacle <= 5
-     // jump
+       // jump
    #+end_src
 
 7. *Translate this pseudocode to source code:*
    #+begin_src C
      // If obstacle > 5
-     // duck
+       // duck
      // If obstacle <= 5
-     // jump
+       // jump
    #+end_src
-   #+begin_src C
+   #+begin_src C 
      int obstacle = 7; // high; try 3 for low
 
      if (obstacle > 5) // If obstacle > 5
@@ -1888,22 +1887,22 @@ legend("topleft",
    #+end_quote
    #+begin_src C
      // If inventory.items < 10
-     // collect treasure
+        // collect treasure
      // If inventory.items >= 10
-     // drop item
+        // drop item
    #+end_src
 
 9. *Translate this pseudocode to source code:*
    #+begin_src C
      // If inventory items < 10
-     // collect treasure
-     // print inventory count
+       // collect treasure
+       // print inventory count
      // If inventory items >= 10
-     // drop item
-     // print inventory count
+       // drop item
+       // print inventory count
    #+end_src
    #+begin_src C :results output
-     int items = 7; // test: change to 12 items
+     int items = 12; // test: change to 12 items
 
      if (items <10) { // If inventory items < 10
        items = items + 1; // collect treasure
@@ -1915,7 +1914,7 @@ legend("topleft",
    #+end_src
 
    #+RESULTS:
-   : Treasure collected. Inventory = 8
+   : Item dropped. Inventory count: 11
 
 10. What's wrong with this pseudocode?
     #+begin_quote
@@ -1960,3 +1959,7 @@ legend("topleft",
     #+end_quote
 
 
+
+* Week 10: Control ~switch~ & loops
+
+** TODO Review: Control flow with ~if~, ~else~, ~else if~
