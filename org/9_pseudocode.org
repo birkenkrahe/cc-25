@@ -540,7 +540,7 @@ enough."
    sword costs 50 gold.
 
 4) Take 5 minutes to write the pseudocode into the onecompiler.com/c
-   starter code:
+   starter code (remove the ~printf~ line).
 
 ** Example Solution (Pseudocode)
 

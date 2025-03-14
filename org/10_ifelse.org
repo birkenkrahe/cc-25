@@ -103,8 +103,8 @@
 
 - Source code: Run this in [[https://onecompiler.com/c/43br7x7b4][onecompiler.com/c/43br7x7b4]]
   #+begin_src C
-    int health = 60; // SET health = 60
-    bool enemy_defeated = 1; // SET enemy_defeated = 1 (true))
+    int health = 10; // SET health = 60
+    int enemy_defeated = 1; // SET enemy_defeated = 1 (true))
 
     if (enemy_defeated) { // IF enemy_defeated THEN
       if (health > 75)  // IF health > 75 THEN
@@ -121,7 +121,7 @@
   #+end_src
 
   #+RESULTS:
-  : You’re scratched but standing. You find a rusty sword.
+  : You collapse but grab a small coin.
 
 ** Practice: Loot by Difficulty
 
@@ -139,20 +139,24 @@
   #+END_EXAMPLE
 
 - *Guidance:*
-  - 8-10: "gold coin"
-  - 5-7: "iron ring"
-  - 1-4: "stick"
+  - enemy_difficulty 8-10: print "You find a gold coin"
+  - enemy_difficulty 5-7: print "You find an iron ring"
+  - enemy_difficulty 1-4: print "You find a stick"
+  - enemy_difficulty not a number > 0: print "Something went wrong - nothing
+    found."
 
 - *Example Output:* "You defeat a monster! You find an iron ring!"
 
 - *Time:* 10 minutes to write and test.
 
 - *Sample solution:*
+  https://onecompiler.com/c/43bsst2mg
+  
   #+begin_example
   SET enemy_difficulty = 6
   PRINT "You defeat a monster!"
 
-  IF enemy_difficulty >=8 AND enemy_difficult <= 10
+  IF enemy_difficulty >= 8
      PRINT "You find a gold coin!"
   ELSE IF enemy_difficulty >= 5
      PRINT "You find an iron ring!"
@@ -163,12 +167,14 @@
   END IF
   #+end_example
 
-- *Sample source code:* [[https://onecompiler.com/c/43brbdw4f][onecompiler.com/c/43brbdw4f]]
+- *Sample source code:*
+
+  [[https://onecompiler.com/c/43brbdw4f][onecompiler.com/c/43brbdw4f]]
+
   #+begin_src C
     int enemy_difficulty = 6; // SET enemy_difficulty = 6
     printf("You defeat a monster! "); // PRINT "You defeat a monster!"
 
-    // IF enemy_difficulty >=8 AND enemy_difficulty <= 10
     if (enemy_difficulty >= 8) // 8-10: "gold coin"
       printf("You find a gold coin!");
      else if (enemy_difficulty >= 5) // 5-7: "iron ring"
@@ -182,8 +188,7 @@
   #+RESULTS:
   : You defeat a monster! You find an iron ring!
 
-
-* 2. Nested ~if~ Structures
+* Nested ~if~ Structures
 
 ** Explanation
 
@@ -253,7 +258,6 @@
   - Else: "You lose."
 
 - *Example Output:* "You face the boss! You lose!"
-
 
 * Conclusion
 
