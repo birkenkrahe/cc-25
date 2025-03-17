@@ -1687,7 +1687,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - At the end, you upload a ZIP file to Canvas.
 
-* IN-PROGRESS Week 9: Control Flow - ~if~ / ~else~ / ~else if~
+* DONE Week 9: Control Flow - ~if~ / ~else~ / ~else if~
 #+attr_html: :width 400px :float nil:
 #+caption: Source: Cover of "Moby Dick" by Herman Melville
 [[../img/mobydick.png]]
@@ -1765,13 +1765,13 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 
 - Final grades
   #+begin_src R :file midterm.png :session *R* :results graphics output file :exports both
-  grades <- c(26.92, 43.1, 45.75, 57.78, 59.77, 60.71, 69.8, 74.05, 76.22, 82.32,
-            84.16, 84.33, 84.55, 85.27, 86.05, 86.87, 88.36, 90.25, 90.44, 90.65,
-            91.3, 91.8, 92.25, 92.78, 93.73, 94.42, 96.46, 97.33, 97.88)
-plot(density(grades), col="red", lwd=2, main="Density Plot of Final Grades")
-abline(v=mean(grades), col="blue", lwd=2, lty=2)
-text(mean(grades), max(density(grades)$y), paste("Mean =", round(mean(grades), 2)), pos=2, col="blue")
-legend("topleft", legend=c("Density", paste("Mean =", round(mean(grades), 2))), col=c("red", "blue"), lty=c(1, 2), lwd=2)
+    grades <- c(26.92, 43.1, 45.75, 57.78, 59.77, 60.71, 69.8, 74.05, 76.22, 82.32,
+                84.16, 84.33, 84.55, 85.27, 86.05, 86.87, 88.36, 90.25, 90.44, 90.65,
+                91.3, 91.8, 92.25, 92.78, 93.73, 94.42, 96.46, 97.33, 97.88)
+    plot(density(grades), col="red", lwd=2, main="Density Plot of Final Grades")
+    abline(v=mean(grades), col="blue", lwd=2, lty=2)
+    text(mean(grades), max(density(grades)$y), paste("Mean =", round(mean(grades), 2)), pos=2, col="blue")
+    legend("topleft", legend=c("Density", paste("Mean =", round(mean(grades), 2))), col=c("red", "blue"), lty=c(1, 2), lwd=2)
   #+end_src
 
   #+RESULTS:
@@ -1779,36 +1779,36 @@ legend("topleft", legend=c("Density", paste("Mean =", round(mean(grades), 2))), 
 
 - Programming assignments vs. Tests
   #+begin_src R :file midterm2.png :session *R* :results graphics output file :exports both
-pgrades <- c(22.5, 27.5, 11.25, 37.5, 53.13, 30.63, 66.25, 65, 83.13, 78.13, 86.88, 78.75, 91.88, 80.63, 91.88, 91.88, 90, 93.13, 93.75, 97.5, 90, 89.38, 98.75, 99.38, 98.13, 98.13, 98.75, 96.88)
-tgrades <- c(31.97, 60.92, 85.18, 80.96, 67.37, 95.09, 73.86, 84.39, 68.33, 87.11, 81.05, 90.7, 76.18, 90.57, 79.39, 81.14, 86.49, 86.97, 87.37, 87.11, 93.86, 95.53, 85.96, 87.28, 90.18, 94.56, 95.7, 90.04)
+    pgrades <- c(22.5, 27.5, 11.25, 37.5, 53.13, 30.63, 66.25, 65, 83.13, 78.13, 86.88, 78.75, 91.88, 80.63, 91.88, 91.88, 90, 93.13, 93.75, 97.5, 90, 89.38, 98.75, 99.38, 98.13, 98.13, 98.75, 96.88)
+    tgrades <- c(31.97, 60.92, 85.18, 80.96, 67.37, 95.09, 73.86, 84.39, 68.33, 87.11, 81.05, 90.7, 76.18, 90.57, 79.39, 81.14, 86.49, 86.97, 87.37, 87.11, 93.86, 95.53, 85.96, 87.28, 90.18, 94.56, 95.7, 90.04)
 
-dens_p <- density(pgrades)
-dens_t <- density(tgrades)
+    dens_p <- density(pgrades)
+    dens_t <- density(tgrades)
 
-x_range <- range(dens_p$x, dens_t$x)
-y_range <- range(dens_p$y, dens_t$y)
+    x_range <- range(dens_p$x, dens_t$x)
+    y_range <- range(dens_p$y, dens_t$y)
 
-plot(dens_p,
-     col="red",
-     lwd=2,
-     xlab="Grades (%)",
-     ylab="Density",
-     main="Density Plot of Programming Assignment vs Test Grades",
-     xlim=x_range,
-     ylim=c(0, max(y_range) * 1.1))
+    plot(dens_p,
+         col="red",
+         lwd=2,
+         xlab="Grades (%)",
+         ylab="Density",
+         main="Density Plot of Programming Assignment vs Test Grades",
+         xlim=x_range,
+         ylim=c(0, max(y_range) * 1.1))
 
-lines(dens_t, col="blue", lwd=2)
+    lines(dens_t, col="blue", lwd=2)
 
-abline(v=mean(pgrades), col="red", lty=2, lwd=2)
-abline(v=mean(tgrades), col="blue", lty=2, lwd=2)
+    abline(v=mean(pgrades), col="red", lty=2, lwd=2)
+    abline(v=mean(tgrades), col="blue", lty=2, lwd=2)
 
-legend("topleft",
-       legend=c("Programming Assignments", "Tests",
-                paste("Mean (Prog.) =", round(mean(pgrades), 2)),
-                paste("Mean (Tests) =", round(mean(tgrades), 2))),
-       col=c("red", "blue", "red", "blue"),
-       lty=c(1, 1, 2, 2),
-       lwd=2)
+    legend("topleft",
+           legend=c("Programming Assignments", "Tests",
+                    paste("Mean (Prog.) =", round(mean(pgrades), 2)),
+                    paste("Mean (Tests) =", round(mean(tgrades), 2))),
+           col=c("red", "blue", "red", "blue"),
+           lty=c(1, 1, 2, 2),
+           lwd=2)
   #+end_src
 
   #+RESULTS:
@@ -1854,19 +1854,19 @@ legend("topleft",
    #+end_quote
    #+begin_src C
      // If obstacle > 5
-       // duck
+     // duck
      // If obstacle <= 5
-       // jump
+     // jump
    #+end_src
 
 7. *Translate this pseudocode to source code:*
    #+begin_src C
      // If obstacle > 5
-       // duck
+     // duck
      // If obstacle <= 5
-       // jump
+     // jump
    #+end_src
-   #+begin_src C 
+   #+begin_src C
      int obstacle = 7; // high; try 3 for low
 
      if (obstacle > 5) // If obstacle > 5
@@ -1887,19 +1887,19 @@ legend("topleft",
    #+end_quote
    #+begin_src C
      // If inventory.items < 10
-        // collect treasure
+     // collect treasure
      // If inventory.items >= 10
-        // drop item
+     // drop item
    #+end_src
 
 9. *Translate this pseudocode to source code:*
    #+begin_src C
      // If inventory items < 10
-       // collect treasure
-       // print inventory count
+     // collect treasure
+     // print inventory count
      // If inventory items >= 10
-       // drop item
-       // print inventory count
+     // drop item
+     // print inventory count
    #+end_src
    #+begin_src C :results output
      int items = 12; // test: change to 12 items
@@ -1922,20 +1922,20 @@ legend("topleft",
     mana is above 20. Otherwise, attack the enemy."
     #+end_quote
     #+begin_src C
-     // if health < 50
-        // if mana > 20
-            // Heal
-        // else
-            // Attack
-     // else
-        // Heal
+      // if health < 50
+      // if mana > 20
+      // Heal
+      // else
+      // Attack
+      // else
+      // Heal
     #+end_src
     Correct version:
     #+begin_src C
-     // if health < 50 AND mana > 20
-          // Heal
-     // else
-          // Attack
+      // if health < 50 AND mana > 20
+      // Heal
+      // else
+      // Attack
     #+end_src
     Explanation:
     #+begin_quote
@@ -1959,7 +1959,70 @@ legend("topleft",
     #+end_quote
 
 
-
 * Week 10: Control ~switch~ & loops
+#+attr_html: :width 400px :float nil:
+#+caption: Medieval woodcut
+[[../img/woodcut.jpg]]
 
-** TODO Review: Control flow with ~if~, ~else~, ~else if~
+- [ ] *Wednesday 19 March*: Last day to drop class with a *W* (Withdrawal)
+- [ ] *Test 7* is live and due Friday, March 21 (220 questions so far!)
+- [ ] *Programming assignment:* "Equip a weapon or shield"
+- [ ] *Bonus assignment*: "Boss fight!"
+- [ ] *Lecture/practice:* ~switch~ structures
+- [ ] *Home assignment*: Telephone area codes with ~switch~
+
+** TODO Popquiz
+
+- Complete [[https://github.com/birkenkrahe/cc-25/blob/main/pdf/popquiz.pdf][this popquiz (PDF)]] in your own time.
+- It should not take you more than 30 minutes complete.
+- You can find the solution at [[https://tinyurl.com/if-popquiz][tinyurl.com/if-popquiz]].
+- This quiz will make you fit for the next test (Mar 21).
+
+** TODO The ~switch~ and ~break~ commands
+
+This lecture explores the ~switch~ statement in C, a powerful control
+structure for handling multiple conditions.
+
+- You'll learn how ~switch~ uses an integer expression to select from
+  ~case~ labels—constant values triggering specific statements.
+
+- The ~break~ keyword controls execution by exiting the ~switch~ block,
+  preventing fall-through to subsequent cases unless omitted
+  intentionally.
+
+- Through *examples* and a *practice* exercise, we’ll cover its syntax,
+  behavior, and practical applications, like /grading systems/ and /day
+  classification/.
+
+** TODO Code review ~switch~
+
+1) What output does the program below produce if ~i=1~?
+
+   Tip: ~%~ is the modulo operator - ~i % j~ returns the remainder of
+   ~i/j~. E.g. ~5 % 4 = 4/4 + 1 = 1~, and ~3 % 4 = 3~ [fn:1].
+
+   Guess the answer first, then replace the ~???~ by 1 and run the block.
+
+   #+name: switch1
+   #+begin_src C
+     int i = ???;
+     switch ( i % 3 ) {
+      case 0: printf("zero");
+      case 1: printf("one");
+      case 2: printf("two");
+      }
+   #+end_src
+
+2) Fix the code below so that the output for i=1,2, or 3 is only one
+   of "one", "two", or "three". Test your result.
+
+   #+name: switch2
+   #+begin_src C
+     int i = 3;
+     switch ( i % 3 ) {
+      case 0: printf("zero");
+      case 1: printf("one");
+      case 2: printf("two");
+      }
+   #+end_src
+

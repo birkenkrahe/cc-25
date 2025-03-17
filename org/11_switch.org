@@ -2,17 +2,18 @@
 #+AUTHOR:Marcus Birkenkrahe
 #+SUBTITLE:CSC100 Introduction to programming in C/C++ (Spring 2025)
 #+STARTUP: overview hideblocks indent inlineimages
-#+OPTIONS: toc:0 ^:nil num:nil
+#+OPTIONS: toc:nil ^:nil num:nil
 #+PROPERTY: header-args:C :main yes :includes <stdio.h> :exports both :results output :noweb yes :tangle yes
 * README
 
-- In this section of the course, we go beyond simple statements and
-  turn to program flow and evaluation of logical conditions
-
-- This section follows chapter 3 in Davenport/Vine (2015) and
-  chapters 4 and 5 in King (2008)
-
-- Practice workbooks, input files and PDF solution files in GitHub
+This lecture explores the ~switch~ statement in C, a powerful control
+structure for handling multiple conditions. You'll learn how ~switch~
+uses an integer expression to select from ~case~ labels—constant values
+triggering specific statements. The ~break~ keyword controls execution
+by exiting the ~switch~ block, preventing fall-through to subsequent
+cases unless omitted intentionally. Through examples and a practice
+exercise, we’ll cover its syntax, behavior, and practical
+applications, like grading systems and day classification.
 
 * Overview
 
@@ -42,25 +43,66 @@
 
 * Simple example
 
+- What does this program do?
+  #+begin_example
+  SET hamlet = 0  // Assign a number representing Hamlet’s mood
+
+    SWITCH hamlet
+        CASE 0
+            OUTPUT "Not to be"
+            BREAK
+        CASE 1
+            OUTPUT "To be or not to be, that is the question"
+            BREAK
+        CASE 2
+            OUTPUT "Alas, poor Yorick! I knew him well"
+            BREAK
+        CASE 3
+            OUTPUT "Something’s rotten in the state of Denmark"
+            BREAK
+        DEFAULT
+            OUTPUT "Get thee to a nunnery!"
+            BREAK
+    END SWITCH
+  #+end_example
+
+- *Bonus exercise:* Turn this pseudocode into running C code! (Canvas:
+  /Bonus: Hamlet, Prince of Denmark/.
+
+* Another simple example
+
 - In the example program below, the ~grade~ is set in the variable
   declaration. Depending on the value, a =case= is triggered and the
   corresponding statements are executed.
 
 - What is the output of the code below for ~grade =~ 5,3,0,-1,0.5?
+  #+begin_example
+  SET grade = 5
+
+  SWITCH grade
+      CASE 1 to 4
+         OUTPUT "Passing"
+         BREAK
+      CASE 5 or 6
+         OUTPUT "FAILING"
+         BREAK
+      DEFAULT
+         OUTPUT "Illegal grade"
+         BREAK
+  END SWITCH
+  #+end_example
+
+- What does this program do? Which problem/solution is implemented?
   #+begin_quote
-  | VALUE | OUTPUT        |
-  |-------+---------------|
-  |     5 | Failing       |
-  |     3 | Passing       |
-  |     0 | Illegal grade |
-  |    -1 | Illegal grade |
-  |   0.5 | Illegal grade |
+  Answer: The program reflects "passing" grades 4,3,2,1, and "failing"
+  grade 5,6. Any other grade value is not allowed. (This happens to be
+  the German grade scale, which is A = 1 to D = 4, and F = 5 or 6.)
   #+end_quote
 
-- The code:
+- Source code:
   #+name: switch
   #+begin_src C :results output :exports both
-    int grade = 0.5;
+    int grade = 5;
     switch (grade) {
      case 4:
      case 3:
@@ -79,13 +121,17 @@
   #+end_src
 
   #+RESULTS: switch
-  : Illegal grade
+  : Failing
 
-- What does this program do? Which problem/solution is implemented?
+- All output cases:
   #+begin_quote
-  Answer: The program reflects "passing" grades 4,3,2,1, and "failing"
-  grade 5,6. Any other grade value is not allowed. (This happens to be
-  the German grade scale, which is A = 1 to D = 4, and F = 5 or 6.)
+  | VALUE | OUTPUT        |
+  |-------+---------------|
+  |     5 | Failing       |
+  |     3 | Passing       |
+  |     0 | Illegal grade |
+  |    -1 | Illegal grade |
+  |   0.5 | Illegal grade |
   #+end_quote
 
 - You can also put several case labels on the same line as shown
@@ -108,10 +154,44 @@
      }
   #+end_src
 
-- Note: You cannot write a case label for a range of values.
+- The ~default~ case (when none of the case expressions apply) is
+  *optional*, and it does not have to come last!
 
-- The default case (when none of the case expressions apply) is
-  optional, and it does not have to come last.
+- Note: *You cannot write a case label for a range of values*. 
+
+- To make this happen in C, you'd have to use a loop to cycle through
+  a range, using a loop over the values of an array:
+  #+begin_src C :results output :exports both
+    int grade;
+    int i; // loop variable
+    float grades[]={5,3,0,-1,0.5}; // array of grades
+    size_t length_of_grades = sizeof(grades)/sizeof(grades[0]);
+
+    for (i = 0; i < length_of_grades; i++) { // LOOP through grades
+      grade = (int)grades[i];
+      switch (grade) {  // SWITCH grade
+      case 4:
+      case 3:
+      case 2:
+      case 1:
+        printf("%d: Passing\n", grade);
+        break;
+      case 5:
+      case 6:
+        printf("%d: Failing\n", grade);
+        break;
+      default:
+        printf("%d: Illegal grade\n", grade);
+      }  // END SWITCH
+     } // END LOOP
+  #+end_src
+
+  #+RESULTS:
+  : 5: Failing
+  : 3: Passing
+  : 0: Illegal grade
+  : -1: Illegal grade
+  : 0: Illegal grade
 
 * The role of the ~break~ statement
 
@@ -139,9 +219,6 @@
      }
   #+end_src
 
-  #+RESULTS: switch2
-  : FailingIllegal grade
-
 - What happens without the ~break~ statements?
   #+begin_quote
   Answer: When the last statement in a case has been executed,
@@ -155,17 +232,17 @@
   indicated with an explicit comment.
 
 * Practice Exercise: "Day of the Week Classifier"
-** Objective
+
+** Task
 
 Write a C program using a ~switch~ statement to classify an integer
 input (1-7) as a specific day of the week and print a corresponding
 message. This reinforces understanding of ~switch~, ~case~, ~break~, and
 ~default~.
 
-** Instructions for Students
+** Instructions
 
-1. Copy the starter pseudocode below into a ~main~ program in your
-   source code editor.
+1. Open the starter pseudocode below in the online C editor.
 
 2. Fill in the missing parts in C:
    - Declare and initialize the ~day~ variable with a value (e.g., ~int
@@ -179,7 +256,7 @@ message. This reinforces understanding of ~switch~, ~case~, ~break~, and
    - One weekend day (e.g., 6)
    - One invalid value (e.g., 8)
 
-4. (Bonus) Remove one ~break~ statement, predict the output, and run it
+4. Remove one ~break~ statement, predict the output, and run it
    to confirm.
 
 ** Starter Pseudocode: [[https://onecompiler.com/c/43bxaes2k][onecompiler.com/c/43bxaes2k]]
@@ -229,11 +306,93 @@ message. This reinforces understanding of ~switch~, ~case~, ~break~, and
 - Bonus (e.g., remove ~break~ after ~case 5~):
   - If ~day = 5~, output becomes "Friday: Weekend is near!Saturday: Time to relax!" due to fall-through.
 
-** Timing
+** Sample solution
 
-- *Total*: 15-20 minutes
-  - *3-5 minutes*: Copy and understand the pseudocode.
-  - *5-8 minutes*: Fill in the C code for ~day~ and ~switch~ cases.
-  - *3-5 minutes*: Test with three values.
-  - *2-4 minutes* (optional): Bonus question on fall-through.
+#+begin_src C :exports code
+  #include <stdio.h>
 
+  int main() {
+    // Declare an integer variable 'day' and set it to a test value (1-7)
+    // e.g., int day = 3;
+    int day = 3; // Declare an integer variable 'day' and set it to a test value (1-7)
+
+    // Write a switch statement to evaluate 'day'
+    switch (day) { // Write a switch statement to evaluate 'day'
+      // Case for day 1: Print "Monday: Start of the workweek!"
+      // Add break statement
+    case 1: // Case for day 1
+      printf("Monday: Start of the workweek!\n"); // Print "Monday: Start of the workweek!"
+      break; // Add break statement
+
+      // Case for day 2: Print "Tuesday: Getting into the groove."
+      // Add break statement
+    case 2: // Case for day 2
+      printf("Tuesday: Getting into the groove.\n"); // Print "Tuesday: Getting into the groove."
+      break; // Add break statement
+
+      // Case for day 3: Print "Wednesday: Midweek already!"
+      // Add break statement
+    case 3: // Case for day 3
+      printf("Wednesday: Midweek already!\n"); // Print "Wednesday: Midweek already!"
+      break; // Add break statement
+
+      // Case for day 4: Print "Thursday: Almost there!"
+      // Add break statement
+    case 4: // Case for day 4
+      printf("Thursday: Almost there!\n"); // Print "Thursday: Almost there!"
+      break; // Add break statement
+
+      // Case for day 5: Print "Friday: Weekend is near!"
+      // Add break statement
+    case 5: // Case for day 5
+      printf("Friday: Weekend is near!\n"); // Print "Friday: Weekend is near!"
+      break; // Add break statement
+
+      // Case for day 6: Print "Saturday: Time to relax!"
+      // Add break statement
+    case 6: // Case for day 6
+      printf("Saturday: Time to relax!\n"); // Print "Saturday: Time to relax!"
+      break; // Add break statement
+
+      // Case for day 7: Print "Sunday: Rest and recharge."
+      // Add break statement
+    case 7: // Case for day 7
+      printf("Sunday: Rest and recharge.\n"); // Print "Sunday: Rest and recharge."
+      break; // Add break statement
+
+      // Default case: Print "Error: Not a valid day!"
+      // Add break statement
+    default: // Default case
+      printf("Error: Not a valid day!\n"); // Print "Error: Not a valid day!"
+      break; // Add break statement
+    }
+    return 0;
+  }
+#+end_src
+
+* Summary
+
+- *Structure and Usage*: The ~switch~ statement evaluates an integer
+  expression against constant ~case~ labels, executing associated
+  statements, with ~break~ typically used to exit and an optional
+  ~default~ for unmatched cases.
+
+- *Break’s Role*: Without ~break~, execution falls through to subsequent
+  cases, ignoring their labels, which can be intentional but should be
+  commented; with ~break~, control exits after a case’s statements.
+
+- *Limitations and Flexibility*: ~case~ labels must be integer constants
+  (no ranges or variables), and multiple cases can share statements
+  (e.g., stacking or inline), as seen in grading or day-of-week
+  examples.
+
+* References
+
+- Davenport/Vine (2015) C Programming for the Absolute Beginner
+  (3ed). Cengage Learning.
+- Grok 3 by xAI.
+- Kernighan/Ritchie (1978). The C Programming Language
+  (1st). Prentice Hall.
+- King (2008). C Programming - A modern approach (2e). W A Norton.
+- Orgmode.org (n.d.). 16 Working with Source Code [website]. [[https://orgmode.org/manual/Working-with-Source-Code.html][URL:
+  orgmode.org]]
