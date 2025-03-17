@@ -75,7 +75,8 @@ applications, like grading systems and day classification.
   declaration. Depending on the value, a =case= is triggered and the
   corresponding statements are executed.
 
-- What is the output of the code below for ~grade =~ 5,3,0,-1,0.5?
+- *Pseudocode:* What is the output of the code below for ~grade =~
+  5,3,0,-1,0.5?
   #+begin_example
   SET grade = 5
 
@@ -99,7 +100,7 @@ applications, like grading systems and day classification.
   the German grade scale, which is A = 1 to D = 4, and F = 5 or 6.)
   #+end_quote
 
-- Source code:
+- *Source code:* Code along in OneCompiler - [[https://onecompiler.com/c/43c3jez7k][onecompiler.com/c/43c3jez7k]]
   #+name: switch
   #+begin_src C :results output :exports both
     int grade = 5;

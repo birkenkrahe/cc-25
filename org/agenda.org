@@ -1964,19 +1964,25 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 #+caption: Medieval woodcut
 [[../img/woodcut.jpg]]
 
-- [ ] *Wednesday 19 March*: Last day to drop class with a *W* (Withdrawal)
-- [ ] *Test 7* is live and due Friday, March 21 (220 questions so far!)
-- [ ] *Programming assignment:* "Equip a weapon or shield"
+- [ ] *Wednesday 19 March*: Last day to drop class with *W* (Withdrawal).
+- [ ] *Test 7* is live and due Friday, March 21 (220 questions so far!).
+- [ ] *Programming assignment:* "Equip a weapon or shield".
 - [ ] *Bonus assignment*: "Boss fight!"
-- [ ] *Lecture/practice:* ~switch~ structures
-- [ ] *Home assignment*: Telephone area codes with ~switch~
+- [ ] *Lecture/practice:* ~switch~ structures.
+- [ ] *Home assignment*: Telephone area codes with ~switch~ (April 4).
+- [ ] *Popquiz:* Test your knowledge of pseudocode and ~IF~ structures!
 
 ** TODO Popquiz
 
-- Complete [[https://github.com/birkenkrahe/cc-25/blob/main/pdf/popquiz.pdf][this popquiz (PDF)]] in your own time.
-- It should not take you more than 30 minutes complete.
-- You can find the solution at [[https://tinyurl.com/if-popquiz][tinyurl.com/if-popquiz]].
+- Complete [[https://github.com/birkenkrahe/cc-25/blob/main/pdf/popquiz.pdf][this popquiz (PDF)]] in 30 minutes or less.
+- It is ungraded and only serves to aid your understanding.
+- We will discuss the solution afterwards (also online).
 - This quiz will make you fit for the next test (Mar 21).
+
+
+** TODO 
+- You can find the solution at [[https://tinyurl.com/if-popquiz][tinyurl.com/if-popquiz]].
+
 
 ** TODO The ~switch~ and ~break~ commands
 
@@ -1993,36 +1999,4 @@ structure for handling multiple conditions.
 - Through *examples* and a *practice* exercise, we’ll cover its syntax,
   behavior, and practical applications, like /grading systems/ and /day
   classification/.
-
-** TODO Code review ~switch~
-
-1) What output does the program below produce if ~i=1~?
-
-   Tip: ~%~ is the modulo operator - ~i % j~ returns the remainder of
-   ~i/j~. E.g. ~5 % 4 = 4/4 + 1 = 1~, and ~3 % 4 = 3~ [fn:1].
-
-   Guess the answer first, then replace the ~???~ by 1 and run the block.
-
-   #+name: switch1
-   #+begin_src C
-     int i = ???;
-     switch ( i % 3 ) {
-      case 0: printf("zero");
-      case 1: printf("one");
-      case 2: printf("two");
-      }
-   #+end_src
-
-2) Fix the code below so that the output for i=1,2, or 3 is only one
-   of "one", "two", or "three". Test your result.
-
-   #+name: switch2
-   #+begin_src C
-     int i = 3;
-     switch ( i % 3 ) {
-      case 0: printf("zero");
-      case 1: printf("one");
-      case 2: printf("two");
-      }
-   #+end_src
 
