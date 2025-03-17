@@ -1972,17 +1972,17 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - [ ] *Home assignment*: Telephone area codes with ~switch~ (April 4).
 - [ ] *Popquiz:* Test your knowledge of pseudocode and ~IF~ structures!
 
-** TODO Popquiz
+** DONE Popquiz
 
 - Complete [[https://github.com/birkenkrahe/cc-25/blob/main/pdf/popquiz.pdf][this popquiz (PDF)]] in 30 minutes or less.
 - It is ungraded and only serves to aid your understanding.
 - We will discuss the solution afterwards (also online).
 - This quiz will make you fit for the next test (Mar 21).
-
-
-** TODO 
 - You can find the solution at [[https://tinyurl.com/if-popquiz][tinyurl.com/if-popquiz]].
-
+- Important:
+  1) Understand first, then plan, then execute, then evaluate (Polya)
+  2) Your pseudocode is yours - it can be personal and different
+  3) Stay away from C syntax if you can to get the logic clear first
 
 ** TODO The ~switch~ and ~break~ commands
 
