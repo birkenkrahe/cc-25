@@ -1958,19 +1958,18 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
       - ~health = 60, mana = 10~: Health >= 50 → Attack. (Correct)
     #+end_quote
 
-
 * Week 10: Control ~switch~ & loops
 #+attr_html: :width 400px :float nil:
 #+caption: Medieval woodcut
 [[../img/woodcut.jpg]]
 
-- [ ] *Wednesday 19 March*: Last day to drop class with *W* (Withdrawal).
-- [ ] *Test 7* is live and due Friday, March 21 (220 questions so far!).
-- [ ] *Programming assignment:* "Equip a weapon or shield".
-- [ ] *Bonus assignment*: "Boss fight!"
+- [X] *Wednesday 19 March*: Last day to drop class with *W* (Withdrawal).
+- [X] *Popquiz:* Test your knowledge of pseudocode and ~IF~ structures!
+- [X] *Test 7* is live and due Friday, March 21
+- [X] *Programming assignment:* "Equip a weapon or shield".
+- [X] *Bonus assignment*: "Boss fight!"
 - [ ] *Lecture/practice:* ~switch~ structures.
 - [ ] *Home assignment*: Telephone area codes with ~switch~ (April 4).
-- [ ] *Popquiz:* Test your knowledge of pseudocode and ~IF~ structures!
 
 ** DONE Popquiz
 
@@ -1984,7 +1983,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
   2) Your pseudocode is yours - it can be personal and different
   3) Stay away from C syntax if you can to get the logic clear first
 
-** TODO The ~switch~ and ~break~ commands
+** DONE The ~switch~ and ~break~ commands
 
 This lecture explores the ~switch~ statement in C, a powerful control
 structure for handling multiple conditions.
@@ -2000,3 +1999,16 @@ structure for handling multiple conditions.
   behavior, and practical applications, like /grading systems/ and /day
   classification/.
 
+** TODO Loops
+
+* Week 11: More loops
+
+* Week 12: Arrays
+
+* Week 13: Functions
+
+* Week 14: Pointers
+
+* Week 15: Structures
+
+* Week 16: C++

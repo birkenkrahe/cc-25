@@ -1,4 +1,4 @@
-#+TITLE: SWITCH STATEMENTS
+#+TITLE: SWITCH AND BREAK STATEMENTS
 #+AUTHOR:Marcus Birkenkrahe
 #+SUBTITLE:CSC100 Introduction to programming in C/C++ (Spring 2025)
 #+STARTUP: overview hideblocks indent inlineimages
@@ -133,6 +133,7 @@ applications, like grading systems and day classification.
   |     0 | Illegal grade |
   |    -1 | Illegal grade |
   |   0.5 | Illegal grade |
+  |   1.5 | Passing       | Anomaly: 1.5 is truncated to 1
   #+end_quote
 
 - You can also put several case labels on the same line as shown
@@ -370,6 +371,9 @@ message. This reinforces understanding of ~switch~, ~case~, ~break~, and
     return 0;
   }
 #+end_src
+
+#+RESULTS:
+: Wednesday: Midweek already!
 
 * Summary
 
