@@ -1958,7 +1958,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
       - ~health = 60, mana = 10~: Health >= 50 → Attack. (Correct)
     #+end_quote
 
-* Week 10: Control ~switch~ & loops
+* Week 10: Control ~switch~ & ~while~ loops
 #+attr_html: :width 400px :float nil:
 #+caption: Medieval woodcut
 [[../img/woodcut.jpg]]
@@ -1968,8 +1968,8 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - [X] *Test 7* is live and due Friday, March 21
 - [X] *Programming assignment:* "Equip a weapon or shield".
 - [X] *Bonus assignment*: "Boss fight!"
-- [ ] *Lecture/practice:* ~switch~ structures.
-- [ ] *Home assignment*: Telephone area codes with ~switch~ (April 4).
+- [X] *Lecture/practice:* ~switch~ structures.
+- [X] *Home assignment*: Telephone area codes with ~switch~ (April 4).
 
 ** DONE Popquiz
 
@@ -2000,6 +2000,20 @@ structure for handling multiple conditions.
   classification/.
 
 ** TODO Loops
+
+- Collections of objects (like numbers, words) are usually stored
+  efficiently in so-called /data structures/, e.g. /arrays/.
+
+- There are three /control flow (aka looping) statements/ that allow you
+  to /iterate/ over data:
+  - [ ] ~while~ loops
+  - [ ] ~do while~ loops
+  - [ ] ~for~ loops
+
+- We'll cover them using the same approach, with practice:
+  1) A simple example
+  2) A counting example
+  3) A summing example (home assignment)
 
 * Week 11: More loops
 
