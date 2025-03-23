@@ -1,0 +1,286 @@
+#+TITLE:Seven Days of Code - C Basics 
+#+AUTHOR:Marcus Birkenkrahe (pledged)
+#+SUBTITLE:Introduction to Programming in C - Lyon College - Spring 2025
+#+STARTUP: overview hideblocks indent
+#+OPTIONS: toc:nil num:nil ^:nil
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes
+* Spring Break: Seven Days of Code
+
+Below are seven optional C programming assignments, one for each day
+of the next week. Each corresponds to a key area you’ve learned so far
+and should take no more than 15 minutes to complete. Use only the
+concepts covered in class up to Week 10 (e.g., ~printf~, ~scanf~,
+variables, constants, operators, ~if-else~, ~switch~, ~while~ loops). Test
+your programs to match the example outputs exactly!
+
+- You can send me your OneCompiler URLs if you have a question.
+- You can find a sample solution at the end of each problem.
+- Have fun coding!
+
+** Monday: Hello World Program
+
+*** Task
+
+Write a C program that prints "Hello, [Your Name]!" (replace [Your
+Name] with your actual name) on one line, followed by "Welcome to C!"
+on the next line.
+
+*** Instructions
+
+- Use ~printf~ with the ~\n~ escape character to print two lines.
+- Test it to ensure the output matches exactly.
+
+*** Example Output [replace 'Alex' by your own name]
+#+begin_example
+Hello, Alex!
+Welcome to C!
+#+end_example
+
+*** Starter Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main(void) {
+    // Print "Hello, [Your Name]!" followed by a newline
+    // Print "Welcome to C!" followed by a newline
+    return 0;
+  }
+#+end_src
+
+*** Solution: https://onecompiler.com/c/43ckcc7na
+
+** Tuesday: Printing Formatted Values and Variables
+*** Task
+
+Write a C program that declares an integer variable ~age~ with your
+current age and a float variable ~height~ with your height in meters
+(e.g., 1.75). Print both using ~printf~ with appropriate format
+specifiers: ~age~ as a whole number and ~height~ with 2 decimal places.
+
+*** Instructions
+- Use ~%d~ for the integer and ~%.sapf~ for the float.
+- Put each value on a new line.
+
+*** Example Output
+#+begin_example
+Age: 25 years
+Height: 1.75 meters
+#+end_example
+
+*** Starter Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main(void) {
+    // Declare an integer variable `age` with your age Declare a float
+    // variable `height` with your height in meters Print "Age: "
+    // followed by the age value, "years", and a newline Print
+    // "Height: " followed by the height value on 2 decimal places,
+    //            "meters"`, and a newline
+    return 0;
+  }
+#+end_src
+
+*** Solution: https://onecompiler.com/c/43ckj49q6
+
+** Wednesday: Constants and Keyboard Input
+*** Task
+Write a C program that defines a constant for the speed of light
+(~299792458~ meters per second) and asks the user to input a time in
+seconds. Calculate and print the distance light travels (speed × time)
+as an integer.
+
+*** Instructions
+
+Use ~#define~ for the constant, ~scanf~ for input, and ~printf~ with ~%d~ to
+display the result.
+
+*** Example Output
+#+begin_example
+Enter time in seconds: 2
+Distance light travels in 2 seconds: 599584916 meters
+#+end_example
+
+*** Starter Code
+#+begin_src C
+  #include <stdio.h>
+
+  // Define a constant SPEED_OF_LIGHT as 299792458
+  int main(void) {
+    // Declare an integer variable for time `sec`
+    // Declare an integer variable for distance `dist`
+    // Print a prompt asking for time in seconds
+    // Read the time input from the user
+    // Print time input value
+    // Calculate distance = SPEED_OF_LIGHT * time
+    // Print "Distance light travels: " followed by the distance and a newline
+    return 0;
+  }
+#+end_src
+*** Solution: https://onecompiler.com/c/43ckkbzfm
+** Thursday: Naming Variables, ~printf~, and ~scanf~
+*** Task
+
+Write a C program that asks the user for their first name (as a single
+character) and their birth year. Use meaningful variable names like
+~firstInitial~ and ~birthYear~. Compute the age of the user and print it.
+
+*** Instructions
+
+- Use ~scanf~ with ~%c~ for the character and ~%d~ for the year.
+- Use ~printf~ to format the output.
+
+*** Example Output
+#+begin_example
+Enter your first initial and your birth year: A 2005
+Hi A, you were born 20 years ago!
+#+end_example
+
+*** Starter Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main(void) {
+    // Declare a character variable `firstInitial`
+    // Declare an integer variable `birthYear`
+    // Print a prompt for the first initial and the birth year
+    // Read the input from the user
+    // Print the input for the user
+    // Print "Hi " followed by the initial, ", you were born ", the
+    // age, and a newline
+    return 0;
+  }
+#+end_src
+
+*** Solution: https://onecompiler.com/c/43ckr2fc7
+
+** Friday: Operators
+*** Task
+
+Write a C program that declares two integer variables, ~a = 10~ and ~b =
+3~. Use arithmetic operators to compute and print: their sum (~+~),
+difference (~-~), product (~*~), and quotient (~/~), each on a new line.
+
+*** Instructions
+
+- Use ~printf~ with ~%d~ for each result.
+- Note that integer division truncates (e.g., ~10 / 3 = 3~).
+
+*** Example Output
+#+begin_example
+Sum: 13
+Difference: 7
+Product: 30
+Quotient: 3
+#+end_example
+
+*** Starter Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main(void) {
+    // Declare integer variable `a` as 10
+    // Declare integer variable `b` as 3
+    // Print "Sum: " followed by a + b and a newline
+    // Print "Difference: " followed by a - b and a newline
+    // Print "Product: " followed by a * b and a newline
+    // Print "Quotient: " followed by a / b and a newline
+    return 0;
+  }
+#+end_src
+
+*** Solution: https://onecompiler.com/c/43ckvtujh
+** Saturday: Control Flow with ~if-else-elseif~ and ~switch~
+*** Task
+
+Write a C program that asks the user to input a number from 1
+to 3. Use a ~switch~ statement to print a message based on the input:
+"One" for 1, "Two" for 2, "Three" for 3, and "Invalid" for anything
+else.
+
+*** Instructions
+- Use ~scanf~ to get the number.
+- Use a ~switch~ with ~case~ and ~break~ to handle each option, and ~default~
+  for invalid inputs.
+
+*** Example Output
+#+begin_example
+Enter a number (1-3): 2
+Two
+#+end_example
+#+begin_example
+Enter a number (1-3): 4
+Invalid
+#+end_example
+
+*** Starter Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main(void) {
+    // Declare an integer variable `num`
+    // Print a prompt asking for a number from 1 to 3
+    // Read the number from the user
+    // Print the number for the user
+    // Use a switch statement:
+    //   Case 1: print "One" and break
+    //   Case 2: print "Two" and break
+    //   Case 3: print "Three" and break
+    //   Default: print "Invalid"
+    return 0;
+  }
+#+end_src
+
+*** Solution: https://onecompiler.com/c/43ckwh445
+** Sunday: While Loops
+*** Task
+
+Write a C program that asks the user for a positive integer ~limit~ and
+uses a ~while~ loop to print all even numbers from 2 up to ~limit~
+(inclusive), one per line. If ~limit~ is less than 2, print an error
+message.
+
+*** Instructions
+
+- Use ~scanf~ for input.
+- Use a ~while~ loop with a counter starting at 2, increasing by 2 each
+  time.
+- Use a compound operator to increment ~counter~
+- Check if ~limit~ is valid first.
+
+*** Hint
+
+To stop a program, you can use ~return EXIT_FAILURE~ if you ~#include
+<stdlib.h>~.
+
+*** Example Output
+#+begin_example
+Enter a positive integer: 6
+2
+4
+6
+#+end_example
+#+begin_example
+Enter a positive integer: 1
+Error: Enter a number 2 or higher
+#+end_example
+
+*** Starter Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main(void) {
+    // Declare an integer variable `limit`
+    // Declare an integer variable `counter` starting at 2
+    // Print a prompt asking for a positive integer
+    // Read the limit from the user
+    // Print the limit for the user
+    // If limit < 2, print "Error: Enter a number 2 or higher" and stop
+    // Otherwise, while counter <= limit:
+    //   Print counter and a newline
+    //   Increase counter by 2
+    return 0;
+  }
+#+end_src
+
+*** Solution: https://onecompiler.com/c/43ckwxsn4
