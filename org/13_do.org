@@ -1,0 +1,318 @@
+#+TITLE:Iteration / Loops - do-while
+#+AUTHOR:Marcus Birkenkrahe
+#+SUBTITLE:CSC100 / Introduction to programming in C/C++ - Spring 2025
+#+STARTUP: overview hideblocks indent
+#+OPTIONS: toc:1 ^:nil num:1
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> :exports both :results output :comments none
+* README
+
+- This script introduces C looping structures.
+
+- This section is based on chapter 4 in Davenport/Vine (2015) and
+  chapter 6 in King (2008).
+
+- Practice workbooks, input files and PDF solution files in GitHub
+
+* Loops
+
+- A *loop* is a statement whose job is to repeatedly execute over
+  some other statement (the *loop body*).
+
+- Every loop has a *controlling expression*.
+
+- Each time the loop body is executed (an *iteration* of the loop),
+  the controlling expression is evaluated.
+
+- If the expression is *TRUE* (has a value that is non-zero), the loop
+  continues to execute.
+
+- C provides three iteration statements: ~while~, ~do~, and ~for~
+
+* The =do= statement
+
+- The =do= statement has the general form
+
+  ~do /statement/ while ( /expression/ ) ;~
+
+- It's like a =while= statement whose controlling expression is
+  tested /after/ each execution of the loop body.
+
+- When a =do= statement is executed, the loop body is executed first,
+  (at least once), and then the controlling /expression/ is evaluated.
+
+- If the value of the /expression/ is non-zero, the loop body is
+  executed again and the expression is evaluated once more.
+
+- Execution of the =do= statement terminates when the controlling
+  /expression/ has the value ~0~ (/FALSE/) *after* the loop body has been
+  executed (or if you abort the execution with =break=).
+
+- Always use braces ~{...}~ around /all/ ~do~ statements, because otherwise
+  it can be mistaken for a ~while~ statement.
+
+* Simple example
+
+- How many times will this loop print "hello"
+  #+begin_src C
+  #define N 5
+  int i = 1; 
+  do {  
+    puts("hello");
+    i++;  
+   } while (i<N);
+#+end_src
+  
+- Analyse using pseudocode:
+#+begin_src C
+  #define N 5 // SET N to 5
+  int i = 1; // SET i to one
+  do {  // REPEAT 
+    puts("hello"); // PRINT "hello"
+    i++;  // ADD 1 to i
+   } while (i<N); // UNTIL i is less than N
+#+end_src
+
+- To clarify, print the loop counter:
+  #+begin_src C
+    #define N 5 // SET N to 5
+    int i = 0; // SET i to zero
+    do {  // REPEAT
+      printf("hello %d\n",i++); // PRINT "hello" and ADD 1 to i
+     } while (i<N); // UNTIL i is less than N
+  #+end_src 
+
+* Example: Calculating the number of digits in an integer
+
+- ~do~ is handy for loops that must execute at least once.
+
+- Let's write a program that calculates the number of digits in an
+  integer entered by the user.
+
+- Sample output:
+  #+name: ex:dowhile
+  #+begin_example
+    Enter a nonnegative integer: 656
+    The number has 3 digits(s).
+  #+end_example
+
+- Our strategy ("algorithm"): '/digits'/ correspond to 'base 10' - if we
+  divide the input by 10 repeatedly until it becomes 0 (via integer
+  truncation), the number of divisions performed is the number of
+  digits.
+
+  #+begin_example
+    656 / 10 => 65 (remainder 6/10)
+    65  / 10 => 6  (remainder 5/10)
+    6   / 10 => 0  (remainder 6/10)
+   #+end_example
+
+- In code:
+  #+begin_src C
+    printf("656 / 10 = %d (remainder %d/10)\n", 656/10, 656%10);
+    printf("65 / 10 = %d (remainder %d/10)\n", 65/10, 65%10);
+    printf("6 / 10 = %d (remainder %d/10)\n", 6/10, 6%10);        
+  #+end_src
+
+  #+RESULTS:
+  : 656 / 10 = 65 (remainder 6/10)
+  : 65 / 10 = 6 (remainder 5/10)
+  : 6 / 10 = 0 (remainder 6/10)
+
+- Starter code: [[https://onecompiler.com/c/43d9uyzy7][onecompiler.com/c/43d9uyzy7]]
+  #+name: pseudo:dowhile
+  #+begin_example C
+  // Input: non-negative integer n
+    // Output: number of digits of n
+
+    // SET digits to zero
+    // SET input n
+
+    // PRINT "Enter a non-negative integer"
+    // GET input n
+    // PRINT input n
+
+    // REPEAT
+      // divide input n by 10
+      // add result to digits
+    // UNTIL n is greater than 0
+
+    // PRINT "The number has n digit(s)."
+  #+end_example
+
+- Code solution:
+  #+begin_src C :cmdline < ../data/dowhile
+    // Input: non-negative integer n
+    // Output: number of digits of n
+
+    // SET digits to zero
+    int digits=0;    
+    // SET input n
+    int n;
+
+    // PRINT "Enter a non-negative integer"
+    printf("Enter a non-negative integer: ");
+    // GET input n
+    scanf("%d",&n);
+    // PRINT input n
+    printf("%d\n",n);
+
+    do { // REPEAT
+      // divide input n by 10
+      n /= 10;
+      // add result to digits
+      digits++;
+     } while (n>0);  // UNTIL n is greater than 0
+
+    // PRINT "The number has n digit(s)."
+    printf("The number has %d digit(s).\n",digits);
+  #+end_src
+
+  #+RESULTS:
+  : Enter a non-negative integer: 656
+  : The number has 3 digit(s).
+
+- Sample input:
+  #+name: in:dowhile
+  #+begin_src bash :results output
+    echo 656 > ../data/dowhile
+    cat ../data/dowhile
+  #+end_src
+
+  #+RESULTS: in:dowhile
+  : 656
+
+- It is important to check *edge cases*. Why does the code *not* work for
+  the input =6565656565=?
+    
+- Answer:
+  #+begin_src C
+    puts("Does 6565656565 lead to integer overflow?");
+    if (6565656565 > 2147483647) puts("Yes");
+    else puts("No");
+  #+end_src
+
+  #+begin_quote
+  ~int~ is actually a so-called /signed integer/, a 32-bit datum that
+  encodes integers in the range ~[-2147483647,2147483647]~. Any integer
+  larger than this will not work - we have to use long integer types
+  (=long int=) and a different conversion specifier (=%ld=).
+  #+end_quote
+
+- Test: Modify the program so that it runs for long integers, too
+  (bonus exercise).
+
+* Example: Counting down
+
+- Do you remember how to count down from 10 to 1 using ~while~?
+  #+begin_src C
+    int i = 10;
+    while(i>0) printf("%d ",i--);
+  #+end_src
+
+  #+RESULTS:
+  : 10 9 8 7 6 5 4 3 2 1 
+
+- Challenge: Turn this loop into a ~do~ loop.
+
+  1) Pseudocode first (to understand how the logic changes)
+
+  2) Code the long version first. Test.
+
+  3) Code the concise version last.
+
+- Solution:
+
+  1) Pseudocode for ~while~:
+     #+begin_example C
+     // SET loop counter to 10
+     // WHILE i is greater than 0
+        // PRINT i
+        // SUBTRACT 1 from i
+     // END WHILE
+     #+end_example
+
+     Pseudocode for ~do~:
+     #+begin_example C
+     // SET loop counter to 10
+     // REPEAT
+        // PRINT i
+        // SUBTRACT 1 from i
+     // UNTIL i is greater than 0
+     #+end_example
+
+  2) Code: long version
+     #+begin_src C
+       int i = 10; // SET loop counter to 10
+       do {// REPEAT
+         printf("%d ",i); // PRINT i
+         i--; // SUBTRACT 1 from i
+        } while (i > 0); // UNTIL i is greater than 0
+     #+end_src
+
+     #+RESULTS:
+     : 10 9 8 7 6 5 4 3 2 1 
+
+  3) Code: concise version
+     #+begin_src C
+       int i = 10; 
+       do printf("%d ",i--);
+       while (i > 0);
+     #+end_src
+
+     #+RESULTS:
+     : 10 9 8 7 6 5 4 3 2 1 
+
+* Example: Summing numbers
+
+- How would you sum up a sequence of positive integers using ~do~?
+
+- The ~while~ pseudocode (home assignment):
+  #+BEGIN_SRC pseudocode while
+  BEGIN
+      DECLARE sum = 0
+      DECLARE num
+
+      PRINT "Enter integers (0 to terminate). "
+      READ num
+      PRINT num
+
+      WHILE num NOT equal to 0 DO
+          ADD num to sum
+          READ num
+          PRINT num
+      END WHILE
+
+      PRINT "The sum is " + sum
+  END
+  #+END_SRC
+
+- How would the ~do~ pseudocode look like? Think first what the main
+  difference between ~while~ and ~do~ loops is.
+  #+BEGIN_SRC pseudocode do
+  BEGIN
+      DECLARE sum = 0
+      DECLARE num = 0
+
+      PRINT "Enter integers (0 to terminate)."
+      
+      REPEAT
+          READ num
+          PRINT num
+          ADD num to sum
+      UNTIL num is NOT zero
+
+      PRINT "The sum is " + sum
+  END
+  #+END_SRC
+
+- What are the changes?
+  #+begin_quote
+  1. Don't need to initialize =num= anymore.
+  2. ~do~ loop will run at least once.
+  3. During the first run, get the first number.
+  4. Afterwards, add the number to the sum.
+  #+end_quote  
+  
+- Implementing this is another bonus assignment!
+
+

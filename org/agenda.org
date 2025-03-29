@@ -1958,7 +1958,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
       - ~health = 60, mana = 10~: Health >= 50 → Attack. (Correct)
     #+end_quote
 
-* Week 10: Control ~switch~ & ~while~ loops
+* DONE Week 10: Control ~switch~ & ~while~ loops
 #+attr_html: :width 400px :float nil:
 #+caption: Medieval woodcut
 [[../img/woodcut.jpg]]
@@ -1971,7 +1971,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 - [X] *Lecture/practice:* ~switch~ structures.
 - [X] *Home assignment*: Telephone area codes with ~switch~ (April 4).
 
-** DONE Popquiz
+** Popquiz
 
 - Complete [[https://github.com/birkenkrahe/cc-25/blob/main/pdf/popquiz.pdf][this popquiz (PDF)]] in 30 minutes or less.
 - It is ungraded and only serves to aid your understanding.
@@ -1983,7 +1983,7 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
   2) Your pseudocode is yours - it can be personal and different
   3) Stay away from C syntax if you can to get the logic clear first
 
-** DONE The ~switch~ and ~break~ commands
+** The ~switch~ and ~break~ commands
 
 This lecture explores the ~switch~ statement in C, a powerful control
 structure for handling multiple conditions.
@@ -1999,14 +1999,14 @@ structure for handling multiple conditions.
   behavior, and practical applications, like /grading systems/ and /day
   classification/.
 
-** TODO Loops
+** IN-PROGRESS Loops / Control flow statements that iterate
 
 - Collections of objects (like numbers, words) are usually stored
   efficiently in so-called /data structures/, e.g. /arrays/.
 
 - There are three /control flow (aka looping) statements/ that allow you
   to /iterate/ over data:
-  - [ ] ~while~ loops
+  - [X] ~while~ loops
   - [ ] ~do while~ loops
   - [ ] ~for~ loops
 
@@ -2015,7 +2015,133 @@ structure for handling multiple conditions.
   2) A counting example
   3) A summing example (home assignment)
 
-* Week 11: More loops
+* Week 11: ~do-while~ and ~for~ loops
+#+attr_html: :width 400px :float nil:
+#+caption: Fishing Boats on the Beach at Saintes-Maries, van Gogh (1888)
+[[../img/fishing_boats_van_gogh.jpg]]
+
+*Assignments due Friday April 4:*
+- [ ] *Assignment* with ~switch~ - Georgia Telephone Codes
+- [ ] *Assignment* with ~while~ - Sum of integers
+- [ ] *Test 8* on ~while~ loops
+
+*Work this week:*
+- [ ] *Review with coding:* ~while~ loops
+- [ ] *Lecture/practice:* ~do while~ loops
+- [ ] *Lecture/practice:* ~for~ loops
+
+** IN-PROGRESS Loops / Control flow statements that iterate
+
+- Collections of objects (like numbers, words) are usually stored
+  efficiently in so-called /data structures/, e.g. /arrays/.
+
+- There are three /control flow (aka looping) statements/ that allow you
+  to /iterate/ over data:
+  - [X] ~while~ loops
+  - [ ] ~do while~ loops
+  - [ ] ~for~ loops
+
+- We'll cover them using the same approach, with practice:
+  1) A simple example
+  2) A counting example
+  3) A summing example (home assignment)
+
+
+** TODO Review: ~while~ loops
+
+1. The ~while~ loop allows you to print numbers 0 to 9.
+
+2. Will this program do that?[fn:1]
+   #+begin_src C
+     int i = 0;      // SET loop counter to zero
+     while (i<10) {     // WHILE loop counter is less than 10
+       printf("%d ",i);    // PRINT loop counter
+      }                 // END WHILE
+   #+end_src
+
+   More concise code:
+   #+begin_src C :results output :main yes :includes <stdio.h>
+     int i = 0; 
+     while(i<10) printf("%d ",i++); 
+   #+end_src
+   
+3. What's the difference if you want to print numbers 9 to 0?
+   #+begin_src C :main yes :includes <stdio.h>
+     int i = 9;             // SET loop counter to 9
+     while (i>=0) {         // WHILE loop counter is greater or equal to zero
+       printf("%d ",i--);      // PRINT loop counter then decrement it
+      }                     // END WHILE
+   #+end_src
+
+4. Print the squares of all integers from i=1 to N.
+
+   - Starter Code: [[https://onecompiler.com/c/43d7pgg3d][onecompiler.com/c/43d7pgg3d]]
+     #+begin_example C
+     // SET limit N to 10
+     // SET loop variable i to 1
+     // WHILE i smaller or equal than N
+          // PRINT i, i^2
+          // increment i
+     // END WHILE
+     #+end_example
+
+   - *Sample output (N=10):*
+     #+begin_example
+     1       1
+     2       4
+     3       9
+     4      16
+     5      25
+     6      36
+     7      49
+     8      64
+     9      81
+    10     100
+  #+end_example
+
+   - *Challenge:* Modify the program so that you enter =N= on the
+     command-line. Sample output:
+     #+begin_example
+     Enter limit (integer): 10
+            1       1
+            2       4
+            3       9
+            4      16
+            5      25
+            6      36
+            7      49
+            8      64
+            9      81
+           10     100
+     #+end_example
+
+5. What's the code to get a sequence of numbers from the keyboard if
+   the end of the sequence is signalled by a =0= input?
+
+   - Pseudocode:
+     #+begin_example C
+       // SET num to non-zero value
+       // WHILE num is not zero
+         // GET next value for num
+         // PRINT num
+      // END WHILE
+      // PRINT "You're done."
+     #+end_example
+
+   - Code:
+     #+begin_src C :tangle input.c :main yes :includes <stdio.h>
+       int num=1; // SET num to non-zero value
+       while (num != 0) { // WHILE num is not zero
+         scanf("%d",&num);  // GET next value for num
+         printf("You entered: %d.\n",num); // PRINT num
+        } // END WHILE
+       puts("You're done."); // PRINT "You're done."
+     #+end_src
+
+
+** TODO ~do~ ... ~while~ loops
+
+** TODO ~for~ loops
 
 * Week 12: Arrays
 
@@ -2026,3 +2152,9 @@ structure for handling multiple conditions.
 * Week 15: Structures
 
 * Week 16: C++
+
+* Footnotes
+
+[fn:1]No it won't - instead it will print 0 forever until aborted
+because =i= is never changed and the condition =i<10= is always =TRUE=. You
+need to increment =i= with =i++=.
