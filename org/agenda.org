@@ -2023,9 +2023,9 @@ structure for handling multiple conditions.
 *Assignments due Friday April 4:*
 - [ ] *Assignment* with ~switch~ - Georgia Telephone Codes
 - [ ] *Assignment* with ~while~ - Sum of integers
-- [ ] *Test 8* on ~while~ loops
+- [ ] *Test 8* on ~while~ loops (15 questions)
 
-*Work this week:*
+*This week:*
 - [ ] *Review with coding:* ~while~ loops
 - [ ] *Lecture/practice:* ~do while~ loops
 - [ ] *Lecture/practice:* ~for~ loops
@@ -2049,7 +2049,11 @@ structure for handling multiple conditions.
 
 ** TODO Review: ~while~ loops
 
-1. The ~while~ loop allows you to print numbers 0 to 9.
+1. The ~while~ loop allows you to print numbers 0 to 9. True or false?
+   #+begin_quote
+   True! ~while~ tests a condition, enters the loop body, and will
+   execute any command as long as the condition is ~TRUE~.
+   #+end_quote
 
 2. Will this program do that?[fn:1]
    #+begin_src C
@@ -2058,6 +2062,11 @@ structure for handling multiple conditions.
        printf("%d ",i);    // PRINT loop counter
       }                 // END WHILE
    #+end_src
+
+   #+begin_quote
+   The loop body has no way of changing the value of =i= so that the
+   condition remains ~TRUE~ at all times - the loop's infinite!
+   #+end_quote
 
    More concise code:
    #+begin_src C :results output :main yes :includes <stdio.h>
@@ -2073,7 +2082,7 @@ structure for handling multiple conditions.
       }                     // END WHILE
    #+end_src
 
-4. Print the squares of all integers from i=1 to N.
+4. *Challenge!* Print the squares of all integers from i=1 to N.
 
    - Starter Code: [[https://onecompiler.com/c/43d7pgg3d][onecompiler.com/c/43d7pgg3d]]
      #+begin_example C
@@ -2115,8 +2124,8 @@ structure for handling multiple conditions.
            10     100
      #+end_example
 
-5. What's the code to get a sequence of numbers from the keyboard if
-   the end of the sequence is signalled by a =0= input?
+5. *Challenge!* What's the code to get a sequence of numbers from the
+   keyboard if the end of the sequence is signalled by a =0= input?
 
    - Pseudocode:
      #+begin_example C
@@ -2137,7 +2146,6 @@ structure for handling multiple conditions.
         } // END WHILE
        puts("You're done."); // PRINT "You're done."
      #+end_src
-
 
 ** TODO ~do~ ... ~while~ loops
 
