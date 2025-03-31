@@ -139,7 +139,7 @@
     // PRINT "The number has n digit(s)."
   #+end_example
 
-- Code solution:
+- Code solution:   https://onecompiler.com/c/43df63z76
   #+begin_src C :cmdline < ../data/dowhile
     // Input: non-negative integer n
     // Output: number of digits of n

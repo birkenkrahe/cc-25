@@ -2021,9 +2021,9 @@ structure for handling multiple conditions.
 [[../img/fishing_boats_van_gogh.jpg]]
 
 *Assignments due Friday April 4:*
-- [ ] *Assignment* with ~switch~ - Georgia Telephone Codes
-- [ ] *Assignment* with ~while~ - Sum of integers
-- [ ] *Test 8* on ~while~ loops (15 questions)
+- [X] *Assignment* with ~switch~ - Georgia Telephone Codes
+- [X] *Assignment* with ~while~ - Sum of integers
+- [X] *Test 8* on ~while~ loops (15 questions)
 
 *This week:*
 - [ ] *Review with coding:* ~while~ loops
@@ -2044,10 +2044,10 @@ structure for handling multiple conditions.
 - We'll cover them using the same approach, with practice:
   1) A simple example
   2) A counting example
-  3) A summing example (home assignment)
+  3) A summing example (home or bonus assignment)
 
 
-** TODO Review: ~while~ loops
+** DONE Review: ~while~ loops
 
 1. The ~while~ loop allows you to print numbers 0 to 9. True or false?
    #+begin_quote
@@ -2060,6 +2060,7 @@ structure for handling multiple conditions.
      int i = 0;      // SET loop counter to zero
      while (i<10) {     // WHILE loop counter is less than 10
        printf("%d ",i);    // PRINT loop counter
+       i++;
       }                 // END WHILE
    #+end_src
 
@@ -2070,10 +2071,10 @@ structure for handling multiple conditions.
 
    More concise code:
    #+begin_src C :results output :main yes :includes <stdio.h>
-     int i = 0; 
-     while(i<10) printf("%d ",i++); 
+     int i = 0;
+     while(i<10) printf("%d ",i++);
    #+end_src
-   
+
 3. What's the difference if you want to print numbers 9 to 0?
    #+begin_src C :main yes :includes <stdio.h>
      int i = 9;             // SET loop counter to 9
@@ -2147,9 +2148,13 @@ structure for handling multiple conditions.
        puts("You're done."); // PRINT "You're done."
      #+end_src
 
+     #+RESULTS:
+     : You're done.
+
 ** TODO ~do~ ... ~while~ loops
 
 ** TODO ~for~ loops
+
 
 * Week 12: Arrays
 
