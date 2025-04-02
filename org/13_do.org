@@ -288,6 +288,8 @@
 
 - How would the ~do~ pseudocode look like? Think first what the main
   difference between ~while~ and ~do~ loops is.
+
+  Solution:
   #+BEGIN_SRC pseudocode do
   BEGIN
       DECLARE sum = 0
