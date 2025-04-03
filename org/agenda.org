@@ -2026,7 +2026,7 @@ structure for handling multiple conditions.
 - [X] *Test 8* on ~while~ loops (15 questions)
 
 *This week:*
-- [ ] *Review with coding:* ~while~ loops
+- [X] *Review with coding:* ~while~ loops
 - [ ] *Lecture/practice:* ~do while~ loops
 - [ ] *Lecture/practice:* ~for~ loops
 
@@ -2045,7 +2045,6 @@ structure for handling multiple conditions.
   1) A simple example
   2) A counting example
   3) A summing example (home or bonus assignment)
-
 
 ** DONE Review: ~while~ loops
 
@@ -2151,10 +2150,79 @@ structure for handling multiple conditions.
      #+RESULTS:
      : You're done.
 
-** TODO ~do~ ... ~while~ loops
+** TODO Review  ~do~ ... ~while~ loops
 
+1) What's wrong with this loop? It only prints one line.
+   #+begin_src C
+     int x = 0;
+     do {
+       printf("Counting: %d\n", x);
+      } while (x > 0);
+   #+end_src
+
+   #+begin_quote
+   The loop runs only once because the condition =x > 0= is immediately
+   =FALSE= since =x == 0= from the start. Either adjust the condition or
+   increment =x= inside the loop.
+   #+end_quote
+   
+2) What's wrong with this loop? It does not run at all.
+   #+begin_src C :main yes :includes <stdio.h> <stdlib.h> <string.h> :results output :exports both :noweb yes
+     int num = 5;
+     do {
+       printf("Number: %d\n", num);
+       num--;
+      } while (num > 0)
+   #+end_src
+
+   #+begin_quote
+   There's a missing ; after the ~while~ condition.
+   #+end_quote
+   
+3) What's wrong with this loop? It runs forever.
+   #+begin_src C :main yes :includes <stdio.h> <stdlib.h> <string.h> :results output :exports both :noweb yes
+     int i = 5;
+     do {
+       printf("Value: %d\n", i);
+       i--;
+      } while (i < 5);
+   #+end_src
+
+   #+begin_quote
+   It runs infinitely because the =i--= decrements the initial value of
+   =i= from =5= to =4=, and =i < 5= remains true forever. 
+   #+end_quote
+
+4) What's wrong with this loop? It runs forever.
+   #+begin_src C :main yes :includes <stdio.h> <stdlib.h> <string.h> :results output :exports both :noweb yes
+     int count = 0;
+     do {
+       count++;
+       printf("Count: %d\n", count);
+      } while (count = 1);
+   #+end_src
+
+   #+begin_quote
+   The break condition is ill-conceived: =count = 1= is not a comparison
+   ~count==1~ but an assignment: =count= is always =1= (~TRUE~), irrespective
+   of the former value of =count=.
+   #+end_quote
+
+5) What's wrong with this loop? It runs forever.
+   #+begin_src C :main yes :includes <stdio.h> <stdlib.h> <string.h> :results output :exports both :noweb yes
+     int x = 0;
+     do {
+       printf("Looping...\n");
+      } while (x < 10);
+     x++;
+   #+end_src
+
+   #+begin_quote
+   =x= is incremented outside of the loop instead of inside it -
+   therefore =x = 0= forever, and =x < 0= remains true forever.
+   #+end_quote
+   
 ** TODO ~for~ loops
-
 
 * Week 12: Arrays
 
