@@ -3,10 +3,10 @@
 #+subtitle: CSC 100
 #+SEQ_TODO: TODO NEXT IN-PROGRESS | DONE CANCELLED
 #+startup: overview hideblocks indent entitiespretty
-#+property: :header-args:C      :main yes :includes <stdio.h> :results output :exports both
-#+property: :header-args:python :session *Python* :python python3 :results output :exports both
-#+property: :header-args:R      :session *R* :results graphics output file :exports both
-#+property: :header-args:C++    :main yes :includes <iostream> :results output :exports both
+#+property: header-args:C      :main yes :includes <stdio.h> :results output :exports both
+#+property: header-args:python :session *Python* :python python3 :results output :exports both
+#+property: header-args:R      :session *R* :results graphics output file :exports both
+#+property: header-args:C++    :main yes :includes <iostream> :results output :exports both
 * DONE Week 1: Orientation & Introduction
 #+attr_html: :width 300px:
 #+caption: Pufferfish woodcut
@@ -2015,7 +2015,7 @@ structure for handling multiple conditions.
   2) A counting example
   3) A summing example (home assignment)
 
-* Week 11: ~do-while~ and ~for~ loops
+* DONE Week 11: ~do-while~ and ~for~ loops
 #+attr_html: :width 400px :float nil:
 #+caption: Fishing Boats on the Beach at Saintes-Maries, van Gogh (1888)
 [[../img/fishing_boats_van_gogh.jpg]]
@@ -2030,7 +2030,7 @@ structure for handling multiple conditions.
 - [ ] *Lecture/practice:* ~do while~ loops
 - [ ] *Lecture/practice:* ~for~ loops
 
-** IN-PROGRESS Loops / Control flow statements that iterate
+** Loops / Control flow statements that iterate
 
 - Collections of objects (like numbers, words) are usually stored
   efficiently in so-called /data structures/, e.g. /arrays/.
@@ -2038,8 +2038,8 @@ structure for handling multiple conditions.
 - There are three /control flow (aka looping) statements/ that allow you
   to /iterate/ over data:
   - [X] ~while~ loops
-  - [ ] ~do while~ loops
-  - [ ] ~for~ loops
+  - [X] ~do while~ loops
+  - [X] ~for~ loops
 
 - We'll cover them using the same approach, with practice:
   1) A simple example
@@ -2150,7 +2150,7 @@ structure for handling multiple conditions.
      #+RESULTS:
      : You're done.
 
-** TODO Review  ~do~ ... ~while~ loops
+** DONE Review  ~do-~while~ loops
 
 1) What's wrong with this loop? It only prints one line.
    #+begin_src C
@@ -2222,9 +2222,134 @@ structure for handling multiple conditions.
    therefore =x = 0= forever, and =x < 0= remains true forever.
    #+end_quote
    
-** TODO ~for~ loops
+** DONE ~for~ loops
 
 * Week 12: Arrays
+#+attr_html: :width 400px :float nil:
+#+caption: Two fishermen by a boat - Michael Peter Ancher (1889)
+[[../img/Fishermen.jpg]]
+
+- [ ] *New assignment:* 'Fancy loops' with ~for~.
+- [ ] *New test*: ~do~ and ~for~ loops.
+- [ ] *Review* of ~for~ loops (for the assignments).
+- [ ] *Lecture + practice:* One-dimensional arrays.
+
+** Review: ~for~ loops
+
+*** ~for~ loops with post and pre operators.
+
+
+1. =TRUE= or =FALSE=? These two loops have different outputs (as long as
+   they have identical loop bodies) - explain your answer.
+   #+begin_example C
+   for (int i = 0; i < 5; i++) ...
+   for (int i = 0; i < 5; ++i) ...
+   #+end_example
+
+   #+begin_quote
+   =TRUE= because only the ~return~ value of the increment expression is
+   used: =i++= is =i = i + 1=. They are semantically identical.
+   #+end_quote
+   
+2. =TRUE= or =FALSE=? The two lops in this program have different
+   outputs - explain your answer.
+   #+begin_src C
+     for (int i = 0; i++ < 5; ) printf("%d ",i); puts("");
+     for (int i = 0; ++i < 5; ) printf("%d ",i);     
+   #+end_src
+
+   #+RESULTS:
+   : 1 2 3 4 5 
+   : 1 2 3 4 
+
+   #+begin_quote
+   =TRUE= because the increment is part of the condition (not
+   standalone): =i++= checks =i < 5= first and then increments, which is
+   why the =5= in the first loop is printed, while =++i= increments first,
+   and checks then.
+   #+end_quote
+
+*** ~for~ loops with multiple variables (assignment)
+
+A ~for~ loop can go over multiple variables (of the same type) at once:
+
+#+begin_src C
+  for (int i = 0, j = 0; i < 5 && j < 5; i++, j++)
+    printf("i = %d, j = %d\n",i,j); // loop runs 5 times
+#+end_src
+
+#+RESULTS:
+: i = 0, j = 0
+: i = 1, j = 1
+: i = 2, j = 2
+: i = 3, j = 3
+: i = 4, j = 4
+
+*** Nested ~for~ loops (bonus assignment)
+
+A ~for~ loop can be part of another ~for~ loop:
+
+#+begin_src C
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++) {
+      printf("i = %d, j = %d\n",i,j); // loop runs 5 * 5 = 25 times
+    }
+   }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+i = 0, j = 0
+i = 0, j = 1
+i = 0, j = 2
+i = 0, j = 3
+i = 0, j = 4
+i = 1, j = 0
+i = 1, j = 1
+i = 1, j = 2
+i = 1, j = 3
+i = 1, j = 4
+i = 2, j = 0
+i = 2, j = 1
+i = 2, j = 2
+i = 2, j = 3
+i = 2, j = 4
+i = 3, j = 0
+i = 3, j = 1
+i = 3, j = 2
+i = 3, j = 3
+i = 3, j = 4
+i = 4, j = 0
+i = 4, j = 1
+i = 4, j = 2
+i = 4, j = 3
+i = 4, j = 4
+#+end_example
+
+*** ~for~ loop over non-integer variables
+
+~for~ loops can use non-integer (~float~) counter variables:
+
+#+begin_src C
+  for (float x = 0.0; x <= 1.0; x += 0.1) {
+    printf("x = %.2f\n", x);
+   }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+x = 0.00
+x = 0.10
+x = 0.20
+x = 0.30
+x = 0.40
+x = 0.50
+x = 0.60
+x = 0.70
+x = 0.80
+x = 0.90
+#+end_example
+
 
 * Week 13: Functions
 
