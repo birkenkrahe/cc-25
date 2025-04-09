@@ -2351,6 +2351,17 @@ x = 0.9
 #+end_example
 
 
+** TODO "Well done is better than well said."
+#+attr_html: :width 400px :float nil:
+[[../img/award.jpg]]
+
+#+begin_quote
+Well done is better than well said.
+
+--Benjamin Franklin
+#+end_quote
+
+
 ** TODO Where you are at
 #+attr_html: :width 600px :float nil: 
 [[../img/skills.png]]
