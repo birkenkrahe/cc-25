@@ -2229,12 +2229,12 @@ structure for handling multiple conditions.
 #+caption: Two fishermen by a boat - Michael Peter Ancher (1889)
 [[../img/Fishermen.jpg]]
 
-- [ ] *New assignment:* 'Fancy loops' with ~for~.
-- [ ] *New test*: ~do~ and ~for~ loops.
-- [ ] *Review* of ~for~ loops (for the assignments).
+- [X] *New assignment:* 'Fancy loops' with ~for~.
+- [X] *New test*: ~do~ and ~for~ loops.
+- [X] *Review* of ~for~ loops (for the assignments).
 - [ ] *Lecture + practice:* One-dimensional arrays.
 
-** Review: ~for~ loops
+** DONE Review: ~for~ loops
 
 *** ~for~ loops with post and pre operators.
 
@@ -2242,8 +2242,8 @@ structure for handling multiple conditions.
 1. =TRUE= or =FALSE=? These two loops have different outputs (as long as
    they have identical loop bodies) - explain your answer.
    #+begin_example C
-   for (int i = 0; i < 5; i++) ...
-   for (int i = 0; i < 5; ++i) ...
+   for (int i = 0; i < 5; i++) ... // postfix operator i = i + 1
+   for (int i = 0; i < 5; ++i) ... // prefix operator  i = i + 1
    #+end_example
 
    #+begin_quote
@@ -2251,7 +2251,7 @@ structure for handling multiple conditions.
    used: =i++= is =i = i + 1=. They are semantically identical.
    #+end_quote
    
-2. =TRUE= or =FALSE=? The two lops in this program have different
+2. =TRUE= or =FALSE=? The two loops in this program have different
    outputs - explain your answer.
    #+begin_src C
      for (int i = 0; i++ < 5; ) printf("%d ",i); puts("");
@@ -2274,7 +2274,7 @@ structure for handling multiple conditions.
 A ~for~ loop can go over multiple variables (of the same type) at once:
 
 #+begin_src C
-  for (int i = 0, j = 0; i < 5 && j < 5; i++, j++)
+  for (int i = 0, j = 0; i < 5 && j < 5; i++, j++) // test with AND
     printf("i = %d, j = %d\n",i,j); // loop runs 5 times
 #+end_src
 
@@ -2290,8 +2290,8 @@ A ~for~ loop can go over multiple variables (of the same type) at once:
 A ~for~ loop can be part of another ~for~ loop:
 
 #+begin_src C
-  for (int i = 0; i < 5; i++) {
-    for (int j = 0; j < 5; j++) {
+  for (int i = 0; i < 5; i++) { // enter first loop controlled by i
+    for (int j = 0; j < 5; j++) { // enter second loop controlled by j
       printf("i = %d, j = %d\n",i,j); // loop runs 5 * 5 = 25 times
     }
    }
@@ -2331,25 +2331,95 @@ i = 4, j = 4
 ~for~ loops can use non-integer (~float~) counter variables:
 
 #+begin_src C
-  for (float x = 0.0; x <= 1.0; x += 0.1) {
-    printf("x = %.2f\n", x);
+  for (float x = 0.0; x <= 1.0; x += 0.1) { // x = x + 0.1
+    printf("x = %.1f\n", x);
    }
 #+end_src
 
 #+RESULTS:
 #+begin_example
-x = 0.00
-x = 0.10
-x = 0.20
-x = 0.30
-x = 0.40
-x = 0.50
-x = 0.60
-x = 0.70
-x = 0.80
-x = 0.90
+x = 0.0
+x = 0.1
+x = 0.2
+x = 0.3
+x = 0.4
+x = 0.5
+x = 0.6
+x = 0.7
+x = 0.8
+x = 0.9
 #+end_example
 
+
+** TODO Where you are at
+#+attr_html: :width 600px :float nil: 
+[[../img/skills.png]]
+
+** TODO Review: Array declarations
+
+1. What's wrong with this code?
+   #+begin_src C
+     int a[5];
+     for (int i = 0; i <= 5; ++i) {
+       a[i] = i;
+       printf("%d ", a[i]);
+      }
+   #+end_src
+
+   #+begin_quote
+   The loop goes *out of bounds*: ~i <= 5~ means the loop accesses ~a[5]~,
+   which is *outside* the valid range (~a[0]~ to ~a[4]~). This causes
+   *undefined behavior* (go to 6: "stack smashing detected")
+   #+end_quote
+
+2. What's wrong with this code?
+   #+begin_src C
+     int a[3] = {1, 2, 3, 4};
+     printf("%d\n", a[3]);
+   #+end_src
+
+   #+begin_quote
+   The initializer has *too many elements*. You can only initialize ~a[0]~
+   to ~a[2]~ because the array size is 3. Accessing ~a[3]~ is a memory
+   violation.
+   #+end_quote
+
+3. What's wrong with this code?
+   #+begin_src C
+     int a[4];
+     printf("%d\n", a[4]);
+   #+end_src
+
+   #+begin_quote
+   This prints an *uninitialized value*. Since ~a[4]~ was never assigned,
+   it may contain garbage. C does *not* zero-initialize local arrays
+   automatically (some compilers do).
+   #+end_quote
+
+4. What's wrong with this code?
+   #+begin_src C
+     char str[] = {'h','e','l','l','o'};
+     printf("%s\n", str);
+   #+end_src
+
+   #+begin_quote
+   There's *no null terminator*. ~printf("%s", s)~ expects a string ending
+   with ~'\0'~. Without it, the output may include random memory past
+   the array.
+   #+end_quote
+
+5. What's wrong with this code?
+   #+begin_src C
+     int i = -4;
+     int a[5] = {0};
+     printf("%d\n", a[i]);
+   #+end_src
+
+   #+begin_quote
+   Using a *negative index* like ~a[-4]~ is *undefined behavior*. C arrays
+   don’t check bounds, and negative indexing will access memory
+   outside the array.
+   #+end_quote
 
 * Week 13: Functions
 
