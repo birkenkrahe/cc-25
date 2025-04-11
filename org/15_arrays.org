@@ -293,7 +293,7 @@ print them.
   int a[10];
   for (int i=0;i<10;i++) printf("%d ", a[i]);
   // 2. An array of 5 floats initialized to 1.1, 2.2, ..., 5.5
-  float b[5] = {1.1, 2.2, 3.3, 4.4, 5.5}; puts("");
+  float b[] = {1.1, 2.2, 3.3, 4.4, 5.5}; puts("");
   for (int i=0;i<5;i++) printf("%.1f ", b[i]); puts("");
   // 3. A character array initialized to the word "Hi"
   char c[] = {'H', 'i', '\0'};
@@ -561,7 +561,7 @@ print them.
   a[i=1] = sum + a[i=1] + a[i=0] ...~
   #+end_quote
 
-* TODO Iteration Exercises with Solutions
+* TODO Iteration practice
 
 - These short problems build on the three examples you’ve just seen.
 - Open a new file at OneCompiler.Com and put all of these into it.
@@ -569,77 +569,110 @@ print them.
 ** Initialization with Pattern
 
 - Initialize the array =a= with the values 1,2, ..., 10 using a ~for~
-  loop:
+  loop that starts at i = 0;
   #+begin_src C
-    // Initialize the array with the values 1, 2, ..., 10
-    // using a for loop.
+    // Initialize the array a with the values 1, 2, ..., 10
+    // using a for loop
+    /******************************************************/
+    // SET array a of 10 elements
     int a[10];
-    // your code here
+    // FOR i from 0 to 10: DO
     for (int i = 0; i < 10; i++) {
+      // initialize array elements
       a[i] = i + 1;
+      // PRINT array element
       printf("%d ", a[i]);
-     }
+     } // END FOR
   #+end_src
 
   #+RESULTS:
   : 1 2 3 4 5 6 7 8 9 10
 
-  #+begin_quote
-  *Solution 1:* Loop from 0 to 9 and store ~i + 1~ at ~a[i]~ to get 1
-  through 10.
-  #+end_quote
-
 ** Input and Count
 
-- Read 10 integers into the array and count how many of them are even:
-#+begin_src C :cmdline < input
-  // Read 10 integers into the array and count
-  // how many of them are even numbers.
-  int b[10], count = 0;
-  for (int i = 0; i < 10; i++) {
-    scanf("%d", &b[i]);
-    if (b[i] % 2 == 0)
-      count++;
-   }
-  printf("Even numbers: %d\n", count);
-#+end_src
-
-#+RESULTS:
-: Even numbers: 5
-
-#+begin_quote
-*Solution 2:* Read each value, check if it’s divisible by 2, and
-increment ~count~.
-#+end_quote
-
-Input:
-#+begin_src bash :results output :exports both
-  echo 1 2 3 4 5 6 7 8 9 10 > input
-  cat input
-#+end_src
-
-#+RESULTS:
-: 1 2 3 4 5 6 7 8 9 10
-
-** Conditional Summation
-
-- Sum up only the positive values in the array:
-  #+begin_src C
-    // Sum up only the *positive* values in the array.
-    int c[10] = { 3, -1, 7, 0, -5, 2, 8, -3, 6, -2 };
-    int sum = 0;
-    for (int i = 0; i < 10; i++) {
-      if (c[i] > 0)
-        sum += c[i];
-     }
-    printf("Sum of positives: %d\n", sum);
+- Read 5 whole (non-negative integer) numbers into an array =b= and
+  count how many of them are even:
+  #+begin_src C :cmdline < input
+    // Read 5 integers into an array and count
+    // how many of them are even numbers.
+    /******************************************************/
+    // SET array b of 5 elements
+    int b[5];
+    // SET count to 0
+    int count = 0;
+    // PRINT "Enter 5 whole numbers:"
+    printf("Enter 5 whole numbers: ");
+    // FOR i from 0 to 10: DO
+    for (int i = 0; i < 5; i++) {
+      // READ array element
+      scanf("%d",&b[i]);
+      // PRINT array element
+      printf("%d ",b[i]);
+      // IF array element even
+      if (b[i] % 2 == 0) {
+        // ADD 1 to count
+        count++;
+      } // END IF
+     } // END FOR
+    // PRINT "Number of even values = " + count
+    printf("\nNumber of even values = %d\n", count);
   #+end_src
 
   #+RESULTS:
-  : Sum of positives: 26
+  : Enter 5 whole numbers: 10 21 33 4 5 
+  : Number of even values = 2
 
+- How could this be generalized?
   #+begin_quote
-  *Solution 3:* Loop through all elements and add only if ~c[i] > 0~.
+  1. Accepting arrays of any length.
+  2. Aborting gracefully when entry is not a whole number.
+  #+end_quote
+
+- Input:
+  #+begin_src bash :results output :exports both
+    echo 10 21 33 4 5 > input
+    cat input
+  #+end_src
+
+  #+RESULTS:
+  : 10 21 33 4 5
+
+** Conditional Summation
+
+- Initialize an array =c= of 10 elements, and only sum up the positive
+  values in the array.
+
+- Sample input: 3, -1, 7, 0, -5, 2, 8, -3, 6, -2.
+
+- Sample output: 26.
+
+- Solution:
+  #+begin_src C
+    // Sum up only the *positive* values in the array.
+    /******************************************************/
+    // SET array c of 10 elements
+    int c[10] = { 3, -1, 7, 0, -5, 2, 8, -3, 6, -2 };
+    // SET sum of positive values to 0
+    int sum = 0;
+    // FOR i from 0 to 10; DO
+    for (int i = 0; i < 10; i++) {
+      // IF element of c greater than 0
+      if (c[i] > 0) {
+        // ADD element to sum
+        sum += c[i];
+      } // END IF
+     } // END FOR
+    // PRINT "Sum of positive values
+    printf("Sum of positive values: %d\n", sum);
+  #+end_src
+
+  #+RESULTS:
+  : Sum of positive values: 26
+
+- How could this be generalized?
+  #+begin_quote
+  1. Accepting arrays of any length.
+  2. Aborting gracefully when entry is not a whole number.
   #+end_quote
 
 * Initalizing arrays with /designated initializers (C99)/
@@ -664,7 +697,7 @@ Input:
   #+end_src
 
   #+RESULTS:
-  : 0 0 29 0 0 0 0 0 0 0 7 0 0 0 48 
+  : 0 0 29 0 0 0 0 0 0 0 7 0 0 0 48
 
 - Iterate over =c= and print only the non-zero elements:
   #+begin_src C
@@ -675,7 +708,7 @@ Input:
   #+end_src
 
   #+RESULTS:
-  : 29 7 48 
+  : 29 7 48
 
 * Multi-dimensional arrays
 

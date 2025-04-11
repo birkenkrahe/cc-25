@@ -2350,23 +2350,15 @@ x = 0.8
 x = 0.9
 #+end_example
 
-
-** TODO "Well done is better than well said."
+** DONE Thanks for making teaching a joy!
 #+attr_html: :width 400px :float nil:
 [[../img/award.jpg]]
 
-#+begin_quote
-Well done is better than well said.
-
---Benjamin Franklin
-#+end_quote
-
-
-** TODO Where you are at
+** DONE Where you are at with C / C++
 #+attr_html: :width 600px :float nil: 
 [[../img/skills.png]]
 
-** TODO Review: Array declarations
+** DONE Review: Array declarations
 
 1. What's wrong with this code?
    #+begin_src C
@@ -2377,6 +2369,9 @@ Well done is better than well said.
       }
    #+end_src
 
+   #+RESULTS:
+   : 0 1 2 3 4 5 
+
    #+begin_quote
    The loop goes *out of bounds*: ~i <= 5~ means the loop accesses ~a[5]~,
    which is *outside* the valid range (~a[0]~ to ~a[4]~). This causes
@@ -2385,9 +2380,12 @@ Well done is better than well said.
 
 2. What's wrong with this code?
    #+begin_src C
-     int a[3] = {1, 2, 3, 4};
+     int a[3] = {1, 2, 3, 4}; // initializing an array
      printf("%d\n", a[3]);
    #+end_src
+
+   #+RESULTS:
+   : 974493184
 
    #+begin_quote
    The initializer has *too many elements*. You can only initialize ~a[0]~
@@ -2397,9 +2395,12 @@ Well done is better than well said.
 
 3. What's wrong with this code?
    #+begin_src C
-     int a[4];
-     printf("%d\n", a[4]);
+     int a[4];  // an array that has not been initialized
+     printf("%d\n", a[4]); // printing 0 here means NOTHING
    #+end_src
+
+   #+RESULTS:
+   : 0
 
    #+begin_quote
    This prints an *uninitialized value*. Since ~a[4]~ was never assigned,
@@ -2409,9 +2410,12 @@ Well done is better than well said.
 
 4. What's wrong with this code?
    #+begin_src C
-     char str[] = {'h','e','l','l','o'};
-     printf("%s\n", str);
+     char str[] = {'h','e','l','l','o'}; // must have an \0 at end!
+     printf("%s\n", str); // correct printing means NOTHING
    #+end_src
+
+   #+RESULTS:
+   : hello
 
    #+begin_quote
    There's *no null terminator*. ~printf("%s", s)~ expects a string ending
@@ -2421,16 +2425,20 @@ Well done is better than well said.
 
 5. What's wrong with this code?
    #+begin_src C
-     int i = -4;
-     int a[5] = {0};
-     printf("%d\n", a[i]);
+     int i = -4;  // negative integer
+     int a[5] = {0};  // initialize the array a with 0
+     printf("%d\n", a[i]); // negative indices are now allowed
    #+end_src
+
+   #+RESULTS:
+   : 0
 
    #+begin_quote
    Using a *negative index* like ~a[-4]~ is *undefined behavior*. C arrays
    don’t check bounds, and negative indexing will access memory
    outside the array.
    #+end_quote
+
 
 * Week 13: Functions
 
