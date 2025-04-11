@@ -35,7 +35,7 @@
   : [1] 1 2 3
 
 - In C there are two *aggregate* stuctures that can store /collections/
-  of values: *arrays* and *structures*[fn:1].
+  of values: *arrays* and *structures*.
 
 - A *structure* is a forerunner of a *class*, a concept that becomes
   central in *C++*, which is also called "C with classes".
@@ -561,7 +561,7 @@ print them.
   a[i=1] = sum + a[i=1] + a[i=0] ...~
   #+end_quote
 
-* TODO Iteration practice
+* TODO Iteration examples
 
 - These short problems build on the three examples you’ve just seen.
 - Open a new file at OneCompiler.Com and put all of these into it.
@@ -619,7 +619,7 @@ print them.
   #+end_src
 
   #+RESULTS:
-  : Enter 5 whole numbers: 10 21 33 4 5 
+  : Enter 5 whole numbers: 10 21 33 4 5
   : Number of even values = 2
 
 - How could this be generalized?
@@ -675,6 +675,7 @@ print them.
   2. Aborting gracefully when entry is not a whole number.
   #+end_quote
 
+
 * Initalizing arrays with /designated initializers (C99)/
 
 - You can give default values to arrays if you want to change only
@@ -724,24 +725,22 @@ print them.
   #+caption: Matrix indexes in a 2-dim C array (Source: King)
   [[../img/matrix.png]]
 
-- In a practice file, *declare* a 2 x 2 matrix named ~foo~ of floating
-  point values.
-  #+begin_src C
-    float foo[2][2];
+- *Declare* a 2 x 2 matrix named ~foo~ of floating point values:
+  #+begin_src C :results none
+    float foo[2][2]; // declare 2x2 floating point matrix
   #+end_src
 
 - *Initialize* the matrix with zero values as you would initialize an
   one-dimensional array.
-  #+begin_src C
-    float foo[2][2] = {0.f};  // declare and init 2x2 floating matrix
+  #+begin_src C :results none
+    float foo[2][2] = {0.f};  // declare and init 2x2 float matrix
   #+end_src
 
-- Solution:
+- Print the matrix (using nested ~for~ loops):
   #+begin_src C  :noweb yes
-    // Declare a 4 x 4 matrix
-    float foo[2][2] = {0.f};
+    float foo[2][2] = {0.f};  // Declare a 2x2 matrix
 
-    <<2x2>>
+    <<print 2x2 matrix>>
   #+end_src
 
   #+RESULTS:
@@ -751,17 +750,56 @@ print them.
 - You can also initialize a matrix using designated initializers:
   #+begin_src C :noweb yes
     double foo[2][2] = {[0][0] = 1.0, [1][1] = 1.0}; // identity matrix
-    <<2x2>>
+    <<print 2x2 matrix>>
   #+end_src
 
   #+RESULTS:
+  : 1 0
+  : 0 1
 
+- Or you can initialize every single element (wasteful for 0s):
   #+begin_src C :noweb yes
     double foo[2][2] = {1.0, 0., 0.,1.0};
-    <<2x2>>
+    <<print 2x2 matrix>>
   #+end_src
 
-* Accessing arrays
+  #+RESULTS:
+  : 1 0
+  : 0 1
+
+- Arrays in C cannot be assigned to after their declaration.
+
+* TODO Practice declaring and initializing matrices
+
+- Declare a 3 x 3 character matrix =hw=.
+
+- Initialize the matrix using designated initializers, with the
+  letters of "hello world".
+
+- Print the first and the last matrix element ('h','d').
+
+- Solution:
+  #+begin_src C
+    // SET row index M
+    #define M 3
+    // SET column index N
+    #define N 3
+    // SET 3 by 3 character matrix hw to "hello world"
+    char hw[3][3] = {
+      {'h','e','l'},
+      {'o','w','o'},
+      {'r','l','d'}
+    };
+
+    // PRINT "First letter = " + "Last letter = "
+    printf("First letter = %c. Last letter = %c\n",
+           hw[0][0], hw[M-1][N-1]);
+  #+end_src
+
+  #+RESULTS:
+  : First letter = h. Last letter = d
+
+* Accessing arrays with ~[]~ (index operator)
 
 - To access the element in row ~i~ and column ~j~, we must write ~m[i][j]~.
 
@@ -781,21 +819,29 @@ print them.
   other programming languages because C has a more flexible way to
   store multi-dimensional data, namely /arrays of pointers/.
 
-- Practice! In the 4x4 matrix below, what are the values of:
+* Examples: Accessing arrays
+
+- In the 4x4 matrix below, what are the values of:
   #+begin_src C :noweb yes
     int foo[4][4] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
     <<4x4>>
   #+end_src
 
-  1. ~foo[0][0]~
+  #+RESULTS:
+  :  0   1   2   3
+  :  4   5   6   7
+  :  8   9  10  11
+  : 12  13  14  15
+
+  1. ~foo[0][0]~ - Answer:
      #+begin_quote
      0
      #+end_quote
-  2. ~foo[1][3]~
+  2. ~foo[1][3]~ - Answer:
      #+begin_quote
      7
      #+end_quote
-  3. ~foo[2][1]~
+  3. ~foo[2][1]~ - Answer:
      #+begin_quote
      9
      #+end_quote
@@ -816,87 +862,79 @@ print them.
   : [2][0]:  8 [2][1]:  9 [2][2]: 10 [2][3]: 11
   : [3][0]: 12 [3][1]: 13 [3][2]: 14 [3][3]: 15
 
-- Challenge: How would you declare a matrix of characters a,b,c,d?
-  #+begin_src C
-    // start with vector of four characters
-    char vector[4] = {'a','b','c','d'};
-    // iterate over elements to print
-    for(int i=0; i<4; ++i) printf("%c ", vector[i]);
-
-  #+end_src
-
-  #+RESULTS:
-  : a b c d
-
-- In your practice file, start with a *vector* of characters a,b,c,d.
-  #+begin_src C
-    // start with vector of four characters
-    char vector[4] = {'a','b','c','d'};
-    // iterate over elements to print
-    for(int i=0; i<4; ++i) printf("%c ", vector[i]);
-  #+end_src
-
-  #+RESULTS:
-  : a b c d
-
-- Then try a matrix (2 x 2):
+- How would you declare a =matrix= of characters a,b,c,d?
   #+begin_src C :noweb yes
-    // declare and initialize 2x2 matrix of characters
-    char matrix[2][2] = {'a','b','c','d'};
+    char matrix[2][2]={
+      {'a','b'},
+      {'c','d'}
+    };
 
-    <<2x2_char>>
+    <<print 2x2 character matrix>>
   #+end_src
 
   #+RESULTS:
-  :
-  : a b
-  : c d
+  : a b 
+  : c d 
 
-* Accessing arrays with nested ~for~ loops
+* Practice: Accessing arrays with nested ~for~ loops
 
 - Nested ~for~ loops are ideal for processing multi-dimensional arrays.
 
-- Practice! Declare and print a 2 x 2 array of floating-point values.
-  #+begin_example
-  0    3.14
-  2.71 0
-  #+end_example
+** 2x2 matrix of floating point values
 
-- Write the pseudocode first:
-  #+begin_example
-  // declare & print 2x2 floating point matrix values 0,3.14,2.71,0
+  - Declare and print a 2 x 2 array =M= of floating-point values.
 
-  // print matrix:
-  // iterate over the matrix rows with `row`
+  - Sample output:
+    #+begin_example
+    0.0  3.14
+    2.71 0.0
+    #+end_example
 
-       // iterate over the matrix columns `col`
+  - Open a new file in ~OneCompiler.com~.
 
-          // print one element m[row][col]
+  - Let's write the pseudocode first:
+    #+begin_example C
+    // Init and print 2x2 floating point matrix values 0,3.14,2.71,0
+    /***************************************************************/
+    // SET M to 2x2 matrix with M[0][1]=3.14, M[1][0]=2.71
 
-  #+end_example
+    // PRINT M
+    // FOR row in 0 to 2; DO
+       // FOR col in 0 to 2; DO
+          // PRINT m[row][col]
+       // END FOR
+       // PRINT new line
+    // END FOR
+    #+end_example
 
-- Code:
-  #+begin_src C
-    // declare & print 2x2 floating point matrix values 0,3.14,2.71,0
-    float foo[2][2]={ [0][1] = 3.14, [1][0] = 2.71 };
-    // print matrix:
-    // iterate over the matrix rows i
-    for ( int row=0; row < 2; row++) {
-      // iterate over the matrix columns j
-      for ( int col=0; col < 2; col++) {
-        // print one element m[row][col]
-        printf("%3.2f ", foo[row][col]);
-      }
-      puts("");
-     }
-  #+end_src
+  - Code:
+    #+begin_src C
+      // Init and print 2x2 floating point matrix values 0,3.14,2.71,0
+      /***************************************************************/
+      // SET M to 2x2 matrix with M[0][1]=3.14, M[1][0]=2.71
+      float foo[2][2]={ [0][1] = 3.14, [1][0] = 2.71 };
+      // PRINT M
+      // FOR row in 0 to 2; DO
+      for ( int row=0; row < 2; row++) {
+        // FOR col in 0 to 2; DO
+        for ( int col=0; col < 2; col++) {
+          // PRINT m[row][col]
+          printf("%3.2f ", foo[row][col]);
+        } // END FOR
+        printf("\n"); // PRINT new line
+       } // END FOR
+    #+end_src
 
-  #+RESULTS:
-  : 0.00 3.14
-  : 2.71 0.00
+    #+RESULTS:
+    : 0.00 3.14 
+    : 2.71 0.00 
 
-- The following code code initializes a 10x10 /identity/ matrix.
-  1) Set the dimension of the matrix to N = 10
+** 5x5 identity matrix
+
+- Open a new file in ~OneCompiler.com~.
+
+- The following code code initializes a 5x5 /identity/ matrix.
+  1) Set the dimension of the matrix to N = 5
   2) Declare a ~double~ matrix named ~ident~
   3) Loop over rows with loopindex ~row~
   4) For each row, loop over columns with column index ~col~
@@ -904,32 +942,38 @@ print them.
   6) Print the resulting matrix
   #+name: identityMatrix
   #+begin_src C
-    #define N 5  // macro definition
-
-    double ident[N][N];   // matrix dimension is N * N
-    int row, col;         // loop indices for row and column
-
-    for (row = 0; row < N; row++)
-      {
-        for (col = 0; col < N; col++)
-          {
-            if (row == col) {
-              ident[row][col] = 1.0;
-            } else {
-              ident[row][col] = 0.0;
-            }
-            printf("%g ", ident[row][col]);
-          }
-        printf("\n");
-      }
+    // PRINT N x N identity matrix
+    /******************************/
+    // DEFINE N as 5
+    #define N 5 
+    // SET N x N integer matrix `ident`
+    int ident[N][N];
+    // SET row, col indices
+    int row, col;
+    // FOR row from 0 to N; DO
+    for (row = 0; row < N; row++) {
+      // FOR col from 0 to N; DO
+      for (col = 0; col < N; col++) {
+        // IF row index equal to col index
+        if (row == col) {
+          // SET ident[row][col] to 1
+          ident[row][col] = 1;
+        } else { // OTHERWISE
+          // SET ident[row][col] to 0
+          ident[row][col] = 0;
+        } // END IF
+        printf("%d ", ident[row][col]);
+      } // END FOR
+      printf("\n"); // PRINT new line
+     } // END FOR
   #+end_src
 
   #+RESULTS: identityMatrix
-  : 1 0 0 0 0
-  : 0 1 0 0 0
-  : 0 0 1 0 0
-  : 0 0 0 1 0
-  : 0 0 0 0 1
+  : 1 0 0 0 0 
+  : 0 1 0 0 0 
+  : 0 0 1 0 0 
+  : 0 0 0 1 0 
+  : 0 0 0 0 1 
 
 - By comparison, this is how easy it is to declare, create and print
   an identity matrix in a language that is built for math
@@ -947,7 +991,7 @@ print them.
   : [5,]    0    0    0    0    1
 
 - To initialize an array, you can use brackets as in the 1-dim case,
-  but for each dimension, you need a new set of ~[ ]~.
+  but for each dimension, you need a new set of ~[]~.
 
 - What happens in the next code block? What do you think the output
   looks like?
@@ -964,15 +1008,15 @@ print them.
   #+end_src
 
   #+RESULTS: initArray
-  : 1 2 3
-  : 4 5 6
-  : 7 8 9
+  : 1 4 7 
+  : 2 5 8 
+  : 3 6 9 
 
 - By comparison, in R this looks like:
   #+begin_src R
-    (matrix(1:9,
-            3,
-            byrow=TRUE))
+    (matrix(data = 1:9,
+            nrow = 3,
+            byrow= TRUE)) # populate
   #+end_src
 
   #+RESULTS:
@@ -1044,6 +1088,28 @@ print them.
   whole /length/ of an array - then the array does not have to be
   modified if its length changes (see practice file).
 
+* Use ~sizeof~ in a ~for~ loop
+
+- The code block below defines an array ~a~ of length ~5~ initialized
+  with 0. We then overwrite the array elements with 1.
+
+- Source code:
+  #+name: sizeof
+  #+begin_src C
+    // DEFINE length N of array
+    #define N 5
+    // SET array to 0
+    int a[N] = {0}; 
+    // FOR i from 0 to length of a; DO:
+    for (int i = 0; i < sizeof(a)/sizeof(a[0]); i++) {
+      // SET element i of a to 1
+      a[i] = 1; // re-initialize array
+      // PRINT "a[i] = "
+      printf("a[%d] = %d\n", i, a[i]);
+     } // END FOR
+  #+end_src
+
+
 * Use ~sizeof~ to print a matrix
 
 - Example:
@@ -1102,13 +1168,8 @@ print them.
   : 12
   : 16
 
-* Let's practice!
-
-The last two problems in [[https://tinyurl.com/cpp-array-practice][tinyurl.com/cpp-array-practice]] can be solved
-with what you've just heard (multi-dimensional arrays).
-
 * Noweb chunks
-#+name: 2x2
+#+name: print 2x2 matrix
 #+begin_src C :results silent
   for (int i=0;i<2;i++) {
     for (int j=0;j<2;j++) {
@@ -1135,9 +1196,8 @@ with what you've just heard (multi-dimensional arrays).
     printf("\n");
    }
 #+end_src
-#+name: 2x2_char
+#+name: print 2x2 character matrix
 #+begin_src C :results silent
-  puts("");
   for (int i=0;i<2;i++) {
     for (int j=0;j<2;j++) {
       printf("%c ",matrix[i][j]);
@@ -1145,7 +1205,7 @@ with what you've just heard (multi-dimensional arrays).
     printf("\n");
    }
 #+end_src
-#+name: 2x2_string
+#+name: print 2x2 string matrix
 #+begin_src C :results silent
   for (int i=0;i<2;i++) {
     for (int j=0;j<2;j++) {
@@ -1164,8 +1224,3 @@ with what you've just heard (multi-dimensional arrays).
 - Orgmode.org (n.d.). 16 Working with Source Code [website]. [[https://orgmode.org/manual/Working-with-Source-Code.html][URL:
   orgmode.org]]
 - Image [[fig:storage]] from: [[https://overiq.com/media/uploads/memory-representation-of-array-of-strings-1504599913892.png][TheCguru.com]]
-
-* Footnotes
-
-[fn:1]There are actually two others, unions and enumerations, but we
-will not meet them in this introductory class.
