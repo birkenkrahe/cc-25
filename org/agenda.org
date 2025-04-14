@@ -2442,13 +2442,20 @@ x = 0.9
 
 * Week 13: Functions
 #+attr_html: :width 400px :float nil:
+#+caption: Image source: ChatGPT-4o
 [[../img/functions3.png]]
 
+Tips:
 - [ ] *Calculus*: If it math scares you, learn it with Python!
-- [ ] *New bonus problem:* [[https://lyon.instructure.com/courses/3113/assignments/43867][Euler number approximation with loops]].
+
+This week:
+- [ ] *New test:* Arrays!
 - [ ] *New programming assignment:* [[https://lyon.instructure.com/courses/3113/assignments/43868][Fibonacci series with arrays]].
-- [ ] More on multidimensional *arrays* and ~sizeof~: read the script!
+- [ ] *New bonus problem:* [[https://lyon.instructure.com/courses/3113/assignments/43867][Euler number approximation with loops]].
+- [ ] *More on multidimensional *arrays* and ~sizeof~: read the script!
 - [ ] *Lecture/practice:* C functions.
+
+Next week:
 - [ ] *Home programming assignment:* Encapsulate formula in function.
 - [ ] *Bonus assignment*: Design function for weighted averages.
 
