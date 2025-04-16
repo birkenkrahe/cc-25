@@ -2446,18 +2446,92 @@ x = 0.9
 [[../img/functions3.png]]
 
 Tips:
-- [ ] *Calculus*: If it math scares you, learn it with Python!
+- [X] *Calculus*: If it math scares you, learn it with Python!
 
 This week:
-- [ ] *New test:* Arrays!
-- [ ] *New programming assignment:* [[https://lyon.instructure.com/courses/3113/assignments/43868][Fibonacci series with arrays]].
-- [ ] *New bonus problem:* [[https://lyon.instructure.com/courses/3113/assignments/43867][Euler number approximation with loops]].
-- [ ] *More on multidimensional *arrays* and ~sizeof~: read the script!
-- [ ] *Lecture/practice:* C functions.
+- [X] *New test:* Arrays!
+- [X] *New programming assignment:* [[https://lyon.instructure.com/courses/3113/assignments/43868][Fibonacci series with arrays]].
+- [X] *New bonus problem:* [[https://lyon.instructure.com/courses/3113/assignments/43867][Euler number approximation with loops]].
+- [X] *More on multidimensional *arrays* and ~sizeof~: read the script!
+- [X] *Lecture/practice:* C functions.
 
 Next week:
-- [ ] *Home programming assignment:* Encapsulate formula in function.
-- [ ] *Bonus assignment*: Design function for weighted averages.
+- [X] *Home programming assignment:* Encapsulate formula in function.
+- [X] *Bonus assignment*: Design function for weighted averages.
+
+** TODO Review: Introduction to functions
+
+1. What does it mean for a C function to be "doubly void"? Example?
+   #+begin_quote
+   A function is "doubly void" if it has no return value (~void~) and no
+   parameters (~void~ or empty parentheses).
+   #+end_quote
+
+2. Why should you declare a function before ~main()~ in a C program?
+   #+begin_quote
+   Declaring a function (also called prototyping) before ~main()~ allows
+   the compiler to recognize the function when it is called, even if
+   the definition comes later in the file.
+   #+end_quote
+
+3. What is the argument of the function ~hi2(char name[])~?
+   #+begin_quote
+   The argument is a string (represented in C as a character array),
+   which holds the name to be included in the greeting.
+   #+end_quote
+
+4. How many functions are declared/defined/called in the following code? 
+   #+begin_src C
+     #include <stdio.h>
+     #include <math.h>
+
+     double cube(double x); 
+
+     int main(void) {
+       double number = 3.0;
+       double result = cube(number); 
+
+       printf("The cube of %g is %g\n", number, result);
+       return 0;
+     }
+
+     double cube(double x) {
+       return pow(x, 3); // library function
+     }
+   #+end_src
+
+   #+begin_quote
+   Four functions are called: ~cube()~ is declared and defined by the
+   user, ~main()~ is defined as required, and ~printf()~ and ~pow()~ are
+   library functions called inside the program.
+   #+end_quote
+
+5. Why does the prototype of the function ~average~ look like this:
+   ~float average(float, float);~? What's the difference to the function
+   *definition*?
+
+   #+begin_quote
+   This prototype tells the compiler that the function ~average~ will
+   return a ~float~ value and will take two ~float~ arguments. It's a
+   forward declaration that allows the function to be used before it's
+   defined. Specifying the types ensures correct type checking during
+   compilation.
+
+   For the function definition, the semicolon has to be replaced by a
+   function body enclosed in ={ }=, and the arguments need to have names.
+   #+end_quote
+
+   #+begin_src C
+     float average(float, float); // function declaration aka prototype
+
+     int main() {
+       printf("%g",average(5.9, 8.1)); // function call with arguments
+       }
+
+     float average(float a, float b) { // function definition with parameters
+       return (a+b)/2.;
+     }
+   #+end_src
 
 * Week 14: Pointers
 #+attr_html: :width 400px :float nil:
