@@ -1,0 +1,875 @@
+#+TITLE:Pointers
+#+AUTHOR:Marcus Birkenkrahe
+#+SUBTITLE:CSC100 / Introduction to programming in C/C++
+#+STARTUP: overview hideblocks indent
+#+OPTIONS: toc:nil ^:nil num:nil
+#+PROPERTY: header-args:C :main yes :includes <stdio.h> <stdlib.h> :exports both :results output
+* README
+#+attr_html: :width 400px :float nil:
+[[../img/pointers.png]]
+
+- This script introduces C pointers in theory and practice.
+
+- This section, including some sample code, is based on: chapter 11
+  in King (2008), and chapter 7 in Davenport/Vine.
+
+* Overview
+
+- Remember the fundamental architectural problem of the "von Neumann"
+  architecture of digital computers.
+  #+caption: Computer architecture (simplified)
+  #+attr_latex: :width 400px
+  [[../img/computer_architecture2.png]]
+
+  #+begin_quote
+  - Imagine: CPU \equiv brain, Memory \equiv house, Harddisk \equiv moon
+
+    1. CPU and the Brain: The CPU (Central Processing Unit) is like the
+       brain because it is responsible for processing all instructions
+       and making decisions. It performs the core computations and
+       controls other parts of the computer based on the input it
+       receives, similar to how the brain processes sensory information
+       and dictates responses.
+    2. RAM and a House: RAM (Random Access Memory) is akin to a house
+       because it serves as the active, working area where tasks are
+       carried out and information is temporarily held. Just as a house
+       contains rooms where daily activities occur (e.g., sleeping,
+       eating, working), RAM holds active applications and data for
+       quick access by the CPU. The size of the RAM affects how much
+       activity (or how many applications) can be handled at once, much
+       like the size of a house determines how many activities can
+       comfortably occur simultaneously.
+    3. Hard Disk and the Moon: A hard disk is comparable to the Moon in
+       that it serves as a distant but integral storage location. Just
+       as the Moon orbits Earth and is a more remote body holding
+       impacts of meteorites and historical footprints, a hard disk
+       stores data that is not immediately needed for current processing
+       tasks but is crucial for long-term storage. Its contents are not
+       as quickly accessible as those in RAM, reflecting the Moon’s
+       greater distance compared to our immediate environment.
+  #+end_quote
+
+- Computer memory is like a list of /locations/
+  #+caption: Sample data stored in an imaginary memory stack
+  #+attr_latex: :width 400px
+  [[../img/memory.png]]
+
+- Each chunk of memory has an /address/ to a location.
+
+- /Pointers/ point to these addresses:
+  #+attr_latex: :width 300px
+  #+caption: A pointer p points to address of i
+  [[../img/16_pointer.png]]
+
+- The /address/ is not the house, it's a /reference/ to the house:
+  #+attr_html: :width 300px
+  #+caption: envelope = pointer to an address
+  [[../img/16_letter.png]]
+
+* Pointers in other languages
+
+Most languages besides C/C++, like C#, Java, Python...do not offer
+pointers (easily) - most of the direct memory management is
+"abstracted" away (i.e. the memory is hidden and a simpler user
+interface is offered).
+
+#+begin_quote
+1. *C#:* C# does support pointers, but their use is limited to unsafe
+   code blocks. You must explicitly mark these areas with the =unsafe=
+   keyword. This feature allows you to perform operations that
+   involve direct memory access, similar to C or C++. However, using
+   pointers is generally discouraged in favor of safer constructs
+   provided by the language, such as objects and reference types.
+2. *Java:* Java does not support pointers, at least not in the
+   traditional sense as seen in C or C++. Instead, Java handles
+   memory through references to objects, and these references are
+   abstracted away from direct memory address manipulation. This
+   abstraction is part of Java's design to ensure security and
+   simplicity in memory management, reducing the likelihood of
+   errors such as memory leaks or pointer arithmetic.
+3. *Python*: Python also does not use pointers. It handles everything
+   by object references. The language is designed to abstract away
+   most direct memory management tasks from the developer,
+   automatically handling object creation and destruction through a
+   built-in garbage collector. Python’s approach simplifies the
+   development process but at the cost of direct control over memory
+   and performance optimizations that pointers can offer.
+4. *R:* R does not support pointers in the traditional sense used in
+   lower-level languages like C. Instead, R uses a system of
+   pass-by-value semantics with copy-on-modify behavior, meaning that
+   objects are generally copied when modified, though under the hood
+   this is optimized using references to avoid unnecessary duplication.
+   Memory management in R is handled automatically through garbage
+   collection, and direct manipulation of memory addresses is not
+   exposed to the user. While advanced users can interface with C
+   code via the =.C= or =.Call= interfaces for performance or memory
+   control, everyday R programming is intentionally abstracted from
+   low-level memory details to promote safety and ease of use.
+#+end_quote
+
+* What's the big deal?
+
+- C and C++ offer pointer variables and operators naturally.
+
+- This gives you a lot more control over the computer (because every
+  operation, every process involves memory management).
+
+- Examples:
+
+  + *String manipulation*: Strings are arrays (working with text -
+    e.g. when creating fast-performing chat bots or AI agents).
+
+    #+begin_src C
+      char *name = "Marcus"; // pointer to 'M' ('\0' is added at end)
+
+      printf("Hello, %s\n", name); // the whole string = array
+    #+end_src
+
+    #+RESULTS:
+    : Hello, Marcus
+
+  + *Dynamic memory allocation* - the process of assigning memory
+    during the execution time (when a program typically competes
+    with thousands of other processes).
+
+    #+begin_src C
+      int *p = malloc(sizeof(int)); // allocate memory for 1 integer
+      (*p) = 42;  // de-reference the pointer p
+      printf("%d\n", *p); // print the value
+      free(p); // de-allocate the memory
+    #+end_src
+
+    #+RESULTS:
+    : 42
+
+- About the =sizeof= operator: It returns the size of a memory cell (10
+  elements of length 4 for an integer each):
+  #+begin_src C
+    int a[10];
+
+    int size_a0 = sizeof(a[0]); // size of array element
+    int size_a  = sizeof(a)/size_a0; // size of array 
+
+    printf("Size of array element = %d\n", size_a0);
+    printf("Size of array         = %d\n", size_a);    
+  #+end_src
+
+  #+RESULTS:
+  : Size of array element = 4
+  : Size of array         = 10
+
+- This is *mind control*: You can essentially decide what the computer
+  should think with which part of its "brain" (great potential to mess
+  up, too), e.g. when you mis-allocate resources.
+
+* Indirection (concept)
+
+- Imagine you have a /variable/ ~iResult~ that contains the /value/ ~75~.
+
+- The variable is /located/ at a memory address, e.g. ~0061FEC8~. To find
+  this out, you need to print its address, =&iResult=, with ~%p~.
+
+  #+begin_src C
+    int iResult = 75.;
+    printf("%d is referenced by %p\n", iResult, &iResult);
+  #+end_src
+
+  #+RESULTS:
+  : 75 is referenced by 0x7ffedb3a66a4
+
+- Repeated executions of this code creates different addresses. A
+  pointer is a variable that holds an address.
+
+- Imagine you have a /pointer variable/ ~myPointer~ that contains the
+  address of the variable ~iResult~:
+  #+begin_src C
+    int iResult = 75;
+    printf("%d <- %p\n", iResult, &iResult);
+
+    int *myPointer = &iResult;
+    printf("%p -> %d\n",myPointer, iResult);
+  #+end_src
+
+  #+RESULTS:
+  : 75 <- 0x7ffcc88ea81c
+  : 0x7ffcc88ea81c -> 75
+
+- This means that ~myPointer~ /indirectly/ points to the value ~75~.
+
+- You already worked with addresses: An /array name/ ~a~ is a pointer to
+  the start of the array, the address of ~a[0]~:
+
+  #+begin_src C
+    int a[3] = {100,200,300}; // define an array
+    printf("a = %d", *a);  // printing `a` means printing `*a`
+  #+end_src
+
+  #+RESULTS:
+  : a = 100
+
+- The conversion specifier ~%p~ lets us access the addresses that
+  correspond to elements of the array ~a~, and even the address for the
+  whole array.
+
+- We declare an array ~a[2]~ and then we print its addresses:
+  #+name: ptrprint
+  #+begin_src C
+    int a[2] = {100,1000}; // define a 1-dim array of 2 elements
+    printf("a[0] = %p\na[1] = %p\n&a   = %p\n", &a[0], &a[1], &a);
+  #+end_src
+
+  #+RESULTS: ptrprint
+  : a[0] = 0x7ffe2c131d20
+  : a[1] = 0x7ffe2c131d24
+  : &a   = 0x7ffe2c131d20
+
+- You can see that the address for ~a~ points to ~a[0].~
+
+- You already worked with pointers: arguments in the call of ~scanf~
+  are /pointers/: without the ~&~, the function would be supplied with
+  the /value/ of ~i~, not the /address/. But ~scanf~'s job is to assign a
+  memory location (an address) to the input variable.
+  #+begin_example C
+  int i; // reserve memory for an integer called `i`
+  scanf("%d", &i); // put the keyboard input into that memory
+  #+end_example
+
+- The relationship between variable value and memory address is called
+  *indirection*: A /pointer/ provides /indirect/ access to the value via the
+  address where the value is stored.
+
+* Indirection (code)
+
+- There are two /unary/ pointer operators:
+  - the /address/ (or referencing) operator ~&~
+  - the /indirection/ (or dereferencing) operator ~*~
+
+- The unary /address/ operator ~&~ returns a computer memory address,
+  e.g. ~&i = 0x7ffc7600b79c~ - it /references/ the memory location.
+
+- What if ~i~ has not been initialized yet? Will the address change?
+  Print the reference to ~i~ before initializing it, and after.
+  #+begin_src C
+    int i;  // reserve memory for an integer i
+    printf("%p\n",&i); // print the memory address
+    i = 100;  // assign a value to i
+    printf("%p\n",&i); // print the memory address
+  #+end_src
+
+  #+RESULTS:
+  : 0x7ffd9b388cc4
+  : 0x7ffd9b388cc4
+
+- The unary /indirection/ operator ~*~ returns a value, e.g. ~*p = 75~ if ~p~
+  points at a variable that contains the value ~75~.
+
+- Let's do it all in one code block (*Open your C editor now*):
+  1) declare an integer variable ~i~
+  2) assign the value ~1~ to ~i~
+  3) declare an integer pointer ~*p~
+  4) assign the address of ~i~ to ~p~
+  5) print ~i~ and ~&i~ (~"is located at address"~)
+  6) print ~p~ and ~*p~ (~"points to value"~)
+
+  #+begin_src C
+    // variables
+    int i; // declare integer variable
+    i = 1; // assign value to variable
+
+    // pointers
+    int *p; // declare integer pointer
+    p = &i; // assign address to pointer
+
+    // print variable value
+    // PRINT "i is located at address &i"
+    printf("%d is located at address %p\n",i,&i);
+
+    // print pointer memory address
+    // PRINT "p points to the value i"
+    printf("%p points to value %d\n",p,i);
+  #+end_src
+
+  #+RESULTS:
+  : 1 is located at address 0x7ffd25faa58c
+  : 0x7ffd25faa58c points to value 1
+
+- What if you assign a number ~1~ to ~p~ instead of an address?
+  #+begin_src C
+    int *p; // declare integer pointer
+    p = 1; // warning: missing 'cast' (C knows p is an address)
+
+    // print pointer value
+    printf("%p\n",p); // '0x1' is a reserved memory address
+  #+end_src
+
+  #+RESULTS:
+  : 0x1
+
+- Compiler message (~-Wint-conversion~ is a compiler flag):
+  #+begin_example
+   warning: assignment to ‘int *’ from ‘int’ makes pointer from integer
+            without a cast [-Wint-conversion]
+   15 | p = 1; // warning: missing 'cast'
+      |   ^
+  #+end_example
+
+- Here is more documentation on compiler warnings. You can add them to
+  your code block with the header argument ~:flags~, e.g. ~:flags -Wall~
+
+- The figure illustrates these concepts. Can you describe what
+  goes on from line to line?
+  #+attr_html: :width 500px
+  #+caption: Graphical illustration of the indirection operator (Source: King)
+  [[../img/16_indirection.png]]
+
+  #+begin_quote Answer
+  1) The pointer ~p~ points to the address ~&i~ of the variable ~i~.
+  2) ~i~ is initialized with the value ~1~. ~p~ still points at it.
+  3) To change the value of ~i~ indirectly using the pointer ~p~, we
+     assign ~*p = 2~. The indirection operator ~*~ designates a pointer.
+  4) To check that ~i~ indeed has been changed, we print it.
+  5) ~*p~ also prints the value of ~i~.
+  #+end_quote
+
+* Practice: Indirection operator
+
+- Code the example that you just saw.
+
+- The value for the *NULL* pointer is just that: =NULL=.
+
+- Use the starter code: [[https://onecompiler.com/c/43fg9nvyj][onecompiler.com/c/43fg9nvyj]]
+
+- Sample output:
+  #+begin_example
+  Variable: 1 - Pointer: 1
+  Variable: 2 - Pointer: 2
+  #+end_example
+
+#+begin_src C
+  /* Change value of integer variable using pointer to variable
+     Input: initialized integer variable, initialied NULL pointer
+     Output: print original value of variable and pointer to variable
+     before and after the change of value */
+
+  // include standard input/output library header file
+  #include <stdio.h>
+
+  int main()
+  {
+    // declare integer variable
+    int i;
+    // declare and initialize NULL pointer
+    int *p = NULL;
+    // store address-to variable in pointer
+    p = &i;
+    // assign 1 to variable
+    i = 1;
+    // print values of variable and of pointer to variable
+    printf("Variable: %d - Pointer: %d\n",i,*p);
+    // change value of variable to 2 using pointer to variable
+    ,*p = 2;
+    // print values of variable and of pointer to variable
+    printf("Variable: %d - Pointer: %d\n",i,*p);
+    return 0;
+  }
+#+end_src
+
+* ~*~ and ~&~ are inverse to one another
+
+- Address and indirection operator are /inverse/ to one another
+  (i.e. they reverse each other's operation - applying both amounts
+  to doing nothing).
+
+- Applying indirection ~*~ to an address /dereferences/ it.
+
+- Applying referencing ~&~ to a pointer extracts its address.
+
+  #+name: inverseOps
+  #+begin_src C
+    // declaring and initializing
+    int val = 75, *ptr = &val;
+
+    // print variable and dereferenced pointer
+    printf("value = %d => *&(value) = %d\n",
+           val, *&val);
+
+    // print pointer and address of pointer
+    printf("pointer = %p => &*(ptr) = %p\n",
+           ptr, &*ptr);
+  #+end_src
+
+  #+RESULTS: inverseOps
+  : value = 75 => *&(value) = 75
+  : pointer = 0x7ffeae98ae4c => &*(ptr) = 0x7ffeae98ae4c
+
+- Applying ~*~ to the pointer takes us back to the original variable
+  (dereferences the pointer)
+  #+begin_example C
+    j = *&i  // same as j = i
+  #+end_example
+
+* Practice: Referencing and De-referencing
+
+- Practice how ~*~ (indirection) and ~&~ (address-of) are inverse
+  operations in C.
+
+- Write a short C program that:
+  1. Declares an integer variable and assigns it a value.
+  2. Declares a pointer to that variable using ~&~.
+  3. Uses ~*~ to get the original value from the pointer.
+  4. Prints all of the following:
+     + The value of the variable.
+     + The value of ~*&variable~.
+     + The value of ~*pointer~.
+     + The value of ~&*pointer~.
+
+- Starter code:
+  #+begin_src C
+    BEGIN
+    DECLARE integer variable x
+    SET x to some value
+
+    DECLARE pointer p to integer
+    SET p to address of x
+
+    PRINT value of x
+    PRINT value of *&x
+    PRINT value of *p
+    PRINT value of &*p
+    END
+  #+end_src
+
+- Sample output:
+  #+begin_example
+   x = 123
+   *&x = 123
+   *p = 123
+   &*p = 0x7fffc147e19c
+  #+end_example
+
+- Solution:
+  #+begin_src C
+    #include <stdio.h>
+
+    int main(void) { // BEGIN
+      int x;             // DECLARE integer variable x
+      x = 123;           // SET x to some value
+
+      int *p;            // DECLARE pointer p to integer
+      p = &x;            // SET p to address of x
+
+      printf("x = %d\n", x);        // PRINT value of x
+      printf("*&x = %d\n", *&x);    // PRINT value of *&x
+      printf("*p = %d\n", *p);      // PRINT value of *p
+      printf("&*p = %p\n", (void *)&*p); // PRINT value of &*p
+
+      return 0; // END
+    }
+  #+end_src
+
+  #+RESULTS:
+  : x = 123
+  : *&x = 123
+  : *p = 123
+  : &*p = 0x7fffc147e19c
+
+
+* Pointers must be initialized
+
+- Non-initialized pointers lead to invalid data or expressions.
+
+- Pointer variables should always be initialized with:
+  + another variable's memory address (e.g. ~&i~), OR
+  + with 0, OR
+  + with the keyword ~NULL~.
+
+- Here are some /valid/ pointer initializations - ~printf~ uses the
+  conversion specifier ~%p~ for pointers.
+  #+name: ptrInit
+  #+begin_src C :tangle ./src/ptrinit.c
+    double *ptr1;  // pointer declarations
+    int *ptr2;
+    int *ptr3;
+    double x = 3.14; // initialize variable
+
+    ptr1 = &x; // initialize with address
+    ptr2 = 0;  // initialize with 0
+    ptr3 = NULL; // initialize with NULL
+
+    printf("%p %p %p\n", ptr1, ptr2, ptr3);
+  #+end_src
+
+  #+RESULTS: ptrInit
+  : 0x7ffc31e308e8 (nil) (nil)
+
+- Let's print these last values: how do you have to change the ~printf~
+  statement? (Add the flag ~-w~ to disable all warnings)
+  #+begin_src C :flags -w
+    double *ptr1;  // pointer declarations
+    int *ptr2;
+    int *ptr3;
+    double x = 3.14; // initialize variable
+
+    ptr1 = &x; // initialize with address
+    ptr2 = 0;  // initialize with 0
+    ptr3 = NULL; // initialize with NULL
+
+    // different conversion specifiers
+    printf("%.2f %d %d\n", *ptr1, ptr2, ptr3);
+  #+end_src
+
+  #+RESULTS:
+  : 3.14 0 0
+
+- Here are a few non-valid initializations: we want to change the
+  value of a variable using the pointer to its memory address.
+  + can you tell why?
+  + can you right the wrong?
+  + print ~iPtr~, ~&i~ and ~i~
+  #+begin_src C :results silent
+    int i=5; // declare integer i
+    int *iPtr; // declare pointer iPtr
+
+    iPtr = &i; // initialize pointer
+    iPtr = 7;  // change value of variable
+  #+end_src
+
+- Solution:
+  #+begin_src C :results output
+    int i;
+    int *iPtr;
+
+    iPtr = &i;   // pointer initialized with memory address
+    ,*iPtr = 7;   // value of i indirectly changed
+
+    printf("%p %p %d\n", iPtr, &i, i);
+  #+end_src
+
+  #+RESULTS:
+  : 0x7ffcdcbffb9c 0x7ffcdcbffb9c 7
+
+* TODO Practice: Initializing pointers
+- A few things went wrong in the code block below.
+- Fix the problems, and then print the value that ~ptr~ points to, the
+  address that ~ptr~ references, and the value of ~var.~
+
+  #+begin_src C
+    // declare double precision variable
+    double var = 3.14159;
+    // declare pointer to double precision variable
+    int ptr;
+
+    // initialize pointer
+    ptr = var;      // ptr is assigned the address of x
+    ptr = 2.71828; // value of x is indirectly changed to e
+
+    // print pointer, address and value of i
+
+  #+end_src
+
+** Solution
+#+begin_src C
+  // declare double precision variable
+  double var = 3.14159;
+  // declare pointer to double precision variable
+  double *ptr;
+
+  // initialize pointer
+  ptr = &var;      // ptr is assigned the address of var
+  ,*ptr = 2.71828; // value of var is indirectly changed to the Euler number
+
+  // print pointer, address and value of i
+  printf("Pointer %g - address %p - value %g\n",
+         ,*ptr, ptr, var);
+#+end_src
+
+#+RESULTS:
+: Pointer 2.71828 - address 0x7ffd0dbc3dd8 - value 2.71828
+
+* TODO Practice: Fix the program
+
+- The following function supposedly computes the sum and average of
+  the numbers in the array ~a~, which has length ~n~. The variables ~avg~
+  and ~sum~ /point/ to variables that the function should modify.
+
+  Unfortunately, the function contains several errors: find and
+  correct them so that the code compiles.
+
+  The pseudocode:
+  #+begin_example C
+  /* Compute sum and average of elements of an array
+     Input: array of length n
+     Output: average and sum of array elements */
+
+     // void function definition: accept array and size of array,
+     // return pointers to avg and sum as parameters
+
+        // initialize sum
+
+        // loop over array
+
+           // sum array elements
+
+        // compute arithmetic average
+
+  #+end_example
+
+  Unfortunately, the function contains several errors: find and
+  correct them so that the code compiles and runs.
+
+  #+name: sum1
+  #+begin_src C :results silent
+    /* Compute sum and average of elements of an array
+       Input: array of length n
+       Output: average and sum of array elements */
+
+    // void function definition: accept array and size of array,
+    // return pointers to avg and sum as parameters
+    void avg_sum (double a[], int n, double *avg, double *sum) {
+      // initialize sum
+      sum = 0.;
+      // loop over array
+      for (int i = 0 ; i < n; i++)
+        {
+          // sum array elements
+          sum += &a[i];
+        }
+      // compute arithmetic average
+      avg = sum / n;
+    } // end of function
+  #+end_src
+
+** Solution
+
+#+name: sum2
+#+begin_src C 
+  /* Compute sum and average of elements of an array
+     Input: array of length n
+     Output: average and sum of array elements */
+
+  // void function definition: accept array and size of array,
+  // return pointers to avg and sum as parameters
+  void avg_sum (double a[], int n, double *avg, double *sum) {
+    // initialize sum
+    *sum = 0.;
+    // loop over array
+    for (int i = 0 ; i < n; i++)
+      {
+        // sum array elements
+        *sum += a[i];
+      }
+    // compute arithmetic average
+    *avg = *sum / n;
+  } // end of function
+
+    // main function
+    int main() {
+      double array[] = {1.0, 2.0, 3.0, 4.0, 5.0};
+      int size = sizeof(array) / sizeof(array[0]);
+      double average, total_sum;
+
+      avg_sum(array, size, &average, &total_sum);
+
+      printf("Average: %lf\n", average);
+      printf("Sum: %lf\n", total_sum);
+
+      return 0;
+  }
+#+end_src
+
+#+RESULTS: sum2
+: Average: 3.000000
+: Sum: 15.000000
+
+* TODO Practice: Swap numbers as pointers
+
+Write the following function:
+#+begin_example
+void swap(int *p, int *q);
+#+end_example
+When passed the addresses of two variables, ~swap~ should exchange the
+values of the variables. Function call:
+#+begin_example C
+swap(&i, &j); // exchanges values of i and j
+#+end_example
+
+Sample input:
+#+begin_example
+0 1
+#+end_example
+Sample output:
+#+begin_example
+1 0
+#+end_example
+
+Pseudocode:
+#+begin_example C
+   /* Exchange values of two integer variables i and j
+    * using a function with pointer-to i and pointer-to j as arguments
+    *  Input: address-of i (&i) and address-of j (&j)
+    *  Output: print i,j before and after
+    */
+
+    Begin
+       // ...
+
+       // ...
+    End
+#+end_example
+
+Code:
+#+begin_src C
+  /* Exchange values of two integer variables i and j
+   ,*  using a function with pointer-to i and pointer-to j as arguments
+   ,*  Input: address-of i (&i) and address-of j (&j)
+   ,*  Output: print i,j before and after
+   ,*/
+
+#+end_src
+
+
+** Solution:
+1. Pseudocode:
+   #+begin_example C
+   /* Exchange values of two integer variables i and j
+      using a function with pointer-to i and pointer-to j as arguments
+    *  Input: address-of i (&i) and address-of j (&j)
+    *  Output: print i,j before and after
+    */
+
+    Begin
+         // include standard input and output header file
+
+         // void function definition with integer pointer arguments *p, *q
+
+            // declare temp variable
+
+            // assign *q to temp
+
+            // assign *p to *q
+
+            // assign temp to *p
+
+            // print *p and *q
+
+         // main function
+
+            // declare and initialize integers i and j
+
+            // print i and j
+
+            // call swap with address-of i and address-of j
+
+            // return 0
+
+     End
+   #+end_example
+
+   Code:
+   #+begin_src C
+     // include standard input and output header file
+     #include <stdio.h>
+     // void function definition with integer pointer arguments *p, *q
+     void swap (int *p, int *q)
+     {
+       // declare temp variable
+       int temp;
+       // assign *q to temp
+       temp = *q;
+       // assign *p to *q
+       ,*q = *p;
+       // assign temp to *p
+       ,*p = temp;
+       // print *p and *q
+       printf("%d %d\n", *p, *q);
+     }
+
+     // main function
+     int main(void)
+     {
+       // declare and initialize integers i and j
+       int i=0,j=1;
+       // print i and j
+       printf("%d %d\n", i, j);
+       // call swap with address-of i and address-of j
+       swap(&i,&j);
+       // return 0
+       return 0;
+     }
+   #+end_src
+
+   #+RESULTS:
+   : 0 1
+   : 1 0
+
+* Arrays and pointers as function arguments
+
+- To code along in this section, create your own code blocks!
+
+- The code contains two functions:
+  1) function ~sumArray~ that directly takes an array and its size as parameters.
+  2) function ~sumPointer~ that takes a pointer to the first array
+     element and the size as parameters.
+  #+begin_src C
+    #include <stdio.h>
+
+    // Function takes array arr[size] as argument and returns integer
+    int sumArray(int arr[], int size)
+    {
+      int sum = 0;
+      for ( int i = 0; i < size; i++ )
+        {
+          sum += arr[i]; // sum up subsequent elements of arr[]
+        }
+      return sum;
+    }
+
+    // Function takes pointer to the first element of array as argument
+    int sumPointer(int *ptr, int size)
+    {
+      int sum = 0;
+      for ( int i = 0; i < size; i++ )
+        {
+          sum += *(ptr + 1);
+        }
+      return sum;
+    }
+
+    // Main function
+    int main()
+    {
+      int array[4] = {100,100,100,100};
+      int size = sizeof(array) / sizeof(array[0]);
+
+      printf("Sum using array: %d\n", sumArray(array, size));
+
+      return 0;
+    }
+  #+end_src
+
+  #+RESULTS:
+  : Sum using array: 400
+
+- How does this work exactly?
+  #+begin_src C
+    int array[4] = {100,200,300,400};
+    int size = sizeof(array) / sizeof(array[0]);
+    int *ptr = array;
+
+    for (int i = 0; i < size; i++)
+      printf("%d ", *(ptr + i));
+  #+end_src
+
+  #+RESULTS:
+  : 100 200 300 400
+
+* References
+
+- Davenport/Vine (2015) C Programming for the Absolute Beginner
+  (3ed). Cengage Learning.
+- Kernighan/Ritchie (1978). The C Programming Language
+  (1st). Prentice Hall.
+- King (2008). C Programming - A modern approach (2e). W A Norton.
+  [[http://knking.com/books/c2/][URL: knking.com]].
+- Orgmode.org (n.d.). 16 Working with Source Code [website]. [[https://orgmode.org/manual/Working-with-Source-Code.html][URL:
+  orgmode.org]]

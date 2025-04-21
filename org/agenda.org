@@ -2440,7 +2440,7 @@ x = 0.9
    outside the array.
    #+end_quote
 
-* Week 13: Functions
+* DONE Week 13: Functions
 #+attr_html: :width 400px :float nil:
 #+caption: Image source: ChatGPT-4o
 [[../img/functions3.png]]
@@ -2458,15 +2458,20 @@ This week:
 Next week:
 - [X] *Home programming assignment:* Encapsulate formula in function.
 - [X] *Bonus assignment*: Design function for weighted averages.
+- [X] *Test*: C functions
 
-** TODO Review: Introduction to functions
+** Review: Introduction to functions
 
-1. What does it mean for a C function to be "doubly void"? Example?
+1. What does it mean for a C function to be "doubly ~void~"? Example?
    #+begin_quote
    A function is "doubly void" if it has no return value (~void~) and no
    parameters (~void~ or empty parentheses).
    #+end_quote
 
+   #+begin_example C
+     void hello(void); // no return value, no arguments
+   #+end_example
+   
 2. Why should you declare a function before ~main()~ in a C program?
    #+begin_quote
    Declaring a function (also called prototyping) before ~main()~ allows
@@ -2474,10 +2479,15 @@ Next week:
    the definition comes later in the file.
    #+end_quote
 
+   #+begin_example C
+     float average(float, float); // compiler is told:
+     // expect a function that returns a `float` and needs 2 `float` arguments
+   #+end_example
+
 3. What is the argument of the function ~hi2(char name[])~?
    #+begin_quote
    The argument is a string (represented in C as a character array),
-   which holds the name to be included in the greeting.
+   which holds the name to be included in the greeting (sample pgm).
    #+end_quote
 
 4. How many functions are declared/defined/called in the following code? 
@@ -2501,7 +2511,7 @@ Next week:
    #+end_src
 
    #+begin_quote
-   Four functions are called: ~cube()~ is declared and defined by the
+   Four functions are used: ~cube()~ is declared and defined by the
    user, ~main()~ is defined as required, and ~printf()~ and ~pow()~ are
    library functions called inside the program.
    #+end_quote
@@ -2509,7 +2519,6 @@ Next week:
 5. Why does the prototype of the function ~average~ look like this:
    ~float average(float, float);~? What's the difference to the function
    *definition*?
-
    #+begin_quote
    This prototype tells the compiler that the function ~average~ will
    return a ~float~ value and will take two ~float~ arguments. It's a
@@ -2533,15 +2542,15 @@ Next week:
      }
    #+end_src
 
-* Week 14: Pointers
+* Week 14: Pointers to memory
 #+attr_html: :width 400px :float nil:
 [[../img/pointers.png]]
 
-* Week 15: Structures
+* Week 15: Structures - C's classes
 #+attr_html: :width 400px :float nil:
 [[../img/structures.png]]
 
-* Week 16: C++
+* Week 16: Transitioning to C++
 #+attr_html: :width 400px :float nil:
 [[../img/cpp.png]]
 
