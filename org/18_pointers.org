@@ -148,10 +148,10 @@ interface is offered).
     int a[10];
 
     int size_a0 = sizeof(a[0]); // size of array element
-    int size_a  = sizeof(a)/size_a0; // size of array 
+    int size_a  = sizeof(a)/size_a0; // size of array
 
     printf("Size of array element = %d\n", size_a0);
-    printf("Size of array         = %d\n", size_a);    
+    printf("Size of array         = %d\n", size_a);
   #+end_src
 
   #+RESULTS:
@@ -345,34 +345,127 @@ interface is offered).
   Variable: 2 - Pointer: 2
   #+end_example
 
-#+begin_src C
-  /* Change value of integer variable using pointer to variable
-     Input: initialized integer variable, initialied NULL pointer
-     Output: print original value of variable and pointer to variable
-     before and after the change of value */
+- Solution:
+  #+begin_src C
+    /* Change value of integer variable using pointer to variable
+       Input: initialized integer variable, initialied NULL pointer
+       Output: print original value of variable and pointer to variable
+       before and after the change of value */
 
-  // include standard input/output library header file
-  #include <stdio.h>
+    // include standard input/output library header file
+    #include <stdio.h>
 
-  int main()
-  {
-    // declare integer variable
-    int i;
-    // declare and initialize NULL pointer
-    int *p = NULL;
-    // store address-to variable in pointer
-    p = &i;
-    // assign 1 to variable
-    i = 1;
-    // print values of variable and of pointer to variable
-    printf("Variable: %d - Pointer: %d\n",i,*p);
-    // change value of variable to 2 using pointer to variable
-    ,*p = 2;
-    // print values of variable and of pointer to variable
-    printf("Variable: %d - Pointer: %d\n",i,*p);
-    return 0;
-  }
-#+end_src
+    int main()
+    {
+      // declare integer variable
+      int i;
+      // declare and initialize NULL pointer
+      int *p = NULL;
+      // store address-to variable in pointer
+      p = &i;
+      // assign 1 to variable
+      i = 1;
+      // print values of variable and of pointer to variable
+      printf("Variable: %d - Pointer: %d\n",i,*p);
+      // change value of variable to 2 using pointer to variable
+      ,*p = 2;
+      // print values of variable and of pointer to variable
+      printf("Variable: %d - Pointer: %d\n",i,*p);
+      return 0;
+    }
+  #+end_src
+
+* Practice: Reassigning Pointers and Changing Values
+
+- The following program starts with two variables a, b pointed at by
+  two pointers p and q. We then manipulate the variable values by
+  reassigning the pointers.
+
+- Starter Pseudocode: [[https://onecompiler.com/c/43fhagatk][onecompiler.com/c/43fhagatk]]
+  #+begin_src C
+    /* pointers.c: Manipulate variables using pointers */
+    /* Author: Marcus Birkenkrahe (pledged) GPLv3 */
+    /* Date: 04/20/2025 */
+
+    // declare two integer variables a and b
+
+    // declare two integer pointers p and q
+
+    // assign values: 5 to a and 10 to b
+
+    // point p to a, point q to b
+
+    // print values pointed to by p and q
+
+    // assign value pointed to by p to value pointed to by q
+
+    // print the values of a and b directly
+
+    // reassign p to point to b
+
+    // change value of b to 20 using the pointer p
+
+    // print a and b directly
+
+    // print values pointed to by p and q
+
+  #+end_src
+
+- Sample output:
+  #+begin_example
+  Values a = 5, b = 10
+  Values a = 5, b = 5
+  Values a = 5, b = 20
+  Values a = 20, b = 20
+  #+end_example
+
+- Solution:
+  #+begin_src C
+    // declare two integer variables a and b
+    int a, b;
+    // declare two integer pointers p and q
+    int *p, *q;
+    // assign values: 5 to a and 10 to b
+    a = 5, b = 10;
+    // point p to a, point q to b
+    p = &a, q = &b;
+    // print values pointed to by p and q
+    printf("p points to %d, q points to %d\n", *p, *q);
+    // assign value pointed to by p to value pointed to by q
+    (*q) = (*p);
+    // print the values of a and b directly
+    printf("Values a = %d, b = %d\n", a, b);
+    // reassign p to point to b
+    p = &b;
+    // change value of b to 20 using the pointer p
+    (*p) = 20;
+    // print a and b directly
+    printf("Values a = %d, b = %d\n", a, b);
+    // print value pointed to by p and q
+    printf("Values a = %d, b = %d\n", *p, *q);
+  #+end_src
+
+  #+RESULTS:
+  : p points to 5, q points to 10
+  : Values a = 5, b = 5
+  : Values a = 5, b = 20
+  : Values a = 20, b = 20
+
+- Analysis:
+
+  | CODE           | EXPLANATION                         |
+  |----------------+-------------------------------------|
+  | =a = =5, b = =10=  | Assign values to a, b directly      |
+  | =p = &a, q = =&b= | Pointers point a address-of a, b    |
+  | =*p, *q=         | Dereferenced pointers p,q print a,b |
+  | =*q == *p=        | Move value *p = a into *q = b:      |
+  |                | Now a, b have the same values       |
+  |                | but p still points at a, q at b     |
+  | =p == &b=         | Redirect p to address-of b          |
+  |                | Now both q and p point at b         |
+  | =*p == 20=        | Change value of b to 20             |
+  |                | Both dereference pointers print b   |
+  |                | The value of a is not changed.      |
 
 * ~*~ and ~&~ are inverse to one another
 
@@ -423,20 +516,20 @@ interface is offered).
      + The value of ~*pointer~.
      + The value of ~&*pointer~.
 
-- Starter code:
+- Starter code: [[https://onecompiler.com/c/43fhb4ft3][onecompiler.com/c/43fhb4ft3]]
   #+begin_src C
-    BEGIN
-    DECLARE integer variable x
-    SET x to some value
+    // BEGIN
+      // DECLARE integer variable x
+      // SET x to some value
 
-    DECLARE pointer p to integer
-    SET p to address of x
+      // DECLARE pointer p to integer
+      // SET p to address of x
 
-    PRINT value of x
-    PRINT value of *&x
-    PRINT value of *p
-    PRINT value of &*p
-    END
+      // PRINT value of x
+      // PRINT value of *&x
+      // PRINT value of *p
+      // PRINT value of &*p
+    // END
   #+end_src
 
 - Sample output:
@@ -452,19 +545,19 @@ interface is offered).
     #include <stdio.h>
 
     int main(void) { // BEGIN
-      int x;             // DECLARE integer variable x
-      x = 123;           // SET x to some value
+      int x; // DECLARE integer variable x
+      x = 123; // SET x to some value
 
-      int *p;            // DECLARE pointer p to integer
-      p = &x;            // SET p to address of x
+      int *p;  // DECLARE pointer p to integer
+      p = &x;  // SET p to address of x
 
-      printf("x = %d\n", x);        // PRINT value of x
-      printf("*&x = %d\n", *&x);    // PRINT value of *&x
-      printf("*p = %d\n", *p);      // PRINT value of *p
+      printf("x = %d\n", x); // PRINT value of x
+      printf("*&x = %d\n", *&x); // PRINT value of *&x
+      printf("*p = %d\n", *p); // PRINT value of *p
       printf("&*p = %p\n", (void *)&*p); // PRINT value of &*p
 
-      return 0; // END
-    }
+      return 0;
+    }  // END
   #+end_src
 
   #+RESULTS:
@@ -472,7 +565,6 @@ interface is offered).
   : *&x = 123
   : *p = 123
   : &*p = 0x7fffc147e19c
-
 
 * Pointers must be initialized
 
@@ -548,11 +640,14 @@ interface is offered).
   #+RESULTS:
   : 0x7ffcdcbffb9c 0x7ffcdcbffb9c 7
 
-* TODO Practice: Initializing pointers
+* Practice: Initializing pointers
+
 - A few things went wrong in the code block below.
+
 - Fix the problems, and then print the value that ~ptr~ points to, the
   address that ~ptr~ references, and the value of ~var.~
 
+- Open this in the editor on: [[https://onecompiler.com/c/43fhtmp7k][onecompiler.com/c/43fhtmp7k]]
   #+begin_src C
     // declare double precision variable
     double var = 3.14159;
@@ -560,12 +655,18 @@ interface is offered).
     int ptr;
 
     // initialize pointer
-    ptr = var;      // ptr is assigned the address of x
+    ptr = var;     // ptr is assigned the address of x
     ptr = 2.71828; // value of x is indirectly changed to e
 
-    // print pointer, address and value of i
-
+    // print dereferenced pointer, address and value of var
+    printf("Deref'd ptr %d\nAddress-of var = %d\nValue of var = %p\n",
+           ptr, &ptr, &var);
   #+end_src
+
+  #+RESULTS:
+  : Pointer ptr = 2
+  : Address-of var = -1631852340
+  : Value of var = 0x7ffe9ebbe8d0
 
 ** Solution
 #+begin_src C
@@ -576,279 +677,307 @@ interface is offered).
 
   // initialize pointer
   ptr = &var;      // ptr is assigned the address of var
-  ,*ptr = 2.71828; // value of var is indirectly changed to the Euler number
+  (*ptr) = 2.71828; // value of var is indirectly changed to the Euler number
 
   // print pointer, address and value of i
-  printf("Pointer %g - address %p - value %g\n",
-         ,*ptr, ptr, var);
+    printf("Deref'd ptr %g\nAddress-of var = %p\nValue of var = %g\n",
+  	 *ptr, ptr, var);
 #+end_src
 
 #+RESULTS:
-: Pointer 2.71828 - address 0x7ffd0dbc3dd8 - value 2.71828
+: Deref'd ptr 2.71828
+: Address-of var = 0x7ffeee9bca28
+: Value of var = 2.71828
 
-* TODO Practice: Fix the program
+* Pass by value and pass by reference
 
-- The following function supposedly computes the sum and average of
-  the numbers in the array ~a~, which has length ~n~. The variables ~avg~
-  and ~sum~ /point/ to variables that the function should modify.
+      - Since we've established the difference between a value and a
+        reference (or address), we can use it in functions.
 
-  Unfortunately, the function contains several errors: find and
-  correct them so that the code compiles.
+      - What happens here?
+        #+begin_src C :main no :includes
+          #include <stdio.h> // input/output
+          // swap two integer arguments a->b, b->a
+          void swap(int, int);
 
-  The pseudocode:
-  #+begin_example C
-  /* Compute sum and average of elements of an array
-     Input: array of length n
-     Output: average and sum of array elements */
+          /* main function */
+          int main(void)
+          {
+            // declare and initialize two integer variables
+            int x = 5, y = 10;
+            // PRINT "Before swap: (x,y)"
+            printf("Before swap: (%d,%d)\n", x, y);
+            // swap x and y
+            swap(x,y);
+            // PRINT "After swap (in `main`): (x,y)"
+            printf("After swap (in 'main'): (%d,%d)\n", x, y);
 
-     // void function definition: accept array and size of array,
-     // return pointers to avg and sum as parameters
+            return 0;
+          }
+          /* function definition */
+          void swap(int a, int b) {
+            int temp; // store value of a temp-orarily
+            temp = a;
+            a = b;
+            b = temp;
+            // PRINT "After swap (swap): (a,b)"
+            printf("After swap (in 'swap'): (%d,%d)\n", a, b);
+          }
+        #+end_src
 
-        // initialize sum
+        #+RESULTS:
+        : Before swap: (5,10)
+        : After swap (in 'swap'): (10,5)
+        : After swap (in 'main'): (5,10)
 
-        // loop over array
+      - Explanation:
+        #+begin_quote
+        We're thwarted by the main advantage of functions: That their values
+        are encapsulated and that their memory is returned when the function
+        is done. The arguments x,y are said to be *passed by value*.
+        #+end_quote
 
-           // sum array elements
+      - How can we swap the numbers so that they remain swapped?
+        #+begin_quote
+        Instead of passing the values, we can pass the addresses of the
+        memory cells where x and y reside - then the swap will be
+        permanent. This is called *pass by reference*.
+        #+end_quote
 
-        // compute arithmetic average
+      - Code along: Open the editor on the URL [[https://onecompiler.com/c/43fhpg9cu][onecompiler.com/c/43fhpg9cu]]
+        #+begin_src C
+          // input/output
 
-  #+end_example
+          /* function declaration */
+          // swap two integer arguments a->b, b->a as pointers
 
-  Unfortunately, the function contains several errors: find and
-  correct them so that the code compiles and runs.
+          /* main function */
+          // BEGIN
+          // declare and initialize two integer variables
 
-  #+name: sum1
-  #+begin_src C :results silent
-    /* Compute sum and average of elements of an array
-       Input: array of length n
-       Output: average and sum of array elements */
+          // PRINT "Before swap: (x,y)"
 
-    // void function definition: accept array and size of array,
-    // return pointers to avg and sum as parameters
-    void avg_sum (double a[], int n, double *avg, double *sum) {
-      // initialize sum
-      sum = 0.;
-      // loop over array
-      for (int i = 0 ; i < n; i++)
-        {
-          // sum array elements
-          sum += &a[i];
-        }
-      // compute arithmetic average
-      avg = sum / n;
-    } // end of function
+          // swap x and y by reference (via their addresses)
+
+          // PRINT "After swap (in `main`): (x,y)"
+
+          // END
+
+          /* function definition */
+          // swap two integer arguments a->b, b->a as pointers    
+          // BEGIN
+          // store value of first variable temp-orarily
+          // assign value of second variable to first variable
+          // assign temporary value to second variable
+          // PRINT "After swap (swap): (a,b)"
+          // END
+        #+end_src
+
+      - Solution:
+        #+begin_src C :main no :includes
+          #include <stdio.h> // input/output
+          // swap two integer arguments a->b, b->a as pointers
+          void swap(int *, int*);
+
+          /* main function */
+          int main(void)
+          {
+            // declare and initialize two integer variables
+            int x = 5, y = 10;
+            // PRINT "Before swap: (x,y)"
+            printf("Before swap: (%d,%d)\n", x, y);
+            // swap x and y by reference (via their addresses)
+            swap(&x,&y);
+            // PRINT "After swap (in `main`): (x,y)"
+            printf("After swap (in 'main'): (%d,%d)\n", x, y);
+
+            return 0;
+          }
+          /* function definition */
+          // swap two integer arguments a->b, b->a as pointers    
+          void swap(int *a, int *b) { // arguments are pointers!
+            int temp; // store value of a temp-orarily
+            temp = *a;
+            (*a) = *b;
+            (*b) = temp;
+            // PRINT "After swap (swap): (a,b)"
+            printf("After swap (in 'swap'): (%d,%d)\n", *a, *b);
+          }
+        #+end_src
+
+        #+RESULTS:
+        : Before swap: (5,10)
+        : After swap (in 'swap'): (10,5)
+        : After swap (in 'main'): (10,5)
+
+* Challenge: Incrementing an integer by value/reference
+
+- The difference between modfiying a variable inside a function by:
+  1) Pass by value (no lasting effect)
+  2) Pass by reference (permanent effect using pointers)
+
+- Write two functions:
+  1. =void increment_val(int)= to increment an ~int~ passed by value
+  2. =void increment_ref(int*)= to increment an ~int~ passed by reference
+
+- Starter code: Open the editor on
+  #+begin_src C :main no :includes
+    // input / output
+    
+    /* function declarations */
+    // increment an integer passed by value
+
+    // increment an integer passed by reference
+
+    /* main program */
+    // BEGIN
+      // declare and initialize n as 1
+      // PRINT "Before increment: x"
+
+      // function call: increment x by value
+
+      // PRINT "After increment_val " + increment x by value
+
+      // function call: increment x by reference
+
+      // PRINT "After increment_ref " + increment x by reference
+
+    // END
+
+    /* function definitions */
+    // increment an integer passed by value
+    // BEGIN
+      // increment argument n
+    // END
+
+    // increment an integer passed by reference
+    // BEGIN
+      // increment pointer argument 
+
+    // END
   #+end_src
 
-** Solution
-
-#+name: sum2
-#+begin_src C 
-  /* Compute sum and average of elements of an array
-     Input: array of length n
-     Output: average and sum of array elements */
-
-  // void function definition: accept array and size of array,
-  // return pointers to avg and sum as parameters
-  void avg_sum (double a[], int n, double *avg, double *sum) {
-    // initialize sum
-    *sum = 0.;
-    // loop over array
-    for (int i = 0 ; i < n; i++)
-      {
-        // sum array elements
-        *sum += a[i];
-      }
-    // compute arithmetic average
-    *avg = *sum / n;
-  } // end of function
-
-    // main function
-    int main() {
-      double array[] = {1.0, 2.0, 3.0, 4.0, 5.0};
-      int size = sizeof(array) / sizeof(array[0]);
-      double average, total_sum;
-
-      avg_sum(array, size, &average, &total_sum);
-
-      printf("Average: %lf\n", average);
-      printf("Sum: %lf\n", total_sum);
-
-      return 0;
-  }
-#+end_src
-
-#+RESULTS: sum2
-: Average: 3.000000
-: Sum: 15.000000
-
-* TODO Practice: Swap numbers as pointers
-
-Write the following function:
-#+begin_example
-void swap(int *p, int *q);
-#+end_example
-When passed the addresses of two variables, ~swap~ should exchange the
-values of the variables. Function call:
-#+begin_example C
-swap(&i, &j); // exchanges values of i and j
-#+end_example
-
-Sample input:
-#+begin_example
-0 1
-#+end_example
-Sample output:
-#+begin_example
-1 0
-#+end_example
-
-Pseudocode:
-#+begin_example C
-   /* Exchange values of two integer variables i and j
-    * using a function with pointer-to i and pointer-to j as arguments
-    *  Input: address-of i (&i) and address-of j (&j)
-    *  Output: print i,j before and after
-    */
-
-    Begin
-       // ...
-
-       // ...
-    End
-#+end_example
-
-Code:
-#+begin_src C
-  /* Exchange values of two integer variables i and j
-   ,*  using a function with pointer-to i and pointer-to j as arguments
-   ,*  Input: address-of i (&i) and address-of j (&j)
-   ,*  Output: print i,j before and after
-   ,*/
-
-#+end_src
-
-
-** Solution:
-1. Pseudocode:
-   #+begin_example C
-   /* Exchange values of two integer variables i and j
-      using a function with pointer-to i and pointer-to j as arguments
-    *  Input: address-of i (&i) and address-of j (&j)
-    *  Output: print i,j before and after
-    */
-
-    Begin
-         // include standard input and output header file
-
-         // void function definition with integer pointer arguments *p, *q
-
-            // declare temp variable
-
-            // assign *q to temp
-
-            // assign *p to *q
-
-            // assign temp to *p
-
-            // print *p and *q
-
-         // main function
-
-            // declare and initialize integers i and j
-
-            // print i and j
-
-            // call swap with address-of i and address-of j
-
-            // return 0
-
-     End
-   #+end_example
-
-   Code:
-   #+begin_src C
-     // include standard input and output header file
-     #include <stdio.h>
-     // void function definition with integer pointer arguments *p, *q
-     void swap (int *p, int *q)
-     {
-       // declare temp variable
-       int temp;
-       // assign *q to temp
-       temp = *q;
-       // assign *p to *q
-       ,*q = *p;
-       // assign temp to *p
-       ,*p = temp;
-       // print *p and *q
-       printf("%d %d\n", *p, *q);
-     }
-
-     // main function
-     int main(void)
-     {
-       // declare and initialize integers i and j
-       int i=0,j=1;
-       // print i and j
-       printf("%d %d\n", i, j);
-       // call swap with address-of i and address-of j
-       swap(&i,&j);
-       // return 0
-       return 0;
-     }
-   #+end_src
-
-   #+RESULTS:
-   : 0 1
-   : 1 0
-
-* Arrays and pointers as function arguments
-
-- To code along in this section, create your own code blocks!
-
-- The code contains two functions:
-  1) function ~sumArray~ that directly takes an array and its size as parameters.
-  2) function ~sumPointer~ that takes a pointer to the first array
-     element and the size as parameters.
+- Solution:
   #+begin_src C
-    #include <stdio.h>
+    /* function declarations */
+    // increment an integer passed by value
+    void increment_val(int);
 
-    // Function takes array arr[size] as argument and returns integer
-    int sumArray(int arr[], int size)
-    {
-      int sum = 0;
-      for ( int i = 0; i < size; i++ )
-        {
-          sum += arr[i]; // sum up subsequent elements of arr[]
-        }
-      return sum;
-    }
+    // increment an integer passed by reference
+    void increment_ref(int *);
 
-    // Function takes pointer to the first element of array as argument
-    int sumPointer(int *ptr, int size)
-    {
-      int sum = 0;
-      for ( int i = 0; i < size; i++ )
-        {
-          sum += *(ptr + 1);
-        }
-      return sum;
-    }
+    /* main program */
+    int main(void)
+    { // BEGIN
+      int x = 1; // declare and initialize n as 1
+      // PRINT "Before increment: x"
+      printf("Before increment: x = %d\n", x);
 
-    // Main function
-    int main()
-    {
-      int array[4] = {100,100,100,100};
-      int size = sizeof(array) / sizeof(array[0]);
+      // function call: increment x by value
+      increment_val(x);
 
-      printf("Sum using array: %d\n", sumArray(array, size));
+      // PRINT "After increment_val " + increment x by value
+      printf("After increment_val: x = %d\n", x);
+
+      // function call: increment x by reference
+      increment_ref(&x);
+
+      // PRINT "After increment_ref " + increment x by reference
+      printf("After increment_ref: x = %d\n", x);
 
       return 0;
+    } // END
+
+    /* function definitions */
+    // increment an integer passed by value
+    void increment_val(int n) {
+      // increment argument n
+      n = n + 1;
+    }
+    // increment an integer passed by reference
+    void increment_ref(int *n) {
+      // increment pointer argument 
+      (*n) = (*n) + 1;
     }
   #+end_src
 
   #+RESULTS:
+  : Before increment: x = 1
+  : After increment_val: x = 1
+  : After increment_ref: x = 2
+
+* Bonus: Arrays and pointers as function arguments
+
+- Arrays in C decay to pointers when passed to a function:
+  #+begin_example C
+   int array[4]; // actual array
+   sumArray(array, 4); // array decays to pointer to array[0]
+   sumPointer(*array, 4); // pass only the reference to array[0]
+  #+end_example
+
+- The code below contains two functions:
+  1) function ~sumArray~ that directly takes an array and its size as
+     parameters.
+  2) function ~sumPointer~ that takes a pointer to the first array
+     element only
+  3) The size of the array is computed with ~sizeof~ and passed on so
+     that the upper bound of the ~for~ loop is independent (=size=).
+
+- Code example:
+  #+begin_src C
+    #include <stdio.h>
+
+    /* function declarations */
+    // Function takes array arr[size] as argument and returns integer
+    int sumArray(int [], int);
+
+    // Function takes pointer to the first element of array as argument
+    int sumPointer(int *, int);
+
+    /*  Main function */
+    int main()
+    { // BEGIN
+      // SET array of 4 elements initialized to 100
+        int array[4] = {100,100,100,100};
+      // SET size of array
+      int size = sizeof(array) / sizeof(array[0]);
+      // PRINT sum of array elements using sumArray
+      printf("Sum using array: %d\n", sumArray(array, size));
+      // PRINT sum of array elements using sumPointer 
+      printf("Sum using pointer: %d\n", sumPointer(array, size));
+
+      return 0;
+    } // END
+
+    /* function definitions */
+    // sumArray: Sum the elements of an array
+    // takes array arr[size] as argument and returns integer
+    int sumArray(int arr[], int size)
+    { // BEGIN
+      int sum = 0; // SET sum to 0
+      // FOR i from 0 to size; DO
+      for ( int i = 0; i < size; i++ ) { 
+          sum += arr[i]; // sum array elements using values
+      } // END FOR
+      return sum;
+    } // END
+
+    // sumPointer: Sum the elements of an array
+    // takes pointer to the first element of array as argument
+    int sumPointer(int *ptr, int size)
+    { // BEGIN
+      int sum = 0; // SET sum to 0
+      // FOR i from 0 to size; DO
+      for ( int i = 0; i < size; i++ ) {
+          sum += *(ptr + 1); // sum array elements using pointer
+      } // END FOR
+      return sum;
+    } // END
+  #+end_src
+
+  #+RESULTS:
   : Sum using array: 400
+  : Sum using pointer: 400
 
 - How does this work exactly?
   #+begin_src C
@@ -861,7 +990,17 @@ Code:
   #+end_src
 
   #+RESULTS:
-  : 100 200 300 400
+  : 100 200 300 400 
+
+- What's the big deal? Even though arrays decay to pointers in
+  function calls, they are not the same type in general:
+
+  | Feature            | Array                | Pointer                    |
+  |--------------------+----------------------+----------------------------|
+  | Memory allocation  | Fixed at declaration | Dynamic or points anywhere |
+  | sizeof operator    | Total size           | Size of pointer            |
+  | Pointer arithmetic | No                   | Yes                        |
+  | Can be reassigned? | No (name is fixed)   | Yes (can point elsewhere)  |
 
 * References
 

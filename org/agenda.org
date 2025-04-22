@@ -2546,13 +2546,178 @@ Next week:
 #+attr_html: :width 400px :float nil:
 [[../img/pointers.png]]
 
+- [ ] There will be one more test (on pointers)
+- [ ] There will be one more programming assignment (with pointers)
+- [ ] There will be one more bonus programming assignment
+- [ ] I will drop your worst test result and 1 programming assignnment
+
+** TODO Review 1: Pointers (creation to initialization)
+
+1. What is the purpose of RAM in a computer system?
+   #+begin_quote
+   RAM (Random Access Memory) is a type of fast, temporary storage
+   that holds the data and instructions a computer is actively
+   using. It allows the CPU to quickly read from and write to memory
+   while running programs. Unlike long-term storage (like a hard
+   drive), the contents of RAM are lost when the computer is turned
+   off.
+   #+end_quote
+
+2. What does it mean when we say a pointer holds the “address” of a
+   variable?
+   #+begin_quote
+   A pointer stores the *memory location* where a variable is stored,
+   not the value itself. It's like holding an envelope with a street
+   address on it — the pointer tells you where to find the data in
+   memory.
+   #+end_quote
+
+3. How is memory access different in languages like Java or Python
+   compared to C?
+   #+begin_quote
+   Languages like Java and Python abstract away direct memory
+   access. They use references to manage objects and rely on garbage
+   collection. In contrast, C exposes memory addresses through
+   pointers, giving the programmer low-level control — and
+   responsibility — for memory management.
+   #+end_quote
+
+4. What does the ~%p~ format specifier print in a C ~printf~ statement?
+   #+begin_quote
+   The ~%p~ specifier prints a memory address — that is, a pointer’s
+   value. It shows where in memory a variable is stored, which is
+   useful for understanding how indirection works.
+   #+end_quote
+
+5. Why is pointer manipulation considered both powerful and dangerous
+   in C?
+   #+begin_quote
+   Pointers allow precise control over memory — you can directly read,
+   write, and allocate memory at runtime. However, incorrect use
+   (e.g., dereferencing invalid addresses, memory leaks, or buffer
+   overflows) can easily lead to crashes or unpredictable behavior,
+   making them error-prone without careful handling.
+   #+end_quote
+
+6. What is a pointer in C, and how is it declared?
+   #+begin_quote
+   A pointer is a variable that stores the *memory address* of another variable. It is declared using the asterisk (`*`) symbol.  
+   #+end_quote
+
+   #+begin_src C
+     int x = 42; // x is an integer with the value 42
+     int *p = &x; // p is a pointer to x with the address-of x
+   #+end_src
+
+7. What does the indirection (dereferencing) operator ~*~ do?
+   #+begin_quote
+   The ~*~ operator, when used with a pointer, accesses the *value at the
+   memory address* stored in the pointer.  Example: ~*p~ gives us the
+   value stored in ~x~, because ~p~ points to ~x~.
+   #+end_quote
+
+   #+begin_src C
+   int x = 10; // variable x stores value 10
+   int *p = &x; // pointer p  stores address-of x
+   printf("%d\n", *p); // prints value of x as dereferenced pointer to &x
+   #+end_src
+
+8. What happens if you assign a literal integer (like 1) to a pointer?
+   #+begin_quote
+   Assigning a literal like ~p = 1;~ to a pointer is unsafe. It tells
+   the pointer to point to memory address ~1~, which is typically
+   invalid and can cause a segmentation fault.  The compiler will warn
+   about this. Always assign a pointer with a valid address, like ~p =
+   &x;~.
+   #+end_quote
+   #+begin_example
+   warning: assignment to ‘int *’ from ‘int’ makes pointer from integer without a cast
+   #+end_example
+
+9. What does the ~sizeof~ operator tell us about arrays?
+   #+begin_quote
+   ~sizeof(a)~ returns the total number of bytes used by the array ~a~,
+   while ~sizeof(a[0])~ gives the size of a single element. This
+   technique is commonly used to determine the length of statically
+   allocated arrays.
+   #+end_quote
+
+   #+begin_src C
+   int a[100];
+   int size = sizeof(a) / sizeof(a[0]); // gives 100
+   #+end_src
+
+10. Why must you use ~&i~ in a call to ~scanf("%d", &i);~?
+    #+begin_quote
+    The ~scanf~ function needs the *address* of the variable to store the
+    input in the correct memory location. ~&i~ passes that address.
+    Without the ~&~, ~scanf~ would receive just a value and wouldn’t be
+    able to modify the original variable.
+    #+end_quote
+
+
+** TODO Review 2: Pointers (pass by value or reference)
+
+1. What is the result of passing a variable to a function by value?
+   #+begin_quote
+   When a variable is passed by value, the function receives a *copy* of
+   the original variable.  Any changes made to the parameter inside
+   the function do *not* affect the original variable in the calling
+   function.
+   #+end_quote
+
+2. What does the pointer declaration `int *p = &i;` mean?
+   #+begin_quote
+   This means that `p` is declared as a pointer to an integer, and it is initialized to store 
+   the *address* of the variable `i`. So `p` does not contain the value of `i`, but points to 
+   the memory location where `i` is stored.
+   #+end_quote
+
+3. What happens when you pass an array to a function in C?
+   #+begin_quote
+   When an array is passed to a function, it *decays* into a pointer to its first element. 
+   That means the function actually receives a pointer to the beginning of the array, 
+   and not a copy of the array itself.
+   #+end_quote
+
+4. Why is dynamic memory allocation important?
+   #+begin_quote
+   Dynamic memory allocation lets a program request memory at *runtime* rather than compile time. 
+   This is essential for working with data whose size is not known in advance. It provides 
+   flexibility and efficient memory use, though it requires manual management (e.g., `malloc`, `free`).
+   #+end_quote
+
+5. In C, what is the difference between `*p = 2;` and `p = 2;` when `p` is an integer pointer?
+   #+begin_quote
+   `*p = 2;` means: "store the value 2 in the memory location pointed to by `p`."  
+   `p = 2;` means: "make the pointer `p` point to memory address 2," which is almost always 
+   invalid and dangerous unless you're explicitly working with that address. The first uses 
+   *indirection*, the second reassigns the pointer.
+   #+end_quote
+
+
 * Week 15: Structures - C's classes
 #+attr_html: :width 400px :float nil:
+#+
 [[../img/structures.png]]
+
+At the end of this week, you should know if you need to write the
+(optional) final exam to bump up your grade (by at most 25%).
+
+- The C ~struct~ is a public class of objects.
+- It's a precursor of C++ classes.
+- This is the beginning of object-oriented programming.
+- OOP is the standard for building large-scale applications.
 
 * Week 16: Transitioning to C++
 #+attr_html: :width 400px :float nil:
+#+caption: The guy in the picture is Bjarne Stroustrup
 [[../img/cpp.png]]
+
+- We're going to look at the C++ version of several examples.
+- This will show you some differences between C and C++.
+- It will be a preparation for CSC 240 (Data structures with C++).
+- We'll also discuss what you could do in the summer to prepare.
 
 * Footnotes
 
