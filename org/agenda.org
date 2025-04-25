@@ -2165,7 +2165,7 @@ structure for handling multiple conditions.
    =FALSE= since =x == 0= from the start. Either adjust the condition or
    increment =x= inside the loop.
    #+end_quote
-   
+
 2) What's wrong with this loop? It does not run at all.
    #+begin_src C :main yes :includes <stdio.h> <stdlib.h> <string.h> :results output :exports both :noweb yes
      int num = 5;
@@ -2178,7 +2178,7 @@ structure for handling multiple conditions.
    #+begin_quote
    There's a missing ; after the ~while~ condition.
    #+end_quote
-   
+
 3) What's wrong with this loop? It runs forever.
    #+begin_src C :main yes :includes <stdio.h> <stdlib.h> <string.h> :results output :exports both :noweb yes
      int i = 5;
@@ -2190,7 +2190,7 @@ structure for handling multiple conditions.
 
    #+begin_quote
    It runs infinitely because the =i--= decrements the initial value of
-   =i= from =5= to =4=, and =i < 5= remains true forever. 
+   =i= from =5= to =4=, and =i < 5= remains true forever.
    #+end_quote
 
 4) What's wrong with this loop? It runs forever.
@@ -2221,7 +2221,7 @@ structure for handling multiple conditions.
    =x= is incremented outside of the loop instead of inside it -
    therefore =x = 0= forever, and =x < 0= remains true forever.
    #+end_quote
-   
+
 ** DONE ~for~ loops
 
 * DONE Week 12: Arrays
@@ -2251,17 +2251,17 @@ structure for handling multiple conditions.
    =TRUE= because only the ~return~ value of the increment expression is
    used: =i++= is =i = i + 1=. They are semantically identical.
    #+end_quote
-   
+
 2. =TRUE= or =FALSE=? The two loops in this program have different
    outputs - explain your answer.
    #+begin_src C
      for (int i = 0; i++ < 5; ) printf("%d ",i); puts("");
-     for (int i = 0; ++i < 5; ) printf("%d ",i);     
+     for (int i = 0; ++i < 5; ) printf("%d ",i);
    #+end_src
 
    #+RESULTS:
-   : 1 2 3 4 5 
-   : 1 2 3 4 
+   : 1 2 3 4 5
+   : 1 2 3 4
 
    #+begin_quote
    =TRUE= because the increment is part of the condition (not
@@ -2356,7 +2356,7 @@ x = 0.9
 [[../img/award.jpg]]
 
 ** DONE Where you are at with C / C++
-#+attr_html: :width 600px :float nil: 
+#+attr_html: :width 600px :float nil:
 [[../img/skills.png]]
 
 ** DONE Review: Array declarations
@@ -2371,7 +2371,7 @@ x = 0.9
    #+end_src
 
    #+RESULTS:
-   : 0 1 2 3 4 5 
+   : 0 1 2 3 4 5
 
    #+begin_quote
    The loop goes *out of bounds*: ~i <= 5~ means the loop accesses ~a[5]~,
@@ -2471,7 +2471,7 @@ Next week:
    #+begin_example C
      void hello(void); // no return value, no arguments
    #+end_example
-   
+
 2. Why should you declare a function before ~main()~ in a C program?
    #+begin_quote
    Declaring a function (also called prototyping) before ~main()~ allows
@@ -2490,16 +2490,16 @@ Next week:
    which holds the name to be included in the greeting (sample pgm).
    #+end_quote
 
-4. How many functions are declared/defined/called in the following code? 
+4. How many functions are declared/defined/called in the following code?
    #+begin_src C
      #include <stdio.h>
      #include <math.h>
 
-     double cube(double x); 
+     double cube(double x);
 
      int main(void) {
        double number = 3.0;
-       double result = cube(number); 
+       double result = cube(number);
 
        printf("The cube of %g is %g\n", number, result);
        return 0;
@@ -2535,7 +2535,7 @@ Next week:
 
      int main() {
        printf("%g",average(5.9, 8.1)); // function call with arguments
-       }
+     }
 
      float average(float a, float b) { // function definition with parameters
        return (a+b)/2.;
@@ -2546,12 +2546,17 @@ Next week:
 #+attr_html: :width 400px :float nil:
 [[../img/pointers.png]]
 
-- [ ] There will be one more test (on pointers)
-- [ ] There will be one more programming assignment (with pointers)
-- [ ] There will be one more bonus programming assignment
-- [ ] I will drop your worst test result and 1 programming assignnment
+- [X] There will be *one more test* (on pointers & structs)
+- [X] There will be *one more programming assignment* (with pointers)
+- [X] There will be *two more bonus programming assignments*
+- [X] *I will drop your worst test result and 1 programming assignnment*
+- [ ] The lectures 1-18 are now available as PDFs in GitHub.
 
-** TODO Review 1: Pointers (creation to initialization)
+** DONE Invitation - Join me on Friday 4pm in Nucor
+#+attr_html: :width 600px:
+[[../img/talk.png]]
+
+** DONE Review 1: Pointers (creation to initialization)
 
 1. What is the purpose of RAM in a computer system?
    #+begin_quote
@@ -2573,7 +2578,7 @@ Next week:
    #+end_quote
 
 3. How is memory access different in languages like Java or Python
-   compared to C?
+   compared to C/C++?
    #+begin_quote
    Languages like Java and Python abstract away direct memory
    access. They use references to manage objects and rely on garbage
@@ -2601,7 +2606,8 @@ Next week:
 
 6. What is a pointer in C, and how is it declared?
    #+begin_quote
-   A pointer is a variable that stores the *memory address* of another variable. It is declared using the asterisk (`*`) symbol.  
+   A pointer is a variable that stores the *memory address* of another
+   variable. It is declared using the asterisk (`*`) symbol.
    #+end_quote
 
    #+begin_src C
@@ -2617,10 +2623,15 @@ Next week:
    #+end_quote
 
    #+begin_src C
-   int x = 10; // variable x stores value 10
-   int *p = &x; // pointer p  stores address-of x
-   printf("%d\n", *p); // prints value of x as dereferenced pointer to &x
+     int x = 10; // variable x stores value 10
+     int *p = &x; // pointer p  stores address-of x
+     printf("%d\n", *p); // prints value of x as dereferenced pointer to &x
+     printf("%d\n", x); // prints value of x as dereferenced pointer to &x
    #+end_src
+
+   #+RESULTS:
+   : 10
+   : 10
 
 8. What happens if you assign a literal integer (like 1) to a pointer?
    #+begin_quote
@@ -2631,7 +2642,8 @@ Next week:
    &x;~.
    #+end_quote
    #+begin_example
-   warning: assignment to ‘int *’ from ‘int’ makes pointer from integer without a cast
+   warning: assignment to ‘int *’ from ‘int’
+   makes pointer from integer without a cast
    #+end_example
 
 9. What does the ~sizeof~ operator tell us about arrays?
@@ -2643,9 +2655,13 @@ Next week:
    #+end_quote
 
    #+begin_src C
-   int a[100];
-   int size = sizeof(a) / sizeof(a[0]); // gives 100
+     int a[100];
+     int size = sizeof(a) / sizeof(a[0]); // gives 100
+     printf("%d\n", size);
    #+end_src
+
+   #+RESULTS:
+   : 100
 
 10. Why must you use ~&i~ in a call to ~scanf("%d", &i);~?
     #+begin_quote
@@ -2656,7 +2672,40 @@ Next week:
     #+end_quote
 
 
-** TODO Review 2: Pointers (pass by value or reference)
+
+
+** TODO Pointer challenge
+
+- Open your online C editor.
+- Solve this challenge in 2 lines of code.
+- Upload your solution to Canvas (as URL).
+- Time: 10 minutes.
+#+attr_html: :width 400px :float nil:
+[[../img/pointer_challenge.png]]
+
+- Solution:
+  #+begin_src C
+    int x = 100, y = 200, *p = &x, *q = &y; // line 1
+    printf("x = %d, y = %d\n", x, y);
+    printf("p = %p, q = %p\n", p, q);
+    (*p) = (*q), p = q; // line 2
+    printf("x = %d, y = %d\n", x, y);
+    printf("p = %p, q = %p\n", p, q);
+  #+end_src
+
+* Week 15: Structures - C's classes
+#+attr_html: :width 400px :float nil:
+[[../img/structures.png]]
+
+At the end of this week, you should know if you need to write the
+(optional) final exam to bump up your grade (by at most 25%).
+
+- The C ~struct~ is a public class of objects.
+- It's a precursor of C++ classes.
+- This is the beginning of object-oriented programming.
+- OOP is the standard for building large-scale applications.
+
+** TODO Review: Pointers (pass by value or reference)
 
 1. What is the result of passing a variable to a function by value?
    #+begin_quote
@@ -2668,46 +2717,34 @@ Next week:
 
 2. What does the pointer declaration `int *p = &i;` mean?
    #+begin_quote
-   This means that `p` is declared as a pointer to an integer, and it is initialized to store 
-   the *address* of the variable `i`. So `p` does not contain the value of `i`, but points to 
+   This means that `p` is declared as a pointer to an integer, and it is initialized to store
+   the *address* of the variable `i`. So `p` does not contain the value of `i`, but points to
    the memory location where `i` is stored.
    #+end_quote
 
 3. What happens when you pass an array to a function in C?
    #+begin_quote
-   When an array is passed to a function, it *decays* into a pointer to its first element. 
-   That means the function actually receives a pointer to the beginning of the array, 
+   When an array is passed to a function, it *decays* into a pointer to its first element.
+   That means the function actually receives a pointer to the beginning of the array,
    and not a copy of the array itself.
    #+end_quote
 
 4. Why is dynamic memory allocation important?
    #+begin_quote
-   Dynamic memory allocation lets a program request memory at *runtime* rather than compile time. 
-   This is essential for working with data whose size is not known in advance. It provides 
+   Dynamic memory allocation lets a program request memory at *runtime* rather than compile time.
+   This is essential for working with data whose size is not known in advance. It provides
    flexibility and efficient memory use, though it requires manual management (e.g., `malloc`, `free`).
    #+end_quote
 
 5. In C, what is the difference between `*p = 2;` and `p = 2;` when `p` is an integer pointer?
    #+begin_quote
-   `*p = 2;` means: "store the value 2 in the memory location pointed to by `p`."  
-   `p = 2;` means: "make the pointer `p` point to memory address 2," which is almost always 
-   invalid and dangerous unless you're explicitly working with that address. The first uses 
+   `*p = 2;` means: "store the value 2 in the memory location pointed to by `p`."
+   `p = 2;` means: "make the pointer `p` point to memory address 2," which is almost always
+   invalid and dangerous unless you're explicitly working with that address. The first uses
    *indirection*, the second reassigns the pointer.
    #+end_quote
 
 
-* Week 15: Structures - C's classes
-#+attr_html: :width 400px :float nil:
-#+
-[[../img/structures.png]]
-
-At the end of this week, you should know if you need to write the
-(optional) final exam to bump up your grade (by at most 25%).
-
-- The C ~struct~ is a public class of objects.
-- It's a precursor of C++ classes.
-- This is the beginning of object-oriented programming.
-- OOP is the standard for building large-scale applications.
 
 * Week 16: Transitioning to C++
 #+attr_html: :width 400px :float nil:
