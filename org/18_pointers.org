@@ -689,6 +689,13 @@ interface is offered).
 : Address-of var = 0x7ffeee9bca28
 : Value of var = 2.71828
 
+- Result vs. expected:
+  #+begin_example
+  : Deref'd ptr 2  [expected: 2.71828]
+  : Address-of var = -1367120212 [expected: hexadecimal address]
+  : Value of var = 0x7ffdae8366b0 [expected: 2.71828]
+  #+end_example
+
 * Pass by value and pass by reference
 
       - Since we've established the difference between a value and a

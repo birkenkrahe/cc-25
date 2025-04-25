@@ -2678,7 +2678,6 @@ Next week:
 
 - Open your online C editor.
 - Solve this challenge in 2 lines of code.
-- Upload your solution to Canvas (as URL).
 - Time: 10 minutes.
 #+attr_html: :width 400px :float nil:
 [[../img/pointer_challenge.png]]
@@ -2743,7 +2742,6 @@ At the end of this week, you should know if you need to write the
    invalid and dangerous unless you're explicitly working with that address. The first uses
    *indirection*, the second reassigns the pointer.
    #+end_quote
-
 
 
 * Week 16: Transitioning to C++
