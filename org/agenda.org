@@ -2542,7 +2542,7 @@ Next week:
      }
    #+end_src
 
-* Week 14: Pointers to memory
+* DONE Week 14: Pointers to memory
 #+attr_html: :width 400px :float nil:
 [[../img/pointers.png]]
 
@@ -2550,13 +2550,13 @@ Next week:
 - [X] There will be *one more programming assignment* (with pointers)
 - [X] There will be *two more bonus programming assignments*
 - [X] *I will drop your worst test result and 1 programming assignnment*
-- [ ] The lectures 1-18 are now available as PDFs in GitHub.
+- [X] The lectures 1-18 are now available as PDFs in GitHub.
 
-** DONE Invitation - Join me on Friday 4pm in Nucor
+** Invitation - Join me on Friday 4pm in Nucor
 #+attr_html: :width 600px:
 [[../img/talk.png]]
 
-** DONE Review 1: Pointers (creation to initialization)
+** Review 1: Pointers (creation to initialization)
 
 1. What is the purpose of RAM in a computer system?
    #+begin_quote
@@ -2672,9 +2672,7 @@ Next week:
     #+end_quote
 
 
-
-
-** TODO Pointer challenge
+** Pointer challenge
 
 - Open your online C editor.
 - Solve this challenge in 2 lines of code.
@@ -2692,17 +2690,31 @@ Next week:
     printf("p = %p, q = %p\n", p, q);
   #+end_src
 
+  #+RESULTS:
+  : x = 100, y = 200
+  : p = 0x7fffd1d12780, q = 0x7fffd1d12784
+  : x = 200, y = 200
+  : p = 0x7fffd1d12784, q = 0x7fffd1d12784
+
+
 * Week 15: Structures - C's classes
 #+attr_html: :width 400px :float nil:
 [[../img/structures.png]]
 
-At the end of this week, you should know if you need to write the
-(optional) final exam to bump up your grade (by at most 25%).
+- [ ] At the end of next week, you will know if you need to write the
+  (optional) final exam to bump up your grade (by at most 25%).
 
-- The C ~struct~ is a public class of objects.
-- It's a precursor of C++ classes.
-- This is the beginning of object-oriented programming.
-- OOP is the standard for building large-scale applications.
+- [ ] The last test (pointers) is available (full points if you
+  complete by May 2nd).
+
+- [ ] Now is the time to put in a little effort for bonus exercises,
+  to offset missing points in tests or assignments!
+
+- [ ] I published one last bonus assigmnent - changing the values of
+  two variables using pointers.
+
+- [ ] If you missed out on tests or assignments, you can still
+  complete them for 50% of the points!
 
 ** TODO Review: Pointers (pass by value or reference)
 
@@ -2742,8 +2754,15 @@ At the end of this week, you should know if you need to write the
    invalid and dangerous unless you're explicitly working with that address. The first uses
    *indirection*, the second reassigns the pointer.
    #+end_quote
+   
+   
+** TODO C structures
 
-
+- The C ~struct~ is a public class of objects.
+- It's a precursor of C++ classes.
+- This is the beginning of object-oriented programming.
+- OOP is the standard for building large-scale applications.
+  
 * Week 16: Transitioning to C++
 #+attr_html: :width 400px :float nil:
 #+caption: The guy in the picture is Bjarne Stroustrup
