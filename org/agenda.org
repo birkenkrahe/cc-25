@@ -2835,7 +2835,10 @@ Next week:
 - [X] Passing an array to a function
 - [X] Passing a pointer to a function
 
+
 ** TODO Please fill in the course evaluation!
+#+attr_html: :width 400px :float nil:
+[[../img/course_eval.png]]
 
 ** TODO C structures
 
