@@ -2700,6 +2700,8 @@ Next week:
 #+attr_html: :width 400px :float nil:
 [[../img/structures.png]]
 
+*Remember that all bonus assignments must be turned in by Friday this week!*
+
 ** DONE Housekeeping
 
 - [X] At the end of next week, you will know if you need to write the
@@ -2717,14 +2719,8 @@ Next week:
 - [X] If you missed out on tests or assignments, you can still
   complete them for 50% of the points!
 
-** TODO Pointers II
 
-- [X] Pass by value (variables & functions)
-- [X] Pass by reference (pointers & functions)
-- [ ] Passing an array to a function
-- [ ] Passing a pointer to a function
-
-** TODO Review: Pointers (pass by value or reference)
+** DONE Review: Pointers (pass by value or reference)
 
 1. What's wrong with this code fragment? How would you fix
    it?
@@ -2744,6 +2740,9 @@ Next week:
      printf("i = %d, p = %p\n",i,p);
    #+end_src
 
+   #+RESULTS:
+   : i = 42, p = 0x7ffc3a83466c
+
 2. What's wrong with this code fragment? How would you fix
    it?
    #+begin_src C 
@@ -2751,6 +2750,9 @@ Next week:
      p = 2;
      (*p) = 5;
    #+end_src
+
+   #+RESULTS:
+
    #+begin_quote
    =p = 2;= sets the pointer =p= to address =2= which is most likely invalid
    memory. Dereferencing =p= in =*p = 5;= causes a segmentation fault -
@@ -2765,11 +2767,22 @@ Next week:
      printf("i = *p = %d\n",*p);     
    #+end_src
 
+   #+RESULTS:
+   : i = *p = 2
+
 3. What's wrong with this code fragment? How would you fix it?
    #+begin_src C
-     int i = 100, *p = &i;
+     //int i = 100, *p = &i;
+     int i;
+     int *p;
+     i = 100;
+     p = &i;
      printf("i = *p = %d\n",*p);     
    #+end_src
+
+   #+RESULTS:
+   : i = *p = 100
+
    #+begin_quote
    Nothing is wrong with it! You can declare (=int *=) and initialize
    (=&i=) the pointer =p= on the same line! Same as: =int i=100; int *p=&i=
@@ -2782,6 +2795,9 @@ Next week:
        return (x + 2);
      }
    #+end_src
+
+   #+RESULTS:
+
    #+begin_quote
    The error is *type mismatch*: =x= is a pointer to an =int=. =x + 2=
    performs *pointer arithmetic* (moves the pointer along in memory by 2
@@ -2811,29 +2827,22 @@ Next week:
      }
    #+end_src
 
+
+** DONE Pointers II
+
+- [X] Pass by value (variables & functions)
+- [X] Pass by reference (pointers & functions)
+- [X] Passing an array to a function
+- [X] Passing a pointer to a function
+
+** TODO Please fill in the course evaluation!
+
 ** TODO C structures
 
 - The C ~struct~ is a public class of objects.
 - It's a precursor of C++ classes.
 - This is the beginning of object-oriented programming.
 - OOP is the standard for building large-scale applications.
-
-** TODO Review: Passing arrays to functions
-
-1. What happens when you pass an array to a function in C?
-   #+begin_quote
-   When an array is passed to a function, it *decays* into a pointer to its first element.
-   That means the function actually receives a pointer to the beginning of the array,
-   and not a copy of the array itself.
-   #+end_quote
-
-2. Why is dynamic memory allocation important?
-   #+begin_quote
-   Dynamic memory allocation lets a program request memory at *runtime* rather than compile time.
-   This is essential for working with data whose size is not known in advance. It provides
-   flexibility and efficient memory use, though it requires manual management (e.g., `malloc`, `free`).
-   #+end_quote
-
 
 
 * Week 16: Transitioning to C++
