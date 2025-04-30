@@ -2696,73 +2696,146 @@ Next week:
   : x = 200, y = 200
   : p = 0x7fffd1d12784, q = 0x7fffd1d12784
 
-
 * Week 15: Structures - C's classes
 #+attr_html: :width 400px :float nil:
 [[../img/structures.png]]
 
-- [ ] At the end of next week, you will know if you need to write the
+** DONE Housekeeping
+
+- [X] At the end of next week, you will know if you need to write the
   (optional) final exam to bump up your grade (by at most 25%).
 
-- [ ] The last test (pointers) is available (full points if you
+- [X] The last test (pointers) is available (full points if you
   complete by May 2nd).
 
-- [ ] Now is the time to put in a little effort for bonus exercises,
+- [X] Now is the time to put in a little effort for bonus exercises,
   to offset missing points in tests or assignments!
 
-- [ ] I published one last bonus assigmnent - changing the values of
+- [X] I published one last bonus assigmnent - changing the values of
   two variables using pointers.
 
-- [ ] If you missed out on tests or assignments, you can still
+- [X] If you missed out on tests or assignments, you can still
   complete them for 50% of the points!
+
+** TODO Pointers II
+
+- [X] Pass by value (variables & functions)
+- [X] Pass by reference (pointers & functions)
+- [ ] Passing an array to a function
+- [ ] Passing a pointer to a function
 
 ** TODO Review: Pointers (pass by value or reference)
 
-1. What is the result of passing a variable to a function by value?
+1. What's wrong with this code fragment? How would you fix
+   it?
+   #+begin_src C
+     int *p = &i;
+     int i = 42;
+   #+end_src
    #+begin_quote
-   When a variable is passed by value, the function receives a *copy* of
-   the original variable.  Any changes made to the parameter inside
-   the function do *not* affect the original variable in the calling
-   function.
+   Variable =i= is used before it is declared. The pointer =p= tries to
+   point to a variable that the compiler has not seen yet.
+
+   Fix: Declare =i= before assigning a pointer =p= to its address.
+   #+end_quote
+   #+begin_src C
+     int i = 42;
+     int *p = &i;
+     printf("i = %d, p = %p\n",i,p);
+   #+end_src
+
+2. What's wrong with this code fragment? How would you fix
+   it?
+   #+begin_src C 
+     int *p;
+     p = 2;
+     (*p) = 5;
+   #+end_src
+   #+begin_quote
+   =p = 2;= sets the pointer =p= to address =2= which is most likely invalid
+   memory. Dereferencing =p= in =*p = 5;= causes a segmentation fault -
+   there is no syntax error here.
+
+   Fix: Declare a variable =i= and assign =p= to its address (=p = &i=)
+   before attempting to change its value with =*p = 5=.
+   #+end_quote
+   #+begin_src C
+     int i, *p = &i;
+     (*p) = 2;
+     printf("i = *p = %d\n",*p);     
+   #+end_src
+
+3. What's wrong with this code fragment? How would you fix it?
+   #+begin_src C
+     int i = 100, *p = &i;
+     printf("i = *p = %d\n",*p);     
+   #+end_src
+   #+begin_quote
+   Nothing is wrong with it! You can declare (=int *=) and initialize
+   (=&i=) the pointer =p= on the same line! Same as: =int i=100; int *p=&i=
    #+end_quote
 
-2. What does the pointer declaration `int *p = &i;` mean?
+4. What's wrong with the following function? How would you fix it?
+   #+begin_src C
+     int plusTwo(int *x)
+     {
+       return (x + 2);
+     }
+   #+end_src
    #+begin_quote
-   This means that `p` is declared as a pointer to an integer, and it is initialized to store
-   the *address* of the variable `i`. So `p` does not contain the value of `i`, but points to
-   the memory location where `i` is stored.
+   The error is *type mismatch*: =x= is a pointer to an =int=. =x + 2=
+   performs *pointer arithmetic* (moves the pointer along in memory by 2
+   integers (8 bytes).
    #+end_quote
+   #+begin_src C
+     int plusTwo(int *x)
+     {
+       return (*x + 2); // calling plusTwo(2) will return 2 + 2 = 4
+     }
+   #+end_src
 
-3. What happens when you pass an array to a function in C?
+5. What's wrong with the following function, how would you fix it?
+   #+begin_src C
+     int square(int *n) {
+       return n * n;
+     }
+   #+end_src
    #+begin_quote
-   When an array is passed to a function, it *decays* into a pointer to its first element.
-   That means the function actually receives a pointer to the beginning of the array,
-   and not a copy of the array itself.
+   =n= is a pointer to an =int(int *)=. =n * n= multiplies two pointers,
+   which is invalid (since pointers are addresses and not numeric
+   values). 
    #+end_quote
+   #+begin_src C
+     int square(int *n) {
+       return (*n) * (*n); // calling square(2) will return 2 * 2 = 4
+     }
+   #+end_src
 
-4. Why is dynamic memory allocation important?
-   #+begin_quote
-   Dynamic memory allocation lets a program request memory at *runtime* rather than compile time.
-   This is essential for working with data whose size is not known in advance. It provides
-   flexibility and efficient memory use, though it requires manual management (e.g., `malloc`, `free`).
-   #+end_quote
-
-5. In C, what is the difference between `*p = 2;` and `p = 2;` when `p` is an integer pointer?
-   #+begin_quote
-   `*p = 2;` means: "store the value 2 in the memory location pointed to by `p`."
-   `p = 2;` means: "make the pointer `p` point to memory address 2," which is almost always
-   invalid and dangerous unless you're explicitly working with that address. The first uses
-   *indirection*, the second reassigns the pointer.
-   #+end_quote
-   
-   
 ** TODO C structures
 
 - The C ~struct~ is a public class of objects.
 - It's a precursor of C++ classes.
 - This is the beginning of object-oriented programming.
 - OOP is the standard for building large-scale applications.
-  
+
+** TODO Review: Passing arrays to functions
+
+1. What happens when you pass an array to a function in C?
+   #+begin_quote
+   When an array is passed to a function, it *decays* into a pointer to its first element.
+   That means the function actually receives a pointer to the beginning of the array,
+   and not a copy of the array itself.
+   #+end_quote
+
+2. Why is dynamic memory allocation important?
+   #+begin_quote
+   Dynamic memory allocation lets a program request memory at *runtime* rather than compile time.
+   This is essential for working with data whose size is not known in advance. It provides
+   flexibility and efficient memory use, though it requires manual management (e.g., `malloc`, `free`).
+   #+end_quote
+
+
+
 * Week 16: Transitioning to C++
 #+attr_html: :width 400px :float nil:
 #+caption: The guy in the picture is Bjarne Stroustrup
@@ -2772,6 +2845,32 @@ Next week:
 - This will show you some differences between C and C++.
 - It will be a preparation for CSC 240 (Data structures with C++).
 - We'll also discuss what you could do in the summer to prepare.
+
+** TODO Summary
+#+attr_html: :width 200px :float nil:
+[[../img/333.png]]
+
+- 33 Programming assignments
+- 300 Test questions
+- 333 Lines of code written by every student (at least)
+
+You're now ready for more, bigger and better things!
+
+*Book:* [[https://beej.us/guide/bgc/html/split/index.html][Beej's Guide to C Programming]] (free) - v0.9.24 April 6, 2025,
+online at beej.us/guide/bgc - gateway to system programming.
+
+*Book*: Stroustrup - Programming (3rd edition, 2024),
+stroustrup.com/programming.html
+
+*Competitive programming*: Join us for a 1 hr per week seminar solving
+programming problems in any language you like (C++, Python, Java...) -
+CSC 450, Thursday 4 pm, Derby 209.
+
+*Data Structures (with C++*): The next course in the series, for
+computer and data science minors and majors, CSC 240, TTH 930-1045 am.
+
+*Introduction to Programming with Java*: Yet another important language
+that dominates in industry applications, CSC 115 MWF 1000-1050 am
 
 * Footnotes
 
