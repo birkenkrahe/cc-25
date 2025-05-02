@@ -2840,13 +2840,14 @@ Next week:
 #+attr_html: :width 400px :float nil:
 [[../img/course_eval.png]]
 
+*Spread the love!* *Suggest changes and improvements!*
+
 ** TODO C structures
 
-- The C ~struct~ is a public class of objects.
+- The C ~struct~ is a public *class* of objects.
 - It's a precursor of C++ classes.
-- This is the beginning of object-oriented programming.
+- This is the beginning of *object-oriented* programming (OOP).
 - OOP is the standard for building large-scale applications.
-
 
 * Week 16: Transitioning to C++
 #+attr_html: :width 400px :float nil:

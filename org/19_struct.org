@@ -1,0 +1,357 @@
+#+TITLE: C Programming Lesson: Introduction to struct
+#+AUTHOR: Marcus Birkenkrahe
+#+DATE: 2025-04-30
+#+OPTIONS: toc:nil num:nil
+#+STARTUP: overview hideblocks indent entitiespretty:
+* Lesson Overview
+
+This 50-minute session introduces the use of ~struct~ in C for
+organizing and manipulating related data.
+
+* Learning Objectives
+
+By the end of the session, you will:
+- Declare and initialize a ~struct~
+- Use dot (=.=) and arrow (=->=) notation
+- Pass structs to functions (by value and by pointer)
+- Write a simple data model with a ~struct~ and function interaction
+
+* Why would you group Data?
+
+- What kind of data naturally belong together? For example, when
+  playing a *game*, when drawing a *graph*, or when looking for a *date*?
+
+  #+begin_quote
+  + *Game:* A player's =name=, =health=, and =level= in the game.
+  + *Graph*: A =point= with =(x,y)= coordinates.
+  + *Date*: A =day=, =month=, and =year=.
+  #+end_quote
+
+* Basic ~struct Point~
+
+- We define a ~struct~, a =Point=, defined by pair of coordinates =(x,y)=:
+  #+begin_src C :results none
+    struct Point {
+      int x;
+      int y;
+    };
+  #+end_src
+
+- To declare a =Point=, create an *instance* of the ~struct~:
+  #+begin_example C
+    struct Point pt; // declare pt to be a Point
+  #+end_example
+
+- To access the =x= and =y= inside of a =Point=, use the =.= (dot) operator:
+  #+begin_example C
+    pt.x = 3;
+    pt.y = 4;
+  #+end_example
+
+- Or you can initialize the point when declaring it:
+  #+begin_example C
+    struct Point pt = {3,4}; // define pt to be a Point at (3,4)
+  #+end_example
+
+- Code along:
+  #+begin_src C :results output
+    #include <stdio.h> // include I/O
+
+
+    /* main program */
+    int main() {
+
+      return 0;
+    }
+  #+end_src
+
+- Solution:
+  #+begin_src C :results output
+    #include <stdio.h> // include I/O
+
+    // Declare a Point (x,y)
+    struct Point {
+      int x; // x coordinate
+      int y; // y coordinate
+    };
+
+    /* main program */
+    int main() {
+      // define a Point pt with coordinates (3,4)
+      struct Point pt = {3, 4};
+      // print the point coordinates
+      printf("Point is at (%d, %d)\n", pt.x, pt.y);
+
+      return 0;
+    }
+  #+end_src
+
+  #+RESULTS:
+  : Point is at (3, 4)
+
+- Why use a ~struct~ instead of two separate variables?
+  #+begin_quote
+  Improves code organization, readability and maintainability - like
+  grouping two parts of a picture so that you can move it around more
+  easily.
+  #+end_quote
+
+* A ~struct~ of 1000 points
+
+- What if we wanted to store a thousand points?
+  #+begin_quote
+  We would use an array of =struct Point=. This scales much better than
+  managing two separate arrays for =x= and =y=.
+  #+end_quote
+
+- Let's initialize 1000 points & print the last point. Code along:
+  ([[https://onecompiler.com/c/43ggz83f6][onecompiler.com/c/43ggz83f6]])
+
+  #+begin_src C :main no :includes
+    #include <stdio.h>
+
+    // declare a Point in the (x,y) plane
+
+    /* main program */
+    int main (void)
+    {
+      // declare an array of 1000 points
+
+      // initialize all points with random values
+
+      // print the last point
+
+      return 0;
+    }
+  #+end_src
+
+- Solution:
+  #+begin_src C :main no :includes
+    #include <stdio.h>
+
+    // declare a Point in the (x,y) plane
+    struct Point {
+      int x;
+      int y;
+    };
+
+    /* main program */
+    int main (void)
+    {
+      // declare an array of 1000 points
+      struct Point points[1000];
+
+      // initialize all points with random values
+      for (int i = 0; i < 1000; i++) {
+        points[i].x = i;
+        points[i].y = i * i;
+      }
+
+      // print the last point
+      printf("The last point is (%d,%d)\n",
+             points[999].x, points[999].y);
+      printf("999^2 = %d\n", 999 * 999);
+
+      return 0;
+    }
+  #+end_src
+
+  #+RESULTS:
+  : The last point is (999,998001)
+  : 999^2 = 998001
+
+* Memory layout
+
+- What does =struct Point p1 = {3,4};= do in memory?
+
+  #+begin_quote
+  It allocates space for two integers (4 bytes each) in contiguous
+  memory and assigns =x=3= and =y=4=.
+  #+end_quote
+
+  #+begin_example
+  struct Point
+  +--------+--------+
+  |   x=3  |   y=4  |
+  +--------+--------+
+  #+end_example
+
+- In systems programming (e.g. for Internet connections between
+  computers), or embedded C (on a microcontroller), a ~struct~ is mapped
+  directly onto addresses.
+
+- Knowing memory layout aids portability of your code. Portability is
+  the key to any computer doing what you want solely based on the
+  program and the data that you feed to it.
+
+* Pointers and structs
+
+- Passing a ~struct~ to a function creates a copy - this can be
+  expensive for large data sets.
+
+- Better: Use pointers! To access a pointer structure element use the
+  arrow operator ~->~:
+  #+begin_src C :results output
+    // Declare a Point (x,y)
+    struct Point {
+      int x;
+      int y;
+    };
+
+    struct Point p = {10,20}; // Point p at (10,20)
+    struct Point *ptr = &p;   // ptr points at point p
+    // PRINT "x = , y = " + pointer to x, pointer to y
+    printf(" x = %d, y = %d\n",
+           ptr->x, ptr->y);
+  #+end_src
+
+  #+RESULTS:
+  : x = 10, y = 20
+
+- Example: code along at [[https://onecompiler.com/c/43gh38ut7][onecompiler.com/c/43gh38ut7]]
+  #+begin_src C :main no :includes :results output
+    // Input/Output
+
+    // declare 2D (float) Point (x,y)
+
+    // declare function to move a Point by (dx,dy)
+
+    /* main program */
+    // BEGIN
+
+    // define Point at (1,2)
+
+    // PRINT "Original: (x,y)"
+
+    // Move point by (0.5,-1.5)
+
+    // PRINT "Moved: (x,y)"
+
+    // END
+
+    // move_point: move Point by (dx,dy)
+
+    // BEGIN
+    // pointer to x + dx
+    // pointer to y + dy
+    // END
+  #+end_src
+
+- Solution:
+  #+begin_src C :main no :includes :results output
+    #include <stdio.h>
+
+    // declare 2D (float) Point (x,y)
+    struct Point {
+      float x;
+      float y;
+    };
+    // declare function to move a Point by (dx,dy)
+    void move_point(struct Point *, float, float);
+
+    /* main program */
+    int main(void)
+    { // BEGIN
+
+      // define Point at (1,2)
+      struct Point p = {1.0,2.0};
+      // PRINT "Original: (x,y)"
+      printf("Original: (%.2f,%.2f)\n", p.x, p.y);
+      // Move point by (0.5,-1.5)
+      move_point(&p, 0.5, -1.5);
+      // PRINT "Moved: (x,y)"
+      printf("Moved:    (%.2f,%.2f)\n", p.x, p.y);
+
+      return 0;
+    } // END
+
+    // move_point: move Point by (dx,dy)
+    void move_point(struct Point *p, float dx, float dy)
+    { // BEGIN
+      p->x += dx; // pointer to x + dx
+      p->y += dy; // pointer to y + dy
+    } // END
+  #+end_src
+
+  #+RESULTS:
+  : Original: (1.00,2.00)
+  : Moved:    (1.50,0.50)
+
+* ~struct Player~ and I/O
+
+- Example: a =Player= structure with player's =name= and =health=.
+  #+begin_src c
+    #include <stdio.h>
+    #include <string.h>
+
+    struct Player {
+      char name[20];
+      int health;
+    };
+
+    void takeDamage(struct Player *p, int dmg) {
+      p->health -= dmg;
+    }
+
+    int main() {
+      struct Player hero;
+      strcpy(hero.name, "Link");
+      hero.health = 100;
+
+      printf("Player: %s\nHealth: %d\n", hero.name, hero.health);
+
+      takeDamage(&hero, 25);
+      printf("After damage: %d\n", hero.health);
+      return 0;
+    }
+  #+end_src
+
+* Coding Challenge – ~Rectangle~ + Area
+
+** Task
+
+- Define a ~struct Rectangle~ with two ~struct Point~ fields, ~topLeft~ and
+  ~bottomRight~.
+- Write a function ~int area(struct Rectangle r)~ to compute area
+- In ~main()~, define a rectangle and print the area
+
+- Solution:
+  #+begin_src c
+    #include <stdio.h>
+
+    struct Point {
+      int x, y;
+    };
+
+    struct Rectangle {
+      struct Point topLeft;
+      struct Point bottomRight;
+    };
+
+    int area(struct Rectangle r) {
+      int width = r.bottomRight.x - r.topLeft.x;
+      int height = r.topLeft.y - r.bottomRight.y;
+      return width * height;
+    }
+
+    int main() {
+      struct Rectangle rect = {{1, 5}, {6, 1}};
+      printf("Area: %d\n", area(rect));
+      return 0;
+    }
+  #+end_src
+
+** Bonus
+- Let the user enter the 4 coordinates via ~scanf~
+- Add a function to print the rectangle corners
+
+* Recap and Reflection
+
+** Recap Prompts
+- When would you use a ~struct~?
+- What's the difference between passing a ~struct~ by value vs pointer?
+- Explain the difference between ~.x~ and ~->x~ in one sentence
+
+* Homework (Optional)
+
+Extend the ~Rectangle~ to include a function for perimeter.
