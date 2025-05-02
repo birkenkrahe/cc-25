@@ -190,8 +190,8 @@ By the end of the session, you will:
   expensive for large data sets.
 
 - Better: Use pointers! To access a pointer structure element use the
-  arrow operator ~->~:
-  #+begin_src C :results output
+  arrow operator ~->~ : =ptr->x= is the same as =(*ptr).x=
+  #+begin_src C :results output :main yes :includes <stdio.h>
     // Declare a Point (x,y)
     struct Point {
       int x;
@@ -203,9 +203,12 @@ By the end of the session, you will:
     // PRINT "x = , y = " + pointer to x, pointer to y
     printf(" x = %d, y = %d\n",
            ptr->x, ptr->y);
+    printf(" x = %d, y = %d\n",
+           (*ptr).x, (*ptr).y);
   #+end_src
 
   #+RESULTS:
+  : x = 10, y = 20
   : x = 10, y = 20
 
 - Example: code along at [[https://onecompiler.com/c/43gh38ut7][onecompiler.com/c/43gh38ut7]]
