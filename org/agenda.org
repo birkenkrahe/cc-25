@@ -2696,13 +2696,13 @@ Next week:
   : x = 200, y = 200
   : p = 0x7fffd1d12784, q = 0x7fffd1d12784
 
-* Week 15: Structures - C's classes
+* DONE Week 15: Structures - C's classes
 #+attr_html: :width 400px :float nil:
 [[../img/structures.png]]
 
 *Remember that all bonus assignments must be turned in by Friday this week!*
 
-** DONE Housekeeping
+** Housekeeping
 
 - [X] At the end of next week, you will know if you need to write the
   (optional) final exam to bump up your grade (by at most 25%).
@@ -2720,7 +2720,7 @@ Next week:
   complete them for 50% of the points!
 
 
-** DONE Review: Pointers (pass by value or reference)
+** Review: Pointers (pass by value or reference)
 
 1. What's wrong with this code fragment? How would you fix
    it?
@@ -2828,21 +2828,20 @@ Next week:
    #+end_src
 
 
-** DONE Pointers II
+** Pointers II
 
 - [X] Pass by value (variables & functions)
 - [X] Pass by reference (pointers & functions)
 - [X] Passing an array to a function
 - [X] Passing a pointer to a function
 
-
-** TODO Please fill in the course evaluation!
+** Please fill in the course evaluation!
 #+attr_html: :width 400px :float nil:
 [[../img/course_eval.png]]
 
 *Spread the love!* *Suggest changes and improvements!*
 
-** TODO C structures
+** C structures
 
 - The C ~struct~ is a public *class* of objects.
 - It's a precursor of C++ classes.
@@ -2859,7 +2858,16 @@ Next week:
 - It will be a preparation for CSC 240 (Data structures with C++).
 - We'll also discuss what you could do in the summer to prepare.
 
-** TODO Summary
+** TODO C to C++ Transition
+
+- Transforming C ~struct~ into C++ ~class~
+- Understanding that data can be ~private~ or ~public~
+- Accessing ~private~ data
+- Member data and methods
+- Creating a =Date= class for =today=
+- Creating a =Player= class with =takeDamage= and =heal=
+
+** TODO Summary and Outlook
 #+attr_html: :width 200px :float nil:
 [[../img/333.png]]
 
