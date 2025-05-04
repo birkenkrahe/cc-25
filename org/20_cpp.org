@@ -2,9 +2,22 @@
 #+AUTHOR:Marcus Birkenkrahe (pledged)
 #+SUBTITLE:CSC 100 Intro to Programming in C++ (Spring 2025)
 #+STARTUP: overview hideblocks indent
-#+OPTIONS: toc:nil num:nil ^:nil
+#+OPTIONS: toc:1 num:1 ^:nil
 #+PROPERTY: header-args:C :main yes :includes <stdio.h> :results output :exports both :noweb yes
 #+PROPERTY: header-args:C++ :std:main yes :includes <iostream> :results output :exports both :noweb yes
+* Objectives
+
+*Object-Oriented Programming (OOP) with C++:*
+
+- [ ] Transform C ~struct~ into C++ ~class~
+- [ ] Understand that data can be ~private~ or ~public~
+- [ ] Access ~private~ =Player= data with =getHealth=
+- [ ] Create a =Player= class with =takeDamage= and =heal=
+- [ ] Define ~class~ constructors and destructors
+- [ ] Apply the ~this~ pointer inside ~class~ methods
+- [ ] Create ~static~ members to track state across instances
+- [ ] Understand the object lifecycle
+
 * Codealong with C++ in OneCompiler
 
 - OneCompiler is an IDE for multiple languages, and C/C++ are
@@ -110,82 +123,6 @@
   #+RESULTS:
   : Player's health (-1000) and position (9999) are worrying.
 
-* Practice: From ~struct~ in C to ~class~ in C++ - =Date= 
-
-1) Turn the following C ~struct~ =Date= into a C++ ~class~. Do this by
-   changing the keyword ~struct~ to ~class~, and putting ~public:~ in the
-   first line of the ~class~.
-   #+begin_src C :results none
-     struct Date {
-       int day;
-       int month;
-       int year;
-     };
-   #+end_src
-
-2) In the ~main~ program, create a =Date= called =today= and assign it
-   today's date as ={[day],[month],[year]}=, then print =today=.
-
-3) Sample output:
-   #+begin_example
-     Today's date: 2/5/2025
-   #+end_example
-
-4) Starter code: [[https://onecompiler.com/cpp/43gma9be6][onecompiler.com/cpp/43gma9be6]]
-   #+begin_src C++
-     // include input/output stuff
-
-     // create Date class with day, month, year (int)
-     // BEGIN CLASS
-       public: // public data
-         // day
-         // month
-         // year
-     // END CLASS
-
-     // main program
-     int main(void)
-     {
-       // declare and initialize today as a Date
-
-       // PRINT today's date
-
-       return 0;
-     }
-   #+end_src
-
-** Solution:
-
-- Code:
-  #+name: Date class with public members
-  #+begin_src C++
-    // include input/output stuff
-    #include <iostream>
-    // create Date class with day, month, year (int)
-    class Date {
-    public:
-      int day;
-      int month;
-      int year;
-    };
-    // main program
-    int main(void)
-    {
-      // declare and initialize today as a Date
-      Date today = {2,5,2025};
-      // PRINT today's date
-      printf("Today's date: %d/%d/%d\n",
-         today.day, today.month, today.year);
-      return 0;
-    }
-  #+end_src
-
-- Explanation for ~public~:
-  #+begin_quote
-  Members of a C++ ~class~ are automatically ~private~ and cannot be
-  accessed from outside the class unless they are made ~public~.
-  #+end_quote
-
 * Data hiding (aka encapsulation) in C++ - =Player.health=
 
 - In C++, ~Player~ data can be hidden and controlled:
@@ -209,41 +146,6 @@
   #+end_src
 
 - In C++, if you don't specify data as ~public~, they're ~private~.
-
-* Practice: =Date= class
-
-- Use the =Date= ~class~ code defined and used earlier.
-
-- In the ~class~ declaration, make the data ~private~.
-
-- In the ~main~ program, only create a =Date= for =today= and initialize it
-  with today's date.
-
-- What's the output?
-  #+begin_quote
-  Permission to initialize is denied, because the data are ~private~ to
-  =today=. The error message is somewhat cryptic. =Date today;= works.
-  #+end_quote
-
-- Solution:
-  #+name: Date class with private members
-  #+begin_src C++
-    // include input/output stuff
-    #include <iostream>
-    // create Date class with day, month, year (int)
-    class Date {
-      int day;
-      int month;
-      int year;
-    };
-    // main program
-    int main(void)
-    {
-      // declare and initialize today as a Date
-      Date today = {2,5,2025};
-      return 0;
-    }
-  #+end_src
 
 * How to access ~private~ data - =getHealth()=
 
@@ -291,38 +193,6 @@
   : Player health = 100
 
 - C++ enforces data type and access control much more strongly than C.
-
-* Practice: Get the =Date= for =today= with =getDate()=
-
-- Add a method =printDate= to the =Date= ~class~ with so that you can print
-  today's date.
-
-- Solution:  
-  #+begin_src C++
-    // include input/output stuff
-    #include <iostream>
-    // create Date class with day, month, year (int)
-    class Date {
-    public:
-      int day;
-      int month;
-      int year;
-      void printDate() {
-        printf("Today's date: %d/%d/%d\n",day, month, year);
-      }
-    };
-    // main program
-    int main(void)
-    {
-      // declare and initialize today as a Date
-      Date today = {2,5,2025};
-      today.printDate();
-      return 0;
-    }
-  #+end_src
-
-  #+RESULTS:
-  : Today's date: 2/5/2025
 
 * How to alter ~private~ data - =takeDamage=
 
@@ -484,7 +354,7 @@
   : Player's health after battle = 50
   : Player's health after healing = 130
 
-* Bonus challenge
+* Bonus challenge: Cap =Player= =health= at 100
 
 - Modify the previous program to cap the =health= at 100. That is, ~if~
   =health= is above 100, reset it to 100.
@@ -499,12 +369,11 @@
 
 - Solution:
   #+begin_src C++ :main no :includes :results output :tangle player2.cpp
-    #include <iostream> // include input / output
+    #include <iostream> // include input/output
     using namespace std; // use standard names
 
     // Create a Player class
     class Player {
-
     private: // private data
       // Player's health (initially 100)
       int health = 100;
@@ -512,14 +381,9 @@
     public: // public data
 
       // Return Player's health (int)
-      int getHealth() {
-        return health;
-      }
-
+      int getHealth() { return health; }
       // Reduce Player's health by amount (int)
-      void takeDamage(int amount) {
-        health -= amount;
-      }
+      void takeDamage(int amount) { health -= amount; }
       // Heal Player by amount (int)
       void heal(int amount) {
         health += amount;
@@ -528,8 +392,7 @@
     };
 
     /* main program */
-    int main(void)
-    {
+    int main(void) {
       // Create a Player
       Player John;
       // PRINT Player's health
@@ -543,8 +406,7 @@
       // PRINT Player's health after healing
       cout << "Player's health after healing = " << John.getHealth();
 
-      return 0;
-    }
+      return 0; }
   #+end_src
 
   #+RESULTS:
@@ -552,5 +414,538 @@
   : Player's health after battle = 50
   : Player's health after healing = 100
 
+* Initializing before and cleaning up after ~class~
 
+- A C ~struct~ requires manual setup and teardown.
 
+- A C++ ~class~ automates initialization and cleanup with special
+  methods called *constructor* and *destructor*.
+
+- Doing this makes code safer, more readable, and more reusable (these
+  are the three big reasons for OOP to scale[fn:1] code development).
+
+- Example: A *constructor* =Player(int)= in the =Player= ~class~ will set
+  =health= when the player is created, or "goes into scope".
+
+- Example: A *destructor* =Player()= in the =Player= ~class~ will delete all
+  memory allocated to a =Player= when finishes, or "goes out of scope".
+
+* Constructor: Set =Player= =health= when a player is created
+
+- This is the =Player= class so far (without the =health= cap):
+  #+begin_src C++ :main yes :results none
+    class Player {
+    private:
+      int health = 100;
+    public:
+      int getHealth() { return health; };
+      void takeDamage(int amount) { health -= amount; }
+      void heal(int amount) { health += amount; }
+    };
+  #+end_src
+
+- Modify this class:
+  1) Add a constructor to allow =health= to be set when the =Player= is
+     created.
+  2) Test the constructor in a ~main~ program by creating a =Player= named
+     =John= with initial =health= of 150.
+  3) Display =John='s =health=.
+
+- Starter code: [[https://onecompiler.com/cpp/43gpntxa2][onecompiler.com/cpp/43gpntxa2]]
+  #+begin_src C++ :main yes :includes :results output
+    // Include Input/Output functions
+    // Use standard namespace
+
+    // Create Player class
+
+    // BEGIN class
+    // private data:
+    // Player's health
+    // public data
+    // Initialize Player with health h
+    // Return Player's health
+    // END class
+
+    // main program
+    // BEGIN main
+    // Create a Player named John with a health of 150
+
+    // Display John's health
+
+    // END main
+  #+end_src
+
+- Solution:
+  #+begin_src C++ :main yes :includes :results output
+    #include <iostream>
+    using namespace std;
+
+    class Player {
+    private:
+      int health; // Player's health is private
+    public:
+      Player(int h) { // constructor
+        health = h;
+      }
+      int getHealth() { return health; }
+    };
+
+    int main(void)
+    {
+      // create a Player named John with a health of 150
+      Player John(150);
+      // display John's health
+      cout << "John's health is " << John.getHealth();
+      return 0;
+    }
+  #+end_src
+
+  #+RESULTS:
+  : John's health is 150
+
+* Initializer Lists Syntax
+
+- A better style for initializing member variables in constructors is
+  using a list:
+  #+begin_src C++ :main no :results output :includes <iostream> :namespaces std
+    class Player {
+    private:
+      int health;
+      int level;
+    public:
+      // Default constructor
+      Player(int h) : health(h) { // initializer list
+        cout << "Player created with health: " << health << endl;
+      }
+    };
+
+    int main() {
+      Player John(100);
+    }
+  #+end_src
+
+  #+RESULTS:
+  : Player created with health: 100
+
+- In the example, the constructor informs us when the =Player= was
+  created.
+
+- Any number of members can be initialized, e.g. this list would
+  create a =Player= with default =health=100=, =level=1=, and =build=3=:
+  #+begin_example C
+  Player() : health(100), level(1), build(3) { }
+  #+end_example
+
+- Why is this better?
+  1) Member variables are initialized directly at construction time
+     (rather than default-constructed first and then assigned a value)
+  2) You must use initializer lists for ~const~ members or references
+     because they cannot be assigned to after construction:
+     #+begin_src C++ :results none
+       class Person {
+         const int ssn; // Person's SSN does not change
+       public:
+         Person(int i) : ssn(i) { } // must use initializer list
+       };
+     #+end_src
+
+* Destructor: Clean up =Player= at the end of the game
+
+- The destructor method runs when the =Player= object goes "out of
+  scope", when the =Player= has died and the =Player= data are no longer
+  needed.
+
+- This is useful for keeping a log, or for memory cleanup.
+
+- Here is the =Player= class with a default destructor method
+  =~Player=. This destructor is called automatically.
+
+  #+name: Player class
+  #+begin_src C++ :main yes :noweb yes :namespaces std :includes <iostream> :results none
+    class Player {
+    private:
+      int health;
+      int level;
+    public:
+      // Default constructor
+      Player(int h) : health(h) {
+        cout << "Player created with health: " << health << endl;
+      }
+      // Default destructor
+      ~Player() {
+        cout << "Player destroyed. " << endl;
+      }
+    };
+  #+end_src
+
+- Let's test it:
+  #+begin_src C++ :noweb yes :main yes :namespaces std :includes <iostream> :results output
+    <<Player class>>
+
+    int main() {
+      Player John(100);
+     }
+  #+end_src
+
+  #+RESULTS:
+  : Player created with health: 100
+  : Player destroyed.
+
+- This looks as if the =Player= =John= was created and instantly
+  destroyed. But that's not true: =John= lived for the duration of the
+  ~main~ program.
+
+- This is more obvious if we give =John= a fighting chance:
+  #+begin_src C++ :tangle fight.cpp :noweb yes :main yes :namespaces std :includes <iostream> <unistd.h> :results output
+    <<Player class>>
+
+    int main() {
+      Player John(100);
+      cout << "Player is fighting monsters...\n" << endl;
+      sleep(2);
+      cout << "Player gains 50 XP...\n" << endl;
+      sleep(2);
+      cout << "Main function is about to end.\n" << endl;
+     }
+  #+end_src
+
+- I'm going to run this program (=fight.cpp=) on the command-line so
+  that you can see what's going on:
+  #+begin_example
+    g++ fight.cpp -o fight
+    ./fight
+  #+end_example
+
+- Output:
+  #+begin_example
+   $ ./fight
+   Player created with health: 100
+   Player is fighting monsters...
+
+   Player gains 50 XP...
+
+   Main function is about to end.
+
+   Player destroyed.
+   $
+  #+end_example
+
+- Unlike in "garbage-collecting" programming languages like Java or
+  Python, in C++ you know exactly when objects are destroyed - that's
+  a feature!
+
+* Challenge: Create two =Player= characters
+
+- Create two =Player= characters, name them =Alice= and =Bob=, start them
+  off with =health= 100 and 200, respectively. Let them =takeDamage= (50),
+  show the resulting =health=, and finish.
+
+- Tip: You need =Player::health=, and the ~class~ methods
+  1) =Player(int)= to create a =Player=
+  2) =~Player()= to destroy a =Player=
+  3) =getHealth()= to ~return~ =health=
+  4) =takeDamage(int)= to reduce =health= after a fight.
+
+- Sample output:
+  #+begin_example
+  Player created, health = 100
+  Player created, health = 200
+  Game in progress...
+
+  Game is about to end...
+
+  Alice's health: 50
+  Bob's health: 150
+  Game over.
+
+  Player destroyed
+  Player destroyed
+  #+end_example
+
+- Solution:
+  #+begin_src C++ :main no :includes :results output
+    #include <iostream>
+    using namespace std;
+    class Player {
+    private:
+      int health;
+    public:
+      Player(int h) : health(h) {
+        cout << "Player created, health = " << health << endl;}
+      ~Player() { cout << "Player destroyed" << endl; }
+      int getHealth() { return health;}
+      void takeDamage(int amount) { health -= amount; }
+    };
+    int main(void)
+    {
+      Player Alice(100), Bob(200);
+      cout << "Game in progress...\n" << endl;
+      Alice.takeDamage(50);
+      Bob.takeDamage(50);
+      cout << "Game is about to end...\n" << endl;
+      cout << "Alice's health: " << Alice.getHealth() << endl;
+      cout << "Bob's health: " << Bob.getHealth() << endl;
+      cout << "Game over.\n" << endl;
+      return 0;
+    }
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  Player created, health = 100
+  Player created, health = 200
+  Game in progress...
+
+  Game is about to end...
+
+  Alice's health: 50
+  Bob's health: 150
+  Game over.
+
+  Player destroyed
+  Player destroyed
+  #+end_example
+
+* The ~this~ Pointer
+
+- When you define a method like =takeDamage= inside a ~class~ like =Player=,
+  you are writing instructions for what every object of that class
+  (=John=, =Alice=, =Bob=) should be able to do.
+
+- But how does the method know which object it is working on?
+
+- The special keyword ~this~ is a pointer to the current object, the one
+  calling the method, e.g. =Alice= in =Alice.takeDamage(50)=.
+
+- Think of ~this~ as the way an object says "me". When a =Player= says
+  =this->health=, it means "my health."
+
+- Example: Here, the ~class~ =Player= has a member variable =health= (full
+  name =Player::health=), and the constructor has a parameter also named
+  =health=. ~this~ is used to keep them apart:
+
+  #+begin_src C++ :main no :includes :results output
+    class Player {
+    private:
+      int health;
+    public:
+      Player(int health) {
+        this->health = health; // LHS: ptr to member, RHS: parameter
+      }
+      int getHealth() { return this->health; }
+    };
+
+    #include <iostream>
+    using namespace std;
+    int main() {
+      Player Jack(100);
+      cout << "Player's health: " << Jack.getHealth() << endl;
+    }
+  #+end_src
+
+  #+RESULTS:
+  : Player's health: 100
+
+- Why is this useful?
+  1. To resolve naming conflicts when constructor parameters or method
+     arguments have the same name.
+     #+begin_example C++
+     Player(int health) {
+       this->health = health;  // assign parameter to member
+     }
+     #+end_example
+  2. To return the object itself when chaining methods together:
+     #+begin_example C++
+     Player& setHealth(int h) {
+       this->health = h;
+       return *this;
+       // allows chaining like: player.setHealth(100).takeDamage(10);
+     }
+     #+end_example
+  3. To reinforce object identity.
+
+* ~static~ members are shared across all instances
+
+- An *instance* is another word for an object of a class. So =Player
+  Jack(100);= creates a =Player= named =Jack= - Jack is an instance.
+
+- Some methods are defined as ~static~ because they don't operate on
+  ~class~ members. For example a method =Player::getCount= that counts the
+  number of =Player= objects in the game.
+
+- Example code:
+  #+name: Player class with counter
+  #+begin_src C++ :results none
+    class Player {
+    private:
+      int health;
+      static int count; // static member variable
+    public:
+      // constructor
+      Player(int health) {
+        this->health = health;
+        count++; }
+      // destructor with counter variable
+      ~Player() { count--; }
+      // get Player count
+      static int getCount() { return count; }
+    };
+  #+end_src
+
+  - Test this:
+    #+begin_src C++ :main no :includes :results output :noweb yes
+      #include <iostream>
+      using namespace std;
+
+      <<Player class with counter>>
+      int Player::count = 0; // initialize Player::count
+
+      int main() {
+        { // BEGIN scope
+          Player Jack(100); // create Player
+          cout << "Player count: " << Player::getCount() << endl;
+
+          Player Alice(100); // create Player
+          cout << "Player count: " << Player::getCount() << endl;
+        } // END scope
+        cout << "Player count: " << Player::getCount() << endl;
+        return 0;
+      }
+    #+end_src
+
+    #+RESULTS:
+    : Player count: 1
+    : Player count: 2
+    : Player count: 0
+
+  - Remember that the default destructor is only invoked when the
+    objects to "out of scope". This happens at the end of ~main~ but
+    then we can no longer use =Player::getCount=. Therefore I added a
+    scope by nesting the =Player= code inside ={ }= which is "scope".
+
+  - Note that ~this~ does not operate on ~static~ methods of a ~class~
+    because these methods do not belong to any object - they can be
+    called without creating an object.
+
+* Challenge: =Enemy= ~class~
+
+- Create an =Enemy= class with:
+  1. A constructor
+  2. A destructor
+  3. Private =strength= member
+  4. =attack()= method returning damage (e.g. =strength / 2=)
+  5. Static member tracking total enemies
+
+-  Sample Output
+  #+begin_example
+  Enemy created with strength 80
+  Enemy created with strength 100
+  Enemies active: 2
+  Attack damage: 40
+  Enemy destroyed
+  Enemy destroyed
+  Enemies active: 0
+  #+end_example
+
+- Solution:
+  #+begin_src C++ :main no :results output
+    #include <iostream>
+    using namespace std;
+
+    class Enemy {
+    private:
+      int strength;
+      static int active;
+    public:
+      Enemy(int strength) { // constructor
+        this->strength=strength;
+        cout << "Enemy created with strength " << this->strength << endl;
+        active++;
+      } //
+      ~Enemy() { // destructor
+        cout << "Enemy destroyed." << endl;
+        active--;
+      }
+      int attack() {
+        return this->strength/2;
+      }
+      static int getActive() {
+        return active;
+      }
+    };
+
+    int Enemy::active = 0;
+    int main(void)
+    {
+      { // BEGIN battle
+        Enemy Sauron(80);
+        Enemy Saruman(100);
+        cout << "Enemies active: " << Enemy::getActive() << endl;
+        cout << "Attack damage: " << Sauron.attack() << endl;
+      } // END battle
+      cout << "Enemies active: " << Enemy::getActive() << endl;      
+      return 0;
+    }
+  #+end_src
+
+  #+RESULTS:
+  : Enemy created with strength 80
+  : Enemy created with strength 100
+  : Enemies active: 2
+  : Attack damage: 40
+  : Enemy destroyed.
+  : Enemy destroyed.
+  : Enemies active: 0
+
+* Summary: Object Lifecycle in C++
+
+- *Construction*: Objects are automatically initialized using a
+  *constructor* when declared.
+  + Example: =Player John(100);= runs the =Player(int)= constructor.
+  + Constructors can take parameters or use initializer lists for
+    clean, direct setup.
+
+- *Usage / Lifetime*: Objects remain alive and usable for the duration
+  of their *scope*.
+  + Methods like =takeDamage()= or =getHealth()= operate on the object
+    during this phase.
+  + The ~this~ pointer refers to the current object and is used to
+    access members clearly.
+
+- *Destruction*: When an object goes *out of scope*, its *destructor* is
+  automatically called.
+  + Used to log destruction or clean up memory/resources.
+  + Order of destruction is the reverse of construction — last-in,
+    first-out (LIFO).
+
+- *Static Members & Lifecycle Awareness*:
+  + Use static counters (e.g., =Player::count=) to track how many
+    objects are alive.
+  + Static methods (like =getCount()=) can observe lifecycle changes
+    from outside any object.
+
+- *Scopes Reveal Lifecycle Timing*:
+  + Wrapping object creation in a nested block (= { ... } =) shows
+    *when* the destructor runs.
+  + Helpful for visualizing stack-based memory and RAII (Resource
+    Acquisition Is Initialization).
+
+- *Why It Matters*:
+  + Predictable object lifetimes help avoid memory leaks and bugs.
+  + C++ gives fine-grained control — unlike garbage-collected
+    languages.
+  + Mastering lifecycle is foundational for managing resources,
+    especially in larger programs.
+
+* Footnotes
+
+[fn:1] "Scale" is what distinguishes learning from production: When
+you're learning you craft small pieces of code hoping it will run at
+all for you alone, on your single computer. When you're creating
+production code, you write (or monitor, or maintain, more likely),
+large collections of code that runs on millions, or billions of
+computers, and that must run safely and smoothly. That is "scale".
+
+[fn:2] The Unix epoch is 00:00:00 UTC on January 1, 1970. Computer
+(system) time is measured as the number of seconds that have elapsed
+since this moment (Unix timestamp or epoch time).

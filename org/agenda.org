@@ -2745,7 +2745,7 @@ Next week:
 
 2. What's wrong with this code fragment? How would you fix
    it?
-   #+begin_src C 
+   #+begin_src C
      int *p;
      p = 2;
      (*p) = 5;
@@ -2764,7 +2764,7 @@ Next week:
    #+begin_src C
      int i, *p = &i;
      (*p) = 2;
-     printf("i = *p = %d\n",*p);     
+     printf("i = *p = %d\n",*p);
    #+end_src
 
    #+RESULTS:
@@ -2777,7 +2777,7 @@ Next week:
      int *p;
      i = 100;
      p = &i;
-     printf("i = *p = %d\n",*p);     
+     printf("i = *p = %d\n",*p);
    #+end_src
 
    #+RESULTS:
@@ -2819,7 +2819,7 @@ Next week:
    #+begin_quote
    =n= is a pointer to an =int(int *)=. =n * n= multiplies two pointers,
    which is invalid (since pointers are addresses and not numeric
-   values). 
+   values).
    #+end_quote
    #+begin_src C
      int square(int *n) {
@@ -2858,15 +2858,113 @@ Next week:
 - It will be a preparation for CSC 240 (Data structures with C++).
 - We'll also discuss what you could do in the summer to prepare.
 
+** TODO Review: C ~struct~
+
+1. What is a ~struct~ in C and why would you use it? 
+   #+begin_quote
+   A ~struct~ groups related variables (e.g., coordinates, player stats)
+   into a single data type to improve code organization and
+   readability.
+   #+end_quote
+
+2. How would you declare a ~struct Date~ with calendar information?
+   #+begin_src C :results none
+     struct Date {
+       int day;
+       int month;
+       int year;
+     };
+   #+end_src
+
+3. How do you declare and initialize a ~struct Point~ with ~x = 3~ and ~y = 4~?
+   #+begin_example C
+     struct Point pt = {3, 4};
+   #+end_example
+
+4. How would you store and initialize 1000 ~struct Point~ values
+   efficiently?
+   #+begin_quote
+   Use an array: ~struct Point points[1000];~ and loop to initialize
+   each ~points[i]~.
+   #+end_quote
+
+5. Why is it better to pass a pointer to a ~struct~ rather than the
+   ~struct~ itself to a function?
+   #+begin_quote
+   Passing a pointer avoids copying the entire struct, which saves
+   memory and improves performance for large data.
+   #+end_quote
+
+6. What is the difference between ~.~ and ~->~ when accessing ~struct~
+   members?
+   #+begin_quote
+   ~.~ is used for struct variables; ~->~ is used when accessing members
+   via a pointer to a struct.
+   #+end_quote
+   #+begin_src C
+     // ...
+     
+   #+end_src
+   
+   #+begin_src C 
+     struct Person { int age; char sex; int height; }; // Any person 
+     struct Person Jack = { 23, 'm', 180 }; // A specific person - Jack
+
+     printf("Jack is a %d old %cale of %d cm height.\n",
+            Jack.age, Jack.sex, Jack.height);
+
+     struct Person *aboutJack = &Jack;
+     printf("Jack is a %d old %cale of %d cm height.\n",
+            aboutJack->age, aboutJack->sex, aboutJack->height);
+   #+end_src
+
+   #+RESULTS:
+   : Jack is a 23 old male of 180 cm height.
+   : Jack is a 23 old male of 180 cm height.
+
 ** TODO C to C++ Transition
 
-- Transforming C ~struct~ into C++ ~class~
-- Understanding that data can be ~private~ or ~public~
-- Accessing ~private~ data
-- Member data and methods
-- Creating a =Date= class for =today=
-- Creating a =Player= class with =takeDamage= and =heal=
+- [ ] Transform C ~struct~ into C++ ~class~
+- [ ] Understand that data can be ~private~ or ~public~
+- [ ] Access ~private~ data with =getHealth=
+- [ ] Create a =Player= class with =takeDamage= and =heal=
+- [ ] Define ~class~ constructors and destructors
+- [ ] Apply the ~this~ pointer inside ~class~ methods
+- [ ] Create ~static~ members to track state across instances
+- [ ] Understand the object lifecycle
 
+** TODO Review: C++ ~class~
+
+1. What does a constructor do in C++?
+   #+begin_quote
+   It automatically initializes a new object's state when it's
+   created.
+   #+end_quote
+
+2. Why is it useful to define a destructor?
+   #+begin_quote
+   It ensures resources are cleaned up properly when the object is
+   destroyed.
+   #+end_quote
+
+3. What is the `this` pointer?
+   #+begin_quote
+   A pointer to the current object instance, used to access its own
+   members.
+   #+end_quote
+
+4. What are static members?
+   #+begin_quote
+   Members shared across all instances of a class, useful for counting
+   or shared state.
+   #+end_quote
+
+5. Why use initializer lists in constructors?
+   #+begin_quote
+   They are efficient and preferred for initializing member variables
+   directly.
+   #+end_quote
+    
 ** TODO Summary and Outlook
 #+attr_html: :width 200px :float nil:
 [[../img/333.png]]
@@ -2877,21 +2975,29 @@ Next week:
 
 You're now ready for more, bigger and better things!
 
-*Book:* [[https://beej.us/guide/bgc/html/split/index.html][Beej's Guide to C Programming]] (free) - v0.9.24 April 6, 2025,
+*Free book:* [[https://beej.us/guide/bgc/html/split/index.html][Beej's Guide to C Programming]] (free) - v0.9.24 April 6, 2025,
 online at beej.us/guide/bgc - gateway to system programming.
 
-*Book*: Stroustrup - Programming (3rd edition, 2024),
-stroustrup.com/programming.html
+*Free book:* [[https://rooksguide.org/wp-content/uploads/2013/12/rooks-guide-isbn-version.pdf][Rook's Guide to C++]] (free) - see rooksguide.org. Quick
+100-page read, and I have worked through all exercises ([[https://github.com/birkenkrahe/alg1/blob/main/org/alg1_entry_rook.org][GitHub]]).
+
+*Non-free book*: Stroustrup - Programming (3rd edition, 2024), check out
+[[https://stroustrup.com/programming.html][stroustrup.com/programming.html]] or "[[https://stroustrup.com/tour3.html][A Tour of C++]]" for full immersion.
 
 *Competitive programming*: Join us for a 1 hr per week seminar solving
 programming problems in any language you like (C++, Python, Java...) -
 CSC 450, Thursday 4 pm, Derby 209.
 
 *Data Structures (with C++*): The next course in the series, for
-computer and data science minors and majors, CSC 240, TTH 930-1045 am.
+computer and data science minors and majors, CSC 240, TTH 930-1045
+am. We'll start with a thorough review and a C/C++ entry test.
 
 *Introduction to Programming with Java*: Yet another important language
 that dominates in industry applications, CSC 115 MWF 1000-1050 am
+
+*Literate Programming*: In all my upper-level classes, you'll work with
+the Emacs + Org-mode IDE (instead of OneCompiler). There's a steep
+learning curve. I'll give you something to do before term starts.
 
 * Footnotes
 
