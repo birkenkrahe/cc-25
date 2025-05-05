@@ -2853,8 +2853,7 @@ Next week:
 #+caption: The guy in the picture is Bjarne Stroustrup
 [[../img/cpp.png]]
 
-- We're going to look at the C++ version of several examples.
-- This will show you some differences between C and C++.
+- The purpose of this week is "C++ without (much) C".
 - It will be a preparation for CSC 240 (Data structures with C++).
 - We'll also discuss what you could do in the summer to prepare.
 
@@ -2862,9 +2861,9 @@ Next week:
 
 1. What is a ~struct~ in C and why would you use it? 
    #+begin_quote
-   A ~struct~ groups related variables (e.g., coordinates, player stats)
-   into a single data type to improve code organization and
-   readability.
+   A ~struct~ is a *container* - it groups related variables (e.g.,
+   coordinates, player stats) into a single data type to improve code
+   organization and readability.
    #+end_quote
 
 2. How would you declare a ~struct Date~ with calendar information?
@@ -2882,17 +2881,20 @@ Next week:
    #+end_example
 
 4. How would you store and initialize 1000 ~struct Point~ values
-   efficiently?
+   efficiently to the value 1?
    #+begin_quote
-   Use an array: ~struct Point points[1000];~ and loop to initialize
-   each ~points[i]~.
+   Use an array and loop to initialize each ~points[i]~.
    #+end_quote
+   #+begin_example C
+     struct Point points[1000];
+     for (int i=0;i<1000;i++) { points[i].x=1; points[i].y=1; }
+   #+end_example
 
 5. Why is it better to pass a pointer to a ~struct~ rather than the
    ~struct~ itself to a function?
    #+begin_quote
-   Passing a pointer avoids copying the entire struct, which saves
-   memory and improves performance for large data.
+   Passing a pointer avoids copying the entire ~struct~, which saves
+   memory and improves performance for large data sets.
    #+end_quote
 
 6. What is the difference between ~.~ and ~->~ when accessing ~struct~
@@ -2901,21 +2903,18 @@ Next week:
    ~.~ is used for struct variables; ~->~ is used when accessing members
    via a pointer to a struct.
    #+end_quote
-   #+begin_src C
-     // ...
-     
-   #+end_src
-   
    #+begin_src C 
      struct Person { int age; char sex; int height; }; // Any person 
      struct Person Jack = { 23, 'm', 180 }; // A specific person - Jack
 
      printf("Jack is a %d old %cale of %d cm height.\n",
-            Jack.age, Jack.sex, Jack.height);
+            Jack.age, Jack.sex, Jack.height); // Access values with .
 
-     struct Person *aboutJack = &Jack;
+     struct Person *aboutJack = &Jack; // points at Jack
      printf("Jack is a %d old %cale of %d cm height.\n",
-            aboutJack->age, aboutJack->sex, aboutJack->height);
+            aboutJack->age, aboutJack->sex, aboutJack->height); // Access
+     							   // addresses
+     							   // with ->
    #+end_src
 
    #+RESULTS:
@@ -2998,6 +2997,7 @@ that dominates in industry applications, CSC 115 MWF 1000-1050 am
 *Literate Programming*: In all my upper-level classes, you'll work with
 the Emacs + Org-mode IDE (instead of OneCompiler). There's a steep
 learning curve. I'll give you something to do before term starts.
+
 
 * Footnotes
 
