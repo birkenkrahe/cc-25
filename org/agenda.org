@@ -2853,11 +2853,12 @@ Next week:
 #+caption: The guy in the picture is Bjarne Stroustrup
 [[../img/cpp.png]]
 
+- The gradebook is complete from my perspective - please check.
 - The purpose of this week is "C++ without (much) C".
 - It will be a preparation for CSC 240 (Data structures with C++).
 - We'll also discuss what you could do in the summer to prepare.
 
-** TODO Review: C ~struct~
+** DONE Review: C ~struct~
 
 1. What is a ~struct~ in C and why would you use it? 
    #+begin_quote
@@ -2886,7 +2887,7 @@ Next week:
    Use an array and loop to initialize each ~points[i]~.
    #+end_quote
    #+begin_example C
-     struct Point points[1000];
+     struct Point points[1000]; // Define 1000 Points
      for (int i=0;i<1000;i++) { points[i].x=1; points[i].y=1; }
    #+end_example
 
@@ -2921,7 +2922,7 @@ Next week:
    : Jack is a 23 old male of 180 cm height.
    : Jack is a 23 old male of 180 cm height.
 
-** TODO C to C++ Transition
+** DONE C to C++ Transition
 
 - [ ] Transform C ~struct~ into C++ ~class~
 - [ ] Understand that data can be ~private~ or ~public~
@@ -2932,37 +2933,125 @@ Next week:
 - [ ] Create ~static~ members to track state across instances
 - [ ] Understand the object lifecycle
 
-** TODO Review: C++ ~class~
+** TODO Review Questions: From struct in C to class in C++
 
-1. What does a constructor do in C++?
+
+1. What's an object?
    #+begin_quote
-   It automatically initializes a new object's state when it's
-   created.
+   In OOP, an "object" is anything that has attributes or features,
+   and methods or abilities. For example, a ~Car~ object has the
+   features ~color~, ~speed~, and ~fuel_level~, and the abilities to
+   ~accelerate~, ~brake~, and ~refuel~.
    #+end_quote
 
-2. Why is it useful to define a destructor?
+2. What's OOP (Object-Oriented Programming)?
    #+begin_quote
-   It ensures resources are cleaned up properly when the object is
-   destroyed.
+   OOP is programming with objects and their ~private~ and ~public~
+   abilities. Alternatively, you can also imagine that everything is
+   an object, and that objects send each other messages.
    #+end_quote
 
-3. What is the `this` pointer?
+3. What's the big deal with OOP?
    #+begin_quote
-   A pointer to the current object instance, used to access its own
-   members.
+   It makes code easier to read, easier to maintain, and it makes code
+   safer because you can now protect data from illegal access. In one
+   word, it helps us to *scale* code in a real-world production setting.
    #+end_quote
 
-4. What are static members?
+4. How would a ~Car~ object, for example my car, a ~kia~ be created?
    #+begin_quote
-   Members shared across all instances of a class, useful for counting
-   or shared state.
+   This is a two-step process:
+   1) Declare a ~class~ for any ~Car~ (outside of ~main~).
+   2) Declare an object ~kia~ that belongs to the ~Car~ class.
+   3) ~kia~ now inherits all properties of the ~Car~ class.  
    #+end_quote
 
-5. Why use initializer lists in constructors?
+   #+begin_example C++
+   class Car { // all cars
+    // features
+    string color;
+    float speed;
+    float fuel_level;
+    // abilities
+    void accelerate(float amount) { // increase speed
+       speed += amount;
+       }
+    void brake() { // stop the car
+       speed = 0;
+       }    
+    void refuel(float amount) { // 
+       fuel_level += amount;
+       }
+    };
+
+    Car kia; // my Kia is a Car
+   #+end_example
+
+5. What's wrong with this C++ object declaration?
+   #+begin_src C++
+     class Player John;
+   #+end_src
+
    #+begin_quote
-   They are efficient and preferred for initializing member variables
-   directly.
+   You should not use the ~class~ keyword when creating an object —
+   write =Player John;= instead.
    #+end_quote
+
+6. Why does this code fail to compile if =Player::health= is ~private~?
+   How to fix it?
+   #+begin_src C++
+     Player Jane; // this Player has `health`
+     Jane.health = -1000;
+   #+end_src
+
+   #+begin_quote
+   =health= is ~private~ and cannot be accessed directly from outside the
+   class without providing a ~public~ method that lets you access it.
+
+   Either provide a ~public~ method like =getHealth()=, or make =health=
+   itself ~public~.
+   #+end_quote
+
+7. Why does this attempt to print the health value not work? How to
+   fix it?
+   #+begin_src C++
+     Player John; // Player has a `getHealth()` method
+     cout << getHealth() << endl;
+   #+end_src
+
+   #+begin_quote
+   Because the computer does not know what or where =getHealth()= is. It
+   needs to be told which ~class~ to use. The proper call is:
+   =cout << John.getHealth() << endl;=
+   #+end_quote
+
+8. What's the problem with this =takeDamage= method?
+   #+begin_src C++
+     void takeDamage(int amount) {
+       health -= amount;
+     }
+   #+end_src
+
+   #+begin_quote
+   It doesn’t check for negative values, which could increase =health=.
+   #+end_quote
+
+9. What's missing if we want the player to recover =health= after battle?
+   #+begin_src C++
+     Player John;
+     John.takeDamage(50);
+     // Now what?
+   #+end_src
+
+   #+begin_quote
+   Add a =heal(int amount)= method to increase the player's health:
+   =John.heal(80)=.
+   #+end_quote
+
+10. What if we wanted to cap the =health= of a =Player= at a certain value?
+    #+begin_quote
+    We'd have to add a condition using an ~if~ statement in our code.
+    #+end_quote
     
 ** TODO Summary and Outlook
 #+attr_html: :width 200px :float nil:

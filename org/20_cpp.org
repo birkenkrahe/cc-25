@@ -367,7 +367,7 @@
     Player's health after healing = 100
   #+end_example
 
-- Solution:
+- Solution: [[https://onecompiler.com/cpp/43h2m4cf3][onecompiler.com/cpp/43h2m4cf3]]
   #+begin_src C++ :main no :includes :results output :tangle player2.cpp
     #include <iostream> // include input/output
     using namespace std; // use standard names
@@ -661,6 +661,43 @@
   Player destroyed
   Player destroyed
   #+end_example
+
+- Starter code: [[https://onecompiler.com/cpp/43h2mrae6][onecompiler.com/cpp/43h2mrae6]]
+  #+begin_src C++ :main no :includes :results output
+    #include <iostream>
+    using namespace std;
+    class Player {
+    private:
+      int health;
+    public:
+      Player(int h) : health(h) {
+        cout << "Player created, health = " << health << endl;}
+      ~Player() { cout << "Player destroyed" << endl; }
+      int getHealth() { return health;}
+      void takeDamage(int amount) { health -= amount; }
+    };
+
+    int main(void)
+    {
+      // Create two players, Alice and Bob
+
+      // PRINT "Game in progress..."
+
+      // Alice takes damage
+
+      // Bob takes damage
+
+      // PRINT "Game is about to end..."
+      
+      // PRINT Alice's health
+
+      // PRINT Bob's health
+
+      // PRINT "Game over."
+
+      return 0;
+    }
+  #+end_src
 
 - Solution:
   #+begin_src C++ :main no :includes :results output
