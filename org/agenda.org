@@ -1764,21 +1764,21 @@ of programming without ~if-else~ statements, ~loops~ and ~arrays~.
 ** Midterm results
 
 - Final grades
-  #+begin_src R :file midterm.png :session *R* :results graphics output file :exports both
+  #+begin_src R :file ../img/midterm.png :session *R* :results graphics output file :exports both
     grades <- c(26.92, 43.1, 45.75, 57.78, 59.77, 60.71, 69.8, 74.05, 76.22, 82.32,
                 84.16, 84.33, 84.55, 85.27, 86.05, 86.87, 88.36, 90.25, 90.44, 90.65,
                 91.3, 91.8, 92.25, 92.78, 93.73, 94.42, 96.46, 97.33, 97.88)
-    plot(density(grades), col="red", lwd=2, main="Density Plot of Final Grades")
+    plot(density(grades), col="red", lwd=2, main="Density Plot of Midterm Grades")
     abline(v=mean(grades), col="blue", lwd=2, lty=2)
-    text(mean(grades), max(density(grades)$y), paste("Mean =", round(mean(grades), 2)), pos=2, col="blue")
+    #text(mean(grades), max(density(grades)$y), paste("Mean =", round(mean(grades), 2)), pos=2, col="blue")
     legend("topleft", legend=c("Density", paste("Mean =", round(mean(grades), 2))), col=c("red", "blue"), lty=c(1, 2), lwd=2)
   #+end_src
 
   #+RESULTS:
-  [[file:midterm.png]]
+  [[file:../img/midterm.png]]
 
 - Programming assignments vs. Tests
-  #+begin_src R :file midterm2.png :session *R* :results graphics output file :exports both
+  #+begin_src R :file ../img/midterm2.png :session *R* :results graphics output file :exports both
     pgrades <- c(22.5, 27.5, 11.25, 37.5, 53.13, 30.63, 66.25, 65, 83.13, 78.13, 86.88, 78.75, 91.88, 80.63, 91.88, 91.88, 90, 93.13, 93.75, 97.5, 90, 89.38, 98.75, 99.38, 98.13, 98.13, 98.75, 96.88)
     tgrades <- c(31.97, 60.92, 85.18, 80.96, 67.37, 95.09, 73.86, 84.39, 68.33, 87.11, 81.05, 90.7, 76.18, 90.57, 79.39, 81.14, 86.49, 86.97, 87.37, 87.11, 93.86, 95.53, 85.96, 87.28, 90.18, 94.56, 95.7, 90.04)
 
@@ -2848,7 +2848,7 @@ Next week:
 - This is the beginning of *object-oriented* programming (OOP).
 - OOP is the standard for building large-scale applications.
 
-* Week 16: Transitioning to C++
+* IN-PROGRESS Week 16: Transitioning to C++
 #+attr_html: :width 400px :float nil:
 #+caption: The guy in the picture is Bjarne Stroustrup
 [[../img/cpp.png]]
@@ -2858,9 +2858,11 @@ Next week:
 - It will be a preparation for CSC 240 (Data structures with C++).
 - We'll also discuss what you could do in the summer to prepare.
 
+- *Optional final exam*: Monday, 12-May, 1:00 pm - 3:00 pm *here*
+  
 ** DONE Review: C ~struct~
 
-1. What is a ~struct~ in C and why would you use it? 
+1. What is a ~struct~ in C and why would you use it?
    #+begin_quote
    A ~struct~ is a *container* - it groups related variables (e.g.,
    coordinates, player stats) into a single data type to improve code
@@ -2904,8 +2906,8 @@ Next week:
    ~.~ is used for struct variables; ~->~ is used when accessing members
    via a pointer to a struct.
    #+end_quote
-   #+begin_src C 
-     struct Person { int age; char sex; int height; }; // Any person 
+   #+begin_src C
+     struct Person { int age; char sex; int height; }; // Any person
      struct Person Jack = { 23, 'm', 180 }; // A specific person - Jack
 
      printf("Jack is a %d old %cale of %d cm height.\n",
@@ -2914,8 +2916,8 @@ Next week:
      struct Person *aboutJack = &Jack; // points at Jack
      printf("Jack is a %d old %cale of %d cm height.\n",
             aboutJack->age, aboutJack->sex, aboutJack->height); // Access
-     							   // addresses
-     							   // with ->
+                                                           // addresses
+                                                           // with ->
    #+end_src
 
    #+RESULTS:
@@ -2933,8 +2935,7 @@ Next week:
 - [ ] Create ~static~ members to track state across instances
 - [ ] Understand the object lifecycle
 
-** TODO Review Questions: From struct in C to class in C++
-
+** DONE Review Questions: From struct in C to class in C++
 
 1. What's an object?
    #+begin_quote
@@ -2963,7 +2964,7 @@ Next week:
    This is a two-step process:
    1) Declare a ~class~ for any ~Car~ (outside of ~main~).
    2) Declare an object ~kia~ that belongs to the ~Car~ class.
-   3) ~kia~ now inherits all properties of the ~Car~ class.  
+   3) ~kia~ now inherits all properties of the ~Car~ class.
    #+end_quote
 
    #+begin_example C++
@@ -2978,13 +2979,13 @@ Next week:
        }
     void brake() { // stop the car
        speed = 0;
-       }    
-    void refuel(float amount) { // 
+       }
+    void refuel(float amount) { //
        fuel_level += amount;
        }
     };
 
-    Car kia; // my Kia is a Car
+    Car kia; // my Kia is a Car called `kia`
    #+end_example
 
 5. What's wrong with this C++ object declaration?
@@ -3052,40 +3053,254 @@ Next week:
     #+begin_quote
     We'd have to add a condition using an ~if~ statement in our code.
     #+end_quote
-    
+
+** TODO Code Along Review: Constructors and Destructors 
+
+Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code along. 
+
+1) Will this code work? What does it do?
+
+   #+begin_src C++ :main yes :includes <iostream> :namespaces std
+     // class definition
+     class Car {
+     };
+     // main pg
+     Car volkswagen;
+   #+end_src
+
+   #+begin_quote
+   Yes, it works. A default =Car= named =volkswagen= is created.
+   #+end_quote
+
+2) How could we add features, e.g. the =year= of the model, say 2022,
+   and the =mileage=, say 25000 miles, to the default =Car=?
+
+   #+begin_src C++ :main yes :includes <iostream> :namespaces std
+     class Car {
+       const int year = 2022; // model year cannot change
+       int mileage = 25000; // mileage will change
+     };
+     // main pgm
+     Car volkswagen; // create a volkswagen Car
+   #+end_src
+
+3) How can we print the =year= and the =mileage= of the =volkswagen= =Car=?
+
+   #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
+     class Car {
+       int year = 2022;
+       int mileage = 25000;
+     public:
+       void printCar() {
+         cout << "Car built in: " << year << endl
+              << "Mileage: "      << mileage << " miles";
+       }
+     };
+
+     // main pgm
+     Car volkswagen;
+     volkswagen.printCar();
+   #+end_src
+
+   #+RESULTS:
+   : Car built in: 2022
+   : Mileage: 25000 miles
+
+4) How can we construct a =Car= with a different =year= and =mileage=, for
+   example a =mercedes= built in =2019= with a =mileage= of =45000=?
+
+   #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
+     class Car {
+       const int year; // does not change
+       int mileage;
+     public:
+       // Constructor
+       Car(int y, int m) : year(y), mileage(m) {
+         cout << "Car built in: " << year << endl
+              << "Mileage: "      << mileage << " miles";
+       }
+     };
+
+     // main pgm
+     Car mercedes(2019,45000);
+   #+end_src
+
+   You can also re-use the variable names with the ~this~ pointer:
+
+   #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
+     class Car {
+       const int year; // does not change
+       int mileage;
+     public:
+       // Constructor
+       Car(int year, int mileage) : year(year), mileage(mileage) {
+         cout << "Car built in: " << this->year << endl
+              << "Mileage: "      << this->mileage << " miles";
+       }
+     };
+
+     // main pgm
+     Car mercedes(2019,45000);
+   #+end_src
+
+   #+RESULTS:
+   : Car built in: 2019
+   : Mileage: 45000 miles
+
+5) How can we destroy the =Car= that we created?
+   #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
+     class Car {
+       const int year; // does not change
+       int mileage;
+     public:
+       // Constructor
+       Car(int year, int mileage) : year(year), mileage(mileage) {
+         cout << "Car built in: " << this->year << endl
+              << "Mileage: "      << this->mileage << " miles" << endl;
+       }
+       // Destructor
+       ~Car() { cout << "Car destroyed." << endl; }
+     };
+
+     // main pgm
+     Car mercedes(2019,45000);
+   #+end_src
+
+   #+RESULTS:
+   : Car built in: 2019
+   : Mileage: 45000 miles
+   : Car destroyed.
+
+6) Now create a second car, a =jaguar= from =1985= with =220,000= miles.
+   #+begin_quote
+   Final code: https://onecompiler.com/cpp/43h4bvg3d
+   #+end_quote
+** TODO What (if anything) are you taking away from this course?
+#+attr_html: :width 400px :float nil: 
+[[../img/finale3.png]]
+
+
+
 ** TODO Summary and Outlook
-#+attr_html: :width 200px :float nil:
-[[../img/333.png]]
+#+attr_html: :width 600px :float nil: 
+[[../img/final_grades.png]]
 
 - 33 Programming assignments
 - 300 Test questions
-- 333 Lines of code written by every student (at least)
+- 331 pages of scripts written and distributed
+- 92 codes in (my) OneCompiler.com alone
+- 1000 lines of code written by you (at least)- 
 
 You're now ready for more, bigger and better things!
 
-*Free book:* [[https://beej.us/guide/bgc/html/split/index.html][Beej's Guide to C Programming]] (free) - v0.9.24 April 6, 2025,
-online at beej.us/guide/bgc - gateway to system programming.
+1) *Free book:* [[https://beej.us/guide/bgc/html/split/index.html][Beej's Guide to C Programming]] (free) - v0.9.24 April 6,
+   2025, online at beej.us/guide/bgc - gateway to system programming.
 
-*Free book:* [[https://rooksguide.org/wp-content/uploads/2013/12/rooks-guide-isbn-version.pdf][Rook's Guide to C++]] (free) - see rooksguide.org. Quick
-100-page read, and I have worked through all exercises ([[https://github.com/birkenkrahe/alg1/blob/main/org/alg1_entry_rook.org][GitHub]]).
+2) *Free book:* [[https://rooksguide.org/wp-content/uploads/2013/12/rooks-guide-isbn-version.pdf][Rook's Guide to C++]] (free) - see rooksguide.org. Quick
+   100-page read, and I have worked through all exercises ([[https://github.com/birkenkrahe/alg1/blob/main/org/alg1_entry_rook.org][GitHub]]).
 
-*Non-free book*: Stroustrup - Programming (3rd edition, 2024), check out
-[[https://stroustrup.com/programming.html][stroustrup.com/programming.html]] or "[[https://stroustrup.com/tour3.html][A Tour of C++]]" for full immersion.
+3) *Non-free book*: Stroustrup - Programming (3rd edition, 2024), check
+   out [[https://stroustrup.com/programming.html][stroustrup.com/programming.html]] or "[[https://stroustrup.com/tour3.html][A Tour of C++]]" for full
+   immersion.
 
-*Competitive programming*: Join us for a 1 hr per week seminar solving
-programming problems in any language you like (C++, Python, Java...) -
-CSC 450, Thursday 4 pm, Derby 209.
+4) *Data Structures (with C++*): The next course in the series, for
+   computer and data science minors and majors, CSC 240, TTH 930-1045
+   am. We'll start with a thorough review and a C/C++ entry test.
 
-*Data Structures (with C++*): The next course in the series, for
-computer and data science minors and majors, CSC 240, TTH 930-1045
-am. We'll start with a thorough review and a C/C++ entry test.
+5) *Introduction to Data Science (with R)*: DSC 105 is the first course
+   of the Data Science program. Hands-on, beginner-friendly if you're
+   interested in data, visualization, machine learning, stats, and AI.
 
-*Introduction to Programming with Java*: Yet another important language
-that dominates in industry applications, CSC 115 MWF 1000-1050 am
+6) *Competitive programming*: Join us for a 1 hr per week seminar
+   solving programming problems in any language you like (C++, Python,
+   Java...) - CSC 450, Thursday 4 pm, Derby 209.
 
-*Literate Programming*: In all my upper-level classes, you'll work with
-the Emacs + Org-mode IDE (instead of OneCompiler). There's a steep
-learning curve. I'll give you something to do before term starts.
+7) *Introduction to Programming with Java*: Yet another important
+   language that dominates in industry applications, CSC 115 MWF
+   1000-1050 am, taught by the incomparable Dr. Dall'Olio!
+
+8) *Literate Programming*: In all my upper-level classes, you'll work
+   with the Emacs + Org-mode IDE (instead of OneCompiler). There's a
+   steep learning curve. I'll give you something to do before term
+   starts.
+
+9) *Quantum Computing* or *App development with AI*: I am on the fence
+   which of these topics to teach as a DSC 482 (Special topics) course
+   next spring ('26). Successful completion of CSC 100 means you can
+   take it!
+
+10) I hope you enjoyed your *introduction to the way machines work*. It
+    should make you more proud of the way humans think & learn. Feel
+    free to keep in touch & use me while you can!
+
+* Final Grades
+#+begin_src R :file ../img/final_grades.png :session *R* :results graphics output file :exports both
+          grades <- c(72.75,77.27,77.97,85.17,88.96,88.98,90.05,95.97,96.18,97.68,
+                      98.12,99.31,101.39,101.74,101.74,102.02,103.09,104.09,104.13,
+                      106.28,106.33,106.36,104.4,108.12,108.63,110.16,119.41,124.63)
+          plot(density(grades), col="red", lwd=2, main="Density Plot of Final Grades")
+          abline(v=mean(grades), col="blue", lwd=2, lty=2)
+          #text(mean(grades), max(density(grades)$y), paste("Mean =", round(mean(grades), 2)), pos=2, col="blue")
+          legend("topleft", legend=c("Density", paste("Mean =", round(mean(grades), 2))), col=c("red", "blue"), lty=c(1, 2), lwd=2)
+#+end_src
+
+#+RESULTS:
+[[file:../img/final_grades.png]]
+
+Midterm and final grades:
+#+begin_src R :file ../img/final_grades.png :session *R* :results graphics output file :exports both
+  midterm_grades <- c(26.92, 43.1, 45.75, 57.78, 59.77, 60.71, 69.8, 74.05, 76.22, 82.32,
+                      84.16, 84.33, 84.55, 85.27, 86.05, 86.87, 88.36, 90.25, 90.44, 90.65,
+                      91.3, 91.8, 92.25, 92.78, 93.73, 94.42, 96.46, 97.33, 97.88)
+  plot(density(midterm_grades), col="red", lwd=2, main="Density Plot of Midterm Grades")
+  abline(v=mean(midterm_grades), col="red", lwd=2, lty=2)
+  par(new=TRUE)
+  final_grades <- c(72.75,77.27,77.97,85.17,88.96,88.98,90.05,95.97,96.18,97.68,
+                    98.12,99.31,101.39,101.74,101.74,102.02,103.09,104.09,104.13,
+                    106.28,106.33,106.36,104.4,108.12,108.63,110.16,119.41,124.63)
+  plot(density(final_grades), col="blue", lwd=2, main="Density Plot of Final Final_Grades")
+  abline(v=mean(final_grades), col="blue", lwd=2, lty=2)
+  legend("topleft", legend=c(paste("Mean =", round(mean(midterm_grades), 2)),
+                             paste("Mean =", round(mean(final_grades), 2))),
+         col=c("red", "blue"),
+         lty=c(1, 2),
+         lwd=2)
+#+end_src
+
+#+RESULTS:
+[[file:../img/final_grades.png]]
+
+
+#+begin_src R :file ../img/final_grades.png :session *R* :results graphics output file :exports both
+    midterm_grades <- c(26.92, 43.1, 45.75, 57.78, 59.77, 60.71, 69.8, 74.05, 76.22, 82.32,
+                        84.16, 84.33, 84.55, 85.27, 86.05, 86.87, 88.36, 90.25, 90.44, 90.65,
+                        91.3, 91.8, 92.25, 92.78, 93.73, 94.42, 96.46, 97.33, 97.88)
+
+    final_grades <- c(72.75,77.27,77.97,85.17,88.96,88.98,90.05,95.97,96.18,97.68,
+                      98.12,99.31,101.39,101.74,101.74,102.02,103.09,104.09,104.13,
+                      106.28,106.33,106.36,104.4,108.12,108.63,110.16,119.41,124.63)
+    dens_mid <- density(midterm_grades)
+    dens_final <- density(final_grades)
+    xlim_all <- range(c(dens_mid$x, dens_final$x))
+    ylim_all <- range(c(dens_mid$y, dens_final$y))
+    plot(dens_mid, col = "red", lwd = 2, xlim = xlim_all, ylim = ylim_all,
+         main = "", xlab = "Grade [%]")
+    abline(v = mean(midterm_grades), col = "red", lwd = 2, lty = 2)
+    par(new = TRUE)
+    plot(dens_final, col = "blue", lwd = 2, xlim = xlim_all, ylim = ylim_all,
+         xlab = "", ylab = "", axes = FALSE,
+         main="Midterm and Final Grades CSC 100 Spring 2025")
+    abline(v = mean(final_grades), col = "blue", lwd = 2, lty = 2)
+    legend("topleft", 
+           legend = c(paste("Midterm Mean =", round(mean(midterm_grades), 2)),
+                      paste("Final Mean =", round(mean(final_grades), 2))),
+           col = c("red", "blue"),
+           lty = c(2, 2),
+           lwd = 2)
+#+end_src
+
+#+RESULTS:
+[[file:../img/final_grades.png]]
 
 
 * Footnotes

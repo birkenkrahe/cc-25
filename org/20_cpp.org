@@ -367,6 +367,8 @@
     Player's health after healing = 100
   #+end_example
 
+- Starter code: [[https://onecompiler.com/cpp/43h3n5mgm][onecompiler.com/cpp/43h3n5mgm]]
+
 - Solution: [[https://onecompiler.com/cpp/43h2m4cf3][onecompiler.com/cpp/43h2m4cf3]]
   #+begin_src C++ :main no :includes :results output :tangle player2.cpp
     #include <iostream> // include input/output
@@ -663,6 +665,7 @@
   #+end_example
 
 - Starter code: [[https://onecompiler.com/cpp/43h2mrae6][onecompiler.com/cpp/43h2mrae6]]
+
   #+begin_src C++ :main no :includes :results output
     #include <iostream>
     using namespace std;
@@ -688,7 +691,7 @@
       // Bob takes damage
 
       // PRINT "Game is about to end..."
-      
+
       // PRINT Alice's health
 
       // PRINT Bob's health
@@ -801,6 +804,88 @@
      #+end_example
   3. To reinforce object identity.
 
+* Practice: ~this~
+
+- Write a constructor for the =Car= class that creates a =Car= with the
+  following features: =cyl= (number of cylinders), and =speed= (maximum
+  speed).
+
+- When the =Car= is created in ~main~, you should see the message:
+  #+begin_example
+    Car created with ... cylinders and ... mph max speed.
+  #+end_example
+
+- When the program is done, it will print: ~Car destroyed.~
+
+- Constraints:
+  1) Use ~this~ to print =fuel= and =speed= values.
+  2) Create a 4-cylinder =kia= =Car= with 140 mph max =speed=.
+  3) Create a 6-cylinder =ford= =Car= with 200 mph max =speed=.
+
+- The Starter code is here: https://onecompiler.com/cpp/43h48uajv
+
+  #+begin_src C++ :main no :includes :results output
+    #include <iostream>
+    using namespace std;
+
+    class Car {
+    private:
+      const int cyl;
+      const int speed;
+    public:
+      // Construct a Car
+
+      // PRINT Car's cylinder and max speed values
+
+      // Destructor
+      ~Car() { cout << "\nCar destroyed." << endl; }
+    }; // END Car
+
+    int main(void) { // main program
+      // Create a Kia with 4 cyl, 140 mph max speed
+
+      // Create a Ford with 6 cyl, 200 mph max speed
+
+      return 0;
+    }
+  #+end_src
+
+- Solution:
+  #+begin_src C++ :main no :includes :results output
+    #include <iostream>
+    using namespace std;
+
+    class Car {
+    private:
+      const int cyl;
+      const int speed;
+    public:
+      // Construct a Car
+      Car(int cyl, int speed) : cyl(cyl), speed(speed) {
+        // PRINT Car's cylinder and max speed values
+        cout << "Car created with " << this->cyl
+             << " and "             << this-> speed
+             << " mph max speed." << endl;
+      }
+      // Destructor
+      ~Car() { cout << "Car destroyed." << endl; }
+    }; // END Car
+
+    int main() { // main program
+      // Create a Kia with 4 cyl, 140 mph max speed
+      Car kia(4,140);
+      // Create a Ford with 6 cyl, 200 mph max speed
+      Car ford(6,200);
+      return 0;
+    }
+  #+end_src
+
+  #+RESULTS:
+  : Car created with 4 and 140 mph max speed.
+  : Car created with 6 and 200 mph max speed.
+  : Car destroyed.
+  : Car destroyed.
+
 * ~static~ members are shared across all instances
 
 - An *instance* is another word for an object of a class. So =Player
@@ -884,6 +969,30 @@
   Enemies active: 0
   #+end_example
 
+- Starter code: [[https://onecompiler.com/cpp/43h3pgda6][onecompiler.com/cpp/43h3pgda6]]
+  #+begin_src C++ :main no :results output
+    #include <iostream>
+    using namespace std;
+
+    // Declare Enemy class
+
+    // private data: strength, active enemies
+
+    // public data: constructor, destructor, attack, getActive
+
+    // SET active enemies to zero
+
+    // main program
+    // BEGIN main
+    // BEGIN battle
+    // Create two enemies
+    // PRINT number of active enemies (2)
+    // One enemy attacks
+    // END battle
+    // PRINT number of active enemies (0)
+    // END main
+  #+end_src
+
 - Solution:
   #+begin_src C++ :main no :results output
     #include <iostream>
@@ -920,7 +1029,7 @@
         cout << "Enemies active: " << Enemy::getActive() << endl;
         cout << "Attack damage: " << Sauron.attack() << endl;
       } // END battle
-      cout << "Enemies active: " << Enemy::getActive() << endl;      
+      cout << "Enemies active: " << Enemy::getActive() << endl;
       return 0;
     }
   #+end_src
