@@ -3233,23 +3233,23 @@ You're now ready for more, bigger and better things!
    out [[https://stroustrup.com/programming.html][stroustrup.com/programming.html]] or "[[https://stroustrup.com/tour3.html][A Tour of C++]]" for full
    immersion.
 
-4) *Data Structures (with C++*): The next course in the series, for
+4) *[[https://catalog.lyon.edu/computer-science/csc-240][Data Structures (with C++*)]]: The next course in the series, for
    computer and data science minors and majors, CSC 240, TTH 930-1045
    am. We'll start with a thorough review and a C/C++ entry test.
 
-5) *Introduction to Data Science (with R)*: DSC 105 is the first course
+5) *[[https://catalog.lyon.edu/data-science/dsc-105][Introduction to Data Science (with R)*:]] DSC 105 is the first course
    of the Data Science program. Hands-on, beginner-friendly if you're
    interested in data, visualization, machine learning, stats, and AI.
 
-6) *Competitive programming*: Join us for a 1 hr per week seminar
+6) *[[https://catalog.lyon.edu/computer-science/csc-450][Competitive programming]]*: Join us for a 1 hr per week seminar
    solving programming problems in any language you like (C++, Python,
    Java...) - CSC 450, Thursday 4 pm, Derby 209.
 
-7) *Introduction to Programming with Java*: Yet another important
+7) *[[https://catalog.lyon.edu/computer-science/csc-115][Introduction to Programming with Java*:]] Yet another important
    language that dominates in industry applications, CSC 115 MWF
    1000-1050 am, taught by the incomparable Dr. Dall'Olio!
 
-8) *Literate Programming*: In all my upper-level classes, you'll work
+8) *[[: In all my upper-level classes, you'll work][Literate Programming:]]* In all my upper-level classes, you'll work
    with the Emacs + Org-mode IDE (instead of OneCompiler). There's a
    steep learning curve. I'll give you something to do before term
    starts.
@@ -3263,7 +3263,7 @@ You're now ready for more, bigger and better things!
     should make you more proud of the way humans think & learn. Feel
     free to keep in touch & use me while you can!
 
-** TODO What (if anything) are you taking away from this course? 
+** What (if anything) are you taking away from this course? 
 #+attr_html: :width 400px :float nil: 
 [[../img/finale4.png]]
 
