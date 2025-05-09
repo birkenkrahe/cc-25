@@ -2848,7 +2848,7 @@ Next week:
 - This is the beginning of *object-oriented* programming (OOP).
 - OOP is the standard for building large-scale applications.
 
-* IN-PROGRESS Week 16: Transitioning to C++
+* DONE Week 16: Transitioning to C++
 #+attr_html: :width 400px :float nil:
 #+caption: The guy in the picture is Bjarne Stroustrup
 [[../img/cpp.png]]
@@ -2858,7 +2858,7 @@ Next week:
 - It will be a preparation for CSC 240 (Data structures with C++).
 - We'll also discuss what you could do in the summer to prepare.
 
-** DONE Review: C ~struct~
+** Review: C ~struct~
 
 1. What is a ~struct~ in C and why would you use it?
    #+begin_quote
@@ -2922,7 +2922,7 @@ Next week:
    : Jack is a 23 old male of 180 cm height.
    : Jack is a 23 old male of 180 cm height.
 
-** DONE C to C++ Transition
+** C to C++ Transition
 
 - [ ] Transform C ~struct~ into C++ ~class~
 - [ ] Understand that data can be ~private~ or ~public~
@@ -2933,7 +2933,7 @@ Next week:
 - [ ] Create ~static~ members to track state across instances
 - [ ] Understand the object lifecycle
 
-** DONE Review Questions: From struct in C to class in C++
+** Review Questions: From struct in C to class in C++
 
 1. What's an object?
    #+begin_quote
@@ -3052,7 +3052,7 @@ Next week:
     We'd have to add a condition using an ~if~ statement in our code.
     #+end_quote
 
-** TODO Final exam (optional): Monday 12 May 1pm-3pm in Lyon 104 (here)
+** Final exam (optional): Monday 12 May 1pm-3pm in Lyon 104 (here)
 #+attr_html: :width 300px :float nil:
 [[../img/final_exam4.png]]
 
@@ -3060,7 +3060,7 @@ Next week:
 - *50* randomly drawn questions drawn from the pool of *known questions*.
 - You have *120 minutes* to complete the test - open book (our PCs).
   
-** TODO [Last] Code Along Review: C++ Constructors and Destructors 
+** [Last] Code Along Review: C++ Constructors and Destructors 
 
 Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code along. 
 
@@ -3089,6 +3089,8 @@ Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code alon
      // main pgm
      Car volkswagen; // create a volkswagen Car
    #+end_src
+
+   #+RESULTS:
 
 3) *How can we print the =year= and the =mileage= of the =volkswagen= =Car=?*
 
@@ -3209,12 +3211,12 @@ Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code alon
    Final code: https://onecompiler.com/cpp/43h4bvg3d
    #+end_quote
 
-** TODO Summary and Outlook
+** Summary and Outlook
 #+attr_html: :width 600px :float nil: 
 [[../img/final_grades.png]]
 
 - 33 Programming assignments
-- 300 Test questions
+- 300+ Test questions
 - 331 pages of scripts written and distributed
 - 92 codes in (my) OneCompiler.com alone
 - 1000 lines of code written by you (at least)- 
