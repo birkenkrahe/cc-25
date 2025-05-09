@@ -2858,8 +2858,6 @@ Next week:
 - It will be a preparation for CSC 240 (Data structures with C++).
 - We'll also discuss what you could do in the summer to prepare.
 
-- *Optional final exam*: Monday, 12-May, 1:00 pm - 3:00 pm *here*
-  
 ** DONE Review: C ~struct~
 
 1. What is a ~struct~ in C and why would you use it?
@@ -3054,11 +3052,19 @@ Next week:
     We'd have to add a condition using an ~if~ statement in our code.
     #+end_quote
 
-** TODO Code Along Review: Constructors and Destructors 
+** TODO Final exam (optional): Monday 12 May 1pm-3pm in Lyon 104 (here)
+#+attr_html: :width 300px :float nil:
+[[../img/final_exam4.png]]
+
+- You cannot make your grade worse with the test, only *better*.
+- *50* randomly drawn questions drawn from the pool of *known questions*.
+- You have *120 minutes* to complete the test - open book (our PCs).
+  
+** TODO [Last] Code Along Review: C++ Constructors and Destructors 
 
 Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code along. 
 
-1) Will this code work? What does it do?
+1) *Will this code work? What does it do?*
 
    #+begin_src C++ :main yes :includes <iostream> :namespaces std
      // class definition
@@ -3072,8 +3078,8 @@ Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code alon
    Yes, it works. A default =Car= named =volkswagen= is created.
    #+end_quote
 
-2) How could we add features, e.g. the =year= of the model, say 2022,
-   and the =mileage=, say 25000 miles, to the default =Car=?
+2) *How could we add features, e.g. the =year= of the model, say 2022,
+   and the =mileage=, say 25000 miles, to the default =Car=?*
 
    #+begin_src C++ :main yes :includes <iostream> :namespaces std
      class Car {
@@ -3084,7 +3090,7 @@ Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code alon
      Car volkswagen; // create a volkswagen Car
    #+end_src
 
-3) How can we print the =year= and the =mileage= of the =volkswagen= =Car=?
+3) *How can we print the =year= and the =mileage= of the =volkswagen= =Car=?*
 
    #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
      class Car {
@@ -3106,8 +3112,8 @@ Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code alon
    : Car built in: 2022
    : Mileage: 25000 miles
 
-4) How can we construct a =Car= with a different =year= and =mileage=, for
-   example a =mercedes= built in =2019= with a =mileage= of =45000=?
+4) *How can we construct a =Car= with a different =year= and =mileage=, for
+   example a =mercedes= built in =2019= with a =mileage= of =45000=?*
 
    #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
      class Car {
@@ -3125,7 +3131,7 @@ Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code alon
      Car mercedes(2019,45000);
    #+end_src
 
-   You can also re-use the variable names with the ~this~ pointer:
+   *You can also re-use the variable names with the ~this~ pointer:*
 
    #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
      class Car {
@@ -3147,7 +3153,7 @@ Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code alon
    : Car built in: 2019
    : Mileage: 45000 miles
 
-5) How can we destroy the =Car= that we created?
+5) *How can we destroy the =Car= that we created?*
    #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
      class Car {
        const int year; // does not change
@@ -3171,15 +3177,37 @@ Open [[https://onecompiler.com/cpp/43h75x8mz][OneCompiler.com/cpp]] to code alon
    : Mileage: 45000 miles
    : Car destroyed.
 
-6) Now create a second car, a =jaguar= from =1985= with =220,000= miles.
+6) *Now create a second car, a =jaguar= from =1985= with =220,000= miles.*
+   #+begin_src C++ :main yes :includes <iostream> :namespaces std :results output
+     class Car {
+       const int year; // does not change
+       int mileage;
+     public:
+       // Constructor
+       Car(int year, int mileage) : year(year), mileage(mileage) {
+         cout << "Car built in: " << this->year << endl
+              << "Mileage: "      << this->mileage << " miles" << endl;
+       }
+       // Destructor
+       ~Car() { cout << "Car destroyed." << endl; }
+     };
+
+     // main pgm
+     Car mercedes(2019,45000);
+     Car jaguar(1985,220000);
+   #+end_src
+
+   #+RESULTS:
+   : Car built in: 2019
+   : Mileage: 45000 miles
+   : Car built in: 1985
+   : Mileage: 220000 miles
+   : Car destroyed.
+   : Car destroyed.
+
    #+begin_quote
    Final code: https://onecompiler.com/cpp/43h4bvg3d
    #+end_quote
-** TODO What (if anything) are you taking away from this course?
-#+attr_html: :width 400px :float nil: 
-[[../img/finale3.png]]
-
-
 
 ** TODO Summary and Outlook
 #+attr_html: :width 600px :float nil: 
@@ -3233,43 +3261,14 @@ You're now ready for more, bigger and better things!
     should make you more proud of the way humans think & learn. Feel
     free to keep in touch & use me while you can!
 
-* Final Grades
-#+begin_src R :file ../img/final_grades.png :session *R* :results graphics output file :exports both
-          grades <- c(72.75,77.27,77.97,85.17,88.96,88.98,90.05,95.97,96.18,97.68,
-                      98.12,99.31,101.39,101.74,101.74,102.02,103.09,104.09,104.13,
-                      106.28,106.33,106.36,104.4,108.12,108.63,110.16,119.41,124.63)
-          plot(density(grades), col="red", lwd=2, main="Density Plot of Final Grades")
-          abline(v=mean(grades), col="blue", lwd=2, lty=2)
-          #text(mean(grades), max(density(grades)$y), paste("Mean =", round(mean(grades), 2)), pos=2, col="blue")
-          legend("topleft", legend=c("Density", paste("Mean =", round(mean(grades), 2))), col=c("red", "blue"), lty=c(1, 2), lwd=2)
-#+end_src
+** TODO What (if anything) are you taking away from this course? 
+#+attr_html: :width 400px :float nil: 
+[[../img/finale4.png]]
 
-#+RESULTS:
-[[file:../img/final_grades.png]]
+*Check out with one word only!* Something related to the course if you
+don't mind (though anything else is better than nothing)!
 
-Midterm and final grades:
-#+begin_src R :file ../img/final_grades.png :session *R* :results graphics output file :exports both
-  midterm_grades <- c(26.92, 43.1, 45.75, 57.78, 59.77, 60.71, 69.8, 74.05, 76.22, 82.32,
-                      84.16, 84.33, 84.55, 85.27, 86.05, 86.87, 88.36, 90.25, 90.44, 90.65,
-                      91.3, 91.8, 92.25, 92.78, 93.73, 94.42, 96.46, 97.33, 97.88)
-  plot(density(midterm_grades), col="red", lwd=2, main="Density Plot of Midterm Grades")
-  abline(v=mean(midterm_grades), col="red", lwd=2, lty=2)
-  par(new=TRUE)
-  final_grades <- c(72.75,77.27,77.97,85.17,88.96,88.98,90.05,95.97,96.18,97.68,
-                    98.12,99.31,101.39,101.74,101.74,102.02,103.09,104.09,104.13,
-                    106.28,106.33,106.36,104.4,108.12,108.63,110.16,119.41,124.63)
-  plot(density(final_grades), col="blue", lwd=2, main="Density Plot of Final Final_Grades")
-  abline(v=mean(final_grades), col="blue", lwd=2, lty=2)
-  legend("topleft", legend=c(paste("Mean =", round(mean(midterm_grades), 2)),
-                             paste("Mean =", round(mean(final_grades), 2))),
-         col=c("red", "blue"),
-         lty=c(1, 2),
-         lwd=2)
-#+end_src
-
-#+RESULTS:
-[[file:../img/final_grades.png]]
-
+** Final Grades
 
 #+begin_src R :file ../img/final_grades.png :session *R* :results graphics output file :exports both
     midterm_grades <- c(26.92, 43.1, 45.75, 57.78, 59.77, 60.71, 69.8, 74.05, 76.22, 82.32,
@@ -3301,7 +3300,6 @@ Midterm and final grades:
 
 #+RESULTS:
 [[file:../img/final_grades.png]]
-
 
 * Footnotes
 
